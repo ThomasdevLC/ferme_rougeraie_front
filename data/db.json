@@ -1,0 +1,29 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "carottes",
+      "isDisplayed": false
+    },
+    {
+      "id": 2,
+      "title": "navets",
+      "isDisplayed": true
+    },
+    {
+      "title": "poireaux",
+      "isDisplayed": false,
+      "id": 3
+    },
+    {
+      "title": "oignons",
+      "isDisplayed": true,
+      "id": 4
+    },
+    {
+      "title": "choux",
+      "isDisplayed": true,
+      "id": 454812
+    }
+  ]
+}
