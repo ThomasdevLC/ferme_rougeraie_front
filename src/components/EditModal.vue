@@ -1,26 +1,23 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <input type="text" placeholder="Produit..." v-model="EditTitle" />
+    <input type="text" placeholder="Produit..." v-model="editTitle" />
     <button>Valider</button>
   </form>
 </template>
 
 <script>
+import { ref } from "vue";
 import { useProductStore } from "../stores/ProductStore";
 
 export default {
-  setup() {
+  props: ["product"],
+
+  setup(props) {
     const productStore = useProductStore();
-  },
 
-  data() {
-    return {
-      EditTitle: "",
-    };
-  },
+    const editTitle = ref(props.product.title);
 
-  mounted() {
-    this.EditTitle = product.title;
+    return { editTitle };
   },
 };
 </script>

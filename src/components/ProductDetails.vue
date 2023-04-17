@@ -4,7 +4,7 @@
     <div class="icons">
       <div class="overlay" v-if="showModal" @click="closeModal"></div>
 
-      <div class="modal" v-if="showModal"><EditModal /></div>
+      <div class="modal" v-if="showModal"><EditModal :product="product" /></div>
 
       <i class="material-icons" @click="openModal">edit</i>
 
