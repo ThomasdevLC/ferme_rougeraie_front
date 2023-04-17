@@ -4,7 +4,7 @@
     <div class="icons">
       <div class="overlay" v-if="showModal" @click="closeModal"></div>
 
-      <div class="modal" v-if="showModal">Hello modal</div>
+      <div class="modal" v-if="showModal"><EditModal /></div>
 
       <i class="material-icons" @click="openModal">edit</i>
 
@@ -29,11 +29,12 @@
 </template>
 
 <script>
-// import { useProductStore } from "";
 import { useProductStore } from "../stores/ProductStore";
+import EditModal from "./EditModal.vue";
 
 export default {
   props: ["product"],
+  components: { EditModal },
 
   data() {
     return {
@@ -75,5 +76,7 @@ export default {
   transform: translate(-50%, -50%);
   z-index: 9999;
   background: white;
+  padding: 20px;
+  border-radius: 8px;
 }
 </style>
