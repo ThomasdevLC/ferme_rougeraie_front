@@ -44,17 +44,20 @@ export const useProductStore = defineStore("productStore", {
       }
     },
 
-    // async editProduct(id) {
-    //   this.products.push(product);
-    //   const res = await fetch("http://localhost:3000/products", {
-    //     method: "POST",
-    //     body: JSON.stringify(product),
-    //     headers: { "Content-Type": "application/json" },
-    //   });
-    //   if (res.error) {
-    //     console.log(res.error);
-    //   }
-    // },
+    async editProduct(id, editedProduct) {
+      const productIndex = this.products.findIndex((p) => p.id === id);
+      if (productIndex !== -1) {
+        this.products[productIndex] = {
+          ...this.products[productIndex],
+          ...editedProduct,
+        };
+      }
+      // const res = await fetch("http://localhost:3000/products/" + id, {
+      //   method: "PATCH",
+      //   body: JSON.stringify(editedProduct),
+      //   headers: { "Content-Type": "application/json" },
+      // });
+    },
 
     async deleteProduct(id) {
       this.products = this.products.filter((p) => {
@@ -67,6 +70,7 @@ export const useProductStore = defineStore("productStore", {
         console.log(res.error);
       }
     },
+
     async toggleDisplay(id) {
       const product = this.products.find((p) => p.id === id);
       product.isDisplayed = !product.isDisplayed;

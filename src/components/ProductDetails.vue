@@ -1,6 +1,10 @@
 <template>
   <div class="task">
-    <h3>{{ product.title }}</h3>
+    <div class="">
+      <h3>{{ product.title }}</h3>
+      <div class="image"><img :src="product.image" alt="" /></div>
+    </div>
+
     <div class="icons">
       <div class="overlay" v-if="showModal" @click="closeModal"></div>
 
@@ -78,5 +82,9 @@ export default {
   background: white;
   padding: 20px;
   border-radius: 8px;
+}
+
+img {
+  height: 50px;
 }
 </style>

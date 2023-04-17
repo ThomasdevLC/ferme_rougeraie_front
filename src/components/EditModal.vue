@@ -17,7 +17,14 @@ export default {
 
     const editTitle = ref(props.product.title);
 
-    return { editTitle };
+    const handleSubmit = () => {
+      console.log("handleSubmit");
+      productStore.editProduct({
+        title: editTitle.value,
+      });
+    };
+
+    return { editTitle, handleSubmit };
   },
 };
 </script>
