@@ -52,14 +52,15 @@ export const useProductStore = defineStore("productStore", {
           ...editedProduct,
         };
       }
-      // const res = await fetch("http://localhost:3000/products/" + id, {
-      //   method: "PATCH",
-      //   body: JSON.stringify(editedProduct),
-      //   headers: { "Content-Type": "application/json" },
-      // });
+      const res = await fetch("http://localhost:3000/products/" + id, {
+        method: "PATCH",
+        body: JSON.stringify(editedProduct),
+        headers: { "Content-Type": "application/json" },
+      });
     },
 
     async deleteProduct(id) {
+      console.log("hello delete product");
       this.products = this.products.filter((p) => {
         return p.id !== id;
       });

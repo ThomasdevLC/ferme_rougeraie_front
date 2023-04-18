@@ -19,7 +19,7 @@ export default {
 
     const handleSubmit = () => {
       console.log("handleSubmit");
-      productStore.editProduct({
+      productStore.editProduct(props.product.id, {
         title: editTitle.value,
       });
     };
