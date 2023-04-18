@@ -12,7 +12,7 @@
       />
     </div>
     <input type="text" placeholder="nom produit" v-model="name" />
-    <input type="number" placeholder="prix" step="0.01" v-model="price" />
+    <input type="number" placeholder="prix" step="0.1" v-model="price" />
 
     <div class="input-field">
       <select v-model="unit">
@@ -26,7 +26,7 @@
       <input
         type="number"
         placeholder="interval "
-        step="0.01"
+        step="0.1"
         v-model="interval"
       />
     </div>
@@ -47,7 +47,7 @@ export default {
     const price = ref(0.0);
     const fileInput = ref(null);
     const unit = ref(false);
-    const interval = ref(0.0);
+    const interval = ref("");
     let selectedFile = null;
 
     const handleSubmit = () => {
@@ -56,7 +56,7 @@ export default {
         reader.onload = (event) => {
           const imageData = event.target.result;
           productStore.addProduct({
-            title: name.value,
+            name: name.value,
             price: price.value,
             unit: unit.value,
             interval: interval.value,

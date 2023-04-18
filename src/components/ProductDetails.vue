@@ -1,9 +1,11 @@
 <template>
   <div class="task">
-    <div class="">
-      <h3>{{ product.title }}</h3>
-      <div class="image"><img :src="product.image" alt="" /></div>
-    </div>
+    <div class="image"><img :src="product.image" alt="" /></div>
+    <h3>{{ product.name }}</h3>
+    <p>
+      {{ product.price }} € /
+      <span> {{ product.unit }} / {{ product.interval }} </span>
+    </p>
 
     <div class="icons">
       <div class="overlay" v-if="showModal" @click="closeModal"></div>

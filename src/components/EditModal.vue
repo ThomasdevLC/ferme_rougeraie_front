@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <input type="text" placeholder="Produit..." v-model="editTitle" />
+    <input type="text" placeholder="Produit..." v-model="editName" />
     <button>Valider</button>
   </form>
 </template>
@@ -15,16 +15,16 @@ export default {
   setup(props) {
     const productStore = useProductStore();
 
-    const editTitle = ref(props.product.title);
+    const editName = ref(props.product.name);
 
     const handleSubmit = () => {
       console.log("handleSubmit");
       productStore.editProduct(props.product.id, {
-        title: editTitle.value,
+        name: editName.value,
       });
     };
 
-    return { editTitle, handleSubmit };
+    return { editName, handleSubmit };
   },
 };
 </script>
