@@ -1,7 +1,5 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <input type="text" placeholder="Produit..." v-model="newProduct" />
-
     <div class="file file--upload">
       <label for="input-file">
         <i class="material-icons">photo_camera</i>
@@ -10,7 +8,26 @@
         id="input-file"
         type="file"
         ref="fileInput"
-        @change="handleFileInputChange"
+        @change="handleImage"
+      />
+    </div>
+    <input type="text" placeholder="nom produit" v-model="name" />
+    <input type="number" placeholder="prix" step="0.01" v-model="price" />
+
+    <div class="input-field">
+      <select v-model="unit">
+        <option value="kg">kg</option>
+        <option value="piece">pièce</option>
+      </select>
+      <label>Unité</label>
+    </div>
+
+    <div v-if="unit === 'kg'" class="input-field">
+      <input
+        type="number"
+        placeholder="interval "
+        step="0.01"
+        v-model="interval"
       />
     </div>
 
@@ -26,34 +43,51 @@ export default {
   setup() {
     const productStore = useProductStore();
 
-    const newProduct = ref("");
+    const name = ref("");
+    const price = ref(0.0);
     const fileInput = ref(null);
+    const unit = ref(false);
+    const interval = ref(0.0);
     let selectedFile = null;
 
     const handleSubmit = () => {
-      if (newProduct.value.length > 0 && selectedFile !== null) {
+      if (name.value.length > 0 && selectedFile !== null) {
         const reader = new FileReader();
         reader.onload = (event) => {
           const imageData = event.target.result;
           productStore.addProduct({
-            title: newProduct.value,
+            title: name.value,
+            price: price.value,
+            unit: unit.value,
+            interval: interval.value,
             isDisplayed: true,
             image: imageData,
             id: Math.floor(Math.random() * 10000),
           });
-          newProduct.value = "";
-          fileInput.value.value = "";
+          name.value = "";
+          price.value = 0.0;
           selectedFile = null;
+          unit.value = false;
+          interval.value = 0.0;
+          fileInput.value.value = "";
         };
         reader.readAsDataURL(selectedFile);
       }
     };
 
-    const handleFileInputChange = (event) => {
+    const handleImage = (event) => {
       selectedFile = event.target.files[0];
     };
 
-    return { newProduct, fileInput, handleSubmit, handleFileInputChange };
+    return {
+      name,
+      price,
+      fileInput,
+      unit,
+      interval,
+      handleSubmit,
+      handleImage,
+    };
   },
 };
 </script>
