@@ -3,8 +3,8 @@
     <div class="image"><img :src="product.image" alt="" /></div>
     <h3>{{ product.name }}</h3>
     <p>
-      {{ product.price }} € /
-      <span> {{ product.unit }} / {{ product.interval }} </span>
+      {{ product.price }} € / <span> {{ product.unit }} </span>
+      <span v-if="product.interval"> - interval {{ product.interval }} </span>
     </p>
 
     <div class="icons">

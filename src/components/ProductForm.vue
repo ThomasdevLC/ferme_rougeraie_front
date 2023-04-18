@@ -44,7 +44,7 @@ export default {
     const productStore = useProductStore();
 
     const name = ref("");
-    const price = ref(0.0);
+    const price = ref("");
     const fileInput = ref(null);
     const unit = ref(false);
     const interval = ref("");
