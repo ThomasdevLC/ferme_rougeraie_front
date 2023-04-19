@@ -1,8 +1,14 @@
 <template>
   <form @submit.prevent="handleSubmit">
     <div class="file file--upload">
-      <label for="input-file">
-        <i class="material-icons">photo_camera</i>
+      <label for="input-file" :class="{ 'no-padding': selectedImage }">
+        <img
+          v-if="selectedImage"
+          :src="selectedImage"
+          alt="selected image"
+          class="selectedImage"
+        />
+        <i v-else class="material-icons">photo_camera</i>
       </label>
       <input
         id="input-file"
@@ -11,19 +17,31 @@
         @change="handleImage"
       />
     </div>
-    <input type="text" placeholder="nom produit" v-model="name" />
-    <input type="number" placeholder="prix" step="0.1" v-model="price" />
 
-    <div class="input-field">
-      <select v-model="unit">
+    <input
+      class="custom-input"
+      type="text"
+      placeholder="nom produit"
+      v-model="name"
+    />
+    <input
+      class="custom-input"
+      type="number"
+      placeholder="prix"
+      step="0.1"
+      v-model="price"
+    />
+
+    <div>
+      <select v-model="unit" class="custom-input">
         <option value="kg">kg</option>
         <option value="piece">pièce</option>
       </select>
-      <label>Unité</label>
     </div>
 
-    <div v-if="unit === 'kg'" class="input-field">
+    <div v-if="unit === 'kg'">
       <input
+        class="custom-input"
         type="number"
         placeholder="interval "
         step="0.1"
@@ -44,6 +62,7 @@ export default {
     const productStore = useProductStore();
 
     const fileInput = ref(null);
+    const selectedImage = ref(null); //ajout de la propriété selectedImage
     let selectedFile = null;
     const name = ref("");
     const price = ref("");
@@ -65,11 +84,12 @@ export default {
             id: Math.floor(Math.random() * 10000),
           });
           name.value = "";
-          price.value = 0.0;
+          price.value = "";
           unit.value = false;
-          interval.value = 0.0;
+          interval.value = "";
           selectedFile = null;
           fileInput.value.value = "";
+          selectedImage.value = null; //réinitialisation de selectedImage
         };
         reader.readAsDataURL(selectedFile);
       }
@@ -77,6 +97,7 @@ export default {
 
     const handleImage = (event) => {
       selectedFile = event.target.files[0];
+      selectedImage.value = URL.createObjectURL(selectedFile); //met à jour la valeur de selectedImage
     };
 
     return {
@@ -87,12 +108,20 @@ export default {
       handleSubmit,
       fileInput,
       handleImage,
+      selectedImage,
     };
   },
 };
 </script>
 
 <style scoped>
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  display: grid;
+  /* grid-template-columns: 4fr 1fr; */
+  gap: 10px;
+}
 .file {
   position: relative;
   display: flex;
@@ -118,6 +147,10 @@ export default {
   place-items: center;
 }
 
+.file > label.no-padding {
+  padding: 0;
+}
+
 .file--upload > label {
   color: #ffd859;
   border-color: #ffd859;
@@ -126,14 +159,13 @@ export default {
 .file--upload > label:hover {
   background-color: hsl(46, 100%, 92%);
 }
-
-form {
-  max-width: 400px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: 10px;
+.selectedImage {
+  object-fit: cover;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
 }
+
 form button {
   background: #ffd859;
   border: 0;
@@ -142,12 +174,19 @@ form button {
   border-radius: 6px;
   cursor: pointer;
   font-size: 1em;
+  width: 100px;
+  margin: auto;
 }
-form input {
+.custom-input {
   border: 0;
+  width: 400px;
   padding: 10px;
   border-radius: 6px;
   color: #555;
-  font-size: 1em;
+  font-size: 16px;
+  outline: none;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 </style>
