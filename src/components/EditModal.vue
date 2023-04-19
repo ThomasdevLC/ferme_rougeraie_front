@@ -98,3 +98,27 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.file {
+  position: relative;
+  display: inline-block;
+}
+
+.file input[type="file"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+
+  cursor: pointer;
+}
+
+.file img {
+  display: block;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+</style>
