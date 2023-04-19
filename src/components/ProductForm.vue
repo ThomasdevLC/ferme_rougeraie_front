@@ -119,9 +119,16 @@ form {
   max-width: 400px;
   margin: 0 auto;
   display: grid;
-  /* grid-template-columns: 4fr 1fr; */
   gap: 10px;
 }
+
+.custom-input {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: center;
+}
+
 .file {
   position: relative;
   display: flex;
@@ -159,6 +166,7 @@ form {
 .file--upload > label:hover {
   background-color: hsl(46, 100%, 92%);
 }
+
 .selectedImage {
   object-fit: cover;
   border-radius: 50%;
@@ -174,9 +182,10 @@ form button {
   border-radius: 6px;
   cursor: pointer;
   font-size: 1em;
-  width: 100px;
+  width: 140px;
   margin: auto;
 }
+
 .custom-input {
   border: 0;
   width: 400px;
