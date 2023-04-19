@@ -43,9 +43,9 @@ export default {
   setup() {
     const productStore = useProductStore();
 
+    const fileInput = ref(null);
     const name = ref("");
     const price = ref("");
-    const fileInput = ref(null);
     const unit = ref(false);
     const interval = ref("");
     let selectedFile = null;
