@@ -66,9 +66,9 @@ export default {
           });
           name.value = "";
           price.value = 0.0;
-          selectedFile = null;
           unit.value = false;
           interval.value = 0.0;
+          selectedFile = null;
           fileInput.value.value = "";
         };
         reader.readAsDataURL(selectedFile);
@@ -82,10 +82,10 @@ export default {
     return {
       name,
       price,
-      fileInput,
       unit,
       interval,
       handleSubmit,
+      fileInput,
       handleImage,
     };
   },

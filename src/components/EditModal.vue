@@ -1,5 +1,16 @@
 <template>
   <form @submit.prevent="handleSubmit">
+    <div class="file file--upload">
+      <label for="input-file">
+        <img :src="editImage" alt="" />
+      </label>
+      <input
+        id="input-file"
+        type="file"
+        ref="fileInput"
+        @change="handleImage"
+      />
+    </div>
     <input type="text" placeholder="Produit..." v-model="editName" />
     <input type="number" placeholder="prix" step="0.1" v-model="editPrice" />
     <div class="input-field">
@@ -33,22 +44,57 @@ export default {
   setup(props) {
     const productStore = useProductStore();
 
+    const fileInput = ref(null);
+    let selectedFile = null;
     const editName = ref(props.product.name);
     const editPrice = ref(props.product.price);
     const editUnit = ref(props.product.unit);
     const editInterval = ref(props.product.interval);
+    const editImage = ref(props.product.image);
 
     const handleSubmit = () => {
-      console.log("handleSubmit");
-      productStore.editProduct(props.product.id, {
-        name: editName.value,
-        price: editPrice.value,
-        unit: editUnit.value,
-        interval: editInterval,
-      });
+      if (editName.value.length > 0) {
+        const updatedProduct = {
+          name: editName.value,
+          price: editPrice.value,
+          unit: editUnit.value,
+          interval: editInterval.value,
+          isDisplayed: props.product.isDisplayed,
+          id: props.product.id,
+        };
+        if (selectedFile !== null) {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            const imageData = event.target.result;
+            updatedProduct.image = imageData;
+            productStore.editProduct(props.product.id, updatedProduct);
+          };
+          reader.readAsDataURL(selectedFile);
+        } else {
+          productStore.editProduct(props.product.id, updatedProduct);
+        }
+      }
     };
 
-    return { editName, editPrice, editUnit, editInterval, handleSubmit };
+    const handleImage = (event) => {
+      selectedFile = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        editImage.value = e.target.result;
+      };
+      reader.readAsDataURL(selectedFile);
+    };
+
+    return {
+      editImage,
+      editName,
+      editPrice,
+      editUnit,
+      editInterval,
+      handleSubmit,
+      fileInput,
+      handleImage,
+    };
   },
 };
 </script>
