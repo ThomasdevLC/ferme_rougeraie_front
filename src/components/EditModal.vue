@@ -10,6 +10,15 @@
       <label>unité</label>
     </div>
 
+    <div v-if="editUnit === 'kg'" class="input-field">
+      <input
+        type="number"
+        placeholder="interval "
+        step="0.1"
+        v-model="editInterval"
+      />
+    </div>
+
     <button>Valider</button>
   </form>
 </template>
@@ -27,6 +36,7 @@ export default {
     const editName = ref(props.product.name);
     const editPrice = ref(props.product.price);
     const editUnit = ref(props.product.unit);
+    const editInterval = ref(props.product.interval);
 
     const handleSubmit = () => {
       console.log("handleSubmit");
@@ -34,10 +44,11 @@ export default {
         name: editName.value,
         price: editPrice.value,
         unit: editUnit.value,
+        interval: editInterval,
       });
     };
 
-    return { editName, editPrice, editUnit, handleSubmit };
+    return { editName, editPrice, editUnit, editInterval, handleSubmit };
   },
 };
 </script>

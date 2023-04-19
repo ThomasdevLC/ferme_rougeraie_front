@@ -44,11 +44,11 @@ export default {
     const productStore = useProductStore();
 
     const fileInput = ref(null);
+    let selectedFile = null;
     const name = ref("");
     const price = ref("");
     const unit = ref(false);
     const interval = ref("");
-    let selectedFile = null;
 
     const handleSubmit = () => {
       if (name.value.length > 0 && selectedFile !== null) {
