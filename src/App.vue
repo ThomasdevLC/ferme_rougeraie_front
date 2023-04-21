@@ -18,13 +18,13 @@
 
   <!-- LIST -->
   <div class="task-list" v-if="filter === 'all'">
-    <p>{{ productStore.totalCount }} produits</p>
+    <p>{{ productStore.totalCount }} produits enregistrés</p>
     <div v-for="product in productStore.products" :key="product">
       <ProductDetails :product="product" />
     </div>
   </div>
   <div class="task-list" v-if="filter === 'displayed'">
-    <p>{{ productStore.displayedCount }} Produits affichés</p>
+    <p>{{ productStore.displayedCount }} produits affichés</p>
     <div v-for="product in productStore.displayed" :key="product">
       <ProductDetails :product="product" />
     </div>
@@ -83,7 +83,6 @@ header h1 {
 
 /* filter nav */
 .filter {
-  width: 640px;
   margin: 10px auto;
   text-align: right;
 }

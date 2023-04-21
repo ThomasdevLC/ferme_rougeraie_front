@@ -1,12 +1,12 @@
 <template>
-  <form @submit.prevent="handleSubmit">
-    <div class="file file--upload">
+  <form class="product-form" @submit.prevent="handleSubmit">
+    <div class="file">
       <label for="input-file" :class="{ 'no-padding': selectedImage }">
         <img
           v-if="selectedImage"
           :src="selectedImage"
           alt="selected image"
-          class="selectedImage"
+          class="selectedProduct"
         />
         <i v-else class="material-icons">photo_camera</i>
       </label>
@@ -116,7 +116,7 @@ export default {
 </script>
 
 <style scoped>
-form {
+.product-form {
   max-width: 400px;
   margin: 0 auto;
   display: grid;
@@ -150,20 +150,15 @@ form {
   place-items: center;
 }
 
+.file > label:hover {
+  background-color: hsl(46, 100%, 92%);
+}
+
 .file > label.no-padding {
   padding: 0;
 }
 
-/* .file--upload {
-  color: #ffd859;
-  border-color: #ffd859;
-} */
-
-.file--upload > label:hover {
-  background-color: hsl(46, 100%, 92%);
-}
-
-.selectedImage {
+.selectedProduct {
   object-fit: cover;
   border-radius: 50%;
   width: 45px;
