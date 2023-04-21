@@ -1,5 +1,11 @@
 <template>
   <form @submit.prevent="handleSubmit">
+    <input
+      class="custom-input"
+      type="text"
+      placeholder="nom"
+      v-model="editName"
+    />
     <div class="file">
       <label for="input-file">
         <img :src="editImage" alt="" />
@@ -11,18 +17,23 @@
         @change="handleImage"
       />
     </div>
-    <input type="text" placeholder="Produit..." v-model="editName" />
-    <input type="number" placeholder="prix" step="0.10" v-model="editPrice" />
-    <div class="input-field">
+    <input
+      class="custom-input"
+      type="number"
+      placeholder="prix"
+      step="0.10"
+      v-model="editPrice"
+    />
+    <div class="custom-input">
       <select v-model="editUnit">
         <option value="kg">kg</option>
         <option value="piece">pièce</option>
       </select>
-      <label>unité</label>
     </div>
 
     <div v-if="editUnit === 'kg'" class="input-field">
       <input
+        class="custom-input"
         type="number"
         placeholder="interval "
         step="0.1"
@@ -144,5 +155,45 @@ form input {
   border-radius: 6px;
   color: #555;
   font-size: 1em;
+}
+
+select {
+  color: #444;
+  background: #fff;
+  font-family: "Poppins";
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select option {
+  font-family: "Poppins";
+}
+form button {
+  background: #ffd859;
+  padding: 10px;
+  border: 0;
+  border-radius: 6px;
+  font-size: 16px;
+  width: 140px;
+  margin: auto;
+  cursor: pointer;
+}
+
+.custom-input {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: center;
+  border: 0;
+  width: 400px;
+  padding: 14px;
+  border-radius: 6px;
+  color: #555;
+  font-size: 16px;
+  outline: none;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 </style>

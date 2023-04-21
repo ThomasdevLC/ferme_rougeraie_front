@@ -9,24 +9,27 @@
     <ProductForm />
   </div>
 
-  <!-- filter -->
-  <nav class="filter">
-    <button @click="filter = 'all'">Tous les produits</button>
-    <button @click="filter = 'displayed'">Produits affichés</button>
-  </nav>
   <div class="loading" v-if="productStore.loading">Chargement...</div>
 
-  <!-- LIST -->
-  <div class="product-list" v-if="filter === 'all'">
-    <p>{{ productStore.totalCount }} produits enregistrés</p>
-    <div v-for="product in productStore.products" :key="product">
-      <ProductDetails :product="product" />
+  <div v-else class="container">
+    <!-- filter -->
+    <nav class="filter">
+      <button @click="filter = 'all'">Tous les produits</button>
+      <button @click="filter = 'displayed'">Produits affichés</button>
+    </nav>
+
+    <!-- LIST -->
+    <div class="product-list" v-if="filter === 'all'">
+      <p>{{ productStore.totalCount }} produits enregistrés</p>
+      <div v-for="product in productStore.products" :key="product">
+        <ProductDetails :product="product" />
+      </div>
     </div>
-  </div>
-  <div class="product-list" v-if="filter === 'displayed'">
-    <p>{{ productStore.displayedCount }} produits affichés</p>
-    <div v-for="product in productStore.displayed" :key="product">
-      <ProductDetails :product="product" />
+    <div class="product-list" v-if="filter === 'displayed'">
+      <p>{{ productStore.displayedCount }} produits affichés</p>
+      <div v-for="product in productStore.displayed" :key="product">
+        <ProductDetails :product="product" />
+      </div>
     </div>
   </div>
 </template>
@@ -81,21 +84,25 @@ header h1 {
   padding: 20px 0;
 }
 
+.container {
+  width: 1000px;
+  margin: auto;
+}
+
 /* filter nav */
 .filter {
   margin: 10px auto;
   text-align: right;
 }
 .filter button {
-  display: inline-block;
-  margin-left: 10px;
+  /* display: inline-block; */
+  font-size: 15px;
   background: #fff;
   border: 2px solid #555;
   border-radius: 4px;
+  margin-left: 10px;
   padding: 4px 8px;
   cursor: pointer;
-  font-size: 0.8em;
-  font-size: 1em;
 }
 
 /* product list */

@@ -1,29 +1,30 @@
 <template>
   <form class="product-form" @submit.prevent="handleSubmit">
-    <div class="file">
-      <label for="input-file" :class="{ 'no-padding': selectedImage }">
-        <img
-          v-if="selectedImage"
-          :src="selectedImage"
-          alt="selected image"
-          class="selectedProduct"
-        />
-        <i v-else class="material-icons">photo_camera</i>
-      </label>
+    <div class="file-name-form">
       <input
-        id="input-file"
-        type="file"
-        ref="fileInput"
-        @change="handleImage"
+        class="custom-input"
+        type="text"
+        placeholder="nom produit"
+        v-model="name"
       />
+      <div class="file">
+        <label for="input-file" :class="{ 'no-padding': selectedImage }">
+          <img
+            v-if="selectedImage"
+            :src="selectedImage"
+            alt="selected image"
+            class="selectedProduct"
+          />
+          <i v-else class="material-icons">photo_camera</i>
+        </label>
+        <input
+          id="input-file"
+          type="file"
+          ref="fileInput"
+          @change="handleImage"
+        />
+      </div>
     </div>
-
-    <input
-      class="custom-input"
-      type="text"
-      placeholder="nom produit"
-      v-model="name"
-    />
     <input
       class="custom-input"
       type="number"
@@ -130,6 +131,8 @@ export default {
   align-items: center;
   color: #ffd859;
   border-color: #ffd859;
+  z-index: 3;
+  margin-left: -55px;
 }
 
 .file > input[type="file"] {
@@ -158,6 +161,9 @@ export default {
   padding: 0;
 }
 
+.file-name-form {
+  display: flex;
+}
 .selectedProduct {
   object-fit: cover;
   border-radius: 50%;
@@ -166,12 +172,17 @@ export default {
 }
 
 select {
-  color: #555;
+  color: #444;
+  background: #fff;
+  font-family: "Poppins";
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
+select option {
+  font-family: "Poppins";
+}
 form button {
   background: #ffd859;
   padding: 10px;
@@ -190,7 +201,7 @@ form button {
   align-items: center;
   border: 0;
   width: 400px;
-  padding: 10px;
+  padding: 14px;
   border-radius: 6px;
   color: #555;
   font-size: 16px;
