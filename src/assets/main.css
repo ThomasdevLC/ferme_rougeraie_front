@@ -11,23 +11,6 @@ body * {
 
 /* header */
 
-.task h3,
-.task .icons {
-  display: inline-block;
-}
-.task .icons {
-  text-align: right;
-}
-.task i {
-  font-size: 1.4em;
-  margin-left: 6px;
-  cursor: pointer;
-  color: #bbb;
-}
-.task i.active {
-  color: #0f0b0d;
-}
-
 /* loading state */
 .loading {
   max-width: 640px;

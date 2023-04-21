@@ -1,11 +1,13 @@
 <template>
-  <div class="task">
-    <div class="image"><img :src="product.image" alt="" /></div>
-    <h3>{{ product.name }}</h3>
-    <p>
-      {{ product.price }} € / <span> {{ product.unit }} </span>
-      <span v-if="product.interval"> - interval {{ product.interval }} </span>
-    </p>
+  <div class="product">
+    <div class="product-infos">
+      <div class="image"><img :src="product.image" alt="" /></div>
+      <h4>{{ product.name }}</h4>
+      <p>
+        {{ product.price }} € / <span> {{ product.unit }}</span>
+      </p>
+      <p v-if="product.interval">- inter {{ product.interval }}</p>
+    </div>
 
     <div class="icons">
       <div class="overlay" v-if="showModal" @click="closeModal"></div>
@@ -64,7 +66,55 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.product {
+  padding: 6px 10px;
+  background: #fff;
+  margin-top: 20px;
+  border-radius: 6px;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.image {
+  overflow: hidden;
+  border-radius: 6px;
+  width: 60px;
+  height: 60px;
+}
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-infos {
+  display: flex;
+  align-items: center;
+  width: 420px;
+  align-items: center;
+}
+
+.product h4,
+.product p {
+  margin-left: 15px;
+}
+
+.product i {
+  font-size: 22px;
+  margin-left: 6px;
+  cursor: pointer;
+  color: #bbb;
+}
+.product i.active {
+  color: #0f0b0d;
+}
+.product i:hover {
+  color: #525252;
+}
+
 .overlay {
   position: fixed;
   top: 0;
@@ -84,9 +134,5 @@ export default {
   background: white;
   padding: 20px;
   border-radius: 8px;
-}
-
-img {
-  height: 50px;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <div class="file file--upload">
+    <div class="file">
       <label for="input-file">
         <img :src="editImage" alt="" />
       </label>

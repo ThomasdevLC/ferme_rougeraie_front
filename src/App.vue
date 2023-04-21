@@ -5,7 +5,7 @@
   </header>
 
   <!-- form -->
-  <div class="new-task-form">
+  <div class="new-product-form">
     <ProductForm />
   </div>
 
@@ -17,13 +17,13 @@
   <div class="loading" v-if="productStore.loading">Chargement...</div>
 
   <!-- LIST -->
-  <div class="task-list" v-if="filter === 'all'">
+  <div class="product-list" v-if="filter === 'all'">
     <p>{{ productStore.totalCount }} produits enregistrés</p>
     <div v-for="product in productStore.products" :key="product">
       <ProductDetails :product="product" />
     </div>
   </div>
-  <div class="task-list" v-if="filter === 'displayed'">
+  <div class="product-list" v-if="filter === 'displayed'">
     <p>{{ productStore.displayedCount }} produits affichés</p>
     <div v-for="product in productStore.displayed" :key="product">
       <ProductDetails :product="product" />
@@ -76,7 +76,7 @@ header h1 {
   transform: rotate(2deg);
 }
 
-.new-task-form {
+.new-product-form {
   background: #e7e7e7;
   padding: 20px 0;
 }
@@ -98,19 +98,9 @@ header h1 {
   font-size: 1em;
 }
 
-/* task list */
-.task-list {
+/* product list */
+.product-list {
   max-width: 640px;
   margin: 20px auto;
-}
-.task {
-  padding: 6px 20px;
-  background: #fff;
-  margin-top: 20px;
-  border-radius: 4px;
-  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.05);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 </style>
