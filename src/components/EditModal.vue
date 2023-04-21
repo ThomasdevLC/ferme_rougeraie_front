@@ -1,22 +1,26 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <input
-      class="custom-input"
-      type="text"
-      placeholder="nom"
-      v-model="editName"
-    />
-    <div class="file">
-      <label for="input-file">
-        <img :src="editImage" alt="" />
-      </label>
+    <div class="name-file-container">
       <input
-        id="input-file"
-        type="file"
-        ref="fileInput"
-        @change="handleImage"
+        class="custom-input"
+        type="text"
+        placeholder="nom"
+        v-model="editName"
       />
+      <div class="file">
+        <label for="input-file">
+          <img :src="editImage" alt="produit" />
+        </label>
+        <input
+          class="edit-file"
+          id="input-file"
+          type="file"
+          ref="fileInput"
+          @change="handleImage"
+        />
+      </div>
     </div>
+
     <input
       class="custom-input"
       type="number"
@@ -24,8 +28,8 @@
       step="0.10"
       v-model="editPrice"
     />
-    <div class="custom-input">
-      <select v-model="editUnit">
+    <div>
+      <select v-model="editUnit" class="custom-input">
         <option value="kg">kg</option>
         <option value="piece">pièce</option>
       </select>
@@ -111,59 +115,80 @@ export default {
 </script>
 
 <style scoped>
-.file {
-  position: relative;
-  display: inline-block;
-}
-
-.file input[type="file"] {
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-
-  cursor: pointer;
-}
-
-.file img {
-  display: block;
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 50%;
-}
-
 form {
   max-width: 400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 3fr 1fr;
   gap: 10px;
 }
+
+.file {
+  position: relative;
+  display: inline-block;
+  display: flex;
+  margin-left: -55px;
+}
+
+.edit-file {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.file img {
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 form button {
   background: #ffd859;
   border: 0;
   padding: 10px;
   font-family: "Poppins";
   border-radius: 6px;
+  font-size: 16px;
   cursor: pointer;
-  font-size: 1em;
+}
+
+.name-file-container {
+  display: flex;
 }
 form input {
-  border: 0;
-  padding: 10px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: center;
+  border: 1px solid #ccc;
+  width: 400px;
+  padding: 14px;
   border-radius: 6px;
   color: #555;
-  font-size: 1em;
+  font-size: 16px;
+  outline: none;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 select {
-  color: #444;
-  background: #fff;
-  font-family: "Poppins";
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: center;
+  border: 1px solid #ccc;
+  width: 400px;
+  padding: 14px;
+  border-radius: 6px;
+  color: #555;
+  font-size: 16px;
+  outline: none;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 select option {
@@ -178,22 +203,5 @@ form button {
   width: 140px;
   margin: auto;
   cursor: pointer;
-}
-
-.custom-input {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 10px;
-  align-items: center;
-  border: 0;
-  width: 400px;
-  padding: 14px;
-  border-radius: 6px;
-  color: #555;
-  font-size: 16px;
-  outline: none;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
 }
 </style>

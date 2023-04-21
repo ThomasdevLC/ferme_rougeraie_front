@@ -4,6 +4,7 @@ body {
   background: #f2f2f2;
   color: #444;
   margin: 0;
+  height: 100vh;
 }
 body * {
   font-family: "Poppins";

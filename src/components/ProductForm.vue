@@ -131,7 +131,6 @@ export default {
   align-items: center;
   color: #ffd859;
   border-color: #ffd859;
-  z-index: 3;
   margin-left: -55px;
 }
 
@@ -140,7 +139,6 @@ export default {
 }
 
 .file > label {
-  cursor: pointer;
   outline: 0;
   user-select: none;
   border-style: solid;
