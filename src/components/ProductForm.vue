@@ -33,7 +33,8 @@
     />
 
     <div>
-      <select v-model="unit" class="custom-input">
+      <select v-model="unit" required class="custom-input">
+        <option :value="null" disabled selected hidden>unité</option>
         <option value="kg">kg</option>
         <option value="piece">pièce</option>
       </select>
@@ -66,7 +67,7 @@ export default {
     let selectedFile = null;
     const name = ref("");
     const price = ref("");
-    const unit = ref(false);
+    const unit = ref(null);
     const interval = ref("");
 
     const handleSubmit = () => {
@@ -85,7 +86,7 @@ export default {
           });
           name.value = "";
           price.value = "";
-          unit.value = false;
+          unit.value = null;
           interval.value = "";
           selectedFile = null;
           fileInput.value.value = "";
@@ -122,18 +123,13 @@ form {
   gap: 10px;
 }
 
-.custom-input {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 10px;
-  align-items: center;
-}
-
 .file {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #ffd859;
+  border-color: #ffd859;
 }
 
 .file > input[type="file"] {
@@ -158,10 +154,10 @@ form {
   padding: 0;
 }
 
-.file--upload > label {
+/* .file--upload {
   color: #ffd859;
   border-color: #ffd859;
-}
+} */
 
 .file--upload > label:hover {
   background-color: hsl(46, 100%, 92%);
@@ -174,19 +170,29 @@ form {
   height: 45px;
 }
 
+select {
+  color: #555;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
 form button {
   background: #ffd859;
-  border: 0;
   padding: 10px;
-  font-family: "Poppins";
+  border: 0;
   border-radius: 6px;
-  cursor: pointer;
-  font-size: 1em;
+  font-size: 16px;
   width: 140px;
   margin: auto;
+  cursor: pointer;
 }
 
 .custom-input {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: center;
   border: 0;
   width: 400px;
   padding: 10px;

@@ -12,7 +12,7 @@
       />
     </div>
     <input type="text" placeholder="Produit..." v-model="editName" />
-    <input type="number" placeholder="prix" step="0.1" v-model="editPrice" />
+    <input type="number" placeholder="prix" step="0.10" v-model="editPrice" />
     <div class="input-field">
       <select v-model="editUnit">
         <option value="kg">kg</option>
