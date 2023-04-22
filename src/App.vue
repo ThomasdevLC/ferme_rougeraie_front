@@ -95,7 +95,6 @@ header h1 {
   text-align: right;
 }
 .filter button {
-  /* display: inline-block; */
   font-size: 15px;
   background: #fff;
   border: 2px solid #555;

@@ -44,7 +44,6 @@
         v-model="editInterval"
       />
     </div>
-
     <button>Valider</button>
   </form>
 </template>
@@ -110,6 +109,13 @@ export default {
       fileInput,
       handleImage,
     };
+  },
+  watch: {
+    editUnit(newUnit) {
+      if (newUnit === "piece") {
+        this.editInterval = "";
+      }
+    },
   },
 };
 </script>

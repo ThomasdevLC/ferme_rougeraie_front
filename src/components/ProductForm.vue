@@ -72,7 +72,12 @@ export default {
     const interval = ref("");
 
     const handleSubmit = () => {
-      if (name.value.length > 0 && selectedFile !== null) {
+      if (
+        name.value.length > 0 &&
+        selectedFile !== null &&
+        price.value !== "" &&
+        unit.value !== null
+      ) {
         const reader = new FileReader();
         reader.onload = (event) => {
           const imageData = event.target.result;
