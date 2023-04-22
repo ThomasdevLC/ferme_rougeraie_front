@@ -126,9 +126,11 @@ export default {
 }
 
 .modal {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
+  margin-left: auto;
+  margin-right: auto;
   transform: translate(-50%, -50%);
   z-index: 9999;
   background: white;
