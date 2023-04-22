@@ -76,7 +76,8 @@ export default {
         name.value.length > 0 &&
         selectedFile !== null &&
         price.value !== "" &&
-        unit.value !== null
+        unit.value !== null &&
+        (unit.value !== "kg" || (unit.value === "kg" && interval.value !== ""))
       ) {
         const reader = new FileReader();
         reader.onload = (event) => {
