@@ -85,8 +85,8 @@ header h1 {
 }
 
 .container {
-  width: 1000px;
-  margin: auto;
+  max-width: 640px;
+  margin: 20px auto;
 }
 
 /* filter nav */

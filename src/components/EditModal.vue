@@ -1,25 +1,23 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <div class="name-file-container">
+    <div class="file">
+      <label for="input-file">
+        <img :src="editImage" alt="produit" />
+      </label>
       <input
-        class="custom-input"
-        type="text"
-        placeholder="nom"
-        v-model="editName"
+        class="edit-file"
+        id="input-file"
+        type="file"
+        ref="fileInput"
+        @change="handleImage"
       />
-      <div class="file">
-        <label for="input-file">
-          <img :src="editImage" alt="produit" />
-        </label>
-        <input
-          class="edit-file"
-          id="input-file"
-          type="file"
-          ref="fileInput"
-          @change="handleImage"
-        />
-      </div>
     </div>
+    <input
+      class="custom-input"
+      type="text"
+      placeholder="nom"
+      v-model="editName"
+    />
 
     <input
       class="custom-input"
@@ -130,9 +128,10 @@ form {
 
 .file {
   position: relative;
-  display: inline-block;
-  display: flex;
-  margin-left: -55px;
+  /* display: inline-block; */
+  /* display: flex; */
+  /* overflow: hidden; */
+  margin: auto;
 }
 
 .edit-file {
@@ -143,10 +142,10 @@ form {
 }
 
 .file img {
-  width: 52px;
-  height: 52px;
+  width: 70px;
+  height: 70px;
+  border-radius: 6px;
   object-fit: cover;
-  border-radius: 50%;
   cursor: pointer;
 }
 
@@ -160,9 +159,6 @@ form button {
   cursor: pointer;
 }
 
-.name-file-container {
-  display: flex;
-}
 form input {
   display: grid;
   grid-template-columns: auto 1fr;
