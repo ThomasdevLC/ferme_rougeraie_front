@@ -52,6 +52,9 @@
     </div>
 
     <button>Ajouter</button>
+    <p v-if="errorMessage" class="error-message">
+      Merci de remplir tous les champs.
+    </p>
   </form>
 </template>
 
@@ -70,6 +73,7 @@ export default {
     const price = ref("");
     const unit = ref(null);
     const interval = ref("");
+    const errorMessage = ref(false);
 
     const handleSubmit = () => {
       if (
@@ -98,8 +102,11 @@ export default {
           selectedFile = null;
           fileInput.value.value = "";
           selectedImage.value = null; //réinitialisation de selectedImage
+          errorMessage.value = false;
         };
         reader.readAsDataURL(selectedFile);
+      } else {
+        errorMessage.value = true;
       }
     };
 
@@ -117,6 +124,7 @@ export default {
       fileInput,
       handleImage,
       selectedImage,
+      errorMessage,
     };
   },
 };
@@ -163,6 +171,7 @@ export default {
 
 .file > label.no-padding {
   padding: 0;
+  border: none;
 }
 
 .file-name-form {
@@ -213,5 +222,9 @@ form button {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+.error-message {
+  margin: auto;
 }
 </style>
