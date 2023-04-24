@@ -66,7 +66,7 @@ export default {
 };
 </script>
 
-<style lang:"sass" scoped>
+<style scoped>
 .product {
   padding: 6px 10px;
   background: #fff;
