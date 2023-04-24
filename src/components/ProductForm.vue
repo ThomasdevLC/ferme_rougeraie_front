@@ -38,6 +38,7 @@
         <option :value="null" disabled selected hidden>unité</option>
         <option value="kg">kg</option>
         <option value="piece">pièce</option>
+        <option value="Litre">Litre</option>
       </select>
     </div>
 

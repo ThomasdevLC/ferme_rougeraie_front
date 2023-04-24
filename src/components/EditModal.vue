@@ -30,6 +30,7 @@
       <select v-model="editUnit" class="custom-input">
         <option value="kg">kg</option>
         <option value="piece">pièce</option>
+        <option value="Litre">Litre</option>
       </select>
     </div>
 
