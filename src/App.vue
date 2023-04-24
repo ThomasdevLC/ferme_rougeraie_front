@@ -1,4 +1,7 @@
 <template>
+  <NavBar />
+  <router-view />
+
   <!-- heading -->
   <header>
     <img :src="image" alt=" logo" />
@@ -40,8 +43,10 @@ import { ref } from "vue";
 import { useProductStore } from "./stores/ProductStore";
 import ProductDetails from "./components/ProductDetails.vue";
 import ProductForm from "./components/ProductForm.vue";
+import NavBar from "./components/NavBar.vue";
+
 export default {
-  components: { ProductDetails, ProductForm },
+  components: { ProductDetails, ProductForm, NavBar },
   data() {
     return { image: logo };
   },
