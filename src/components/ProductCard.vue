@@ -49,14 +49,22 @@ export default {
     handleCart() {
       const productStore = useProductStore();
       if (this.quantity > 0) {
-        console.log("hello handle", this.product, this.quantity);
-        productStore.addToCart({
-          name: this.product.name,
-          price: this.product.price,
-          unit: this.product.unit,
-          quantity: this.quantity,
-          image: this.product.image,
-        });
+        const existingProduct = productStore.cart.find(
+          (p) => p.id === this.product.id
+        );
+        if (existingProduct) {
+          // Show modal that the product is already selected
+          alert("Produit déjà sélectionné!");
+        } else {
+          productStore.addToCart({
+            name: this.product.name,
+            price: this.product.price,
+            unit: this.product.unit,
+            quantity: this.quantity,
+            image: this.product.image,
+            id: this.product.id,
+          });
+        }
         this.quantity = 0;
       }
     },

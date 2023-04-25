@@ -8,17 +8,35 @@
 
     <div class="item-quantity">
       <div class="cart-icons">
-        <button @click="decrementQuantity">-</button>
+        <button
+          @click="
+            decrementQuantity();
+            handleChange();
+          "
+        >
+          -
+        </button>
         <span>{{ quantity }}</span>
-        <button @click="incrementQuantity">+</button>
+        <button
+          @click="
+            incrementQuantity();
+            handleChange();
+          "
+        >
+          +
+        </button>
       </div>
     </div>
+    <span class="material-icons"> clear </span>
   </div>
 </template>
 
 <script>
+import { useProductStore } from "../stores/ProductStore";
+
 export default {
   props: ["product"],
+
   data() {
     return {
       quantity: this.product.quantity,
@@ -32,6 +50,18 @@ export default {
     },
     incrementQuantity() {
       this.quantity++;
+    },
+    handleChange() {
+      const productStore = useProductStore();
+      const editedProduct = {
+        quantity: this.quantity,
+      };
+      if (this.product.id) {
+        console.log("Quantity");
+        productStore.editCart(this.product.id, editedProduct).catch((error) => {
+          console.log(error);
+        });
+      }
     },
   },
 };

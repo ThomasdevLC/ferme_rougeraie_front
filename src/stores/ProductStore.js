@@ -102,5 +102,23 @@ export const useProductStore = defineStore("productStore", {
         console.log(res.error);
       }
     },
+
+    async editCart(id, editedProduct) {
+      const productIndex = this.cart.findIndex((p) => p.id === id);
+      if (productIndex !== -1) {
+        this.cart[productIndex] = {
+          ...this.cart[productIndex],
+          ...editedProduct,
+        };
+      }
+      const res = await fetch("http://localhost:3000/cart/" + id, {
+        method: "PATCH",
+        body: JSON.stringify(editedProduct),
+        headers: { "Content-Type": "application/json" },
+      });
+      if (res.error) {
+        console.log(res.error);
+      }
+    },
   },
 });
