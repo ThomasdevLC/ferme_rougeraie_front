@@ -3,6 +3,7 @@ import { defineStore } from "pinia";
 export const useProductStore = defineStore("productStore", {
   state: () => ({
     products: [],
+    cart: [],
     loading: false,
   }),
 
@@ -79,6 +80,18 @@ export const useProductStore = defineStore("productStore", {
       const res = await fetch("http://localhost:3000/products/" + id, {
         method: "PATCH",
         body: JSON.stringify({ isDisplayed: product.isDisplayed }),
+        headers: { "Content-Type": "application/json" },
+      });
+      if (res.error) {
+        console.log(res.error);
+      }
+    },
+
+    async addToCart(product) {
+      this.cart.push(product);
+      const res = await fetch("http://localhost:3000/cart", {
+        method: "POST",
+        body: JSON.stringify(product),
         headers: { "Content-Type": "application/json" },
       });
       if (res.error) {

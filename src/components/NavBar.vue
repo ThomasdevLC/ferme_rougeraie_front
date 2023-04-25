@@ -5,6 +5,7 @@
       <router-link :to="{ name: 'ProductsView' }">Produits</router-link>
       <router-link :to="{ name: 'AdminView' }">Admin</router-link>
     </nav>
+    <i class="fa-solid fa-basket-shopping"></i>
   </header>
 </template>
 
