@@ -1,7 +1,7 @@
 <template>
   <div class="product">
     <div class="product-infos">
-      <div class="image"><img :src="product.image" alt="" /></div>
+      <div class="image"><img :src="product.image" alt="photo produit" /></div>
       <h4>{{ product.name }}</h4>
       <p>
         {{ product.price }} € / <span> {{ product.unit }}</span>

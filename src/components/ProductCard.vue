@@ -1,92 +1,47 @@
 <template>
-  <div class="card-container">
-    <div v-if="isLoading" class="card skeleton">
-      <div class="skeleton-img"></div>
-      <div class="skeleton-text">
-        <div class="skeleton-line"></div>
-        <div class="skeleton-line"></div>
-        <div class="skeleton-line"></div>
-      </div>
+  <div class="card">
+    <div class="card-image">
+      <img :src="product.image" alt="photo produit" width="277" height="280" />
     </div>
-    <div v-else class="card">
-      <img src="https://via.placeholder.com/150" alt="product image" />
-      <h3>Product Name</h3>
-      <p>Description of the product goes here.</p>
-      <button>Add to Cart</button>
+    <div class="card-text">
+      <h3>{{ product.name }}</h3>
+      <p>
+        {{ product.price }} € / <span> {{ product.unit }}</span>
+      </p>
+      <p>AJOUTER AU PANIER</p>
     </div>
   </div>
 </template>
 
-<script>
+<script scoped>
 export default {
-  data() {
-    return {
-      isLoading: true, // set the initial value to true to show the skeleton
-    };
-  },
-  mounted() {
-    // simulate loading for 2 seconds
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 2000);
-  },
+  props: ["product"],
 };
 </script>
 
-<style scoped>
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
+<style>
 .card {
+  width: 277px;
+  height: 422px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 20px;
-  flex: 1 0 300px;
 }
 
-.skeleton {
-  position: relative;
-  /* background-color: #f5f5f5; */
+.card-img {
+  display: block;
   overflow: hidden;
+  width: 277px;
+  height: 280px;
 }
 
-.skeleton::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -150px;
-  width: 150px;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.6);
-  animation: skeleton-loading 1.5s ease-in-out infinite;
-}
-
-.skeleton-img {
-  width: 150px;
-  height: 150px;
-  margin: 0 auto 20px;
-  background-color: #ccc;
-}
-
-.skeleton-text {
+.card-img img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.skeleton-line {
-  height: 20px;
-  margin-bottom: 10px;
-  background-color: #ccc;
-}
-
-@keyframes skeleton-loading {
-  0% {
-    left: -150px;
-  }
-  100% {
-    left: 100%;
-  }
+.card-text {
+  width: 277px;
+  padding: 10px;
+  line-height: 20px;
 }
 </style>
