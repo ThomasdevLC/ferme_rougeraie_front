@@ -53,8 +53,11 @@ export default {
         productStore.addToCart({
           name: this.product.name,
           price: this.product.price,
+          unit: this.product.unit,
           quantity: this.quantity,
+          image: this.product.image,
         });
+        this.quantity = 0;
       }
     },
   },
