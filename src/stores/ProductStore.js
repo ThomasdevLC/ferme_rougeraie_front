@@ -22,6 +22,10 @@ export const useProductStore = defineStore("productStore", {
     totalCount() {
       return this.products.length;
     },
+
+    cartCount() {
+      return this.cart.length;
+    },
   },
 
   actions: {
@@ -89,7 +93,7 @@ export const useProductStore = defineStore("productStore", {
 
     async addToCart(product) {
       this.cart.push(product);
-      const res = await fetch("http://localhost:3000/cart", {
+      const res = await fetch("http://localhost:3000/cart/", {
         method: "POST",
         body: JSON.stringify(product),
         headers: { "Content-Type": "application/json" },

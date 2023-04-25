@@ -15,14 +15,23 @@
           <button @click="incrementQuantity">+</button>
         </div>
       </div>
-      <p>AJOUTER AU PANIER</p>
+      <p @click="handleCart">AJOUTER AU PANIER</p>
     </div>
   </div>
 </template>
 
 <script>
+import { useProductStore } from "../stores/ProductStore";
+
 export default {
   props: ["product"],
+
+  setup() {
+    const productStore = useProductStore();
+
+    return { productStore };
+  },
+
   data() {
     return {
       quantity: 0,
@@ -36,6 +45,17 @@ export default {
     },
     incrementQuantity() {
       this.quantity++;
+    },
+    handleCart() {
+      const productStore = useProductStore();
+      if (this.quantity > 0) {
+        console.log("hello handle", this.product, this.quantity);
+        productStore.addToCart({
+          name: this.product.name,
+          price: this.product.price,
+          quantity: this.quantity,
+        });
+      }
     },
   },
 };

@@ -5,12 +5,23 @@
       <router-link :to="{ name: 'ProductsView' }">Produits</router-link>
       <router-link :to="{ name: 'AdminView' }">Admin</router-link>
     </nav>
-    <i class="fa-solid fa-basket-shopping"></i>
+    <div class="">
+      <span>{{ productStore.cartCount }}</span>
+      <i class="fa-solid fa-basket-shopping"></i>
+    </div>
   </header>
 </template>
 
 <script>
-export default {};
+import { useProductStore } from "../stores/ProductStore";
+
+export default {
+  setup() {
+    const productStore = useProductStore();
+
+    return { productStore };
+  },
+};
 </script>
 
 <style>
