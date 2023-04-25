@@ -8,6 +8,13 @@
       <p>
         {{ product.price }} € / <span> {{ product.unit }}</span>
       </p>
+      <div class="item-quantity">
+        <div class="cart-icons">
+          <button @click="decrementQuantity">-</button>
+          <span>{{ quantity }}</span>
+          <button @click="incrementQuantity">+</button>
+        </div>
+      </div>
       <p>AJOUTER AU PANIER</p>
     </div>
   </div>
@@ -16,13 +23,28 @@
 <script scoped>
 export default {
   props: ["product"],
+  data() {
+    return {
+      quantity: 0,
+    };
+  },
+  methods: {
+    decrementQuantity() {
+      if (this.quantity > 0) {
+        this.quantity--;
+      }
+    },
+    incrementQuantity() {
+      this.quantity++;
+    },
+  },
 };
 </script>
 
 <style>
 .card {
   width: 277px;
-  height: 422px;
+  height: 448px;
   border: 1px solid #ccc;
 }
 
