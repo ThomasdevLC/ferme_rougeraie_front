@@ -84,6 +84,6 @@ header a.router-link-active {
   z-index: 9999;
   background: white;
   padding: 20px;
-  border-radius: 8px;
+  /* border-radius: 8px; */
 }
 </style>

@@ -5,13 +5,35 @@
     <p>
       {{ product.price }} € / <span> {{ product.unit }}</span>
     </p>
-    <p>Qté {{ product.quantity }}</p>
+
+    <div class="item-quantity">
+      <div class="cart-icons">
+        <button @click="decrementQuantity">-</button>
+        <span>{{ quantity }}</span>
+        <button @click="incrementQuantity">+</button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   props: ["product"],
+  data() {
+    return {
+      quantity: this.product.quantity,
+    };
+  },
+  methods: {
+    decrementQuantity() {
+      if (this.quantity > 0) {
+        this.quantity--;
+      }
+    },
+    incrementQuantity() {
+      this.quantity++;
+    },
+  },
 };
 </script>
 
