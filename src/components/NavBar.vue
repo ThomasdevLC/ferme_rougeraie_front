@@ -8,7 +8,7 @@
     <div class="">
       <div class="overlay" v-if="showModal" @click="closeModal"></div>
       <div class="modal" v-if="showModal"><ShopCart /></div>
-      <span>{{ productStore.cartCount }}</span>
+      <span v-if="productStore.cartCount">{{ productStore.cartCount }}</span>
       <i @click="openModal" class="fa-solid fa-basket-shopping"></i>
     </div>
   </header>

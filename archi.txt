@@ -1,0 +1,12 @@
+APP
+    + Navbar
+        + ShopCart
+            + ShopCartForm
+            + ShopCartDetails
+- AdminView
+    + PoductForm
+    + PoductDetails
+            + EditModal
+
+- ProductsView
+    + PoductCard

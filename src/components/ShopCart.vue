@@ -5,7 +5,7 @@
       <ShopCartDetails :product="product" />
     </div>
   </div>
-  <div class="form">
+  <div v-if="productStore.cartCount" class="form">
     <ShopCartForm />
   </div>
 </template>
