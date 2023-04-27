@@ -5,14 +5,18 @@
       <ShopCartDetails :product="product" />
     </div>
   </div>
+  <div class="form">
+    <ShopCartForm />
+  </div>
 </template>
 
 <script>
 import { useProductStore } from "../stores/ProductStore";
 import ShopCartDetails from "../components/ShopCartDetails.vue";
+import ShopCartForm from "../components/ShopCartForm.vue";
 
 export default {
-  components: { ShopCartDetails },
+  components: { ShopCartDetails, ShopCartForm },
 
   setup() {
     const productStore = useProductStore();

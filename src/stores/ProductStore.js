@@ -125,12 +125,27 @@ export const useProductStore = defineStore("productStore", {
     },
 
     async deleteCartProduct(id) {
-      console.log("deleteCartProduct");
       this.cart = this.cart.filter((p) => {
         return p.id !== id;
       });
       const res = await fetch("http://localhost:3000/cart/" + id, {
         method: "DELETE",
+      });
+      if (res.error) {
+        console.log(res.error);
+      }
+    },
+
+    async clearCart() {
+      this.cart = [];
+      const res = await fetch("http://localhost:3000/cart", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          cart: [],
+        }),
       });
       if (res.error) {
         console.log(res.error);
