@@ -1,19 +1,26 @@
 <template>
   <header>
+    <img class="logo" :src="image" alt=" logo" />
+
     <nav>
-      <router-link :to="{ name: 'home' }">Présentation</router-link>
+      <router-link :to="{ name: 'home' }">A propos</router-link>
       <router-link :to="{ name: 'ProductsView' }">Produits</router-link>
       <router-link :to="{ name: 'AdminView' }">Admin</router-link>
     </nav>
-    <div class="">
+    <div class="shopping-cart">
       <div class="overlay" v-if="showModal" @click="closeModal"></div>
       <div class="modal" v-if="showModal"><ShopCart /></div>
-      <span v-if="productStore.cartCount">{{ productStore.cartCount }}</span>
-      <i
+      <span class="cart-total" v-if="productStore.cartCount">{{
+        productStore.cartCount
+      }}</span>
+
+      <img
+        class="shop-cart"
         v-if="$route.path !== '/admin'"
         @click="openModal"
-        class="fa-solid fa-basket-shopping"
-      ></i>
+        :src="basketImage"
+        alt=" panier"
+      />
     </div>
   </header>
 </template>
@@ -21,6 +28,8 @@
 <script>
 import { useProductStore } from "../stores/ProductStore";
 import ShopCart from "../components/ShopCart.vue";
+import logo from "../assets/logo.png";
+import basket from "../assets/images/basket.png";
 
 export default {
   components: { ShopCart },
@@ -34,6 +43,8 @@ export default {
   data() {
     return {
       showModal: false,
+      image: logo,
+      basketImage: basket,
     };
   },
   methods: {
@@ -47,26 +58,37 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-  padding: 10px;
+  padding: 20px 40px;
+  background-color: white;
+  border-bottom: 1px solid #444;
 }
+
+.logo {
+  height: 120px;
+}
+
 header h1 {
   color: #dfdfdf;
-  font-size: 48px;
+  font-size: 60px;
 }
 header a {
-  color: #bbb;
+  color: #444;
   text-decoration: none;
-  margin-left: 20px;
+  margin-left: 80px;
 }
 header a.router-link-active {
   color: #444;
-  font-weight: bold;
+  border-bottom: 2px solid #fe8401;
+}
+
+.shop-cart {
+  height: 45px;
 }
 .overlay {
   position: fixed;
