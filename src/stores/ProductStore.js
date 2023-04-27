@@ -29,6 +29,8 @@ export const useProductStore = defineStore("productStore", {
   },
 
   actions: {
+    // PRODUCTS ACTIONS
+
     async getProducts() {
       this.loading = true;
       const res = await fetch("http://localhost:3000/products");
@@ -65,7 +67,6 @@ export const useProductStore = defineStore("productStore", {
     },
 
     async deleteProduct(id) {
-      console.log("hello delete product");
       this.products = this.products.filter((p) => {
         return p.id !== id;
       });
@@ -91,6 +92,8 @@ export const useProductStore = defineStore("productStore", {
       }
     },
 
+    // CART ACTIONS
+
     async addToCart(product) {
       this.cart.push(product);
       const res = await fetch("http://localhost:3000/cart/", {
@@ -115,6 +118,19 @@ export const useProductStore = defineStore("productStore", {
         method: "PATCH",
         body: JSON.stringify(editedProduct),
         headers: { "Content-Type": "application/json" },
+      });
+      if (res.error) {
+        console.log(res.error);
+      }
+    },
+
+    async deleteCartProduct(id) {
+      console.log("deleteCartProduct");
+      this.cart = this.cart.filter((p) => {
+        return p.id !== id;
+      });
+      const res = await fetch("http://localhost:3000/cart/" + id, {
+        method: "DELETE",
       });
       if (res.error) {
         console.log(res.error);

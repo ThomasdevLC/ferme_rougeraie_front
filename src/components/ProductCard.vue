@@ -17,6 +17,8 @@
       </div>
       <p @click="handleCart">AJOUTER AU PANIER</p>
     </div>
+    <div class="overlay" v-if="showModal" @click="closeModal"></div>
+    <div class="modal" v-if="showModal"><p>produit déja ajouté !</p></div>
   </div>
 </template>
 
@@ -34,10 +36,18 @@ export default {
 
   data() {
     return {
+      showModal: false,
       quantity: 0,
     };
   },
+
   methods: {
+    openModal() {
+      this.showModal = true;
+    },
+    closeModal() {
+      this.showModal = false;
+    },
     decrementQuantity() {
       if (this.quantity > 0) {
         this.quantity--;
@@ -54,7 +64,7 @@ export default {
         );
         if (existingProduct) {
           // Show modal that the product is already selected
-          alert("Produit déjà sélectionné!");
+          this.showModal = true;
         } else {
           productStore.addToCart({
             name: this.product.name,
@@ -96,5 +106,27 @@ export default {
   width: 277px;
   padding: 10px;
   line-height: 20px;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
 }
 </style>

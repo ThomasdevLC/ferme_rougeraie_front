@@ -52,7 +52,6 @@ export default {
     const productStore = useProductStore();
 
     // fetch  products
-    productStore.getProducts();
     const filter = ref("all");
 
     return { productStore, filter };
