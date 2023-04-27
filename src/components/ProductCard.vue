@@ -56,7 +56,7 @@ export default {
     incrementQuantity() {
       this.quantity++;
     },
-    handleCart() {
+    async handleCart() {
       const productStore = useProductStore();
       if (this.quantity > 0) {
         const existingProduct = productStore.cart.find(
@@ -66,12 +66,21 @@ export default {
           // Show modal that the product is already selected
           this.showModal = true;
         } else {
+          const canvas = document.createElement("canvas");
+          const ctx = canvas.getContext("2d");
+          const img = new Image();
+          img.src = this.product.image;
+          await new Promise((resolve) => (img.onload = resolve));
+          canvas.width = img.width / 2; // ajuster la largeur de l'image pour la compresser
+          canvas.height = img.height / 2; // ajuster la hauteur de l'image pour la compresser
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          const compressedImage = canvas.toDataURL("image/jpeg", 0.5); // compression de l'image
           productStore.addToCart({
             name: this.product.name,
             price: this.product.price,
             unit: this.product.unit,
             quantity: this.quantity,
-            image: this.product.image,
+            image: compressedImage, // utilisation de l'image compressée
             id: this.product.id,
           });
         }
