@@ -1,21 +1,21 @@
 <template>
   <div class="card">
     <div class="card-image">
-      <img :src="product.image" alt="photo produit" width="277" height="280" />
+      <img :src="product.image" alt="photo produit" />
     </div>
     <div class="card-text">
-      <h3>{{ product.name }}</h3>
+      <p class="product-name">{{ product.name }}</p>
       <p>
         {{ product.price }} € / <span> {{ product.unit }}</span>
       </p>
       <div class="item-quantity">
         <div class="cart-icons">
           <button @click="decrementQuantity">-</button>
-          <span>{{ quantity }}</span>
+          <div class="quantity">{{ quantity }}</div>
           <button @click="incrementQuantity">+</button>
         </div>
       </div>
-      <p @click="handleCart">AJOUTER AU PANIER</p>
+      <p class="add-cart" @click="handleCart">AJOUTER AU PANIER</p>
     </div>
     <div class="overlay" v-if="showModal" @click="closeModal"></div>
     <div class="modal" v-if="showModal"><p>produit déja ajouté !</p></div>
@@ -91,31 +91,72 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .card {
-  width: 277px;
-  height: 448px;
-  border: 1px solid #ccc;
-}
-
-.card-img {
-  display: block;
+  border: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  max-width: 277px;
+  height: 450px;
   overflow: hidden;
-  width: 277px;
-  height: 280px;
 }
 
-.card-img img {
-  width: 100%;
-  height: 100%;
+.card-image {
+  height: 280px;
+  overflow: hidden;
+  /* position: relative; */
+}
+
+.card-image img {
   object-fit: cover;
+  height: 100%;
+  width: 100%;
 }
 
 .card-text {
   width: 277px;
-  padding: 10px;
-  line-height: 20px;
+  padding-left: 10px;
+  line-height: 0;
 }
+
+.product-name {
+  font-family: "Jacques Francois", serif;
+  font-size: 40px;
+}
+
+.cart-icons {
+  display: flex;
+}
+
+button {
+  background-color: white;
+  border: 1px solid #000000;
+  color: #000000;
+  font-size: 10px;
+  padding: 3px 10px;
+  cursor: pointer;
+}
+
+.quantity {
+  display: inline-block;
+  width: 8px;
+  line-height: 15px;
+  border-top: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  padding: 3px 10px;
+  font-size: 14px;
+}
+
+.add-cart {
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.add-cart:hover {
+  color: black;
+}
+
 .overlay {
   position: fixed;
   top: 0;

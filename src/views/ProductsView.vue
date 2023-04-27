@@ -33,8 +33,8 @@ export default {
 </script>
 
 <style>
-.background-image {
-  /* background-image: url("../assets/images/background.png"); */
+/* .background-image {
+  background-image: url("../assets/images/background.png");
   background-repeat: repeat-y;
   background-size: 100% 100%;
   min-height: 100vh;
@@ -42,7 +42,7 @@ export default {
   justify-content: center;
   align-items: center;
   background: white;
-}
+} */
 
 .card-container {
   max-width: 1200px;
@@ -51,6 +51,8 @@ export default {
   gap: 20px;
   justify-items: center;
   padding: 60px 0 60px 0;
+  margin: auto;
+  background: white;
 }
 
 @media screen and (max-width: 1200px) {

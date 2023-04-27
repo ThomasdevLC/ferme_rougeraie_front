@@ -1,9 +1,4 @@
 <template>
-  <!-- heading -->
-  <header>
-    <img :src="image" alt=" logo" />
-  </header>
-
   <!-- form -->
   <div class="new-product-form">
     <ProductForm />
@@ -35,7 +30,6 @@
 </template>
 
 <script>
-import logo from "../assets/logo.png";
 import { ref } from "vue";
 import { useProductStore } from "../stores/ProductStore";
 import ProductDetails from "../components/ProductDetails.vue";
@@ -44,14 +38,9 @@ import NavBar from "../components/NavBar.vue";
 
 export default {
   components: { ProductDetails, ProductForm, NavBar },
-  data() {
-    return { image: logo };
-  },
 
   setup() {
     const productStore = useProductStore();
-
-    // fetch  products
     const filter = ref("all");
 
     return { productStore, filter };
@@ -60,29 +49,9 @@ export default {
 </script>
 
 <style scoped>
-header {
-  text-align: center;
-  background: #e7e7e7;
-  padding-top: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-header img {
-  height: 120px;
-}
-header h1 {
-  margin: 0;
-  font-size: 2em;
-  padding-top: 25px;
-  margin-left: 15px;
-  color: #777;
-  transform: rotate(2deg);
-}
-
 .new-product-form {
   background: #e7e7e7;
-  padding: 20px 0;
+  padding: 60px 0;
 }
 
 .container {
