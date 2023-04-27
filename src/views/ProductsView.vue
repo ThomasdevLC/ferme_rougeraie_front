@@ -1,6 +1,9 @@
 <template>
   <div class="background">
-    <div class="background-image">
+    <div
+      class="background-image"
+      :style="{ 'background-image': `url(${image})` }"
+    >
       <div class="loading" v-if="productStore.loading">Chargement...</div>
 
       <div v-else class="card-container">
@@ -33,16 +36,15 @@ export default {
 </script>
 
 <style>
-/* .background-image {
-  background-image: url("../assets/images/background.png");
-  background-repeat: repeat-y;
-  background-size: 100% 100%;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: white;
-} */
+.backgroundImg {
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
 
 .card-container {
   max-width: 1200px;
@@ -52,7 +54,6 @@ export default {
   justify-items: center;
   padding: 60px 0 60px 0;
   margin: auto;
-  background: white;
 }
 
 @media screen and (max-width: 1200px) {

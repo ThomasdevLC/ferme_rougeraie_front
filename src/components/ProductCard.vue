@@ -94,6 +94,7 @@ export default {
 <style scoped>
 .card {
   border: 1px solid #ddd;
+  background: white;
   display: flex;
   flex-direction: column;
   margin: 10px;
@@ -116,13 +117,16 @@ export default {
 
 .card-text {
   width: 277px;
-  padding-left: 10px;
+  padding: 0 10px;
   line-height: 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
 }
 
 .product-name {
   font-family: "Jacques Francois", serif;
-  font-size: 40px;
+  font-size: 34px;
 }
 
 .cart-icons {
