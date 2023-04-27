@@ -1,12 +1,15 @@
 <template>
-  <h3>Votre panier</h3>
+  <h3 v-if="thanksModal">Merci pour votre commande</h3>
+  <h3 v-else>
+    Votre panier <span v-if="!productStore.cartCount">est vide</span>
+  </h3>
   <div class="product-list">
     <div v-for="product in productStore.cart" :key="product">
       <ShopCartDetails :product="product" />
     </div>
   </div>
   <div v-if="productStore.cartCount" class="form">
-    <ShopCartForm />
+    <ShopCartForm @submit-form="thanksModal = true" />
   </div>
 </template>
 
@@ -23,7 +26,10 @@ export default {
 
     return { productStore };
   },
+  data() {
+    return {
+      thanksModal: false,
+    };
+  },
 };
 </script>
-
-<style></style>

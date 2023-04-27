@@ -48,6 +48,9 @@ export default {
       console.log(order);
 
       this.productStore.clearCart();
+
+      // emit an event to trigger thanksModal in the parent component
+      this.$emit("submit-form");
     },
   },
 };
