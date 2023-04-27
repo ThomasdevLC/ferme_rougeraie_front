@@ -43,7 +43,11 @@ import EditModal from "./EditModal.vue";
 export default {
   props: ["product"],
   components: { EditModal },
+  setup() {
+    const productStore = useProductStore();
 
+    return { productStore };
+  },
   data() {
     return {
       showModal: false,
@@ -56,12 +60,6 @@ export default {
     closeModal() {
       this.showModal = false;
     },
-  },
-
-  setup() {
-    const productStore = useProductStore();
-
-    return { productStore };
   },
 };
 </script>

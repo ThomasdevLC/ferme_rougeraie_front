@@ -27,7 +27,12 @@
         </button>
       </div>
     </div>
-    <span class="material-icons"> clear </span>
+    <span
+      class="material-icons"
+      @click="productStore.deleteCartProduct(product.id)"
+    >
+      clear
+    </span>
   </div>
 </template>
 
@@ -36,7 +41,11 @@ import { useProductStore } from "../stores/ProductStore";
 
 export default {
   props: ["product"],
+  setup() {
+    const productStore = useProductStore();
 
+    return { productStore };
+  },
   data() {
     return {
       quantity: this.product.quantity,
