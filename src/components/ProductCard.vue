@@ -9,7 +9,16 @@
         {{ product.price }} € / <span> {{ product.unit }}</span>
       </p>
       <div class="item-quantity">
-        <div class="cart-icons">
+        <div v-if="product.unit === 'kg'">
+          <input
+            class="weight"
+            type="number"
+            placeholder="quantité "
+            :step="product.interval"
+            v-model="interval"
+          />
+        </div>
+        <div v-else class="cart-icons">
           <button @click="decrementQuantity">-</button>
           <div class="quantity">{{ quantity }}</div>
           <button @click="incrementQuantity">+</button>
@@ -150,6 +159,13 @@ button {
   border-bottom: 1px solid #000000;
   padding: 3px 10px;
   font-size: 14px;
+}
+
+.weight {
+  border: 1px solid #000000;
+  padding: 3px;
+  width: 82px;
+  outline: none;
 }
 
 .add-cart {

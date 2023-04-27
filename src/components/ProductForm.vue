@@ -29,7 +29,7 @@
       class="custom-input"
       type="number"
       placeholder="prix"
-      step="0.1"
+      step="0.001"
       v-model="price"
     />
 
