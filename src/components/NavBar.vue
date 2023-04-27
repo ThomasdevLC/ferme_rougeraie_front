@@ -1,26 +1,25 @@
 <template>
   <header>
     <img class="logo" :src="image" alt=" logo" />
-
-    <nav>
-      <router-link :to="{ name: 'home' }">A propos</router-link>
-      <router-link :to="{ name: 'ProductsView' }">Produits</router-link>
-      <router-link :to="{ name: 'AdminView' }">Admin</router-link>
-    </nav>
-    <div class="shopping-cart">
+    <div class="nav-cart">
+      <nav>
+        <router-link :to="{ name: 'home' }">A propos</router-link>
+        <router-link :to="{ name: 'ProductsView' }">Produits</router-link>
+        <router-link :to="{ name: 'AdminView' }">Admin</router-link>
+      </nav>
       <div class="overlay" v-if="showModal" @click="closeModal"></div>
       <div class="modal" v-if="showModal"><ShopCart /></div>
-      <span class="cart-total" v-if="productStore.cartCount">{{
-        productStore.cartCount
-      }}</span>
-
-      <img
-        class="shop-cart"
-        v-if="$route.path !== '/admin'"
-        @click="openModal"
-        :src="basketImage"
-        alt=" panier"
-      />
+      <div v-if="$route.path !== '/admin'" class="cart-container">
+        <img
+          class="shop-cart"
+          @click="openModal"
+          :src="basketImage"
+          alt=" panier"
+        />
+        <div class="cart-total" v-if="productStore.cartCount">
+          {{ productStore.cartCount }}
+        </div>
+      </div>
     </div>
   </header>
 </template>
@@ -65,6 +64,7 @@ header {
   align-items: center;
   margin: 0 auto;
   padding: 20px 40px;
+  font-size: 20px;
   background-color: white;
   border-bottom: 1px solid #444;
 }
@@ -73,10 +73,12 @@ header {
   height: 120px;
 }
 
-header h1 {
-  color: #dfdfdf;
-  font-size: 60px;
+.nav-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 header a {
   color: #444;
   text-decoration: none;
@@ -87,8 +89,32 @@ header a.router-link-active {
   border-bottom: 2px solid #fe8401;
 }
 
+.cart-container {
+  position: relative;
+  z-index: 1;
+}
+
 .shop-cart {
   height: 45px;
+  cursor: pointer;
+  margin-left: 80px;
+}
+
+.cart-total {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  top: -10px;
+  right: -10px;
+  background-color: #fe8401;
+  color: white;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 0;
 }
 .overlay {
   position: fixed;
