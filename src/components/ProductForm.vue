@@ -36,7 +36,8 @@
     <div>
       <select v-model="unit" required class="custom-input">
         <option :value="null" disabled selected hidden>unité</option>
-        <option value="piece">pièce</option>
+        <option value="piece">Pièce</option>
+        <option value="Botte">Botte</option>
         <option value="kg">kg</option>
         <option value="Litre">Litre</option>
       </select>

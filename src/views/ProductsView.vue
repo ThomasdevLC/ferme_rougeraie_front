@@ -1,12 +1,13 @@
 <template>
   <div class="background">
+    <div class="loading" v-if="productStore.loading">Chargement...</div>
+
     <div
+      v-else
       class="background-image"
       :style="{ 'background-image': `url(${image})` }"
     >
-      <div class="loading" v-if="productStore.loading">Chargement...</div>
-
-      <div v-else class="card-container">
+      <div class="card-container">
         <div v-for="product in productStore.displayed" :key="product">
           <ProductCard :product="product" />
         </div>
@@ -36,7 +37,7 @@ export default {
 </script>
 
 <style>
-.backgroundImg {
+/* .backgroundImg {
   min-height: 100%;
   min-width: 1024px;
   width: 100%;
@@ -44,7 +45,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-}
+} */
 
 .card-container {
   max-width: 1200px;
