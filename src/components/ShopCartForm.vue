@@ -1,16 +1,28 @@
 <template>
   <form @submit.prevent="handleSubmit">
     <div>
-      <label for="name">Nom :</label>
-      <input type="text" id="name" v-model="name" required />
+      <label for="name"></label>
+      <input type="text" id="name" placeholder="Nom " v-model="name" required />
     </div>
     <div>
-      <label for="email">Email :</label>
-      <input type="email" id="email" v-model="email" required />
+      <label for="email"></label>
+      <input
+        type="email"
+        id="email"
+        placeholder="email "
+        v-model="email"
+        required
+      />
     </div>
     <div>
-      <label for="telephone">Téléphone :</label>
-      <input type="text" id="telephone" v-model="telephone" required />
+      <label for="telephone"></label>
+      <input
+        type="text"
+        id="telephone"
+        placeholder="Téléphone "
+        v-model="telephone"
+        required
+      />
     </div>
 
     <button type="submit">Passer commande</button>
@@ -55,3 +67,35 @@ export default {
   },
 };
 </script>
+<style scoped>
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+input {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  margin: auto;
+  margin-bottom: 10px;
+  border: 1px solid #555;
+  width: 360px;
+  padding: 10px;
+  color: #555;
+  font-size: 16px;
+  outline: none;
+}
+
+button {
+  background: #fe8401;
+  color: white;
+  padding: 10px;
+  border: 0;
+  /* border-radius: 6px; */
+  font-size: 16px;
+  margin: auto;
+  cursor: pointer;
+}
+</style>

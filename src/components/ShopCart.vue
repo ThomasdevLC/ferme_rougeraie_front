@@ -1,14 +1,16 @@
 <template>
   <h3 v-if="thanksModal">Merci pour votre commande</h3>
-  <h3 v-else>
+  <p v-else>
     Votre panier <span v-if="!productStore.cartCount">est vide</span>
-  </h3>
+  </p>
   <div class="product-list">
     <div v-for="product in productStore.cart" :key="product">
       <ShopCartDetails :product="product" />
     </div>
   </div>
-  <p class="cart-total">Total : {{ productStore.totalCart }} €</p>
+  <p v-if="productStore.cartCount" class="cart-total">
+    Total : {{ productStore.totalCart }} €
+  </p>
 
   <div v-if="productStore.cartCount" class="form">
     <ShopCartForm @submit-form="thanksModal = true" />

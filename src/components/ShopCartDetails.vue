@@ -13,7 +13,7 @@
         <input
           class="weight"
           type="number"
-          placeholder="quantité "
+          placeholder="quantité"
           min="0"
           :step="product.interval"
           v-model="quantity"
@@ -42,13 +42,12 @@
       </div>
     </div>
     <div class="price-item">{{ totalPrice }} <span>€</span></div>
-    <div></div>
-    <span
-      class="material-icons"
+    <div
+      class="material-icons remove-item"
       @click="productStore.deleteCartProduct(product.id)"
     >
       clear
-    </span>
+    </div>
   </div>
 </template>
 
@@ -164,5 +163,10 @@ button {
 .price-item {
   font-size: 18px;
   width: 90px;
+}
+
+.remove-item:hover {
+  color: black;
+  cursor: pointer;
 }
 </style>
