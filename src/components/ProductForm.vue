@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { useProductStore } from "../stores/ProductStore";
 
 export default {
@@ -77,9 +77,13 @@ export default {
     const interval = ref("");
     const errorMessage = ref(false);
 
+    const capitalized = computed(() => {
+      return name.value.charAt(0).toUpperCase() + name.value.slice(1);
+    });
+
     const handleSubmit = () => {
       if (
-        name.value.length > 0 &&
+        capitalized.value.length > 0 &&
         selectedFile !== null &&
         price.value !== "" &&
         unit.value !== null &&
@@ -89,7 +93,7 @@ export default {
         reader.onload = (event) => {
           const imageData = event.target.result;
           productStore.addProduct({
-            name: name.value,
+            name: capitalized.value,
             price: price.value,
             unit: unit.value,
             interval: interval.value,
