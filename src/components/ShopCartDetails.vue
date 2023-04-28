@@ -7,7 +7,18 @@
     </p>
 
     <div class="item-quantity">
-      <div class="cart-icons">
+      <div v-if="product.unit === 'kg'">
+        <input
+          class="weight"
+          type="number"
+          placeholder="quantité "
+          min="0"
+          :step="product.interval"
+          v-model="quantity"
+        />
+      </div>
+
+      <div v-else class="cart-icons">
         <button
           @click="
             decrementQuantity();

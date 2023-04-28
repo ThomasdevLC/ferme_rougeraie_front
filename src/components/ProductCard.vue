@@ -14,8 +14,9 @@
             class="weight"
             type="number"
             placeholder="quantité "
+            min="0"
             :step="product.interval"
-            v-model="interval"
+            v-model="quantity"
           />
         </div>
         <div v-else class="cart-icons">
@@ -24,7 +25,7 @@
           <button @click="incrementQuantity">+</button>
         </div>
       </div>
-      <p class="add-cart" @click="handleCart">AJOUTER AU PANIER</p>
+      <p class="add-cart" @click="addTocart">AJOUTER AU PANIER</p>
     </div>
     <div class="overlay" v-if="showModal" @click="closeModal"></div>
     <div class="modal" v-if="showModal"><p>produit déja ajouté !</p></div>
@@ -65,7 +66,7 @@ export default {
     incrementQuantity() {
       this.quantity++;
     },
-    async handleCart() {
+    async addTocart() {
       const productStore = useProductStore();
       if (this.quantity > 0) {
         const existingProduct = productStore.cart.find(
@@ -88,6 +89,7 @@ export default {
             name: this.product.name,
             price: this.product.price,
             unit: this.product.unit,
+            quantity: this.quantity,
             quantity: this.quantity,
             image: compressedImage, // utilisation de l'image compressée
             id: this.product.id,

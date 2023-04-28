@@ -23,7 +23,7 @@
       class="custom-input"
       type="number"
       placeholder="prix"
-      step="0.10"
+      step="0.001"
       v-model="editPrice"
     />
     <div>
@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { useProductStore } from "../stores/ProductStore";
 
 export default {
@@ -65,10 +65,14 @@ export default {
     const editInterval = ref(props.product.interval);
     const editImage = ref(props.product.image);
 
+    const capitalized = computed(() => {
+      return editName.value.charAt(0).toUpperCase() + editName.value.slice(1);
+    });
+
     const handleSubmit = () => {
       if (editName.value.length > 0) {
         const updatedProduct = {
-          name: editName.value,
+          name: capitalized.value,
           price: editPrice.value,
           unit: editUnit.value,
           interval: editInterval.value,
