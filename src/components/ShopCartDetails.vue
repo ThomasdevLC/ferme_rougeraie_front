@@ -86,10 +86,15 @@ export default {
         quantity: this.quantity,
       };
       if (this.product.id) {
-        console.log("Quantity");
-        productStore.editCart(this.product.id, editedProduct).catch((error) => {
-          console.log(error);
-        });
+        if (this.quantity === 0) {
+          productStore.deleteCartProduct(this.product.id);
+        } else {
+          productStore
+            .editCart(this.product.id, editedProduct)
+            .catch((error) => {
+              console.log(error);
+            });
+        }
       }
     },
   },
