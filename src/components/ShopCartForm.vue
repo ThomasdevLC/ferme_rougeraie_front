@@ -1,5 +1,8 @@
 <template>
-  <form @submit.prevent="handleSubmit">
+  <div v-if="!validatedCart" class="cart-validate">
+    <button @click="handleValidate">Valider panier</button>
+  </div>
+  <form v-else @submit.prevent="handleSubmit">
     <div>
       <label for="name"></label>
       <input type="text" id="name" placeholder="Nom " v-model="name" required />
@@ -42,9 +45,14 @@ export default {
       name: "",
       email: "",
       telephone: "",
+      validatedCart: false,
     };
   },
   methods: {
+    handleValidate() {
+      return (this.validatedCart = true);
+    },
+
     handleSubmit() {
       const order = {
         name: this.name,
@@ -93,9 +101,13 @@ button {
   color: white;
   padding: 10px;
   border: 0;
-  /* border-radius: 6px; */
   font-size: 16px;
   margin: auto;
   cursor: pointer;
+}
+
+.cart-validate {
+  display: flex;
+  margin: 40px auto 0;
 }
 </style>
