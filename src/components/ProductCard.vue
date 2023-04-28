@@ -90,7 +90,7 @@ export default {
             price: this.product.price,
             unit: this.product.unit,
             quantity: this.quantity,
-            quantity: this.quantity,
+            interval: this.product.interval,
             image: compressedImage, // utilisation de l'image compressée
             id: this.product.id,
           });

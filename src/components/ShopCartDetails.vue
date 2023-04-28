@@ -15,6 +15,7 @@
           min="0"
           :step="product.interval"
           v-model="quantity"
+          @input="handleChange()"
         />
       </div>
 
