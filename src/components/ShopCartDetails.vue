@@ -1,10 +1,12 @@
 <template>
   <div class="product-infos">
     <div class="image"><img :src="product.image" alt="photo produit" /></div>
-    <h4>{{ product.name }}</h4>
-    <p>
-      {{ product.price }} € / <span> {{ product.unit }}</span>
-    </p>
+    <div class="">
+      <p class="product-infos-name">{{ product.name }}</p>
+      <p class="price">
+        {{ product.price }} € / <span> {{ product.unit }}</span>
+      </p>
+    </div>
 
     <div class="item-quantity">
       <div v-if="product.unit === 'kg'">
@@ -28,7 +30,7 @@
         >
           -
         </button>
-        <span>{{ quantity }}</span>
+        <div class="quantity">{{ quantity }}</div>
         <button
           @click="
             incrementQuantity();
@@ -39,6 +41,8 @@
         </button>
       </div>
     </div>
+    <div class="price-item">{{ totalPrice }} <span>€</span></div>
+    <div></div>
     <span
       class="material-icons"
       @click="productStore.deleteCartProduct(product.id)"
@@ -62,6 +66,11 @@ export default {
     return {
       quantity: this.product.quantity,
     };
+  },
+  computed: {
+    totalPrice() {
+      return (this.quantity * this.product.price).toFixed(2);
+    },
   },
   methods: {
     decrementQuantity() {
@@ -92,14 +101,68 @@ export default {
 .product-infos {
   display: flex;
   align-items: center;
-  width: 420px;
-  align-items: center;
+  justify-content: center;
+  width: 600px;
+  column-gap: 30px;
+  border-bottom: 1px solid #ddd;
+  padding: 15px;
 }
 
+.image {
+  display: flex;
+  align-items: center;
+}
 .image img {
   width: 55px;
   height: 55px;
-  border-radius: 6px;
+  border-radius: 50%;
   object-fit: cover;
+}
+
+.product-infos-name {
+  line-height: 10px;
+  font-weight: 500;
+}
+
+.price {
+  width: 180px;
+  font-size: 14px;
+  line-height: 0px;
+}
+
+.weight {
+  border: 1px solid #000000;
+  padding: 3px;
+  width: 76px;
+  outline: none;
+}
+
+.cart-icons {
+  display: flex;
+}
+
+button {
+  background-color: white;
+  border: 1px solid #000000;
+  color: #000000;
+  font-size: 10px;
+  padding: 3px 10px;
+  cursor: pointer;
+}
+
+.quantity {
+  display: flex;
+  place-items: center;
+  width: 8px;
+  line-height: 15px;
+  border-top: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  padding: 3px 10px;
+  font-size: 14px;
+}
+
+.price-item {
+  font-size: 18px;
+  width: 90px;
 }
 </style>

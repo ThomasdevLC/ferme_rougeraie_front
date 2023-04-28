@@ -8,6 +8,8 @@
       <ShopCartDetails :product="product" />
     </div>
   </div>
+  <p class="cart-total">Total : {{ productStore.totalCart }} €</p>
+
   <div v-if="productStore.cartCount" class="form">
     <ShopCartForm @submit-form="thanksModal = true" />
   </div>
@@ -33,3 +35,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+.cart-total {
+  text-align: right;
+}
+</style>

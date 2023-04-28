@@ -26,6 +26,13 @@ export const useProductStore = defineStore("productStore", {
     cartCount() {
       return this.cart.length;
     },
+
+    totalCart() {
+      const total = this.cart.reduce((total, product) => {
+        return total + product.quantity * product.price;
+      }, 0);
+      return total.toFixed(2);
+    },
   },
 
   actions: {
