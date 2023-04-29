@@ -9,19 +9,7 @@
     </div>
 
     <div class="item-quantity">
-      <div v-if="product.unit === 'kg'">
-        <input
-          class="weight"
-          type="number"
-          placeholder="quantité"
-          min="0"
-          :step="product.interval"
-          v-model="quantity"
-          @input="handleChange()"
-        />
-      </div>
-
-      <div v-else class="cart-icons">
+      <div class="cart-icons">
         <button
           @click="
             decrementQuantity();
@@ -30,7 +18,10 @@
         >
           -
         </button>
-        <div class="quantity">{{ quantity }}</div>
+        <div v-if="product.interval" class="quantity" style="width: 23px">
+          {{ quantity.toFixed(1) }} <span class="weight"> kg</span>
+        </div>
+        <div v-else class="quantity">{{ quantity }}</div>
         <button
           @click="
             incrementQuantity();
@@ -73,12 +64,14 @@ export default {
   },
   methods: {
     decrementQuantity() {
+      const interval = this.product.interval || 1;
       if (this.quantity > 0) {
-        this.quantity--;
+        this.quantity -= interval;
       }
     },
     incrementQuantity() {
-      this.quantity++;
+      const interval = this.product.interval || 1;
+      this.quantity += interval;
     },
     handleChange() {
       const productStore = useProductStore();
@@ -86,7 +79,7 @@ export default {
         quantity: this.quantity,
       };
       if (this.product.id) {
-        if (this.quantity === 0) {
+        if (this.quantity < 0.1) {
           productStore.deleteCartProduct(this.product.id);
         } else {
           productStore
@@ -105,7 +98,7 @@ export default {
 .product-infos {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   width: 600px;
   column-gap: 30px;
   border-bottom: 1px solid #ddd;
@@ -134,13 +127,6 @@ export default {
   line-height: 0px;
 }
 
-.weight {
-  border: 1px solid #000000;
-  padding: 3px;
-  width: 76px;
-  outline: none;
-}
-
 .cart-icons {
   display: flex;
 }
@@ -155,19 +141,26 @@ button {
 }
 
 .quantity {
-  display: flex;
-  place-items: center;
-  width: 8px;
+  width: 12px;
   line-height: 15px;
-  border-top: 1px solid #000000;
-  border-bottom: 1px solid #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 2px;
   padding: 3px 10px;
   font-size: 14px;
+  border-top: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+}
+
+.weight {
+  font-size: 12px;
 }
 
 .price-item {
   font-size: 18px;
   width: 90px;
+  text-align: right;
 }
 
 .remove-item:hover {

@@ -9,22 +9,16 @@
         {{ product.price }} € / <span> {{ product.unit }}</span>
       </p>
       <div class="item-quantity">
-        <div v-if="product.unit === 'kg'">
-          <input
-            class="weight"
-            type="number"
-            placeholder="quantité "
-            min="0"
-            :step="product.interval"
-            v-model="quantity"
-          />
-        </div>
-        <div v-else class="cart-icons">
+        <div class="cart-icons">
           <button @click="decrementQuantity">-</button>
-          <div class="quantity">{{ quantity }}</div>
+          <div v-if="product.interval" class="quantity" style="width: 23px">
+            {{ quantity.toFixed(1) }} <span class="weight"> kg</span>
+          </div>
+          <div v-else class="quantity">{{ quantity }}</div>
           <button @click="incrementQuantity">+</button>
         </div>
       </div>
+      <!-- <QuantityManager :product="product" /> -->
       <p class="add-cart" @click="addTocart">AJOUTER AU PANIER</p>
     </div>
     <div class="overlay" v-if="showModal" @click="closeModal"></div>
@@ -34,8 +28,10 @@
 
 <script>
 import { useProductStore } from "../stores/ProductStore";
+import QuantityManager from "../components/QuantityManager.vue";
 
 export default {
+  components: { QuantityManager },
   props: ["product"],
 
   setup() {
@@ -59,12 +55,14 @@ export default {
       this.showModal = false;
     },
     decrementQuantity() {
+      const interval = this.product.interval || 1;
       if (this.quantity > 0) {
-        this.quantity--;
+        this.quantity -= interval;
       }
     },
     incrementQuantity() {
-      this.quantity++;
+      const interval = this.product.interval || 1;
+      this.quantity += interval;
     },
     async addTocart() {
       const productStore = useProductStore();
@@ -154,20 +152,20 @@ button {
 }
 
 .quantity {
-  display: inline-block;
-  width: 8px;
+  width: 12px;
   line-height: 15px;
-  border-top: 1px solid #000000;
-  border-bottom: 1px solid #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 2px;
   padding: 3px 10px;
   font-size: 14px;
+  border-top: 1px solid #000000;
+  border-bottom: 1px solid #000000;
 }
 
 .weight {
-  border: 1px solid #000000;
-  padding: 3px;
-  width: 82px;
-  outline: none;
+  font-size: 12px;
 }
 
 .add-cart {
