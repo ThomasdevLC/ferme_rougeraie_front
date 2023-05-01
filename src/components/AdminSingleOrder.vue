@@ -12,11 +12,23 @@
         <ul>
           <li v-for="product in order.products" :key="product.name">
             - {{ product.quantity }} {{ product.name }} -
-            {{ product.totalPrice }}
+            {{ product.totalPrice }} €
           </li>
         </ul>
       </td>
-      <td>{{ order.total }}</td>
+      <td>{{ order.total }} €</td>
+      <td>
+        <i
+          v-if="order.status === 'pending'"
+          class="material-icons"
+          @click="toggleStatus"
+        >
+          radio_button_unchecked
+        </i>
+        <span v-else class="material-icons" @click="toggleStatus">
+          check_circle_outline
+        </span>
+      </td>
     </tr>
   </tbody>
 </template>
@@ -24,6 +36,11 @@
 <script>
 export default {
   props: ["order"],
+  methods: {
+    toggleStatus() {
+      this.order.status = this.order.status === "pending" ? "done" : "pending";
+    },
+  },
 };
 </script>
 

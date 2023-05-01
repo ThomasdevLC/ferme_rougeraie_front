@@ -12,6 +12,7 @@
           <th>contact</th>
           <th>produits</th>
           <th>total</th>
+          <th>status</th>
         </tr>
       </thead>
       <AdminSingleOrder
@@ -40,7 +41,7 @@ export default {
 
 <style scoped>
 .orders-list {
-  max-width: 80%;
+  max-width: 1200px;
   margin: auto;
 }
 table {

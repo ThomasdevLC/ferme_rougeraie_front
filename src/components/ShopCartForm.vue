@@ -73,6 +73,7 @@ export default {
         })),
         total: productStore.totalCart,
         date: new Date().toLocaleString(),
+        status: "pending",
       };
       console.log(order);
       productStore.addOrder(order); // call addOrder action to add order to state and server
