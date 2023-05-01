@@ -134,11 +134,16 @@ export const useProductStore = defineStore("productStore", {
 
     // ORDERS ACTIONS
 
-    async addOrder(order) {
-      // add order to state
-      this.orders.push(order);
+    async getOrders() {
+      this.loading = true;
+      const res = await fetch("http://localhost:3000/orders");
+      const data = await res.json();
+      this.orders = data;
+      this.loading = false;
+    },
 
-      // send order to server
+    async addOrder(order) {
+      this.orders.push(order);
       const res = await fetch("http://localhost:3000/orders", {
         method: "POST",
         body: JSON.stringify(order),

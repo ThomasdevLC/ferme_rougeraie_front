@@ -14,6 +14,7 @@ export default {
     const productStore = useProductStore();
 
     productStore.getProducts();
+    productStore.getOrders();
 
     return { productStore };
   },

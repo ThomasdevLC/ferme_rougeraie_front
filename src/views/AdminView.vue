@@ -12,7 +12,11 @@
       <button @click="filter = 'all'">Tous les produits</button>
       <button @click="filter = 'displayed'">Produits affichés</button>
     </nav>
+    <pre>
 
+  {{ productStore.orders }}
+</pre
+    >
     <!-- LIST -->
     <div class="product-list" v-if="filter === 'all'">
       <p>{{ productStore.totalCount }} produits enregistrés</p>
