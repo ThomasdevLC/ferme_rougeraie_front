@@ -47,6 +47,12 @@ export default {
     };
   },
 
+  computed: {
+    totalPrice() {
+      return (this.quantity * this.product.price).toFixed(2);
+    },
+  },
+
   methods: {
     decrementQuantity() {
       const interval = this.product.interval || 1;
@@ -82,6 +88,7 @@ export default {
             unit: this.product.unit,
             quantity: this.quantity,
             interval: this.product.interval,
+            totalPrice: this.totalPrice,
             image: compressedImage,
             id: this.product.id,
           });

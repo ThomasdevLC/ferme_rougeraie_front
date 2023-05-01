@@ -48,28 +48,37 @@ export default {
       validatedCart: false,
     };
   },
+  computed: {
+    totalPrice() {
+      return (this.quantity * this.product.price).toFixed(2);
+    },
+  },
   methods: {
     handleValidate() {
       return (this.validatedCart = true);
     },
 
     handleSubmit() {
+      const productStore = useProductStore();
+
       const order = {
         name: this.name,
         email: this.email,
         telephone: this.telephone,
 
         products: this.productStore.cart.map((product) => ({
-          id: product.id,
           name: product.name,
           quantity: product.quantity,
+          totalPrice: product.totalPrice,
         })),
+        total: productStore.totalCart,
+        date: new Date().toLocaleString(),
       };
       console.log(order);
+      productStore.addOrder(order); // call addOrder action to add order to state and server
 
       this.productStore.clearCart();
-
-      // emit an event to trigger thanksModal in the parent component
+      // emit  event to trigger thanksModal in the parent component
       this.$emit("submit-form");
     },
   },

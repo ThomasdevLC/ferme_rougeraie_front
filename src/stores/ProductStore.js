@@ -4,6 +4,7 @@ export const useProductStore = defineStore("productStore", {
   state: () => ({
     products: [],
     cart: [],
+    orders: [],
     loading: false,
   }),
 
@@ -129,6 +130,23 @@ export const useProductStore = defineStore("productStore", {
     clearCart() {
       this.cart = [];
       localStorage.removeItem("cart");
+    },
+
+    // ORDERS ACTIONS
+
+    async addOrder(order) {
+      // add order to state
+      this.orders.push(order);
+
+      // send order to server
+      const res = await fetch("http://localhost:3000/orders", {
+        method: "POST",
+        body: JSON.stringify(order),
+        headers: { "Content-Type": "application/json" },
+      });
+      if (res.error) {
+        console.log(res.error);
+      }
     },
   },
 });
