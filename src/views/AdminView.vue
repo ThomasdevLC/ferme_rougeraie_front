@@ -1,4 +1,6 @@
 <template>
+  <AdminOrders />
+
   <!-- form -->
   <div class="new-product-form">
     <ProductForm />
@@ -12,11 +14,7 @@
       <button @click="filter = 'all'">Tous les produits</button>
       <button @click="filter = 'displayed'">Produits affichés</button>
     </nav>
-    <pre>
 
-  {{ productStore.orders }}
-</pre
-    >
     <!-- LIST -->
     <div class="product-list" v-if="filter === 'all'">
       <p>{{ productStore.totalCount }} produits enregistrés</p>
@@ -39,13 +37,16 @@ import { useProductStore } from "../stores/ProductStore";
 import ProductDetails from "../components/ProductDetails.vue";
 import ProductForm from "../components/ProductForm.vue";
 import NavBar from "../components/NavBar.vue";
+import AdminOrders from "../components/AdminOrders.vue";
 
 export default {
-  components: { ProductDetails, ProductForm, NavBar },
+  components: { ProductDetails, ProductForm, NavBar, AdminOrders },
 
   setup() {
     const productStore = useProductStore();
+
     const filter = ref("all");
+    productStore.getOrders();
 
     return { productStore, filter };
   },

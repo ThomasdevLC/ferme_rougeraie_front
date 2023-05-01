@@ -24,6 +24,8 @@ export const useProductStore = defineStore("productStore", {
       return this.products.length;
     },
 
+    // cart getters:
+
     cartCount() {
       return this.cart.length;
     },
@@ -33,6 +35,12 @@ export const useProductStore = defineStore("productStore", {
         return total + product.quantity * product.price;
       }, 0);
       return total.toFixed(2);
+    },
+
+    // order getters:
+
+    orderCount() {
+      return this.orders.length;
     },
   },
 
