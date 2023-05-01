@@ -18,8 +18,13 @@
           <button @click="incrementQuantity">+</button>
         </div>
       </div>
-      <!-- <QuantityManager :product="product" /> -->
-      <p class="add-cart" @click="addTocart">AJOUTER AU PANIER</p>
+      <!-- <QuantityManager
+        :product="product"
+        :quantity="quantity"
+        @quantity-updated="quantity = $event"
+        :key="product.id"
+      /> -->
+      <p class="add-cart" @click="addToCart">AJOUTER AU PANIER</p>
     </div>
     <div class="overlay" v-if="showModal" @click="closeModal"></div>
     <div class="modal" v-if="showModal"><p>produit déja ajouté !</p></div>
@@ -29,16 +34,11 @@
 <script>
 import { useProductStore } from "../stores/ProductStore";
 import QuantityManager from "../components/QuantityManager.vue";
+import { compressImage } from "../utils/imageUtils";
 
 export default {
   components: { QuantityManager },
   props: ["product"],
-
-  setup() {
-    const productStore = useProductStore();
-
-    return { productStore };
-  },
 
   data() {
     return {
@@ -48,12 +48,6 @@ export default {
   },
 
   methods: {
-    openModal() {
-      this.showModal = true;
-    },
-    closeModal() {
-      this.showModal = false;
-    },
     decrementQuantity() {
       const interval = this.product.interval || 1;
       if (this.quantity > 0) {
@@ -64,7 +58,14 @@ export default {
       const interval = this.product.interval || 1;
       this.quantity += interval;
     },
-    async addTocart() {
+    openModal() {
+      this.showModal = true;
+    },
+    closeModal() {
+      this.showModal = false;
+    },
+
+    async addToCart() {
       const productStore = useProductStore();
       if (this.quantity > 0) {
         const existingProduct = productStore.cart.find(
@@ -74,26 +75,19 @@ export default {
           // Show modal that the product is already selected
           this.showModal = true;
         } else {
-          const canvas = document.createElement("canvas");
-          const ctx = canvas.getContext("2d");
-          const img = new Image();
-          img.src = this.product.image;
-          await new Promise((resolve) => (img.onload = resolve));
-          canvas.width = img.width / 2; // ajuster la largeur de l'image pour la compresser
-          canvas.height = img.height / 2; // ajuster la hauteur de l'image pour la compresser
-          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-          const compressedImage = canvas.toDataURL("image/jpeg", 0.5); // compression de l'image
+          const compressedImage = await compressImage(this.product.image); // utiliser la fonction utilitaire
           productStore.addToCart({
             name: this.product.name,
             price: this.product.price,
             unit: this.product.unit,
             quantity: this.quantity,
             interval: this.product.interval,
-            image: compressedImage, // utilisation de l'image compressée
+            image: compressedImage,
             id: this.product.id,
           });
+          this.quantity = 0;
+          console.log("hello qty", this.quantity);
         }
-        this.quantity = 0;
       }
     },
   },

@@ -26,11 +26,13 @@ export default {
       const interval = this.product.interval || 1;
       if (this.quantity > 0) {
         this.quantity -= interval;
+        this.$emit("quantity-updated", this.quantity);
       }
     },
     incrementQuantity() {
       const interval = this.product.interval || 1;
       this.quantity += interval;
+      this.$emit("quantity-updated", this.quantity);
     },
   },
 };
