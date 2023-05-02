@@ -1,7 +1,5 @@
 <template>
   <h1>commandes</h1>
-
-  <!-- LIST -->
   <div class="orders-list">
     <p>{{ productStore.orderCount }} commandes</p>
     <table>
@@ -26,7 +24,7 @@
 
 <script>
 import { useProductStore } from "../stores/ProductStore";
-import AdminSingleOrder from "../components/AdminSingleOrder.vue";
+import AdminSingleOrder from "./AdminSingleOrder.vue";
 
 export default {
   components: { AdminSingleOrder },
@@ -42,6 +40,7 @@ export default {
 <style scoped>
 .orders-list {
   max-width: 1200px;
+  padding: 40px;
   margin: auto;
 }
 table {

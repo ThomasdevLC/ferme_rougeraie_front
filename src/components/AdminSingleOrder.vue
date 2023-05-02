@@ -11,7 +11,8 @@
       <td>
         <ul>
           <li v-for="product in order.products" :key="product.name">
-            - {{ product.quantity }} {{ product.name }} -
+            - {{ product.quantity }}
+            <span v-if="product.unit === 'kg'">kg</span> {{ product.name }} -
             {{ product.totalPrice }} €
           </li>
         </ul>

@@ -68,7 +68,8 @@ export default {
 
         products: this.productStore.cart.map((product) => ({
           name: product.name,
-          quantity: product.quantity.toFixed(2),
+          quantity: product.quantity,
+          unit: product.unit,
           totalPrice: product.totalPrice,
         })),
         total: productStore.totalCart,
@@ -77,7 +78,6 @@ export default {
       };
       console.log(order);
       productStore.addOrder(order); // call addOrder action to add order to state and server
-
       this.productStore.clearCart();
       // emit  event to trigger thanksModal in the parent component
       this.$emit("submit-form");
