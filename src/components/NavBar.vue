@@ -1,11 +1,18 @@
 <template>
   <header>
-    <img class="logo" :src="image" alt=" logo" />
+    <img
+      class="logo"
+      :src="image"
+      alt=" logo"
+      @dblclick="this.$router.push({ name: 'AdminView' })"
+    />
     <div class="nav-cart">
       <nav>
         <router-link :to="{ name: 'AboutView' }">À propos</router-link>
         <router-link :to="{ name: 'ProductsView' }">Produits</router-link>
-        <router-link :to="{ name: 'AdminView' }">Admin</router-link>
+        <router-link v-if="$route.path === '/admin'" :to="{ name: 'AdminView' }"
+          >Admin</router-link
+        >
       </nav>
       <div class="overlay" v-if="showModal" @click="closeModal"></div>
       <div class="modal" v-if="showModal"><ShopCart /></div>
