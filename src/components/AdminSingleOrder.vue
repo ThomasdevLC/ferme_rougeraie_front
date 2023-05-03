@@ -35,11 +35,15 @@
 </template>
 
 <script>
+import { useProductStore } from "../stores/ProductStore";
+
 export default {
   props: ["order"],
   methods: {
     toggleStatus() {
+      const productStore = useProductStore();
       this.order.status = this.order.status === "pending" ? "done" : "pending";
+      productStore.changeOrderStatus(this.order.id, this.order);
     },
   },
 };

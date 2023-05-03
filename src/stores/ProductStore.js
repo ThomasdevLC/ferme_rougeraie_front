@@ -80,6 +80,9 @@ export const useProductStore = defineStore("productStore", {
         body: JSON.stringify(editedProduct),
         headers: { "Content-Type": "application/json" },
       });
+      if (res.error) {
+        console.log(res.error);
+      }
     },
 
     async deleteProduct(id) {
@@ -159,6 +162,26 @@ export const useProductStore = defineStore("productStore", {
       });
       if (res.error) {
         console.log(res.error);
+      }
+    },
+
+    async changeOrderStatus(id, updatedOrder) {
+      const orderIndex = this.orders.findIndex((o) => o.id === id);
+      if (orderIndex !== -1) {
+        this.orders[orderIndex] = {
+          ...this.orders[orderIndex],
+          ...updatedOrder,
+        };
+
+        const res = await fetch("http://localhost:3000/orders/" + id, {
+          method: "PATCH",
+          body: JSON.stringify(updatedOrder),
+          headers: { "Content-Type": "application/json" },
+        });
+
+        if (res.error) {
+          console.log(res.error);
+        }
       }
     },
   },
