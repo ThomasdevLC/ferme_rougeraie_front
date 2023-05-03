@@ -1,9 +1,22 @@
 <template>
-  <h1>Présentation</h1>
+  <div
+    class="background-image"
+    :style="{ 'background-image': `url(${image})` }"
+  ></div>
 </template>
 
 <script>
-export default {};
+import background from "../assets/images/background.png";
+
+export default {
+  data() {
+    return { image: background };
+  },
+};
 </script>
 
-<style></style>
+<style scoped>
+.background-image {
+  height: 100vh;
+}
+</style>
