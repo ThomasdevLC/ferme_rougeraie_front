@@ -26,9 +26,9 @@
         >
           radio_button_unchecked
         </i>
-        <span v-else class="material-icons" @click="toggleStatus">
+        <i v-else class="material-icons" @click="toggleStatus">
           check_circle_outline
-        </span>
+        </i>
       </td>
     </tr>
   </tbody>

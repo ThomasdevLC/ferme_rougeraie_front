@@ -40,7 +40,12 @@ import NavBar from "../components/NavBar.vue";
 import AdminOrders from "../components/AdminOrders.vue";
 
 export default {
-  components: { ProductDetails, ProductForm, NavBar, AdminOrders },
+  components: {
+    ProductDetails,
+    ProductForm,
+    NavBar,
+    AdminOrders,
+  },
 
   setup() {
     const productStore = useProductStore();
