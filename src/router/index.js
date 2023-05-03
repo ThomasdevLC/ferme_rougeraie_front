@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import ProductsView from "../views/ProductsView.vue";
-import HomeView from "../views/HomeView.vue";
+import AboutView from "../views/AboutView.vue";
 import AdminView from "../views/AdminView.vue";
 
 const routerApp = createRouter({
@@ -8,8 +8,8 @@ const routerApp = createRouter({
   routes: [
     {
       path: "/",
-      name: "home",
-      component: HomeView,
+      name: "AboutView",
+      component: AboutView,
     },
     {
       path: "/products",

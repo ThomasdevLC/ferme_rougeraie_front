@@ -42,6 +42,14 @@ export const useProductStore = defineStore("productStore", {
     orderCount() {
       return this.orders.length;
     },
+
+    pendingOrders() {
+      return this.orders.filter((o) => o.status === "pending");
+    },
+
+    doneOrders() {
+      return this.orders.filter((o) => o.status === "done");
+    },
   },
 
   actions: {

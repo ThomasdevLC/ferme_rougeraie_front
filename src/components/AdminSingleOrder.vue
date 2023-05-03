@@ -18,7 +18,7 @@
         </ul>
       </td>
       <td>{{ order.total }} €</td>
-      <td>
+      <td class="status">
         <i
           v-if="order.status === 'pending'"
           class="material-icons"
@@ -26,7 +26,12 @@
         >
           radio_button_unchecked
         </i>
-        <i v-else class="material-icons" @click="toggleStatus">
+        <i
+          v-else
+          class="material-icons"
+          @click="toggleStatus"
+          :class="{ selected: order.status === 'done' }"
+        >
           check_circle_outline
         </i>
       </td>
@@ -66,7 +71,7 @@ tr {
 
 td {
   /* padding: 8px; */
-  text-align: left;
+  text-align: center;
 }
 
 th {
@@ -83,6 +88,15 @@ tr:hover {
 
 ul {
   list-style: none;
-  padding: 0;
+  padding-left: 40px;
+  text-align: left;
+}
+
+i {
+  cursor: pointer;
+}
+
+.selected {
+  color: #ffd859;
 }
 </style>

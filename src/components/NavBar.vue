@@ -3,7 +3,7 @@
     <img class="logo" :src="image" alt=" logo" />
     <div class="nav-cart">
       <nav>
-        <router-link :to="{ name: 'home' }">À propos</router-link>
+        <router-link :to="{ name: 'AboutView' }">À propos</router-link>
         <router-link :to="{ name: 'ProductsView' }">Produits</router-link>
         <router-link :to="{ name: 'AdminView' }">Admin</router-link>
       </nav>
