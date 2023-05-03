@@ -1,5 +1,4 @@
 <template>
-  <h1>commandes</h1>
   <div class="orders-list">
     <p>{{ productStore.orderCount }} commandes</p>
     <table>
@@ -31,6 +30,7 @@ export default {
 
   setup() {
     const productStore = useProductStore();
+    productStore.getOrders();
 
     return { productStore };
   },

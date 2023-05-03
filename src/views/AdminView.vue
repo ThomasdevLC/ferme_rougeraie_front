@@ -1,92 +1,68 @@
 <template>
-  <AdminOrders />
-
-  <!-- form -->
-  <div class="new-product-form">
-    <ProductForm />
-  </div>
-
-  <div class="loading" v-if="productStore.loading">Chargement...</div>
-
-  <div v-else class="container">
-    <!-- filter -->
-    <nav class="filter">
-      <button @click="filter = 'all'">Tous les produits</button>
-      <button @click="filter = 'displayed'">Produits affichés</button>
-    </nav>
-
-    <!-- LIST -->
-    <div class="product-list" v-if="filter === 'all'">
-      <p>{{ productStore.totalCount }} produits enregistrés</p>
-      <div v-for="product in productStore.products" :key="product">
-        <ProductDetails :product="product" />
-      </div>
+  <div class="admin">
+    <div class="admin-btn">
+      <button
+        @click="nested = 'products'"
+        :class="{ selected: nested === 'products' }"
+      >
+        produits
+      </button>
+      <button
+        @click="nested = 'orders'"
+        :class="{ selected: nested === 'orders' }"
+      >
+        commandes
+      </button>
     </div>
-    <div class="product-list" v-if="filter === 'displayed'">
-      <p>{{ productStore.displayedCount }} produits affichés</p>
-      <div v-for="product in productStore.displayed" :key="product">
-        <ProductDetails :product="product" />
-      </div>
+    <div v-if="nested === 'products'">
+      <AdminProducts />
+    </div>
+    <div v-else-if="nested === 'orders'">
+      <AdminOrders />
     </div>
   </div>
 </template>
-
 <script>
 import { ref } from "vue";
-import { useProductStore } from "../stores/ProductStore";
-import ProductDetails from "../components/ProductDetails.vue";
-import ProductForm from "../components/ProductForm.vue";
-import NavBar from "../components/NavBar.vue";
 import AdminOrders from "../components/AdminOrders.vue";
+import AdminProducts from "../components/AdminProducts.vue";
 
 export default {
   components: {
-    ProductDetails,
-    ProductForm,
-    NavBar,
     AdminOrders,
+    AdminProducts,
   },
-
   setup() {
-    const productStore = useProductStore();
-
-    const filter = ref("all");
-    productStore.getOrders();
-
-    return { productStore, filter };
+    const nested = ref("products");
+    return { nested };
   },
 };
 </script>
-
 <style scoped>
-.new-product-form {
-  background: #e7e7e7;
-  padding: 60px 0;
+.admin-btn {
+  display: flex;
+  justify-content: center;
+  column-gap: 20px;
+  padding: 30px;
 }
 
-.container {
-  max-width: 640px;
-  margin: 20px auto;
-}
-
-/* filter nav */
-.filter {
-  margin: 10px auto;
-  text-align: right;
-}
-.filter button {
-  font-size: 15px;
-  background: #fff;
-  border: 2px solid #555;
-  border-radius: 4px;
-  margin-left: 10px;
-  padding: 4px 8px;
+button {
+  padding: 10px;
+  border: 0;
+  border-radius: 6px;
+  font-size: 16px;
+  width: 140px;
   cursor: pointer;
+  color: #333;
+  background: none;
 }
 
-/* product list */
-.product-list {
-  max-width: 640px;
-  margin: 20px auto;
+button.selected {
+  background: #ffd859;
+  font-weight: 500;
+  color: #333;
+}
+button:hover {
+  background-color: hsl(46, 100%, 92%);
 }
 </style>
