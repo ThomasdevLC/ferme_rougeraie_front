@@ -68,15 +68,14 @@
 
     <div class="about-informations">
       <div class="about-informations-top">
-        <p class="about-informations-address">
-          Ferme de la Rougeraie, 56120 Forges de Lanouée
-        </p>
-        <span><img :src="imageGmap" alt="localisation google" /></span>
+        <p class="about-informations-address">Ferme de la Rougeraie</p>
+        <!-- <img :src="imageGmap" alt="localisation google" /> -->
       </div>
 
       <nav class="social-nav">
         <ul class="social-links">
-          <li><img :src="imageLoc" alt="localisation" /></li>
+          <!-- <li><img :src="imageLoc" alt="localisation" /></li> -->
+          <li><img :src="imageGmap" alt="localisation" /></li>
           <li><img :src="imageInsta" alt="Instagram" /></li>
           <li><img :src="imageFaceb" alt="Facebook" /></li>
           <li><img :src="imageEmail" alt="email" /></li>
@@ -176,28 +175,18 @@ export default {
 
 .about-informations {
   position: fixed;
-  top: 220px;
-  left: 0px;
+  top: 380px;
+  left: 60px;
 }
 
 .about-informations-address {
-  /* width: 260px; */
-  /* clear: none; */
-  /* direction: ltr; */
-  /* text-align: right; */
-  /* order: 0; */
-  /* justify-content: center;
-  align-self: center;
-  align-items: center;
-  margin-top: auto;
-  margin-bottom: auto; */
   color: black;
-  font-size: 16px;
+  font-size: 20px;
   transform: rotate(-90deg);
 }
 
 .social-nav {
-  margin-top: 160px;
+  margin-top: 120px;
 }
 .social-links {
   display: flex;
@@ -220,5 +209,10 @@ export default {
 
 .social-links img:hover {
   cursor: pointer;
+}
+.footer {
+  width: 100%;
+  background-color: black;
+  height: 100px;
 }
 </style>
