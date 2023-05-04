@@ -71,13 +71,13 @@ header {
   align-items: center;
   margin: 0 auto;
   padding: 20px 40px;
-  font-size: 20px;
+  font-size: 26px;
   background-color: white;
   border-bottom: 1px solid #444;
 }
 
 .logo {
-  height: 120px;
+  height: 140px;
 }
 
 .nav-cart {
