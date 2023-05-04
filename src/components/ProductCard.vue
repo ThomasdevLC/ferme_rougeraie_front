@@ -93,7 +93,6 @@ export default {
             id: this.product.id,
           });
           this.quantity = 0;
-          console.log("hello qty", this.quantity);
         }
       }
     },

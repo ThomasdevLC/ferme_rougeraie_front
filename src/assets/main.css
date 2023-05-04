@@ -7,7 +7,7 @@ body {
   box-sizing: border-box;
   /* height: 100vh; */
 }
-body * {
+body {
   font-family: "Poppins";
 }
 
