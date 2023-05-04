@@ -54,15 +54,16 @@ button {
   width: 140px;
   cursor: pointer;
   color: #333;
-  background: none;
+  background: #bbbbbb;
+  transition: all 0.6s;
 }
 
 button.selected {
   background: #ffd859;
-  font-weight: 500;
+  font-weight: 700;
   color: #333;
 }
 button:hover {
-  background-color: hsl(46, 100%, 92%);
+  font-weight: 700;
 }
 </style>

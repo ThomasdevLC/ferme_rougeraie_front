@@ -8,9 +8,16 @@
     />
     <div class="nav-cart">
       <nav>
-        <router-link :to="{ name: 'AboutView' }">À propos</router-link>
-        <router-link :to="{ name: 'ProductsView' }">Produits</router-link>
-        <router-link v-if="$route.path === '/admin'" :to="{ name: 'AdminView' }"
+        <router-link class="link" :to="{ name: 'AboutView' }"
+          >À propos</router-link
+        >
+        <router-link class="link" :to="{ name: 'ProductsView' }"
+          >Produits</router-link
+        >
+        <router-link
+          class="link"
+          v-if="$route.path === '/admin'"
+          :to="{ name: 'AdminView' }"
           >Admin</router-link
         >
       </nav>
@@ -71,9 +78,12 @@ header {
   align-items: center;
   margin: 0 auto;
   padding: 20px 40px;
-  font-size: 26px;
   background-color: white;
   border-bottom: 1px solid #444;
+}
+
+.link {
+  font-size: 26px;
 }
 
 .logo {
