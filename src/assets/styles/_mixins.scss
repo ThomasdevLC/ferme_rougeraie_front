@@ -45,3 +45,8 @@
     @content;
   }
 }
+@mixin xxl-lt {
+  @media (max-width: 1910px) {
+    @content;
+  }
+}

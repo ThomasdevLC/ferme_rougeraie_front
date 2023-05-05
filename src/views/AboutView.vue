@@ -1,5 +1,5 @@
 <template>
-  <div class="about" :style="{ 'background-image': `url(${image})` }">
+  <div class="about br" :style="{ 'background-image': `url(${image})` }">
     ;
 
     <div class="about__container">
@@ -131,27 +131,40 @@ export default {
   &__container {
     max-width: 1200px;
     margin: auto;
-    padding: 60px 0;
-    // overflow: hidden;
+    padding: 60px 40px;
+
+    @include mixin.lg-lt {
+      padding: 40px 100px;
+    }
+    @include mixin.sm {
+      padding: 20px 60px;
+    }
+    @include mixin.xs {
+      padding: 20px 40px;
+    }
 
     &__top {
       display: flex;
       column-gap: 120px;
 
-      &__text {
-        font-family: "Jacques Francois", serif;
+      @include mixin.lg-lt {
+        flex-direction: column;
+        row-gap: 40px;
+      }
 
+      &__text {
         &__title {
           font-size: 60px;
+          font-family: var(--font-family-titles);
           margin: 0;
         }
 
         &__subtitle {
           font-size: 24px;
+          font-family: var(--font-family-titles);
         }
 
         &__introducing {
-          font-family: "poppins", serif;
           font-size: 16px;
         }
       }
@@ -162,15 +175,22 @@ export default {
       column-gap: 120px;
       margin-top: 120px;
 
+      @include mixin.lg-lt {
+        flex-direction: column-reverse;
+        row-gap: 40px;
+        margin-top: 80px;
+      }
+
       &__sellpoint {
         &__title {
           font-size: 28px;
-          border-bottom: 2px solid orange;
-          margin: 0;
+          border-bottom: 2px solid var(--primary);
+          margin-bottom: 14px;
         }
 
         &__infos {
           font-weight: 700;
+          margin-bottom: 14px;
         }
 
         &__time {
@@ -184,12 +204,19 @@ export default {
     &__bottom__image {
       display: flex;
       justify-content: end;
+      @include mixin.lg-lt {
+        margin: auto;
+      }
     }
 
     &__top__image img,
     &__bottom__image img {
-      width: 580px;
+      max-width: 580px;
       object-fit: cover;
+
+      @include mixin.lg-lt {
+        max-width: 100%;
+      }
     }
   }
 
@@ -197,6 +224,9 @@ export default {
     position: fixed;
     top: 380px;
     left: 60px;
+    @include mixin.xxl-lt {
+      display: none;
+    }
 
     &__address {
       color: black;
@@ -237,8 +267,5 @@ export default {
   width: 100%;
   background-color: black;
   height: 100px;
-  @include mixin.md-lt {
-    width: 90px;
-  }
 }
 </style>
