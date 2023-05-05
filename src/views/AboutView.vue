@@ -66,7 +66,7 @@
       </div>
     </div>
 
-    <div class="footer">Thomas Le Cam</div>
+    <!-- <div class="footer">Thomas Le Cam</div> -->
 
     <div class="about__informations">
       <p class="about__informations__address">Ferme de la Rougeraie</p>
@@ -245,18 +245,18 @@ export default {
         list-style: none;
         padding: 0;
         margin: 0;
-      }
 
-      & img {
-        display: block;
-        width: 40px;
-      }
+        & li {
+          margin-bottom: 20px;
 
-      &__links li {
-        margin-bottom: 20px;
+          & img {
+            display: block;
+            width: 40px;
+          }
 
-        &:hover {
-          cursor: pointer;
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
     }
@@ -265,7 +265,7 @@ export default {
 
 .footer {
   width: 100%;
-  background-color: black;
+  background-color: white;
   height: 100px;
 }
 </style>

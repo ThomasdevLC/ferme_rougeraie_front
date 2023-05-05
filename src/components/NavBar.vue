@@ -1,37 +1,39 @@
 <template>
   <header>
-    <img
-      class="logo"
-      :src="image"
-      alt=" logo"
-      @dblclick="this.$router.push({ name: 'AdminView' })"
-    />
-    <div class="nav-cart">
-      <nav>
-        <router-link class="link" :to="{ name: 'AboutView' }"
-          >À propos</router-link
-        >
-        <router-link class="link" :to="{ name: 'ProductsView' }"
-          >Produits</router-link
-        >
-        <router-link
-          class="link"
-          v-if="$route.path === '/admin'"
-          :to="{ name: 'AdminView' }"
-          >Admin</router-link
-        >
-      </nav>
-      <div class="overlay" v-if="showModal" @click="closeModal"></div>
-      <div class="modal" v-if="showModal"><ShopCart /></div>
-      <div v-if="$route.path !== '/admin'" class="cart-container">
-        <img
-          class="shop-cart"
-          @click="openModal"
-          :src="basketImage"
-          alt=" panier"
-        />
-        <div class="cart-total" v-if="productStore.cartCount">
-          {{ productStore.cartCount }}
+    <div class="header br">
+      <img
+        class="header__logo"
+        :src="image"
+        alt=" logo"
+        @dblclick="this.$router.push({ name: 'AdminView' })"
+      />
+      <div class="header__nav">
+        <nav>
+          <router-link class="header__nav__link" :to="{ name: 'AboutView' }"
+            >À propos</router-link
+          >
+          <router-link class="header__nav__link" :to="{ name: 'ProductsView' }"
+            >Produits</router-link
+          >
+          <router-link
+            class="header__nav__link"
+            v-if="$route.path === '/admin'"
+            :to="{ name: 'AdminView' }"
+            >Admin</router-link
+          >
+        </nav>
+        <div class="overlay" v-if="showModal" @click="closeModal"></div>
+        <div class="modal" v-if="showModal"><ShopCart /></div>
+        <div v-if="$route.path !== '/admin'" class="header__nav__cart">
+          <img
+            class="header__nav__cart__image"
+            @click="openModal"
+            :src="basketImage"
+            alt=" panier"
+          />
+          <div class="header__nav__cart__total" v-if="productStore.cartCount">
+            {{ productStore.cartCount }}
+          </div>
         </div>
       </div>
     </div>
@@ -41,7 +43,7 @@
 <script>
 import { useProductStore } from "../stores/ProductStore";
 import ShopCart from "../components/ShopCart.vue";
-import logo from "../assets/logo.png";
+import header__logo from "../assets/logo.png";
 import basket from "../assets/images/basket.png";
 
 export default {
@@ -56,7 +58,7 @@ export default {
   data() {
     return {
       showModal: false,
-      image: logo,
+      image: header__logo,
       basketImage: basket,
     };
   },
@@ -71,8 +73,10 @@ export default {
 };
 </script>
 
-<style scoped>
-header {
+<style scoped lang="scss">
+@use "../assets/styles/mixins" as mixin;
+
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -80,59 +84,86 @@ header {
   padding: 20px 40px;
   background-color: white;
   border-bottom: 1px solid #444;
+
+  @include mixin.sm-lt {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  &__logo {
+    height: 140px;
+    @include mixin.sm-lt {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include mixin.sm-lt {
+      flex-direction: column;
+    }
+
+    &__link {
+      font-size: 26px;
+      color: #444;
+      text-decoration: none;
+      margin-left: 80px;
+
+      @include mixin.sm-lt {
+        flex-direction: column;
+        font-size: 24px;
+        margin: 0px;
+        padding: 0 30px;
+      }
+    }
+  }
 }
 
-.link {
-  font-size: 26px;
+.router-link-active {
+  border-bottom: 2px solid var(--primary);
 }
 
-.logo {
-  height: 140px;
-}
-
-.nav-cart {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-header a {
-  color: #444;
-  text-decoration: none;
-  margin-left: 80px;
-}
-header a.router-link-active {
-  color: #444;
-  border-bottom: 2px solid #fe8401;
-}
-
-.cart-container {
+.header__nav__cart {
   position: relative;
   z-index: 1;
+
+  &__image {
+    height: 45px;
+    cursor: pointer;
+    margin-left: 80px;
+
+    @include mixin.sm-lt {
+      margin: 0px;
+      padding-top: 40px;
+    }
+  }
+
+  &__total {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    top: -10px;
+    right: -10px;
+    background-color: var(--primary);
+    color: white;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 0;
+
+    @include mixin.sm-lt {
+      top: 25px;
+      right: -10px;
+    }
+  }
 }
 
-.shop-cart {
-  height: 45px;
-  cursor: pointer;
-  margin-left: 80px;
-}
-
-.cart-total {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  top: -10px;
-  right: -10px;
-  background-color: #fe8401;
-  color: white;
-  font-size: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  z-index: 0;
-}
 .overlay {
   position: fixed;
   top: 0;
@@ -152,7 +183,6 @@ header a.router-link-active {
   transform: translate(-50%, -50%);
   z-index: 9999;
   background: white;
-  padding: 20px;
-  /* border-radius: 8px; */
+  padding: 30px 60px;
 }
 </style>
