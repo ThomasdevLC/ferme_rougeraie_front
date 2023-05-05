@@ -38,7 +38,9 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
+@use "../assets/styles/mixins" as mixin;
+
 .admin-btn {
   display: flex;
   justify-content: center;
