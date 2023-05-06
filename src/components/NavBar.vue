@@ -154,35 +154,13 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
     z-index: 0;
+    cursor: pointer;
 
     @include mixin.sm-lt {
       top: 25px;
       right: -10px;
     }
   }
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-}
-
-.modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
-  background: white;
-  padding: 30px 60px;
 }
 </style>

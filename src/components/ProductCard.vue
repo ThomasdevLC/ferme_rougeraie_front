@@ -107,8 +107,8 @@ export default {
   display: flex;
   flex-direction: column;
   margin: 10px;
-  max-width: 277px;
-  height: 450px;
+  max-width: 260px;
+  height: 440px;
   overflow: hidden;
 }
 
@@ -125,7 +125,7 @@ export default {
 }
 
 .card-text {
-  width: 277px;
+  width: 260px;
   padding: 0 10px;
   line-height: 0;
   display: flex;
@@ -135,7 +135,8 @@ export default {
 
 .product-name {
   font-family: "Jacques Francois", serif;
-  font-size: 34px;
+  font-size: 30px;
+  margin-bottom: 20px;
 }
 
 .cart-icons {
@@ -153,7 +154,7 @@ button {
 
 .quantity {
   width: 12px;
-  line-height: 15px;
+  /* line-height: 15px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -170,33 +171,12 @@ button {
 
 .add-cart {
   font-weight: 500;
+  margin-top: 20px;
+
   cursor: pointer;
 }
 
 .add-cart:hover {
   color: black;
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-}
-
-.modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
 }
 </style>
