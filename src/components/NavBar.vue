@@ -6,6 +6,7 @@
         :src="image"
         alt=" logo"
         @dblclick="this.$router.push({ name: 'AdminView' })"
+        v-doubletap="handleDoubleTap"
       />
       <div class="header__nav">
         <nav>
@@ -45,9 +46,14 @@ import { useProductStore } from "../stores/ProductStore";
 import ShopCart from "../components/ShopCart.vue";
 import header__logo from "../assets/logo.png";
 import basket from "../assets/images/basket.png";
+import doubletap from "../utils/doubletap.js";
 
 export default {
   components: { ShopCart },
+
+  directives: {
+    doubletap,
+  },
 
   setup() {
     const productStore = useProductStore();
@@ -68,6 +74,10 @@ export default {
     },
     closeModal() {
       this.showModal = false;
+    },
+
+    handleDoubleTap() {
+      this.$router.push({ name: "AdminView" });
     },
   },
 };

@@ -1,16 +1,19 @@
 <template>
-  <div class="product-infos">
-    <div class="image"><img :src="product.image" alt="photo produit" /></div>
-    <div class="">
-      <p class="product-infos-name">{{ product.name }}</p>
-      <p class="price">
+  <div class="product">
+    <div class="product__image">
+      <img :src="product.image" alt="photo produit" />
+    </div>
+    <div class="product__infos">
+      <p class="product__infos__name">{{ product.name }}</p>
+      <p class="product__infos__price">
         {{ product.price }} € / <span> {{ product.unit }}</span>
       </p>
     </div>
 
-    <div class="item-quantity">
-      <div class="cart-icons">
+    <div class="product__quantity">
+      <div class="product__quantity__eval">
         <button
+          class="product__quantity__eval__btn"
           @click="
             decrementQuantity();
             handleChange();
@@ -18,11 +21,17 @@
         >
           -
         </button>
-        <div v-if="product.interval" class="quantity" style="width: 23px">
-          {{ quantity.toFixed(1) }} <span class="weight"> kg</span>
+        <div
+          v-if="product.interval"
+          class="product__quantity__eval__unit"
+          style="width: 23px"
+        >
+          {{ quantity.toFixed(1) }}
+          <span class="product__quantity__eval__weight"> kg</span>
         </div>
-        <div v-else class="quantity">{{ quantity }}</div>
+        <div v-else class="product__quantity__eval__unit">{{ quantity }}</div>
         <button
+          class="product__quantity__eval__btn"
           @click="
             incrementQuantity();
             handleChange();
@@ -32,9 +41,9 @@
         </button>
       </div>
     </div>
-    <div class="price-item">{{ totalPrice }} <span>€</span></div>
+    <div class="product__total">{{ totalPrice }} <span>€</span></div>
     <div
-      class="material-icons remove-item"
+      class="material-icons product__delete"
       @click="productStore.deleteCartProduct(product.id)"
     >
       clear
@@ -94,77 +103,114 @@ export default {
 };
 </script>
 
-<style scoped>
-.product-infos {
+<style scoped lang="scss">
+@use "../assets/styles/mixins" as mixin;
+
+.product {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 600px;
+  // width: 600px;
   column-gap: 30px;
   border-bottom: 1px solid #ddd;
   padding: 15px;
-}
 
-.image {
-  display: flex;
-  align-items: center;
-}
-.image img {
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  object-fit: cover;
-}
+  @include mixin.xs {
+    flex-direction: column;
+    padding: 10px;
+  }
 
-.product-infos-name {
-  line-height: 10px;
-  font-weight: 500;
-}
+  &__image {
+    display: flex;
+    align-items: center;
 
-.price {
-  width: 180px;
-  font-size: 14px;
-  line-height: 0px;
-}
+    & img {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
 
-.cart-icons {
-  display: flex;
-}
+  &__infos {
+    width: 180px;
 
-button {
-  background-color: white;
-  border: 1px solid #000000;
-  color: #000000;
-  font-size: 10px;
-  padding: 3px 10px;
-  cursor: pointer;
-}
+    // @include mixin.sm-lt {
+    //   width: 100px;
+    // }
 
-.quantity {
-  width: 12px;
-  line-height: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  column-gap: 2px;
-  padding: 3px 10px;
-  font-size: 14px;
-  border-top: 1px solid #000000;
-  border-bottom: 1px solid #000000;
-}
+    @include mixin.xs {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      row-gap: 20px;
+    }
 
-.weight {
-  font-size: 12px;
-}
+    &__name {
+      line-height: 20px;
+      font-weight: 500;
+    }
 
-.price-item {
-  font-size: 18px;
-  width: 90px;
-  text-align: right;
-}
+    &__price {
+      font-size: 14px;
+      line-height: 0px;
 
-.remove-item:hover {
-  color: black;
-  cursor: pointer;
+      @include mixin.xs {
+        display: none;
+      }
+    }
+  }
+
+  &__quantity {
+    &__eval {
+      display: flex;
+      @include mixin.xs {
+        margin-bottom: 10px;
+      }
+
+      &__btn {
+        background-color: white;
+        border: 1px solid #000000;
+        color: #000000;
+        font-size: 10px;
+        padding: 3px 10px;
+        cursor: pointer;
+      }
+      &__unit {
+        width: 12px;
+        line-height: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 2px;
+        padding: 3px 10px;
+        font-size: 14px;
+        border-top: 1px solid #000000;
+        border-bottom: 1px solid #000000;
+      }
+      &__weight {
+        font-size: 12px;
+      }
+    }
+  }
+  &__total {
+    font-size: 18px;
+    width: 90px;
+    text-align: right;
+
+    @include mixin.sm-lt {
+      font-size: 14px;
+    }
+    @include mixin.xs {
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__delete:hover {
+    color: black;
+    cursor: pointer;
+  }
 }
 </style>
