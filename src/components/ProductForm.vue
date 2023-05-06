@@ -3,6 +3,7 @@
     <div class="file-name-form">
       <input
         class="custom-input"
+        id="name"
         type="text"
         placeholder="nom produit"
         v-model="name"
@@ -35,7 +36,7 @@
 
     <div>
       <select v-model="unit" required class="custom-input">
-        <option :value="null" disabled selected hidden>unité</option>
+        <option value="null" disabled selected hidden>unité</option>
         <option value="piece">Pièce</option>
         <option value="Botte">Botte</option>
         <option value="kg">kg</option>
@@ -183,6 +184,11 @@ export default {
 .file-name-form {
   display: flex;
 }
+
+#name {
+  padding: 18px;
+}
+
 .selectedProduct {
   object-fit: cover;
   border-radius: 50%;
