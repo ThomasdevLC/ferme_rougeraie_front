@@ -1,21 +1,38 @@
 <template>
   <div class="card">
-    <div class="card-image">
+    <div class="card__image">
       <img :src="product.image" alt="photo produit" />
     </div>
-    <div class="card-text">
-      <p class="product-name">{{ product.name }}</p>
-      <p>
+    <div class="card__text">
+      <p class="card__text__name">{{ product.name }}</p>
+      <p class="card__text__price">
         {{ product.price }} € / <span> {{ product.unit }}</span>
       </p>
-      <div class="item-quantity">
-        <div class="cart-icons">
-          <button @click="decrementQuantity">-</button>
-          <div v-if="product.interval" class="quantity" style="width: 23px">
-            {{ quantity.toFixed(1) }} <span class="weight"> kg</span>
+      <div class="card__text__quantity">
+        <div class="card__text__quantity__eval">
+          <button
+            @click="decrementQuantity"
+            class="card__text__quantity__eval__button"
+          >
+            -
+          </button>
+          <div
+            v-if="product.interval"
+            class="card__text__quantity__eval__unit"
+            style="width: 23px"
+          >
+            {{ quantity.toFixed(1) }}
+            <span class="card__text__quantity__eval__weight"> kg</span>
           </div>
-          <div v-else class="quantity">{{ quantity }}</div>
-          <button @click="incrementQuantity">+</button>
+          <div v-else class="card__text__quantity__eval__unit">
+            {{ quantity }}
+          </div>
+          <button
+            @click="incrementQuantity"
+            class="card__text__quantity__eval__button"
+          >
+            +
+          </button>
         </div>
       </div>
       <!-- <QuantityManager
@@ -24,7 +41,7 @@
         @quantity-updated="quantity = $event"
         :key="product.id"
       /> -->
-      <p class="add-cart" @click="addToCart">AJOUTER AU PANIER</p>
+      <p class="card__text__addcart" @click="addToCart">AJOUTER AU PANIER</p>
     </div>
     <div class="overlay" v-if="showModal" @click="closeModal"></div>
     <div class="modal" v-if="showModal"><p>produit déja ajouté !</p></div>
@@ -100,9 +117,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .card {
-  border: 1px solid #ddd;
+  border: 1px solid gray;
   background: white;
   display: flex;
   flex-direction: column;
@@ -110,73 +127,74 @@ export default {
   max-width: 260px;
   height: 440px;
   overflow: hidden;
-}
 
-.card-image {
-  height: 280px;
-  overflow: hidden;
-  /* position: relative; */
-}
+  &__image {
+    height: 280px;
+    overflow: hidden;
+    /* position: relative; */
 
-.card-image img {
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
-}
+    & img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
 
-.card-text {
-  width: 260px;
-  padding: 0 10px;
-  line-height: 0;
-  display: flex;
-  flex-direction: column;
-  row-gap: 5px;
-}
+  &__text {
+    width: 260px;
+    padding: 0 10px;
+    line-height: 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
 
-.product-name {
-  font-family: "Jacques Francois", serif;
-  font-size: 30px;
-  margin-bottom: 20px;
-}
+    &__name {
+      font-family: var(--font-family-titles);
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
 
-.cart-icons {
-  display: flex;
-}
+    &__quantity {
+      &__eval {
+        display: flex;
 
-button {
-  background-color: white;
-  border: 1px solid #000000;
-  color: #000000;
-  font-size: 10px;
-  padding: 3px 10px;
-  cursor: pointer;
-}
+        &__button {
+          background-color: white;
+          border: 1px solid #000000;
+          color: #000000;
+          font-size: 10px;
+          padding: 3px 10px;
+          cursor: pointer;
+        }
 
-.quantity {
-  width: 12px;
-  /* line-height: 15px; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  column-gap: 2px;
-  padding: 3px 10px;
-  font-size: 14px;
-  border-top: 1px solid #000000;
-  border-bottom: 1px solid #000000;
-}
+        &__unit {
+          width: 12px;
+          line-height: 15px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          column-gap: 2px;
+          padding: 3px 10px;
+          font-size: 14px;
+          border-top: 1px solid #000000;
+          border-bottom: 1px solid #000000;
+        }
 
-.weight {
-  font-size: 12px;
-}
+        &__weight {
+          font-size: 12px;
+        }
+      }
+    }
 
-.add-cart {
-  font-weight: 500;
-  margin-top: 20px;
+    &__addcart {
+      font-weight: 500;
+      margin-top: 20px;
+      cursor: pointer;
 
-  cursor: pointer;
-}
-
-.add-cart:hover {
-  color: black;
+      &:hover {
+        color: black;
+      }
+    }
+  }
 }
 </style>

@@ -75,22 +75,4 @@ export default {
     }
   }
 }
-
-// @media screen and (max-width: 1200px) {
-//   .card-container {
-//     grid-template-columns: repeat(3, 1fr);
-//   }
-// }
-
-// @media screen and (max-width: 900px) {
-//   .card-container {
-//     grid-template-columns: repeat(2, 1fr);
-//   }
-// }
-
-// @media screen and (max-width: 600px) {
-//   .card-container {
-//     grid-template-columns: repeat(1, 1fr);
-//   }
-// }
 </style>
