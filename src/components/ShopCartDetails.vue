@@ -135,10 +135,6 @@ export default {
   &__infos {
     width: 180px;
 
-    // @include mixin.sm-lt {
-    //   width: 100px;
-    // }
-
     @include mixin.xs {
       display: flex;
       justify-content: space-around;

@@ -1,35 +1,43 @@
 <template>
-  <div v-if="!validatedCart" class="cart-validate">
-    <button @click="handleValidate">Valider panier</button>
-  </div>
-  <form v-else @submit.prevent="handleSubmit">
-    <div>
-      <label for="name"></label>
-      <input type="text" id="name" placeholder="Nom " v-model="name" required />
+  <div class="cartform">
+    <div v-if="!validatedCart" class="cartform__validate">
+      <button @click="handleValidate">Valider panier</button>
     </div>
-    <div>
-      <label for="email"></label>
-      <input
-        type="email"
-        id="email"
-        placeholder="email "
-        v-model="email"
-        required
-      />
-    </div>
-    <div>
-      <label for="telephone"></label>
-      <input
-        type="text"
-        id="telephone"
-        placeholder="Téléphone "
-        v-model="telephone"
-        required
-      />
-    </div>
+    <form v-else @submit.prevent="handleSubmit">
+      <div>
+        <label for="name"></label>
+        <input
+          type="text"
+          id="name"
+          placeholder="Nom "
+          v-model="name"
+          required
+        />
+      </div>
+      <div>
+        <label for="email"></label>
+        <input
+          type="email"
+          id="email"
+          placeholder="email "
+          v-model="email"
+          required
+        />
+      </div>
+      <div>
+        <label for="telephone"></label>
+        <input
+          type="text"
+          id="telephone"
+          placeholder="Téléphone "
+          v-model="telephone"
+          required
+        />
+      </div>
 
-    <button type="submit">Passer commande</button>
-  </form>
+      <button type="submit">Passer commande</button>
+    </form>
+  </div>
 </template>
 <script>
 import { useProductStore } from "../stores/ProductStore";
@@ -79,13 +87,20 @@ export default {
       console.log(order);
       productStore.addOrder(order); // call addOrder action to add order to state and server
       this.productStore.clearCart();
-      // emit  event to trigger thanksModal in the parent component
+      // emit event to trigger thanksModal in the parent component
       this.$emit("submit-form");
     },
   },
 };
 </script>
-<style scoped>
+<style scoped lang="scss">
+@use "../assets/styles/mixins" as mixin;
+
+.cartform__validate {
+  display: flex;
+  margin: 40px auto 0;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -104,6 +119,10 @@ input {
   color: #555;
   font-size: 16px;
   outline: none;
+
+  @include mixin.xs {
+    width: 230px;
+  }
 }
 
 button {
@@ -112,12 +131,7 @@ button {
   padding: 10px;
   border: 0;
   font-size: 16px;
-  margin: auto;
+  margin: 10px auto 0;
   cursor: pointer;
-}
-
-.cart-validate {
-  display: flex;
-  margin: 40px auto 0;
 }
 </style>
