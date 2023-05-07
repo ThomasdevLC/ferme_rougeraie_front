@@ -1,17 +1,20 @@
 <template>
   <div class="product">
-    <div class="product-infos">
-      <div class="image"><img :src="product.image" alt="photo produit" /></div>
-      <h4>{{ product.name }}</h4>
-      <p>
+    <div class="product__infos">
+      <div class="product__infos__image">
+        <img :src="product.image" alt="photo produit" />
+      </div>
+      <h4 class="product__infos__name">{{ product.name }}</h4>
+      <p class="product__infos__price">
         {{ product.price }} € / <span> {{ product.unit }}</span>
+        <span class="product__infos__inter" v-if="product.interval">
+          - inter {{ product.interval }}
+        </span>
       </p>
-      <p v-if="product.interval">- inter {{ product.interval }}</p>
     </div>
 
-    <div class="icons">
+    <div class="product__icons">
       <div class="overlay" v-if="showModal" @click="closeModal"></div>
-
       <div class="modal" v-if="showModal"><EditModal :product="product" /></div>
 
       <i class="material-icons" @click="openModal">edit</i>
@@ -64,75 +67,60 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@use "../assets/styles/mixins" as mixin;
+
 .product {
-  padding: 6px 10px;
+  padding: 10px;
   background: #fff;
   margin-top: 20px;
   border-radius: 2px;
-  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.05);
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
 
-.image {
-  overflow: hidden;
-  border-radius: 6px;
-  width: 60px;
-  height: 60px;
-}
-.image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+  @include mixin.xs {
+    flex-direction: column;
+  }
 
-.product-infos {
-  display: flex;
-  align-items: center;
-  width: 420px;
-  align-items: center;
-}
+  &__infos {
+    display: flex;
+    align-items: center;
+    @include mixin.xs {
+      flex-direction: column;
+    }
 
-.product h4,
-.product p {
-  margin-left: 15px;
-}
+    &__image {
+      overflow: hidden;
+      border-radius: 6px;
+      width: 60px;
+      height: 60px;
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &__name,
+    &__price,
+    &__inter {
+      margin-left: 15px;
+    }
+  }
 
-.product i {
-  font-size: 22px;
-  margin-left: 6px;
-  cursor: pointer;
-  color: #bbb;
-}
-.product i.active {
-  color: #0f0b0d;
-}
-.product i:hover {
-  color: #525252;
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-}
-
-.modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
+  &__icons {
+    & i {
+      font-size: 22px;
+      margin-left: 6px;
+      color: var(--gray-2);
+      cursor: pointer;
+    }
+    & i.active {
+      color: var(--gray-4);
+    }
+    & i:hover {
+      color: var(--gray-3);
+    }
+  }
 }
 </style>

@@ -10,10 +10,16 @@
       />
       <div class="header__nav">
         <nav>
-          <router-link class="header__nav__link" :to="{ name: 'AboutView' }"
+          <router-link
+            class="header__nav__link"
+            v-if="$route.path !== '/admin'"
+            :to="{ name: 'AboutView' }"
             >À propos</router-link
           >
-          <router-link class="header__nav__link" :to="{ name: 'ProductsView' }"
+          <router-link
+            class="header__nav__link"
+            v-if="$route.path !== '/admin'"
+            :to="{ name: 'ProductsView' }"
             >Produits</router-link
           >
           <router-link

@@ -137,12 +137,18 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@use "../assets/styles/mixins" as mixin;
+
 .form {
   max-width: 400px;
   margin: 0 auto;
   display: grid;
   gap: 10px;
+
+  @include mixin.xs {
+    width: 350px;
+  }
 }
 
 .file {
@@ -213,7 +219,7 @@ form button {
   border-radius: 2px;
   font-size: 16px;
   width: 140px;
-  margin: auto;
+  margin: 10px auto;
   cursor: pointer;
 }
 form button:hover {
@@ -235,6 +241,10 @@ form button:hover {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+
+  @include mixin.xs {
+    width: 350px;
+  }
 }
 
 .error-message {

@@ -60,6 +60,7 @@ export default {
 .container {
   max-width: 640px;
   margin: 20px auto;
+  padding: 25px;
 }
 
 /* filter nav */

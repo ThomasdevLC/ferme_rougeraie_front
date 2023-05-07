@@ -1,5 +1,5 @@
 <template>
-  <div class="admin">
+  <div class="admin br">
     <div class="admin-btn">
       <button
         @click="nested = 'products'"
@@ -39,8 +39,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@use "../assets/styles/mixins" as mixin;
-
 .admin-btn {
   display: flex;
   justify-content: center;
