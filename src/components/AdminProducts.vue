@@ -9,8 +9,15 @@
   <div v-else class="container">
     <!-- filter -->
     <nav class="filter">
-      <button @click="filter = 'all'">Tous les produits</button>
-      <button @click="filter = 'displayed'">Produits affichés</button>
+      <button @click="filter = 'all'" :class="{ selected: filter === 'all' }">
+        Tous les produits
+      </button>
+      <button
+        @click="filter = 'displayed'"
+        :class="{ selected: filter === 'displayed' }"
+      >
+        Produits affichés
+      </button>
     </nav>
 
     <!-- LIST -->
@@ -53,8 +60,8 @@ export default {
 
 <style scoped>
 .new-product-form {
-  background: #e7e7e7;
-  padding: 60px 0;
+  background: var(--gray-2);
+  padding: 40px 0;
 }
 
 .container {
@@ -71,16 +78,21 @@ export default {
 .filter button {
   font-size: 15px;
   background: #fff;
-  border: 2px solid #555;
-  border-radius: 4px;
+  border: 2px solid var(--gray-4);
+  /* border-radius: 4px; */
   margin-left: 10px;
-  padding: 4px 8px;
+  padding: 8px 10px;
   cursor: pointer;
+}
+
+button.selected {
+  border: 2px solid var(--secondary);
+  color: var(--gray-4);
 }
 
 /* product list */
 .product-list {
-  max-width: 640px;
-  margin: 20px auto;
+  /* max-width: 640px; */
+  /* margin: 20px auto; */
 }
 </style>

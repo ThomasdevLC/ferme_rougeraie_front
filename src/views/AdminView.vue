@@ -1,5 +1,5 @@
 <template>
-  <div class="admin br">
+  <div class="admin">
     <div class="admin-btn">
       <button
         @click="nested = 'products'"

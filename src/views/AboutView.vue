@@ -1,5 +1,5 @@
 <template>
-  <div class="about br" :style="{ 'background-image': `url(${image})` }">
+  <div class="about" :style="{ 'background-image': `url(${image})` }">
     ;
 
     <div class="about__container">
@@ -157,11 +157,18 @@ export default {
           font-size: 60px;
           font-family: var(--font-family-titles);
           margin: 0;
+
+          @include mixin.xs {
+            font-size: 40px;
+          }
         }
 
         &__subtitle {
           font-size: 24px;
           font-family: var(--font-family-titles);
+          @include mixin.xs {
+            font-size: 20px;
+          }
         }
 
         &__introducing {

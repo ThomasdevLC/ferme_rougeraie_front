@@ -1,6 +1,6 @@
 <template>
   <header>
-    <div class="header br">
+    <div class="header">
       <img
         class="header__logo"
         :src="image"

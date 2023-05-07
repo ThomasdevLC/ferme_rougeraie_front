@@ -80,6 +80,8 @@ export default {
   align-items: center;
 
   @include mixin.xs {
+    padding: 20px;
+
     flex-direction: column;
   }
 
@@ -105,6 +107,9 @@ export default {
     &__price,
     &__inter {
       margin-left: 15px;
+      @include mixin.xs {
+        margin-left: 0px;
+      }
     }
   }
 
@@ -114,6 +119,9 @@ export default {
       margin-left: 6px;
       color: var(--gray-2);
       cursor: pointer;
+      @include mixin.xs {
+        margin-left: 16px;
+      }
     }
     & i.active {
       color: var(--gray-4);
