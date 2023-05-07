@@ -69,7 +69,7 @@ export default {
   padding: 6px 10px;
   background: #fff;
   margin-top: 20px;
-  border-radius: 6px;
+  border-radius: 2px;
   box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.05);
   display: flex;
   justify-content: space-between;

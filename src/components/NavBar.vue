@@ -118,7 +118,7 @@ export default {
 
     &__link {
       font-size: 26px;
-      color: #444;
+      color: var(--text-color);
       text-decoration: none;
       margin-left: 80px;
 

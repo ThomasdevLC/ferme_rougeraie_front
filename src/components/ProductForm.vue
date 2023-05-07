@@ -1,5 +1,5 @@
 <template>
-  <form class="product-form" @submit.prevent="handleSubmit">
+  <form class="form" @submit.prevent="handleSubmit">
     <div class="file-name-form">
       <input
         class="custom-input"
@@ -138,7 +138,7 @@ export default {
 </script>
 
 <style scoped>
-.product-form {
+.form {
   max-width: 400px;
   margin: 0 auto;
   display: grid;
@@ -150,8 +150,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #ffd859;
-  border-color: #ffd859;
   margin-left: -55px;
 }
 
@@ -165,15 +163,14 @@ export default {
   border-style: solid;
   border-radius: 50%;
   border-width: 1px;
-  background-color: hsl(0, 0%, 100%);
-  color: #ffd859;
+  color: var(--light-primary);
   padding: 10px;
   display: flex;
   place-items: center;
 }
 
 .file > label:hover {
-  background-color: hsl(46, 100%, 92%);
+  color: var(--primary);
 }
 
 .file > label.no-padding {
@@ -186,7 +183,7 @@ export default {
 }
 
 #name {
-  padding: 18px;
+  padding: 18px 12px;
 }
 
 .selectedProduct {
@@ -197,26 +194,30 @@ export default {
 }
 
 select {
-  color: #444;
+  color: var(--gray-2);
   background: #fff;
-  font-family: "Poppins";
+  font-family: var(--font-family);
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
 select option {
-  font-family: "Poppins";
+  font-family: var(--font-family);
 }
+
 form button {
-  background: #ffd859;
+  background: var(--light-primary);
   padding: 10px;
   border: 0;
-  border-radius: 6px;
+  border-radius: 2px;
   font-size: 16px;
   width: 140px;
   margin: auto;
   cursor: pointer;
+}
+form button:hover {
+  background: var(--primary);
 }
 
 .custom-input {
@@ -227,9 +228,9 @@ form button {
   border: 0;
   width: 400px;
   padding: 14px;
-  border-radius: 6px;
-  color: #555;
   font-size: 16px;
+  color: #555;
+  border-radius: 2px;
   outline: none;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
