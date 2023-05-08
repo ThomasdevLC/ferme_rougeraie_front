@@ -1,50 +1,52 @@
 <template>
-  <form @submit.prevent="handleSubmit">
-    <div class="file">
-      <label for="input-file">
-        <img :src="editImage" alt="produit" />
-      </label>
+  <div class="edit">
+    <form @submit.prevent="handleSubmit">
+      <div class="file">
+        <label for="input-file">
+          <img :src="editImage" alt="produit" />
+        </label>
+        <input
+          class="edit-file"
+          id="input-file"
+          type="file"
+          ref="fileInput"
+          @change="handleImage"
+        />
+      </div>
       <input
-        class="edit-file"
-        id="input-file"
-        type="file"
-        ref="fileInput"
-        @change="handleImage"
+        class="custom-input"
+        type="text"
+        placeholder="nom"
+        v-model="editName"
       />
-    </div>
-    <input
-      class="custom-input"
-      type="text"
-      placeholder="nom"
-      v-model="editName"
-    />
 
-    <input
-      class="custom-input"
-      type="number"
-      placeholder="prix"
-      step="0.001"
-      v-model="editPrice"
-    />
-    <div>
-      <select v-model="editUnit" class="custom-input">
-        <option value="kg">kg</option>
-        <option value="piece">pièce</option>
-        <option value="Litre">Litre</option>
-      </select>
-    </div>
-
-    <div v-if="editUnit === 'kg'" class="input-field">
       <input
         class="custom-input"
         type="number"
-        placeholder="interval "
-        step="0.1"
-        v-model="editInterval"
+        placeholder="prix"
+        step="0.001"
+        v-model="editPrice"
       />
-    </div>
-    <button>Valider</button>
-  </form>
+      <div>
+        <select v-model="editUnit" class="custom-input">
+          <option value="kg">kg</option>
+          <option value="piece">pièce</option>
+          <option value="Litre">Litre</option>
+        </select>
+      </div>
+
+      <div v-if="editUnit === 'kg'" class="input-field">
+        <input
+          class="custom-input"
+          type="number"
+          placeholder="interval "
+          step="0.1"
+          v-model="editInterval"
+        />
+      </div>
+      <button>Valider</button>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -123,9 +125,11 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@use "../assets/styles/mixins" as mixin;
+
 form {
-  max-width: 400px;
+  // max-width: 400px;
   margin: 0 auto;
   display: grid;
   gap: 10px;
@@ -133,9 +137,6 @@ form {
 
 .file {
   position: relative;
-  /* display: inline-block; */
-  /* display: flex; */
-  /* overflow: hidden; */
   margin: auto;
 }
 
@@ -143,6 +144,7 @@ form {
   position: absolute;
   left: 0;
   top: 0;
+  width: 50px;
   opacity: 0;
 }
 
@@ -179,6 +181,9 @@ form input {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  @include mixin.xs {
+    width: 275px;
+  }
 }
 
 select {
@@ -196,6 +201,10 @@ select {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+
+  @include mixin.xs {
+    width: 275px;
+  }
 }
 
 select option {

@@ -1,6 +1,9 @@
 <template>
   <div class="admin">
     <div class="admin-btn">
+      <i class="fa-solid fa-carrot"></i>
+      <i class="fa-solid fa-receipt"></i>
+      <i class="fa-solid fa-list-ol"></i>
       <button
         @click="nested = 'products'"
         :class="{ selected: nested === 'products' }"

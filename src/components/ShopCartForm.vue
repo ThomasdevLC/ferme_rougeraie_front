@@ -41,6 +41,7 @@
 </template>
 <script>
 import { useProductStore } from "../stores/ProductStore";
+import { formatDate } from "../utils/dateFormat.js";
 
 export default {
   setup() {
@@ -81,7 +82,7 @@ export default {
           totalPrice: product.totalPrice,
         })),
         total: productStore.totalCart,
-        date: new Date().toLocaleString(),
+        date: formatDate(new Date()),
         status: "pending",
       };
       console.log(order);
