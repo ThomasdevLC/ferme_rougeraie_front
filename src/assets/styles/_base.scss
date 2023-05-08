@@ -61,3 +61,21 @@ h4 {
     width: 280px;
   }
 }
+
+.filter {
+  margin: 10px auto;
+  text-align: right;
+}
+.filter button {
+  font-size: 15px;
+  background: #fff;
+  border: 2px solid var(--gray-4);
+  margin-left: 10px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.filter button.selected {
+  border: 2px solid var(--secondary);
+  color: var(--text-color);
+}

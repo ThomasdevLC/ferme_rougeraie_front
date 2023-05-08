@@ -114,7 +114,6 @@ export default {
 
   setup() {
     const productStore = useProductStore();
-    productStore.getOrders();
     const filter = ref("all");
 
     return { productStore, filter };
@@ -123,7 +122,10 @@ export default {
   methods: {
     handleDeleteAll() {
       const productStore = useProductStore();
-      productStore.clearOrders();
+      if (confirm("Voulez-vous vraiment supprimer toutes les commandes ?")) {
+        productStore.clearOrders();
+        alert("commandes supprimées");
+      }
     },
   },
 };
@@ -132,29 +134,16 @@ export default {
 <style scoped lang="scss">
 @use "../assets/styles/mixins" as mixin;
 
-.filter {
-  margin: 10px auto;
-  text-align: right;
-}
-.filter button {
-  font-size: 15px;
-  background: #fff;
-  border: 2px solid var(--gray-4);
-  margin-left: 10px;
-  padding: 8px 10px;
-  cursor: pointer;
-}
-
-button.selected {
-  border: 2px solid var(--secondary);
-  color: var(--text-color);
-}
-
 .orders-list {
   max-width: 1200px;
   padding: 40px;
   margin: auto;
 }
+
+button {
+  width: 90px;
+}
+
 table {
   border-collapse: collapse;
   width: 100%;
@@ -162,12 +151,22 @@ table {
 }
 
 thead {
-  @include mixin.sm-lt {
+  @include mixin.xs {
     display: none;
   }
 }
 
 th {
   text-align: center;
+}
+
+i {
+  font-size: 24px;
+  padding: 0 20px;
+  cursor: pointer;
+}
+
+i:hover {
+  color: var(--primary);
 }
 </style>

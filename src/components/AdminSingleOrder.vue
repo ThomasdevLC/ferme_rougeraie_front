@@ -56,20 +56,14 @@ export default {
 <style scoped lang="scss">
 @use "../assets/styles/mixins" as mixin;
 
-table {
-  border-collapse: collapse;
-  width: 100%;
-  text-align: left;
-}
-
 tbody {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--gray-3);
 }
 
 tr {
   width: 100%;
 
-  @include mixin.sm-lt {
+  @include mixin.xs {
     display: flex;
     flex-direction: column;
     row-gap: 10px;
@@ -78,17 +72,16 @@ tr {
 }
 
 td {
-  /* padding: 8px; */
   text-align: center;
 }
 
 th {
-  background-color: #eee;
+  background-color: var(--gray-2);
 }
 
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
+// tr:nth-child(even) {
+//   background-color: var(--gray-2);
+// }
 
 ul {
   list-style: none;

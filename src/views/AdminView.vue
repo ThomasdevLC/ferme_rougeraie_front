@@ -58,7 +58,9 @@ button {
 }
 
 i {
-  font-size: 25px;
+  font-size: 28px;
+  padding: 0 10px;
+  cursor: pointer;
 }
 
 i.selected {
@@ -66,5 +68,6 @@ i.selected {
 }
 i:hover {
   color: var(--light-primary);
+  opacity: 0.7;
 }
 </style>

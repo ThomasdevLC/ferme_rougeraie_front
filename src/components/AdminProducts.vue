@@ -1,12 +1,12 @@
 <template>
   <!-- form -->
-  <div class="new-product-form">
+  <div class="product__form">
     <ProductForm />
   </div>
 
   <div class="loading" v-if="productStore.loading">Chargement...</div>
 
-  <div v-else class="container">
+  <div v-else class="product__container">
     <!-- filter -->
     <nav class="filter">
       <button @click="filter = 'all'" :class="{ selected: filter === 'all' }">
@@ -59,38 +59,14 @@ export default {
 </script>
 
 <style scoped>
-.new-product-form {
+.product__form {
   background: var(--gray-2);
   padding: 40px 0;
 }
 
-.container {
+.product__container {
   max-width: 640px;
   margin: 20px auto;
   padding: 25px;
-}
-
-/* filter nav */
-.filter {
-  margin: 10px auto;
-  text-align: right;
-}
-.filter button {
-  font-size: 15px;
-  background: #fff;
-  border: 2px solid var(--gray-4);
-  margin-left: 10px;
-  padding: 8px 10px;
-  cursor: pointer;
-}
-
-button.selected {
-  border: 2px solid var(--secondary);
-}
-
-/* product list */
-.product-list {
-  /* max-width: 640px; */
-  /* margin: 20px auto; */
 }
 </style>
