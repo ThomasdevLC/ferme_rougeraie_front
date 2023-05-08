@@ -1,7 +1,7 @@
 <template>
   <!-- filter -->
 
-  <div class="orders-list">
+  <div class="orders-list br">
     <nav class="filter">
       <button @click="filter = 'all'" :class="{ selected: filter === 'all' }">
         reçues
@@ -129,7 +129,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@use "../assets/styles/mixins" as mixin;
+
 .filter {
   margin: 10px auto;
   text-align: right;
@@ -157,6 +159,12 @@ table {
   border-collapse: collapse;
   width: 100%;
   text-align: left;
+}
+
+thead {
+  @include mixin.sm-lt {
+    display: none;
+  }
 }
 
 th {

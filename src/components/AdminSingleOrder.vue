@@ -53,7 +53,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
+@use "../assets/styles/mixins" as mixin;
+
 table {
   border-collapse: collapse;
   width: 100%;
@@ -66,6 +68,13 @@ tbody {
 
 tr {
   width: 100%;
+
+  @include mixin.sm-lt {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    padding: 10px 0;
+  }
 }
 
 td {
@@ -89,6 +98,7 @@ ul {
 
 i {
   cursor: pointer;
+  font-size: 20px;
 }
 
 .selected {
