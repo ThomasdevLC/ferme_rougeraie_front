@@ -107,7 +107,7 @@ export default {
   }
 
   &__logo {
-    height: 140px;
+    height: 160px;
     @include mixin.sm-lt {
       margin-bottom: 20px;
     }

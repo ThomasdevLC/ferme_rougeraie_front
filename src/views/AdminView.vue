@@ -68,8 +68,8 @@ button {
 }
 
 i {
-  font-size: 28px;
-  padding: 0 10px;
+  font-size: 34px;
+  padding: 0 20px;
   cursor: pointer;
 }
 
