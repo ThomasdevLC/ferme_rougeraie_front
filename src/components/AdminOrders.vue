@@ -99,7 +99,7 @@ export default {
 }
 
 button {
-  width: 90px;
+  max-width: 90px;
 }
 
 table {
@@ -109,6 +109,7 @@ table {
 }
 
 thead {
+  background-color: var(--gray-2);
   @include mixin.xs {
     display: none;
   }

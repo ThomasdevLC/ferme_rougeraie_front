@@ -79,10 +79,6 @@ th {
   background-color: var(--gray-2);
 }
 
-// tr:nth-child(even) {
-//   background-color: var(--gray-2);
-// }
-
 ul {
   list-style: none;
   padding-left: 40px;

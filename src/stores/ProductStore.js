@@ -50,6 +50,27 @@ export const useProductStore = defineStore("productStore", {
     doneOrders() {
       return this.orders.filter((o) => o.status === "done");
     },
+
+    // count getters:
+
+    totalProductsByName() {
+      const productsByName = {};
+
+      this.orders.forEach((order) => {
+        order.products.forEach((product) => {
+          const { name, quantity, unit } = product; // Destructure the "name", "quantity" and "unit" properties from the product object
+          if (productsByName[name]) {
+            productsByName[name].quantity += quantity;
+          } else {
+            productsByName[name] = { quantity, unit }; // Include the "unit" property in the object
+          }
+        });
+
+        console.log(productsByName);
+      });
+
+      return productsByName;
+    },
   },
 
   actions: {

@@ -11,7 +11,12 @@
         :class="{ selected: selected === 'orders' }"
         @click="selected = 'orders'"
       ></i>
-      <i class="fa-solid fa-list-ol"></i>
+      <i
+        class="fa-solid fa-list-ol"
+        :class="{ selected: selected === 'count' }"
+        @click="selected = 'count'"
+      >
+      </i>
     </div>
     <div v-if="selected === 'products'">
       <AdminProducts />
@@ -19,17 +24,22 @@
     <div v-else-if="selected === 'orders'">
       <AdminOrders />
     </div>
+    <div v-else-if="selected === 'count'">
+      <AdminCount />
+    </div>
   </div>
 </template>
 <script>
 import { ref } from "vue";
 import AdminOrders from "../components/AdminOrders.vue";
 import AdminProducts from "../components/AdminProducts.vue";
+import AdminCount from "../components/AdminCount.vue";
 
 export default {
   components: {
     AdminOrders,
     AdminProducts,
+    AdminCount,
   },
   setup() {
     const selected = ref("products");
