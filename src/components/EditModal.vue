@@ -143,7 +143,7 @@ form {
   position: absolute;
   left: 0;
   top: 0;
-  width: 50px;
+  // width: 50px;
   opacity: 0;
 }
 

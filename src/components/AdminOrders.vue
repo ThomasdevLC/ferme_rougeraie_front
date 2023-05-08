@@ -1,7 +1,6 @@
 <template>
   <!-- filter -->
-
-  <div class="orders-list br">
+  <div class="orders">
     <nav class="filter">
       <button @click="filter = 'all'" :class="{ selected: filter === 'all' }">
         reçues
@@ -17,16 +16,16 @@
       </button>
       <i class="fa-regular fa-circle-xmark" @click="handleDeleteAll"></i>
     </nav>
-
-    <div v-if="filter === 'all'">
+    <div>
       <p>
-        {{ productStore.orderCount }} commande<span
-          v-if="productStore.orderCount > 1"
-          >s</span
+        {{ orders.length }} commande<span v-if="orders.length > 1">s</span>
+        <span v-if="filter === 'pending'"> en cours</span>
+        <span v-if="filter === 'done'">
+          traitée<span v-if="orders.length > 1">s</span></span
         >
       </p>
-      <table v-if="filter === 'all'">
-        <thead v-if="productStore.orders.length > 0">
+      <table>
+        <thead>
           <tr>
             <th>N°</th>
             <th>date</th>
@@ -38,63 +37,7 @@
         </thead>
 
         <AdminSingleOrder
-          v-for="order in productStore.orders"
-          :key="order.id"
-          :order="order"
-        />
-      </table>
-    </div>
-
-    <div v-if="filter === 'pending'">
-      <p>
-        {{ productStore.pendingOrders.length }} commande<span
-          v-if="productStore.pendingOrders > 1"
-          >s</span
-        >
-        en cours
-      </p>
-
-      <table>
-        <thead v-if="productStore.pendingOrders.length > 0">
-          <tr>
-            <th>N°</th>
-            <th>date</th>
-            <th>contact</th>
-            <th>produits</th>
-            <th>total</th>
-            <th>status</th>
-          </tr>
-        </thead>
-
-        <AdminSingleOrder
-          v-for="order in productStore.pendingOrders"
-          :key="order.id"
-          :order="order"
-        />
-      </table>
-    </div>
-    <div v-if="filter === 'done'">
-      <p>
-        {{ productStore.doneOrders.length }} commande
-        <span v-if="productStore.doneOrders > 1">s</span> traitée<span
-          v-if="productStore.doneOrders > 1"
-          >s</span
-        >
-      </p>
-      <table>
-        <thead v-if="productStore.doneOrders.length > 0">
-          <tr>
-            <th>N°</th>
-            <th>date</th>
-            <th>contact</th>
-            <th>produits</th>
-            <th>total</th>
-            <th>status</th>
-          </tr>
-        </thead>
-
-        <AdminSingleOrder
-          v-for="order in productStore.doneOrders"
+          v-for="order in orders"
           :key="order.id"
           :order="order"
         />
@@ -128,13 +71,28 @@ export default {
       }
     },
   },
+
+  computed: {
+    orders() {
+      switch (this.filter) {
+        case "all":
+          return this.productStore.orders;
+        case "pending":
+          return this.productStore.pendingOrders;
+        case "done":
+          return this.productStore.doneOrders;
+        default:
+          return [];
+      }
+    },
+  },
 };
 </script>
 
 <style scoped lang="scss">
 @use "../assets/styles/mixins" as mixin;
 
-.orders-list {
+.orders {
   max-width: 1200px;
   padding: 40px;
   margin: auto;

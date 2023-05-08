@@ -117,17 +117,17 @@ export default {
     & i {
       font-size: 22px;
       margin-left: 6px;
-      color: var(--gray-2);
+      color: var(--gray-3);
       cursor: pointer;
       @include mixin.xs {
         margin-left: 16px;
       }
     }
     & i.active {
-      color: var(--gray-4);
+      color: var(--text-color);
     }
     & i:hover {
-      color: var(--gray-3);
+      color: var(--gray-4);
     }
   }
 }

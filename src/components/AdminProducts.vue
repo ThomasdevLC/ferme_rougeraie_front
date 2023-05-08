@@ -22,13 +22,25 @@
 
     <!-- LIST -->
     <div class="product-list" v-if="filter === 'all'">
-      <p>{{ productStore.totalCount }} produits enregistrés</p>
+      <p>
+        {{ productStore.totalCount }} produit<span
+          v-if="productStore.totalCount > 1"
+          >s</span
+        >
+        enregistré<span v-if="productStore.totalCount > 1">s</span>
+      </p>
       <div v-for="product in productStore.products" :key="product">
         <ProductDetails :product="product" />
       </div>
     </div>
     <div class="product-list" v-if="filter === 'displayed'">
-      <p>{{ productStore.displayedCount }} produits affichés</p>
+      <p>
+        {{ productStore.displayedCount }} produit<span
+          v-if="productStore.displayedCount > 1"
+          >s</span
+        >
+        affiché<span v-if="productStore.displayedCount > 1">s</span>
+      </p>
       <div v-for="product in productStore.displayed" :key="product">
         <ProductDetails :product="product" />
       </div>
