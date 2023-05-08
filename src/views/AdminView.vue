@@ -1,26 +1,22 @@
 <template>
   <div class="admin">
     <div class="admin-btn">
-      <i class="fa-solid fa-carrot"></i>
-      <i class="fa-solid fa-receipt"></i>
+      <i
+        class="fa-solid fa-carrot"
+        :class="{ selected: selected === 'products' }"
+        @click="selected = 'products'"
+      ></i>
+      <i
+        class="fa-solid fa-receipt"
+        :class="{ selected: selected === 'orders' }"
+        @click="selected = 'orders'"
+      ></i>
       <i class="fa-solid fa-list-ol"></i>
-      <button
-        @click="nested = 'products'"
-        :class="{ selected: nested === 'products' }"
-      >
-        produits
-      </button>
-      <button
-        @click="nested = 'orders'"
-        :class="{ selected: nested === 'orders' }"
-      >
-        commandes
-      </button>
     </div>
-    <div v-if="nested === 'products'">
+    <div v-if="selected === 'products'">
       <AdminProducts />
     </div>
-    <div v-else-if="nested === 'orders'">
+    <div v-else-if="selected === 'orders'">
       <AdminOrders />
     </div>
   </div>
@@ -36,8 +32,8 @@ export default {
     AdminProducts,
   },
   setup() {
-    const nested = ref("products");
-    return { nested };
+    const selected = ref("products");
+    return { selected };
   },
 };
 </script>
@@ -61,12 +57,14 @@ button {
   transition: all 0.6s;
 }
 
-button.selected {
-  background: #ffd859;
-  font-weight: 700;
-  color: #333;
+i {
+  font-size: 25px;
 }
-button:hover {
-  font-weight: 700;
+
+i.selected {
+  color: var(--primary);
+}
+i:hover {
+  color: var(--light-primary);
 }
 </style>

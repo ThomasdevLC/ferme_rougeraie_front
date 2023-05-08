@@ -3,10 +3,21 @@
 
   <div class="orders-list">
     <nav class="filter">
-      <button @click="filter = 'all'">reçues</button>
-      <button @click="filter = 'pending'">en cours</button>
-      <button @click="filter = 'done'">traitées</button>
+      <button @click="filter = 'all'" :class="{ selected: filter === 'all' }">
+        reçues
+      </button>
+      <button
+        @click="filter = 'pending'"
+        :class="{ selected: filter === 'pending' }"
+      >
+        en cours
+      </button>
+      <button @click="filter = 'done'" :class="{ selected: filter === 'done' }">
+        traitées
+      </button>
+      <i class="fa-regular fa-circle-xmark" @click="handleDeleteAll"></i>
     </nav>
+
     <div v-if="filter === 'all'">
       <p>
         {{ productStore.orderCount }} commande<span
@@ -108,6 +119,13 @@ export default {
 
     return { productStore, filter };
   },
+
+  methods: {
+    handleDeleteAll() {
+      const productStore = useProductStore();
+      productStore.clearOrders();
+    },
+  },
 };
 </script>
 
@@ -119,11 +137,15 @@ export default {
 .filter button {
   font-size: 15px;
   background: #fff;
-  border: 2px solid #555;
-  border-radius: 4px;
+  border: 2px solid var(--gray-4);
   margin-left: 10px;
-  padding: 4px 8px;
+  padding: 8px 10px;
   cursor: pointer;
+}
+
+button.selected {
+  border: 2px solid var(--secondary);
+  color: var(--text-color);
 }
 
 .orders-list {

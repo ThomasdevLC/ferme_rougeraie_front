@@ -79,7 +79,6 @@ export default {
   font-size: 15px;
   background: #fff;
   border: 2px solid var(--gray-4);
-  /* border-radius: 4px; */
   margin-left: 10px;
   padding: 8px 10px;
   cursor: pointer;
@@ -87,7 +86,6 @@ export default {
 
 button.selected {
   border: 2px solid var(--secondary);
-  color: var(--gray-4);
 }
 
 /* product list */

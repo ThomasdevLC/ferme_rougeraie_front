@@ -20,19 +20,18 @@
       <td>{{ order.total }} €</td>
       <td class="status">
         <i
+          class="fa-regular fa-circle"
           v-if="order.status === 'pending'"
-          class="material-icons"
           @click="toggleStatus"
         >
-          radio_button_unchecked
         </i>
+
         <i
+          class="fa-solid fa-circle-check"
           v-else
-          class="material-icons"
           @click="toggleStatus"
           :class="{ selected: order.status === 'done' }"
         >
-          check_circle_outline
         </i>
       </td>
     </tr>
@@ -93,6 +92,6 @@ i {
 }
 
 .selected {
-  color: #ffd859;
+  color: var(--primary);
 }
 </style>

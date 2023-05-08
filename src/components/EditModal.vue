@@ -129,7 +129,6 @@ export default {
 @use "../assets/styles/mixins" as mixin;
 
 form {
-  // max-width: 400px;
   margin: 0 auto;
   display: grid;
   gap: 10px;
@@ -157,13 +156,17 @@ form {
 }
 
 form button {
-  background: #ffd859;
-  border: 0;
+  background: var(--light-primary);
   padding: 10px;
-  font-family: "Poppins";
-  border-radius: 6px;
+  border: 0;
+  border-radius: 2px;
   font-size: 16px;
+  width: 140px;
+  margin: 10px auto;
   cursor: pointer;
+}
+form button:hover {
+  background: var(--primary);
 }
 
 form input {
@@ -171,11 +174,11 @@ form input {
   grid-template-columns: auto 1fr;
   gap: 10px;
   align-items: center;
-  border: 1px solid #ccc;
+  border: 1px solid var(--gray-3);
   width: 400px;
   padding: 14px;
-  border-radius: 6px;
-  color: #555;
+  border-radius: 2px;
+  color: var(--gray-4);
   font-size: 16px;
   outline: none;
   -moz-box-sizing: border-box;
@@ -191,11 +194,11 @@ select {
   grid-template-columns: auto 1fr;
   gap: 10px;
   align-items: center;
-  border: 1px solid #ccc;
+  border: 1px solid var(--gray-3);
   width: 400px;
   padding: 14px;
-  border-radius: 6px;
-  color: #555;
+  border-radius: 2px;
+  color: var(--gray-4);
   font-size: 16px;
   outline: none;
   -moz-box-sizing: border-box;

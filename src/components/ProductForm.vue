@@ -30,7 +30,7 @@
       class="custom-input"
       type="number"
       placeholder="prix"
-      step="0.001"
+      step="0.01"
       v-model="price"
     />
 
@@ -235,7 +235,7 @@ form button:hover {
   width: 400px;
   padding: 14px;
   font-size: 16px;
-  color: #555;
+  color: var(--gray-4);
   border-radius: 2px;
   outline: none;
   -moz-box-sizing: border-box;

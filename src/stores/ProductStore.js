@@ -192,5 +192,14 @@ export const useProductStore = defineStore("productStore", {
         }
       }
     },
+    async clearOrders() {
+      this.orders = [];
+      const res = await fetch("http://localhost:3000/orders", {
+        method: "DELETE",
+      });
+      if (res.error) {
+        console.log(res.error);
+      }
+    },
   },
 });
