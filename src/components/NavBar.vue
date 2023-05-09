@@ -42,6 +42,12 @@
             {{ productStore.cartCount }}
           </div>
         </div>
+
+        <i
+          v-else
+          class="fa-solid fa-arrow-right-from-bracket header__nav__logout"
+          @click="logout"
+        ></i>
       </div>
     </div>
   </header>
@@ -84,6 +90,12 @@ export default {
 
     handleDoubleTap() {
       this.$router.push({ name: "AdminView" });
+    },
+
+    logout() {
+      sessionStorage.removeItem("token"); // Remove token from session storage
+      this.productStore.isLoggedIn = false; // Set isLoggedIn to false
+      this.$router.push({ name: "ProductsView" });
     },
   },
 };
@@ -133,6 +145,14 @@ export default {
         font-size: 24px;
         margin: 0px;
         padding: 0 30px;
+      }
+    }
+    &__logout {
+      font-size: 26px;
+      margin-left: 40px;
+      cursor: pointer;
+      &:hover {
+        color: var(--primary);
       }
     }
   }

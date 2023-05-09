@@ -1,11 +1,7 @@
 <template>
   <div class="admin">
-    <div v-if="!isLoggedIn">
-      <form @submit.prevent="submitPassword">
-        <label for="password">Password:</label>
-        <input type="password" id="password" v-model="inputPassword" />
-        <button type="submit">Submit</button>
-      </form>
+    <div v-if="!productStore.isLoggedIn">
+      <AuthLogin />
     </div>
     <div v-else>
       <div class="admin-btn">
@@ -25,7 +21,6 @@
           @click="selected = 'count'"
         >
         </i>
-        <i class="fa-solid fa-arrow-right-from-bracket" @click="logout"></i>
       </div>
       <div v-if="selected === 'products'">
         <AdminProducts />
@@ -41,42 +36,25 @@
 </template>
 <script>
 import { ref } from "vue";
+import { useProductStore } from "../stores/ProductStore";
+
 import AdminOrders from "../components/AdminOrders.vue";
 import AdminProducts from "../components/AdminProducts.vue";
 import AdminCount from "../components/AdminCount.vue";
-const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
+import AuthLogin from "../components/AuthLogin.vue";
 
 export default {
   components: {
     AdminOrders,
     AdminProducts,
     AdminCount,
+    AuthLogin,
   },
   setup() {
     const selected = ref("products");
-    const inputPassword = ref("DixFruitsEtlegumes!");
-    const isLoggedIn = ref(false);
+    const productStore = useProductStore();
 
-    return { selected, inputPassword, isLoggedIn };
-  },
-
-  methods: {
-    submitPassword(event) {
-      event.preventDefault(); // prevent form submission
-      // Simulate server authentication
-      if (this.inputPassword.value === ADMIN_PASSWORD) {
-        const token = "mytoken"; // Generate a random token
-        sessionStorage.setItem("token", token); // Store token in session storage
-        this.isLoggedIn = true; // Set isLoggedIn to true
-      }
-      this.inputPassword = "";
-    },
-
-    logout() {
-      sessionStorage.removeItem("token"); // Remove token from session storage
-      this.isLoggedIn = false; // Set isLoggedIn to false
-      this.$router.push({ name: "ProductsView" });
-    },
+    return { selected, productStore };
   },
 };
 </script>
