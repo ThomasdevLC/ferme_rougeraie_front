@@ -54,7 +54,7 @@
       />
     </div>
 
-    <button>Ajouter</button>
+    <button class="btn">Ajouter</button>
     <p v-if="errorMessage" class="error-message">
       Merci de remplir tous les champs.
     </p>
@@ -210,20 +210,6 @@ select {
 
 select option {
   font-family: var(--font-family);
-}
-
-form button {
-  background: var(--light-primary);
-  padding: 10px;
-  border: 0;
-  border-radius: 2px;
-  font-size: 16px;
-  width: 140px;
-  margin: 10px auto;
-  cursor: pointer;
-}
-form button:hover {
-  background: var(--primary);
 }
 
 .custom-input {

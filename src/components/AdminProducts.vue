@@ -21,20 +21,21 @@
     </nav>
 
     <!-- LIST -->
-    <div class="product-list" v-if="filter === 'all'">
-      <p>
+    <div class="product__list" v-if="filter === 'all'">
+      <p class="product__list__count">
         {{ productStore.totalCount }} produit<span
           v-if="productStore.totalCount > 1"
           >s</span
         >
         enregistré<span v-if="productStore.totalCount > 1">s</span>
       </p>
+
       <div v-for="product in productStore.products" :key="product">
         <ProductDetails :product="product" />
       </div>
     </div>
     <div class="product-list" v-if="filter === 'displayed'">
-      <p>
+      <p class="product__list__count">
         {{ productStore.displayedCount }} produit<span
           v-if="productStore.displayedCount > 1"
           >s</span
@@ -70,7 +71,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .product__form {
   background: var(--gray-2);
   padding: 40px 0;
@@ -80,5 +81,11 @@ export default {
   max-width: 640px;
   margin: 20px auto;
   padding: 25px;
+}
+
+.product__list {
+  &__count {
+    font-size: 18px;
+  }
 }
 </style>

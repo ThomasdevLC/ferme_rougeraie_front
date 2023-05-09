@@ -29,8 +29,9 @@
       />
       <div>
         <select v-model="editUnit" class="custom-input">
+          <option value="piece">Pièce</option>
+          <option value="Botte">Botte</option>
           <option value="kg">kg</option>
-          <option value="piece">pièce</option>
           <option value="Litre">Litre</option>
         </select>
       </div>
@@ -44,7 +45,7 @@
           v-model="editInterval"
         />
       </div>
-      <button>Valider</button>
+      <button class="btn">Valider</button>
     </form>
   </div>
 </template>
@@ -155,20 +156,6 @@ form {
   cursor: pointer;
 }
 
-form button {
-  background: var(--light-primary);
-  padding: 10px;
-  border: 0;
-  border-radius: 2px;
-  font-size: 16px;
-  width: 140px;
-  margin: 10px auto;
-  cursor: pointer;
-}
-form button:hover {
-  background: var(--primary);
-}
-
 form input {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -212,15 +199,5 @@ select {
 
 select option {
   font-family: "Poppins";
-}
-form button {
-  background: #ffd859;
-  padding: 10px;
-  border: 0;
-  border-radius: 6px;
-  font-size: 16px;
-  width: 140px;
-  margin: auto;
-  cursor: pointer;
 }
 </style>
