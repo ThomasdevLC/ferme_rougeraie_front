@@ -44,10 +44,12 @@ import { useProductStore } from "../stores/ProductStore";
 export default {
   props: ["order"],
   methods: {
-    toggleStatus() {
+    async toggleStatus() {
       const productStore = useProductStore();
-      this.order.status = this.order.status === "pending" ? "done" : "pending";
-      productStore.changeOrderStatus(this.order.id, this.order);
+      const newStatus = this.order.status === "pending" ? "done" : "pending";
+      await productStore.changeOrderStatus(this.order._id, {
+        status: newStatus,
+      });
     },
   },
 };

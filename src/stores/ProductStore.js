@@ -196,27 +196,29 @@ export const useProductStore = defineStore("productStore", {
     },
 
     async changeOrderStatus(id, updatedOrder) {
-      const orderIndex = this.orders.findIndex((o) => o.id === id);
-      if (orderIndex !== -1) {
-        this.orders[orderIndex] = {
-          ...this.orders[orderIndex],
+      console.log(updatedOrder);
+      const order = this.orders.find((o) => o._id === id);
+      console.log(order);
+
+      if (order) {
+        const orderId = this.orders.indexOf(order);
+        this.orders[orderId] = {
+          ...this.orders[orderId],
           ...updatedOrder,
         };
 
-        const res = await fetch(
-          "http://localhost:5000/order/" + updatedOrder._id,
-          {
-            method: "PATCH",
-            body: JSON.stringify(updatedOrder),
-            headers: { "Content-Type": "application/json" },
-          }
-        );
+        const res = await fetch("http://localhost:5000/order/" + id, {
+          method: "PATCH",
+          body: JSON.stringify(updatedOrder),
+          headers: { "Content-Type": "application/json" },
+        });
 
         if (res.error) {
           console.log(res.error);
         }
       }
     },
+
     async clearOrders() {
       this.orders = [];
       const res = await fetch("http://localhost:5000/order", {
