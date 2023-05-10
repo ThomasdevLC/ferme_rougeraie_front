@@ -196,7 +196,6 @@ export const useProductStore = defineStore("productStore", {
     },
 
     async changeOrderStatus(id, updatedOrder) {
-      console.log(updatedOrder);
       const order = this.orders.find((o) => o._id === id);
       console.log(order);
 

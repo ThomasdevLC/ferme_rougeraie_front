@@ -1,7 +1,7 @@
 <template>
   <tbody>
     <tr>
-      <td>{{ order.id }}</td>
+      <td>{{ orderNumber }}</td>
       <td>{{ order.date }}</td>
       <td class="contact">
         {{ order.name }} <br />
@@ -43,6 +43,13 @@ import { useProductStore } from "../stores/ProductStore";
 
 export default {
   props: ["order"],
+
+  computed: {
+    orderNumber() {
+      const productStore = useProductStore();
+      return productStore.orders.indexOf(this.order) + 1;
+    },
+  },
   methods: {
     async toggleStatus() {
       const productStore = useProductStore();
