@@ -57,6 +57,8 @@ export default {
       await productStore.changeOrderStatus(this.order._id, {
         status: newStatus,
       });
+
+      console.log(this.order._id, newStatus);
     },
   },
 };

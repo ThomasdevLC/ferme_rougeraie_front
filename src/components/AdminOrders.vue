@@ -57,6 +57,8 @@ export default {
 
   setup() {
     const productStore = useProductStore();
+    productStore.getOrders();
+
     const filter = ref("all");
 
     return { productStore, filter };
