@@ -92,13 +92,13 @@ export default {
       const productStore = useProductStore();
       if (this.quantity > 0) {
         const existingProduct = productStore.cart.find(
-          (p) => p.id === this.product.id
+          (p) => p.id === this.product._id
         );
         if (existingProduct) {
           // Show modal that the product is already selected
           this.showModal = true;
         } else {
-          const compressedImage = await compressImage(this.product.image); // utiliser la fonction utilitaire
+          const compressedImage = await compressImage(this.product.image);
           productStore.addToCart({
             name: this.product.name,
             price: this.product.price,
@@ -107,7 +107,7 @@ export default {
             interval: this.product.interval,
             totalPrice: this.totalPrice,
             image: compressedImage,
-            id: this.product.id,
+            id: this.product._id,
           });
           this.quantity = 0;
         }

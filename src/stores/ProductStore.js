@@ -84,8 +84,6 @@ export const useProductStore = defineStore("productStore", {
       const data = await res.json();
       this.products = data;
       this.loading = false;
-
-      console.log(this.products);
     },
 
     async addProduct(product) {
@@ -98,9 +96,9 @@ export const useProductStore = defineStore("productStore", {
       }
       formData.append("isDisplayed", product.isDisplayed);
       if (product.image) {
+        console.log("name", product.image);
         const file = dataURItoFile(product.image, product.image.name);
         formData.append("image", file);
-        console.log(file);
       }
 
       const res = await fetch("http://localhost:5000/product/", {
@@ -108,8 +106,8 @@ export const useProductStore = defineStore("productStore", {
         body: formData,
       });
 
-      if (!res.ok) {
-        console.log("Error:", res.statusText);
+      if (res.error) {
+        console.log(res.error);
       } else {
         const newProduct = await res.json();
         this.products.push(newProduct);
@@ -140,12 +138,11 @@ export const useProductStore = defineStore("productStore", {
           method: "PATCH",
           body: formData,
         });
-        if (!res.ok) {
-          console.log("Error:", res.statusText);
+        if (res.error) {
+          console.log(res.error);
         } else {
           const updatedProduct = await res.json();
           this.products[productIndex] = updatedProduct;
-          console.log("store update", updatedProduct);
         }
       }
     },
@@ -163,7 +160,7 @@ export const useProductStore = defineStore("productStore", {
     },
 
     async toggleDisplay(id) {
-      const product = this.products.find((p) => p.id === id);
+      const product = this.products.find((p) => p._id === id);
       product.isDisplayed = !product.isDisplayed;
 
       const res = await fetch("http://localhost:5000/product/" + id, {

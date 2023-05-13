@@ -120,6 +120,7 @@ export default {
     const handleImage = (event) => {
       selectedFile = event.target.files[0];
       selectedImage.value = URL.createObjectURL(selectedFile); //met à jour la valeur de selectedImage
+      imageName.value = selectedFile.name; //ajout d'une nouvelle propriété imageName pour stocker le nom de fichier de l'image
     };
 
     return {
