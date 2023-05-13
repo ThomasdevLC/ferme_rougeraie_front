@@ -19,20 +19,20 @@
 
       <i class="material-icons" @click="openModal">edit</i>
 
-      <i class="material-icons" @click="productStore.deleteProduct(product.id)"
+      <i class="material-icons" @click="productStore.deleteProduct(product._id)"
         >delete</i
       >
       <i
         v-if="product.isDisplayed"
         class="material-icons"
-        @click="productStore.toggleDisplay(product.id)"
+        @click="productStore.toggleDisplay(product._id)"
         >visibility</i
       >
       <i
         v-else
         class="material-icons"
         :class="{ active: !product.isDisplayed }"
-        @click="productStore.toggleDisplay(product.id)"
+        @click="productStore.toggleDisplay(product._id)"
         >visibility_off</i
       >
     </div>

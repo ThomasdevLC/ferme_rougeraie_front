@@ -133,7 +133,7 @@ export const useProductStore = defineStore("productStore", {
             updatedProduct.image.name
           );
           formData.append("image", file);
-          console.log("hello", file);
+          console.log("file", file);
         }
 
         const res = await fetch(`http://localhost:5000/product/${id}`, {
@@ -145,14 +145,14 @@ export const useProductStore = defineStore("productStore", {
         } else {
           const updatedProduct = await res.json();
           this.products[productIndex] = updatedProduct;
-          console.log(updatedProduct);
+          console.log("store update", updatedProduct);
         }
       }
     },
 
     async deleteProduct(id) {
       this.products = this.products.filter((p) => {
-        return p.id !== id;
+        return p._id !== id;
       });
       const res = await fetch("http://localhost:5000/product/" + id, {
         method: "DELETE",
