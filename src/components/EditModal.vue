@@ -80,19 +80,21 @@ export default {
           unit: editUnit.value,
           interval: editInterval.value,
           isDisplayed: props.product.isDisplayed,
-          id: props.product.id,
         };
+
         if (selectedFile !== null) {
           const reader = new FileReader();
           reader.onload = (event) => {
             const imageData = event.target.result;
             updatedProduct.image = imageData;
-            productStore.editProduct(props.product.id, updatedProduct);
+            productStore.editProduct(props.product._id, updatedProduct);
           };
           reader.readAsDataURL(selectedFile);
         } else {
-          productStore.editProduct(props.product.id, updatedProduct);
+          productStore.editProduct(props.product._id, updatedProduct);
         }
+
+        console.log("Product", updatedProduct);
       }
     };
 

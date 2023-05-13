@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { dataURItoFile } from "../utils/dataURItoFile.js";
 
 export const useProductStore = defineStore("productStore", {
   state: () => ({
@@ -79,39 +80,73 @@ export const useProductStore = defineStore("productStore", {
 
     async getProducts() {
       this.loading = true;
-      const res = await fetch("http://localhost:3000/products");
+      const res = await fetch("http://localhost:5000/product/");
       const data = await res.json();
       this.products = data;
       this.loading = false;
+
+      console.log(this.products);
     },
 
     async addProduct(product) {
-      this.products.push(product);
-      const res = await fetch("http://localhost:3000/products", {
+      const formData = new FormData();
+      formData.append("name", product.name);
+      formData.append("price", product.price);
+      formData.append("unit", product.unit);
+      if (product.unit === "kg") {
+        formData.append("interval", product.interval);
+      }
+      formData.append("isDisplayed", product.isDisplayed);
+      if (product.image) {
+        const file = dataURItoFile(product.image, product.image.name);
+        formData.append("image", file);
+        console.log(file);
+      }
+
+      const res = await fetch("http://localhost:5000/product/", {
         method: "POST",
-        body: JSON.stringify(product),
-        headers: { "Content-Type": "application/json" },
+        body: formData,
       });
-      if (res.error) {
-        console.log(res.error);
+
+      if (!res.ok) {
+        console.log("Error:", res.statusText);
+      } else {
+        const newProduct = await res.json();
+        this.products.push(newProduct);
       }
     },
 
-    async editProduct(id, editedProduct) {
-      const productIndex = this.products.findIndex((p) => p.id === id);
+    async editProduct(id, updatedProduct) {
+      const productIndex = this.products.findIndex((p) => p._id === id);
       if (productIndex !== -1) {
-        this.products[productIndex] = {
-          ...this.products[productIndex],
-          ...editedProduct,
-        };
-      }
-      const res = await fetch("http://localhost:3000/products/" + id, {
-        method: "PATCH",
-        body: JSON.stringify(editedProduct),
-        headers: { "Content-Type": "application/json" },
-      });
-      if (res.error) {
-        console.log(res.error);
+        const formData = new FormData();
+        formData.append("name", updatedProduct.name);
+        formData.append("price", updatedProduct.price);
+        formData.append("unit", updatedProduct.unit);
+        if (updatedProduct.unit === "kg") {
+          formData.append("interval", updatedProduct.interval);
+        }
+        formData.append("isDisplayed", updatedProduct.isDisplayed);
+        if (updatedProduct.image) {
+          const file = dataURItoFile(
+            updatedProduct.image,
+            updatedProduct.image.name
+          );
+          formData.append("image", file);
+          console.log("hello", file);
+        }
+
+        const res = await fetch(`http://localhost:5000/product/${id}`, {
+          method: "PATCH",
+          body: formData,
+        });
+        if (!res.ok) {
+          console.log("Error:", res.statusText);
+        } else {
+          const updatedProduct = await res.json();
+          this.products[productIndex] = updatedProduct;
+          console.log(updatedProduct);
+        }
       }
     },
 
@@ -119,7 +154,7 @@ export const useProductStore = defineStore("productStore", {
       this.products = this.products.filter((p) => {
         return p.id !== id;
       });
-      const res = await fetch("http://localhost:3000/products/" + id, {
+      const res = await fetch("http://localhost:5000/product/" + id, {
         method: "DELETE",
       });
       if (res.error) {
@@ -131,7 +166,7 @@ export const useProductStore = defineStore("productStore", {
       const product = this.products.find((p) => p.id === id);
       product.isDisplayed = !product.isDisplayed;
 
-      const res = await fetch("http://localhost:3000/products/" + id, {
+      const res = await fetch("http://localhost:5000/product/" + id, {
         method: "PATCH",
         body: JSON.stringify({ isDisplayed: product.isDisplayed }),
         headers: { "Content-Type": "application/json" },

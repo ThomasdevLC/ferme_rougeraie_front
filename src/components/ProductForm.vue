@@ -100,7 +100,7 @@ export default {
             interval: interval.value,
             isDisplayed: true,
             image: imageData,
-            id: Math.floor(Math.random() * 10000),
+            // id: Math.floor(Math.random() * 10000),
           });
           name.value = "";
           price.value = "";
