@@ -11,7 +11,7 @@
     >
       <p>{{ name }}</p>
       <p>
-        {{ product.quantity }} {{ product.unit
+        {{ product.quantity.toFixed(2) }} {{ product.unit
         }}<span v-if="product.quantity > 1">s</span>
       </p>
     </div>
