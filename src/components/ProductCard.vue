@@ -67,7 +67,7 @@ export default {
 
   computed: {
     totalPrice() {
-      return (this.quantity * this.product.price).toFixed(2);
+      return this.quantity * this.product.price;
     },
   },
 

@@ -33,7 +33,7 @@ export const useProductStore = defineStore("productStore", {
       const total = this.cart.reduce((total, product) => {
         return total + product.quantity * product.price;
       }, 0);
-      return total.toFixed(2);
+      return total;
     },
 
     // order getters:
@@ -184,6 +184,7 @@ export const useProductStore = defineStore("productStore", {
         const product = { ...this.cart[index], ...updatedProduct };
         this.cart.splice(index, 1, product);
         localStorage.setItem("cart", JSON.stringify(this.cart)); // Update localStorage cart
+        console.log("cart", this.cart);
         return;
       } else {
         throw new Error("Product not found");

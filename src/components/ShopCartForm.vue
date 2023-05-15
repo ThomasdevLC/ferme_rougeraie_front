@@ -77,7 +77,7 @@ export default {
 
         products: this.productStore.cart.map((product) => ({
           name: product.name,
-          quantity: product.quantity,
+          quantity: product.quantity.toFixed(2),
           unit: product.unit,
           totalPrice: product.totalPrice,
         })),

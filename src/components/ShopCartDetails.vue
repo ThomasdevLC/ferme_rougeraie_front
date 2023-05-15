@@ -71,7 +71,7 @@ export default {
   },
   computed: {
     totalPrice() {
-      return (this.quantity * this.product.price).toFixed(2);
+      return this.quantity * this.product.price;
     },
   },
   methods: {
@@ -91,6 +91,7 @@ export default {
       const productStore = useProductStore();
       const editedProduct = {
         quantity: this.quantity,
+        totalPrice: this.totalPrice,
       };
       if (this.product.id) {
         if (this.quantity < 0.1) {
