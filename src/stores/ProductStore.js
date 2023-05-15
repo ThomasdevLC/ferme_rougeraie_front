@@ -19,9 +19,6 @@ export const useProductStore = defineStore("productStore", {
       return this.displayed.length;
     },
 
-    // totalCount: (state) => {
-    //   return state.products.length;
-    // },
     totalCount() {
       return this.products.length;
     },
@@ -87,6 +84,7 @@ export const useProductStore = defineStore("productStore", {
     },
 
     async addProduct(product) {
+      console.log(product);
       const formData = new FormData();
       formData.append("name", product.name);
       formData.append("price", product.price);
@@ -96,7 +94,6 @@ export const useProductStore = defineStore("productStore", {
       }
       formData.append("isDisplayed", product.isDisplayed);
       if (product.image) {
-        console.log("name", product.image);
         const file = dataURItoFile(product.image, product.image.name);
         formData.append("image", file);
       }
@@ -134,7 +131,7 @@ export const useProductStore = defineStore("productStore", {
           console.log("file", file);
         }
 
-        const res = await fetch(`http://localhost:5000/product/${id}`, {
+        const res = await fetch("http://localhost:5000/product/" + id, {
           method: "PATCH",
           body: formData,
         });

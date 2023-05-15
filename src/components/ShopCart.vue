@@ -10,7 +10,7 @@
       </div>
     </div>
     <p v-if="productStore.cartCount" class="cart__total">
-      Total : {{ productStore.totalCart }} €
+      Total : {{ priceToEuros(productStore.totalCart) }}
     </p>
 
     <div v-if="productStore.cartCount" class="cart__form">
@@ -23,6 +23,7 @@
 import { useProductStore } from "../stores/ProductStore";
 import ShopCartDetails from "../components/ShopCartDetails.vue";
 import ShopCartForm from "../components/ShopCartForm.vue";
+import { priceToEuros } from "../utils/priceToEuros";
 
 export default {
   components: { ShopCartDetails, ShopCartForm },
@@ -36,6 +37,10 @@ export default {
     return {
       thanksModal: false,
     };
+  },
+
+  methods: {
+    priceToEuros,
   },
 };
 </script>

@@ -64,11 +64,11 @@
 <script>
 import { computed, ref } from "vue";
 import { useProductStore } from "../stores/ProductStore";
+import { convertPriceToCents } from "../utils/priceInCents";
 
 export default {
   setup() {
     const productStore = useProductStore();
-
     const fileInput = ref(null);
     const selectedImage = ref(null); //ajout de la propriété selectedImage
     let selectedFile = null;
@@ -80,6 +80,10 @@ export default {
 
     const capitalized = computed(() => {
       return name.value.charAt(0).toUpperCase() + name.value.slice(1);
+    });
+
+    const priceInCents = computed(() => {
+      return convertPriceToCents(price.value);
     });
 
     const handleSubmit = () => {
@@ -95,12 +99,11 @@ export default {
           const imageData = event.target.result;
           productStore.addProduct({
             name: capitalized.value,
-            price: price.value,
+            price: priceInCents.value,
             unit: unit.value,
             interval: interval.value,
             isDisplayed: true,
             image: imageData,
-            // id: Math.floor(Math.random() * 10000),
           });
           name.value = "";
           price.value = "";
@@ -120,7 +123,6 @@ export default {
     const handleImage = (event) => {
       selectedFile = event.target.files[0];
       selectedImage.value = URL.createObjectURL(selectedFile); //met à jour la valeur de selectedImage
-      imageName.value = selectedFile.name; //ajout d'une nouvelle propriété imageName pour stocker le nom de fichier de l'image
     };
 
     return {

@@ -13,11 +13,11 @@
           <li v-for="product in order.products" :key="product.name">
             - {{ product.quantity }}
             <span v-if="product.unit === 'kg'">kg</span> {{ product.name }} -
-            {{ product.totalPrice }} €
+            {{ priceToEuros(product.totalPrice) }}
           </li>
         </ul>
       </td>
-      <td>{{ order.total }} €</td>
+      <td>{{ priceToEuros(order.total) }}</td>
       <td class="status">
         <i
           class="fa-regular fa-circle"
@@ -40,6 +40,7 @@
 
 <script>
 import { useProductStore } from "../stores/ProductStore";
+import { priceToEuros } from "../utils/priceToEuros";
 
 export default {
   props: ["order"],
@@ -60,6 +61,7 @@ export default {
 
       console.log(this.order._id, newStatus);
     },
+    priceToEuros,
   },
 };
 </script>

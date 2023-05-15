@@ -6,7 +6,7 @@
     <div class="product__infos">
       <p class="product__infos__name">{{ product.name }}</p>
       <p class="product__infos__price">
-        {{ product.price }} € / <span> {{ product.unit }}</span>
+        {{ priceToEuros(product.price) }} / <span> {{ product.unit }}</span>
       </p>
     </div>
 
@@ -41,7 +41,9 @@
         </button>
       </div>
     </div>
-    <div class="product__total">{{ totalPrice }} <span>€</span></div>
+    <div class="product__total">
+      {{ priceToEuros(totalPrice) }}
+    </div>
     <div
       class="material-icons product__delete"
       @click="productStore.deleteCartProduct(product.id)"
@@ -53,6 +55,7 @@
 
 <script>
 import { useProductStore } from "../stores/ProductStore";
+import { priceToEuros } from "../utils/priceToEuros";
 
 export default {
   props: ["product"],
@@ -72,6 +75,8 @@ export default {
     },
   },
   methods: {
+    priceToEuros,
+
     decrementQuantity() {
       const interval = this.product.interval || 1;
       if (this.quantity > 0) {

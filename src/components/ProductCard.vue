@@ -6,7 +6,7 @@
     <div class="card__text">
       <p class="card__text__name">{{ product.name }}</p>
       <p class="card__text__price">
-        {{ product.price }} € / <span> {{ product.unit }}</span>
+        {{ priceToEuros(product.price) }} / <span> {{ product.unit }}</span>
       </p>
       <div class="card__text__quantity">
         <div class="card__text__quantity__eval">
@@ -52,6 +52,7 @@
 import { useProductStore } from "../stores/ProductStore";
 import QuantityManager from "../components/QuantityManager.vue";
 import { compressImage } from "../utils/imageUtils";
+import { priceToEuros } from "../utils/priceToEuros";
 
 export default {
   components: { QuantityManager },
@@ -87,6 +88,7 @@ export default {
     closeModal() {
       this.showModal = false;
     },
+    priceToEuros,
 
     async addToCart() {
       const productStore = useProductStore();

@@ -4,9 +4,14 @@ APP
             + ShopCartForm
             + ShopCartDetails
 - AdminView
-    + PoductForm
-    + PoductDetails
+    + AdminProducts
+        + PoductForm
+        + PoductDetails
             + EditModal
+    + AdminOrders
+        + AdminSingleOrder
+
+- AboutView
 
 - ProductsView
     + PoductCard

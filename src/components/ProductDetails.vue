@@ -6,7 +6,7 @@
       </div>
       <h4 class="product__infos__name">{{ product.name }}</h4>
       <p class="product__infos__price">
-        {{ product.price }} € / <span> {{ product.unit }}</span>
+        {{ priceToEuros(product.price) }} / <span> {{ product.unit }}</span>
         <span class="product__infos__inter" v-if="product.interval">
           - inter {{ product.interval }}
         </span>
@@ -41,6 +41,8 @@
 
 <script>
 import { useProductStore } from "../stores/ProductStore";
+import { priceToEuros } from "../utils/priceToEuros";
+
 import EditModal from "./EditModal.vue";
 
 export default {
@@ -63,6 +65,7 @@ export default {
     closeModal() {
       this.showModal = false;
     },
+    priceToEuros,
   },
 };
 </script>
