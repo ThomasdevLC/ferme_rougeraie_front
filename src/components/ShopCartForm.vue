@@ -57,11 +57,11 @@ export default {
       validatedCart: false,
     };
   },
-  computed: {
-    totalPrice() {
-      return (this.quantity * this.product.price).toFixed(2);
-    },
-  },
+  // computed: {
+  //   totalPrice() {
+  //     return (this.quantity * this.product.price).toFixed(2);
+  //   },
+  // },
   methods: {
     handleValidate() {
       return (this.validatedCart = true);
@@ -85,8 +85,7 @@ export default {
         date: formatDate(new Date()),
         status: "pending",
       };
-      console.log(order);
-      productStore.addOrder(order); // call addOrder action to add order to state and server
+      productStore.addOrder(order);
       this.productStore.clearCart();
       // emit event to trigger thanksModal in the parent component
       this.$emit("submit-form");

@@ -73,7 +73,7 @@ export default {
     const selectedImage = ref(null); //ajout de la propriété selectedImage
     let selectedFile = null;
     const name = ref("");
-    const price = ref("");
+    const price = ref(null);
     const unit = ref(null);
     const interval = ref("");
     const errorMessage = ref(false);
@@ -106,7 +106,7 @@ export default {
             image: imageData,
           });
           name.value = "";
-          price.value = "";
+          price.value = null;
           unit.value = null;
           interval.value = "";
           selectedFile = null;

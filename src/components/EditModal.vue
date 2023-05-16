@@ -24,7 +24,7 @@
         class="custom-input"
         type="number"
         placeholder="prix"
-        step="0.001"
+        step="0.01"
         v-model="editPrice"
       />
       <div>
@@ -53,6 +53,7 @@
 <script>
 import { computed, ref } from "vue";
 import { useProductStore } from "../stores/ProductStore";
+import { convertPriceToCents } from "../utils/priceInCents";
 
 export default {
   props: ["product"],
@@ -63,7 +64,7 @@ export default {
     const fileInput = ref(null);
     let selectedFile = null;
     const editName = ref(props.product.name);
-    const editPrice = ref(props.product.price);
+    const editPrice = ref((props.product.price / 100).toFixed(2));
     const editUnit = ref(props.product.unit);
     const editInterval = ref(props.product.interval);
     const editImage = ref(props.product.image);
@@ -71,12 +72,14 @@ export default {
     const capitalized = computed(() => {
       return editName.value.charAt(0).toUpperCase() + editName.value.slice(1);
     });
-
+    const priceInCents = computed(() => {
+      return convertPriceToCents(editPrice.value);
+    });
     const handleSubmit = () => {
       if (editName.value.length > 0) {
         const updatedProduct = {
           name: capitalized.value,
-          price: editPrice.value,
+          price: priceInCents.value,
           unit: editUnit.value,
           interval: editInterval.value,
           isDisplayed: props.product.isDisplayed,
