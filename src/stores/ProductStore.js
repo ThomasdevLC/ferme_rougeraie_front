@@ -35,7 +35,9 @@ export const useProductStore = defineStore("productStore", {
         console.log("Price:", product.price);
         console.log("Quantity:", product.quantity);
 
-        const productTotalInCents = product.price * product.quantity;
+        const productTotalInCents = Math.round(
+          product.price * product.quantity
+        );
 
         console.log("Product Total (in cents):", productTotalInCents);
 

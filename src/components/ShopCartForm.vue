@@ -57,11 +57,7 @@ export default {
       validatedCart: false,
     };
   },
-  // computed: {
-  //   totalPrice() {
-  //     return (this.quantity * this.product.price).toFixed(2);
-  //   },
-  // },
+
   methods: {
     handleValidate() {
       return (this.validatedCart = true);
