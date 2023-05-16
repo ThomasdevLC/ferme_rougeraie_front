@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
 import { dataURItoFile } from "../utils/dataURItoFile.js";
-import { priceToEuros } from "../utils/priceToEuros.js";
 
 export const useProductStore = defineStore("productStore", {
   state: () => ({
@@ -46,7 +45,7 @@ export const useProductStore = defineStore("productStore", {
 
       console.log("Total (in cents):", total);
 
-      return priceToEuros(total);
+      return total;
     },
 
     // order getters:

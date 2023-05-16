@@ -162,47 +162,18 @@ form {
 }
 
 form input {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 10px;
-  align-items: center;
   border: 1px solid var(--gray-3);
-  width: 400px;
-  padding: 14px;
-  border-radius: 2px;
-  color: var(--gray-4);
-  font-size: 16px;
-  outline: none;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+
   @include mixin.xs {
     width: 275px;
   }
 }
 
 select {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 10px;
-  align-items: center;
   border: 1px solid var(--gray-3);
-  width: 400px;
-  padding: 14px;
-  border-radius: 2px;
-  color: var(--gray-4);
-  font-size: 16px;
-  outline: none;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
 
   @include mixin.xs {
     width: 275px;
   }
-}
-
-select option {
-  font-family: "Poppins";
 }
 </style>

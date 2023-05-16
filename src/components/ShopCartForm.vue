@@ -7,6 +7,7 @@
       <div>
         <label for="name"></label>
         <input
+          class="custom-input"
           type="text"
           id="name"
           placeholder="Nom "
@@ -15,18 +16,16 @@
         />
       </div>
       <div>
-        <label for="email"></label>
-        <input
-          type="email"
-          id="email"
-          placeholder="email "
-          v-model="email"
-          required
-        />
+        <select v-model="pickup" required class="custom-input">
+          <option value="null" disabled selected hidden>jour de retrait</option>
+          <option value="mardi">mardi</option>
+          <option value="vendredi">vendredi</option>
+        </select>
       </div>
       <div>
         <label for="telephone"></label>
         <input
+          class="custom-input"
           type="text"
           id="telephone"
           placeholder="Téléphone "
@@ -52,7 +51,7 @@ export default {
   data() {
     return {
       name: "",
-      email: "",
+      pickup: "",
       telephone: "",
       validatedCart: false,
     };
@@ -68,7 +67,7 @@ export default {
 
       const order = {
         name: this.name,
-        email: this.email,
+        pickup: this.pickup,
         telephone: this.telephone,
 
         products: this.productStore.cart.map((product) => ({
@@ -101,20 +100,23 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  row-gap: 10px;
   margin-top: 40px;
 }
 
 input {
-  display: grid;
-  grid-template-columns: auto 1fr;
+  border: 1px solid var(--gray-3);
   margin: auto;
-  margin-bottom: 10px;
-  border: 1px solid #555;
-  width: 360px;
-  padding: 10px;
-  color: #555;
-  font-size: 16px;
-  outline: none;
+  @include mixin.xs {
+    width: 230px;
+  }
+}
+
+select {
+  border: 1px solid var(--gray-3);
+  padding: 11px;
+  margin: auto;
+  color: var(--gray-3);
 
   @include mixin.xs {
     width: 230px;

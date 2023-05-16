@@ -97,3 +97,33 @@ h4 {
   border: 2px solid var(--secondary);
   color: var(--text-color);
 }
+
+select {
+  color: var(--gray-2);
+  background: #fff;
+  font-family: var(--font-family);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select option {
+  font-family: var(--font-family);
+}
+
+.custom-input {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: center;
+  border: 0;
+  width: 400px;
+  padding: 14px;
+  font-size: 16px;
+  color: var(--gray-4);
+  border-radius: 2px;
+  outline: none;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
