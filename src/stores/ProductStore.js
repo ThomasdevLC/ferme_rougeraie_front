@@ -182,6 +182,20 @@ export const useProductStore = defineStore("productStore", {
       }
     },
 
+    async toggleLimited(id) {
+      const product = this.products.find((p) => p._id === id);
+      product.limited = !product.limited;
+
+      const res = await fetch("http://localhost:5000/product/" + id, {
+        method: "PATCH",
+        body: JSON.stringify({ limited: product.limited }),
+        headers: { "Content-Type": "application/json" },
+      });
+      if (res.error) {
+        console.log(res.error);
+      }
+    },
+
     // CART ACTIONS LOCALSTORAGE
 
     addToCart(product) {

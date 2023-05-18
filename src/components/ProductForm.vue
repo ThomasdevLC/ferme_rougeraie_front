@@ -103,6 +103,7 @@ export default {
             unit: unit.value,
             interval: interval.value,
             isDisplayed: true,
+            limited: false,
             image: imageData,
           });
           name.value = "";

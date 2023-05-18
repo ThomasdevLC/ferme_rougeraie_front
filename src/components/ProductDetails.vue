@@ -17,11 +17,6 @@
       <div class="overlay" v-if="showModal" @click="closeModal"></div>
       <div class="modal" v-if="showModal"><EditModal :product="product" /></div>
 
-      <i class="material-icons" @click="openModal">edit</i>
-
-      <i class="material-icons" @click="productStore.deleteProduct(product._id)"
-        >delete</i
-      >
       <i
         v-if="product.isDisplayed"
         class="material-icons"
@@ -34,6 +29,18 @@
         :class="{ active: !product.isDisplayed }"
         @click="productStore.toggleDisplay(product._id)"
         >visibility_off</i
+      >
+
+      <i
+        class="material-icons"
+        @click="productStore.toggleLimited(product._id)"
+        :style="{ color: product.limited ? 'var(--primary)' : '' }"
+        >priority_high</i
+      >
+      <i class="material-icons" @click="openModal">edit</i>
+
+      <i class="material-icons" @click="productStore.deleteProduct(product._id)"
+        >delete</i
       >
     </div>
   </div>

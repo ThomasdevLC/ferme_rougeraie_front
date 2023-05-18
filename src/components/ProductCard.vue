@@ -1,6 +1,9 @@
 <template>
   <div class="card">
     <div class="card__image">
+      <p v-if="product.limited" class="card__image__limited">
+        Quantité limitée
+      </p>
       <img :src="product.image" alt="photo produit" />
     </div>
     <div class="card__text">
@@ -128,17 +131,26 @@ export default {
   margin: 10px;
   max-width: 260px;
   height: 440px;
-  overflow: hidden;
+  // overflow: hidden;
+  position: relative;
 
   &__image {
     height: 280px;
     overflow: hidden;
-    /* position: relative; */
 
     & img {
       object-fit: cover;
       height: 100%;
       width: 100%;
+    }
+
+    &__limited {
+      position: absolute;
+      bottom: 155px;
+      background-color: var(--primary);
+      padding: 5px 10px;
+      font-weight: 500;
+      margin-left: -5px;
     }
   }
 
