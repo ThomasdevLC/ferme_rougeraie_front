@@ -38,8 +38,6 @@ export const useProductStore = defineStore("productStore", {
           product.price * product.quantity
         );
 
-        console.log("Product Total (in cents):", productTotalInCents);
-
         return total + productTotalInCents;
       }, 0);
 
@@ -172,11 +170,14 @@ export const useProductStore = defineStore("productStore", {
       const product = this.products.find((p) => p._id === id);
       product.isDisplayed = !product.isDisplayed;
 
-      const res = await fetch("http://localhost:5000/product/" + id, {
-        method: "PATCH",
-        body: JSON.stringify({ isDisplayed: product.isDisplayed }),
-        headers: { "Content-Type": "application/json" },
-      });
+      const res = await fetch(
+        "http://localhost:5000/product/" + id + "/display",
+        {
+          method: "PATCH",
+          body: JSON.stringify({ isDisplayed: product.isDisplayed }),
+          headers: { "Content-Type": "application/json" },
+        }
+      );
       if (res.error) {
         console.log(res.error);
       }
@@ -184,16 +185,23 @@ export const useProductStore = defineStore("productStore", {
 
     async toggleLimited(id) {
       const product = this.products.find((p) => p._id === id);
-      product.limited = !product.limited;
 
-      const res = await fetch("http://localhost:5000/product/" + id, {
-        method: "PATCH",
-        body: JSON.stringify({ limited: product.limited }),
-        headers: { "Content-Type": "application/json" },
-      });
+      product.limited = !product.limited;
+      console.log("product ):", product);
+
+      const res = await fetch(
+        "http://localhost:5000/product/" + id + "/limited",
+        {
+          method: "PATCH",
+          body: JSON.stringify({ limited: product.limited }),
+          headers: { "Content-Type": "application/json" },
+        }
+      );
       if (res.error) {
         console.log(res.error);
       }
+      const data = await res.json();
+      console.log("Response body:", data);
     },
 
     // CART ACTIONS LOCALSTORAGE

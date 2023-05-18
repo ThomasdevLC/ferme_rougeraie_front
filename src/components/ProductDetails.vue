@@ -35,7 +35,7 @@
         class="material-icons"
         @click="productStore.toggleLimited(product._id)"
         :style="{ color: product.limited ? 'var(--primary)' : '' }"
-        >priority_high</i
+        >error</i
       >
       <i class="material-icons" @click="openModal">edit</i>
 
