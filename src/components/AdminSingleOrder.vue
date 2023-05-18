@@ -69,7 +69,7 @@ export default {
 <style scoped lang="scss">
 @use "../assets/styles/mixins" as mixin;
 
-th {
+tbody {
   border-bottom: 1px solid var(--gray-3);
 }
 

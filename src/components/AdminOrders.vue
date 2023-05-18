@@ -1,8 +1,6 @@
 <template>
   <div class="orders">
-    <div class="orders__header">
-      <p>COMMANDES</p>
-    </div>
+    <p class="orders__title">COMMANDES</p>
 
     <div class="orders__pickup">
       <p
@@ -41,17 +39,20 @@
         traitées
       </button>
     </nav>
-
-    <div>
-      <p>
+    <div class="orders__infos">
+      <p class="orders__infos__length">
         {{ orders.length }} commande<span v-if="orders.length > 1">s</span>
         <span v-if="filter === 'pending'"> en cours</span>
         <span v-if="filter === 'done'"
           >traitée<span v-if="orders.length > 1">s</span></span
         >
       </p>
-      <i class="fa-solid fa-print" @click="handlePrint"></i>
-      <i class="fa-solid fa-trash-can" @click="handleDeleteAll"></i>
+      <div class="orders__infos__function">
+        <i class="fa-solid fa-print" @click="handlePrint"></i>
+        <i class="fa-solid fa-trash-can" @click="handleDeleteAll"></i>
+      </div>
+    </div>
+    <div>
       <table id="printTable">
         <thead>
           <tr>
@@ -136,6 +137,11 @@ export default {
   padding: 40px;
   margin: auto;
 
+  &__title {
+    font-size: 32px;
+    text-align: center;
+    line-height: 0;
+  }
   &__header {
     display: flex;
     justify-content: center;
@@ -162,6 +168,22 @@ export default {
 
     &__day--selected {
       color: var(--primary);
+    }
+  }
+
+  &__infos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__length {
+      font-size: 19px;
+    }
+    &__function {
+      display: flex;
+      column-gap: 25px;
+      & i {
+        padding: 0;
+      }
     }
   }
 }
