@@ -1,7 +1,32 @@
 <template>
   <!-- filter -->
   <div class="orders">
-    <nav class="filter">
+    <!-- <pre>{{ productStore.orders }}</pre> -->
+
+    <div class="orders__pickup">
+      <p
+        class="orders__pickup__day"
+        @click="
+          dayFilter = dayFilter === 'mardi' ? ['mardi', 'vendredi'] : 'mardi'
+        "
+        :class="{ 'orders__pickup__day--selected': dayFilter === 'mardi' }"
+      >
+        Mardi
+      </p>
+
+      <p
+        class="orders__pickup__day"
+        @click="
+          dayFilter =
+            dayFilter === 'vendredi' ? ['mardi', 'vendredi'] : 'vendredi'
+        "
+        :class="{ 'orders__pickup__day--selected': dayFilter === 'vendredi' }"
+      >
+        Vendredi
+      </p>
+    </div>
+
+    <nav class="orders__status filter">
       <button @click="filter = 'all'" :class="{ selected: filter === 'all' }">
         reçues
       </button>
@@ -59,9 +84,10 @@ export default {
     const productStore = useProductStore();
     productStore.getOrders();
 
+    const dayFilter = ref(["mardi", "vendredi"]);
     const filter = ref("all");
 
-    return { productStore, filter };
+    return { productStore, filter, dayFilter };
   },
 
   methods: {
@@ -78,11 +104,17 @@ export default {
     orders() {
       switch (this.filter) {
         case "all":
-          return this.productStore.orders;
+          return this.productStore.orders.filter((o) =>
+            this.dayFilter.includes(o.pickup)
+          );
         case "pending":
-          return this.productStore.pendingOrders;
+          return this.productStore.pendingOrders.filter((o) =>
+            this.dayFilter.includes(o.pickup)
+          );
         case "done":
-          return this.productStore.doneOrders;
+          return this.productStore.doneOrders.filter((o) =>
+            this.dayFilter.includes(o.pickup)
+          );
         default:
           return [];
       }
@@ -98,6 +130,26 @@ export default {
   max-width: 1200px;
   padding: 40px;
   margin: auto;
+
+  &__pickup {
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 40px;
+
+    &__day {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gray-5);
+      &:hover {
+        cursor: pointer;
+        color: var(--light-primary);
+      }
+    }
+
+    &__day--selected {
+      color: var(--primary);
+    }
+  }
 }
 
 button {

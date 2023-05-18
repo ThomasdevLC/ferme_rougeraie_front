@@ -5,8 +5,8 @@
       <td>{{ order.date }}</td>
       <td class="contact">
         {{ order.name }} <br />
-        {{ order.email }} <br />
-        {{ order.telephone }}
+        {{ order.telephone }} <br />
+        {{ order.pickup }}
       </td>
       <td>
         <ul>
