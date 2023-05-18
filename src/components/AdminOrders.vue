@@ -1,7 +1,8 @@
 <template>
-  <!-- filter -->
   <div class="orders">
-    <!-- <pre>{{ productStore.orders }}</pre> -->
+    <div class="orders__header">
+      <p>COMMANDES</p>
+    </div>
 
     <div class="orders__pickup">
       <p
@@ -39,17 +40,19 @@
       <button @click="filter = 'done'" :class="{ selected: filter === 'done' }">
         traitées
       </button>
-      <i class="fa-regular fa-circle-xmark" @click="handleDeleteAll"></i>
     </nav>
+
     <div>
       <p>
         {{ orders.length }} commande<span v-if="orders.length > 1">s</span>
         <span v-if="filter === 'pending'"> en cours</span>
-        <span v-if="filter === 'done'">
-          traitée<span v-if="orders.length > 1">s</span></span
+        <span v-if="filter === 'done'"
+          >traitée<span v-if="orders.length > 1">s</span></span
         >
       </p>
-      <table>
+      <i class="fa-solid fa-print" @click="handlePrint"></i>
+      <i class="fa-solid fa-trash-can" @click="handleDeleteAll"></i>
+      <table id="printTable">
         <thead>
           <tr>
             <th>N°</th>
@@ -75,6 +78,7 @@
 import { ref } from "vue";
 
 import { useProductStore } from "../stores/ProductStore";
+import { handlePrint } from "../utils/printModule";
 import AdminSingleOrder from "./AdminSingleOrder.vue";
 
 export default {
@@ -98,6 +102,7 @@ export default {
         alert("commandes supprimées");
       }
     },
+    handlePrint,
   },
 
   computed: {
@@ -131,6 +136,15 @@ export default {
   padding: 40px;
   margin: auto;
 
+  &__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & p {
+      font-size: 28px;
+    }
+  }
+
   &__pickup {
     display: flex;
     justify-content: flex-end;
@@ -153,7 +167,7 @@ export default {
 }
 
 button {
-  max-width: 90px;
+  width: 90px;
 }
 
 table {

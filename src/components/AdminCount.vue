@@ -1,5 +1,7 @@
 <template>
-  <div class="count">
+  <div class="count" id="printTable">
+    <i class="fa-solid fa-print" @click="handlePrint"></i>
+
     <div class="count__head">
       <p>produit</p>
       <p>quantité</p>
@@ -20,12 +22,17 @@
 
 <script>
 import { useProductStore } from "../stores/ProductStore";
+import { handlePrint } from "../utils/printModule";
 
 export default {
   setup() {
     const productStore = useProductStore();
 
     return { productStore };
+  },
+
+  methods: {
+    handlePrint,
   },
 };
 </script>
