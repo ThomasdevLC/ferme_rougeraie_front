@@ -3,11 +3,17 @@
     <p class="orders__title">COMMANDES</p>
 
     <div class="orders__pickup">
+      <i
+        class="fa-regular fa-calendar"
+        @click="dayFilter = ['mardi', 'vendredi']"
+        :class="{
+          'orders__pickup__day--selected':
+            dayFilter.includes('mardi') && dayFilter.includes('vendredi'),
+        }"
+      ></i>
       <p
         class="orders__pickup__day"
-        @click="
-          dayFilter = dayFilter === 'mardi' ? ['mardi', 'vendredi'] : 'mardi'
-        "
+        @click="dayFilter = 'mardi'"
         :class="{ 'orders__pickup__day--selected': dayFilter === 'mardi' }"
       >
         Mardi
@@ -15,10 +21,7 @@
 
       <p
         class="orders__pickup__day"
-        @click="
-          dayFilter =
-            dayFilter === 'vendredi' ? ['mardi', 'vendredi'] : 'vendredi'
-        "
+        @click="dayFilter = 'vendredi'"
         :class="{ 'orders__pickup__day--selected': dayFilter === 'vendredi' }"
       >
         Vendredi
@@ -43,8 +46,8 @@
       <p class="orders__infos__length">
         {{ orders.length }} commande<span v-if="orders.length > 1">s</span>
         <span v-if="filter === 'pending'"> en cours</span>
-        <span v-if="filter === 'done'"
-          >traitée<span v-if="orders.length > 1">s</span></span
+        <span v-if="filter === 'done'">
+          traitée<span v-if="orders.length > 1">s</span></span
         >
       </p>
       <div class="orders__infos__function">
@@ -59,6 +62,7 @@
             <th>N°</th>
             <th>date</th>
             <th>contact</th>
+            <th>retrait</th>
             <th>produits</th>
             <th>total</th>
             <th>statut</th>
@@ -154,7 +158,8 @@ export default {
   &__pickup {
     display: flex;
     justify-content: flex-end;
-    column-gap: 40px;
+    align-items: center;
+    column-gap: 35px;
 
     &__day {
       font-size: 20px;
@@ -168,6 +173,9 @@ export default {
 
     &__day--selected {
       color: var(--primary);
+    }
+    & i {
+      padding: 0;
     }
   }
 

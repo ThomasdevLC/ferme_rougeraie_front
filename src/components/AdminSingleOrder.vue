@@ -6,8 +6,9 @@
       <td class="contact">
         {{ order.name }} <br />
         {{ order.telephone }} <br />
-        {{ order.pickup }}
       </td>
+      <td>{{ order.pickup }}</td>
+
       <td>
         <ul>
           <li v-for="product in order.products" :key="product.name">
