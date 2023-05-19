@@ -126,11 +126,15 @@ select {
   border: 1px solid var(--gray-3);
   padding: 11px;
   margin: auto;
-  color: var(--gray-3);
+  color: var(--text-color);
 
   @include mixin.xs {
     width: 230px;
   }
+}
+
+option {
+  color: black;
 }
 
 button {

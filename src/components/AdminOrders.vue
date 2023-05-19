@@ -189,6 +189,9 @@ export default {
     align-items: center;
     &__length {
       font-size: 19px;
+      @include mixin.xs {
+        font-size: 16px;
+      }
     }
     &__function {
       display: flex;
@@ -202,13 +205,6 @@ export default {
 
 button {
   width: 90px;
-}
-
-.filter {
-  @include mixin.xs {
-    // background: red;
-    margin: 0;
-  }
 }
 
 table {

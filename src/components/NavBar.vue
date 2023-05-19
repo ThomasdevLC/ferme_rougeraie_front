@@ -1,6 +1,6 @@
 <template>
   <header>
-    <div class="header br">
+    <div class="header">
       <img
         class="header__logo"
         :src="image"
@@ -139,6 +139,10 @@ export default {
       color: var(--text-color);
       text-decoration: none;
       margin-left: 80px;
+
+      &:hover {
+        color: black;
+      }
 
       @include mixin.sm-lt {
         flex-direction: column;

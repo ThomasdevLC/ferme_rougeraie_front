@@ -174,8 +174,8 @@ export default {
 
         &__button {
           background-color: white;
-          border: 1px solid #000000;
-          color: #000000;
+          border: 1px solid var(--text-color);
+          color: var(--text-color);
           font-size: 10px;
           padding: 3px 10px;
           cursor: pointer;
@@ -190,8 +190,8 @@ export default {
           column-gap: 2px;
           padding: 3px 10px;
           font-size: 14px;
-          border-top: 1px solid #000000;
-          border-bottom: 1px solid #000000;
+          border-top: 1px solid var(--text-color);
+          border-bottom: 1px solid var(--text-color);
         }
 
         &__weight {
@@ -206,7 +206,7 @@ export default {
       cursor: pointer;
 
       &:hover {
-        color: black;
+        color: var(--light-primary);
       }
     }
   }

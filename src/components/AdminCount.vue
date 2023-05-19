@@ -1,6 +1,8 @@
 <template>
-  <div class="count" id="printTable">
-    <i class="fa-solid fa-print" @click="handlePrint"></i>
+  <div class="count">
+    <div class="count__print">
+      <i class="fa-solid fa-print" @click="handlePrint"></i>
+    </div>
 
     <div class="count__head">
       <p>produit</p>
@@ -22,17 +24,14 @@
 
 <script>
 import { useProductStore } from "../stores/ProductStore";
-import { handlePrint } from "../utils/printModule";
 
 export default {
   setup() {
     const productStore = useProductStore();
-
-    return { productStore };
-  },
-
-  methods: {
-    handlePrint,
+    const handlePrint = () => {
+      window.print();
+    };
+    return { productStore, handlePrint };
   },
 };
 </script>
@@ -42,6 +41,17 @@ export default {
   max-width: 640px;
   padding: 40px;
   margin: auto;
+
+  &__print {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 24px;
+    padding-bottom: 10px;
+    cursor: pointer;
+    &:hover {
+      color: var(--primary);
+    }
+  }
 
   &__head {
     display: flex;
