@@ -1,6 +1,6 @@
 <template>
   <header>
-    <div class="header">
+    <div class="header br">
       <img
         class="header__logo"
         :src="image"
@@ -154,12 +154,23 @@ export default {
       &:hover {
         color: var(--primary);
       }
+
+      @include mixin.sm-lt {
+        flex-direction: column;
+        margin: 0px;
+        padding: 10px;
+      }
     }
   }
 }
 
 .router-link-active {
   border-bottom: 2px solid var(--primary);
+
+  @include mixin.sm-lt {
+    color: var(--primary);
+    border: none;
+  }
 }
 
 .header__nav__cart {
