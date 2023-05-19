@@ -107,6 +107,9 @@ export default {
       border-radius: 6px;
       width: 60px;
       height: 60px;
+      @include mixin.xs {
+        margin-bottom: 20px;
+      }
       & img {
         width: 100%;
         height: 100%;
@@ -124,13 +127,19 @@ export default {
   }
 
   &__icons {
+    @include mixin.xs {
+      display: flex;
+      justify-content: space-around;
+      column-gap: 24px;
+    }
+
     & i {
       font-size: 22px;
       margin-left: 6px;
       color: var(--gray-3);
       cursor: pointer;
       @include mixin.xs {
-        margin-left: 16px;
+        margin-left: 0px;
       }
     }
     & i.active {
