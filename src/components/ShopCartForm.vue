@@ -10,7 +10,7 @@
           class="custom-input"
           type="text"
           id="name"
-          placeholder="Nom "
+          placeholder="Prénom et Nom "
           v-model="name"
           required
         />
@@ -23,16 +23,19 @@
         </select>
       </div>
       <div>
-        <label for="telephone"></label>
+        <label for="phone"></label>
         <input
           class="custom-input"
           type="text"
-          id="telephone"
+          id="phone"
+          pattern="[0-9]{10,}"
           placeholder="Téléphone "
-          v-model="telephone"
+          v-model="phone"
           required
         />
       </div>
+
+      <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
 
       <button type="submit">Passer commande</button>
     </form>
@@ -52,8 +55,9 @@ export default {
     return {
       name: "",
       pickup: "",
-      telephone: "",
+      phone: "",
       validatedCart: false,
+      errorMessage: "",
     };
   },
 
@@ -64,11 +68,17 @@ export default {
 
     handleSubmit() {
       const productStore = useProductStore();
+      const fullName = this.name.trim();
+      const spaceIndex = fullName.indexOf(" ");
 
+      if (spaceIndex === -1) {
+        this.errorMessage = "Veuillez renseigner votre nom et prénom";
+        return;
+      }
       const order = {
         name: this.name,
         pickup: this.pickup,
-        telephone: this.telephone,
+        phone: this.phone,
 
         products: this.productStore.cart.map((product) => ({
           name: product.name,
@@ -124,7 +134,7 @@ select {
 }
 
 button {
-  background: #fe8401;
+  background: var(--primary);
   color: white;
   padding: 10px;
   border: 0;

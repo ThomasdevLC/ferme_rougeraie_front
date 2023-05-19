@@ -161,6 +161,10 @@ export default {
     align-items: center;
     column-gap: 35px;
 
+    @include mixin.xs {
+      justify-content: space-around;
+    }
+
     &__day {
       font-size: 20px;
       font-weight: 700;
@@ -198,6 +202,13 @@ export default {
 
 button {
   width: 90px;
+}
+
+.filter {
+  @include mixin.xs {
+    // background: red;
+    margin: 0;
+  }
 }
 
 table {

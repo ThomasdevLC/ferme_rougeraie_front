@@ -5,20 +5,20 @@
       <td>{{ order.date }}</td>
       <td class="contact">
         {{ order.name }} <br />
-        {{ order.telephone }} <br />
+        {{ order.phone }} <br />
       </td>
-      <td>{{ order.pickup }}</td>
+      <td class="pickup">{{ order.pickup }}</td>
 
       <td>
         <ul>
           <li v-for="product in order.products" :key="product.name">
-            - {{ product.quantity }}
-            <span v-if="product.unit === 'kg'">kg</span> {{ product.name }} -
+            - {{ product.name }} x {{ product.quantity }}
+            <span v-if="product.unit === 'kg'">kg</span> =
             {{ priceToEuros(product.totalPrice) }}
           </li>
         </ul>
       </td>
-      <td>{{ priceToEuros(order.total) }}</td>
+      <td class="total">{{ priceToEuros(order.total) }}</td>
       <td class="status">
         <i
           class="fa-regular fa-circle"
@@ -106,5 +106,23 @@ i {
 
 .selected {
   color: var(--primary);
+}
+
+.pickup {
+  @include mixin.xs {
+    &::before {
+      content: "Retrait : ";
+      font-weight: 600;
+    }
+  }
+}
+
+.total {
+  @include mixin.xs {
+    &::before {
+      content: "Total : ";
+      font-weight: 600;
+    }
+  }
 }
 </style>
