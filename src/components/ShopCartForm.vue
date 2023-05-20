@@ -10,8 +10,19 @@
           class="custom-input"
           type="text"
           id="name"
-          placeholder="Prénom et Nom "
+          placeholder="Prénom "
           v-model="name"
+          required
+        />
+      </div>
+      <div>
+        <label for="surname"></label>
+        <input
+          class="custom-input"
+          type="text"
+          id="surname"
+          placeholder="Nom "
+          v-model="surname"
           required
         />
       </div>
@@ -35,7 +46,7 @@
         />
       </div>
 
-      <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
+      <!-- <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div> -->
 
       <button type="submit">Passer commande</button>
     </form>
@@ -54,10 +65,11 @@ export default {
   data() {
     return {
       name: "",
+      surname: "",
       pickup: "",
       phone: "",
       validatedCart: false,
-      errorMessage: "",
+      // errorMessage: "",
     };
   },
 
@@ -68,15 +80,10 @@ export default {
 
     handleSubmit() {
       const productStore = useProductStore();
-      const fullName = this.name.trim();
-      const spaceIndex = fullName.indexOf(" ");
 
-      if (spaceIndex === -1) {
-        this.errorMessage = "Veuillez renseigner votre nom et prénom";
-        return;
-      }
       const order = {
         name: this.name,
+        surname: this.surname,
         pickup: this.pickup,
         phone: this.phone,
 

@@ -4,7 +4,7 @@
       <td>{{ orderNumber }}</td>
       <td>{{ order.date }}</td>
       <td class="contact">
-        {{ order.name }} <br />
+        {{ order.name }} {{ order.surname }} <br />
         {{ order.phone }} <br />
       </td>
       <td class="pickup">{{ order.pickup }}</td>

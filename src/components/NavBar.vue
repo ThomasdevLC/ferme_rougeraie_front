@@ -140,10 +140,6 @@ export default {
       text-decoration: none;
       margin-left: 80px;
 
-      &:hover {
-        color: black;
-      }
-
       @include mixin.sm-lt {
         flex-direction: column;
         font-size: 24px;
