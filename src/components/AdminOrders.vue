@@ -91,7 +91,6 @@ export default {
 
   setup() {
     const productStore = useProductStore();
-    productStore.getOrders();
 
     const dayFilter = ref(["mardi", "vendredi"]);
     const filter = ref("all");
@@ -215,7 +214,7 @@ table {
 
 thead {
   background-color: var(--gray-2);
-  @include mixin.xs {
+  @include mixin.sm-lt {
     display: none;
   }
 }

@@ -53,6 +53,7 @@ export default {
   setup() {
     const selected = ref("products");
     const productStore = useProductStore();
+    productStore.getOrders();
 
     return { selected, productStore };
   },

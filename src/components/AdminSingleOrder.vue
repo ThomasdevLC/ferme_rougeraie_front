@@ -77,7 +77,7 @@ tbody {
 tr {
   width: 100%;
 
-  @include mixin.xs {
+  @include mixin.sm-lt {
     display: flex;
     flex-direction: column;
     row-gap: 10px;
@@ -97,6 +97,10 @@ ul {
   list-style: none;
   padding-left: 40px;
   text-align: left;
+
+  @include mixin.sm-lt {
+    margin-left: 40px;
+  }
 }
 
 i {

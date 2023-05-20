@@ -5,8 +5,7 @@
     </div>
 
     <div class="count__head">
-      <p>produit</p>
-      <p>quantité</p>
+      <p>quantités</p>
     </div>
     <div
       class="count__product"
@@ -63,9 +62,16 @@ export default {
   }
   &__product {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    column-gap: 100px;
     font-size: 18px;
+    line-height: 14px;
     border-bottom: 1px solid var(--gray-2);
+
+    & p {
+      text-align: left;
+      width: 150px;
+    }
   }
 }
 </style>
