@@ -14,7 +14,7 @@
             v-if="selectedImage"
             :src="selectedImage"
             alt="selected image"
-            class="selectedProduct"
+            class="selected-product"
           />
           <i v-else class="material-icons">photo_camera</i>
         </label>
@@ -38,8 +38,9 @@
       <select v-model="unit" required class="custom-input">
         <option value="null" disabled selected hidden>unité</option>
         <option value="piece">Pièce</option>
-        <option value="Botte">Botte</option>
         <option value="kg">kg</option>
+        <option value="Botte">Botte</option>
+        <option value="Bouquet">Bouquet</option>
         <option value="Litre">Litre</option>
       </select>
     </div>
@@ -196,7 +197,7 @@ export default {
   padding: 18px 12px;
 }
 
-.selectedProduct {
+.selected-product {
   object-fit: cover;
   border-radius: 50%;
   width: 45px;
@@ -207,6 +208,12 @@ export default {
   @include mixin.xs {
     width: 350px;
   }
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .error-message {

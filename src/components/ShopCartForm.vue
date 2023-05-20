@@ -26,13 +26,7 @@
           required
         />
       </div>
-      <div>
-        <select v-model="pickup" required class="custom-input">
-          <option value="null" disabled selected hidden>jour de retrait</option>
-          <option value="mardi">mardi</option>
-          <option value="vendredi">vendredi</option>
-        </select>
-      </div>
+
       <div>
         <label for="phone"></label>
         <input
@@ -44,6 +38,13 @@
           v-model="phone"
           required
         />
+      </div>
+      <div>
+        <select v-model="pickup" required class="custom-input">
+          <option value="" disabled selected hidden>Jour de retrait</option>
+          <option value="mardi">mardi</option>
+          <option value="vendredi">vendredi</option>
+        </select>
       </div>
 
       <!-- <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div> -->
@@ -133,7 +134,7 @@ select {
   border: 1px solid var(--gray-3);
   padding: 11px;
   margin: auto;
-  color: var(--text-color);
+  color: var(--gray-4);
 
   @include mixin.xs {
     width: 230px;
@@ -141,7 +142,7 @@ select {
 }
 
 option {
-  color: black;
+  color: var(--text-color);
 }
 
 button {
