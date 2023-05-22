@@ -31,17 +31,12 @@ export const useProductStore = defineStore("productStore", {
 
     totalCart() {
       const total = this.cart.reduce((total, product) => {
-        console.log("Price:", product.price);
-        console.log("Quantity:", product.quantity);
-
         const productTotalInCents = Math.round(
           product.price * product.quantity
         );
 
         return total + productTotalInCents;
       }, 0);
-
-      console.log("Total (in cents):", total);
 
       return total;
     },

@@ -42,8 +42,8 @@
       <div>
         <select v-model="pickup" required class="custom-input">
           <option value="" disabled selected hidden>Jour de retrait</option>
-          <option value="mardi">mardi</option>
-          <option value="vendredi">vendredi</option>
+          <option value="mardi">mardi - 16h à 19h</option>
+          <option value="vendredi">vendredi - 16h à 19h</option>
         </select>
       </div>
 

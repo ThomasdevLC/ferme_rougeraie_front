@@ -6,8 +6,10 @@
         id="name"
         type="text"
         placeholder="nom produit"
+        @input="handleInput"
         v-model="name"
       />
+
       <div class="file">
         <label for="input-file" :class="{ 'no-padding': selectedImage }">
           <img
@@ -59,6 +61,9 @@
     <p v-if="errorMessage" class="error-message">
       Merci de remplir tous les champs.
     </p>
+    <p v-if="isNameTooLong" class="error-message">
+      Le nom du produit ne peut pas dépasser 14 caractères.
+    </p>
   </form>
 </template>
 
@@ -78,6 +83,13 @@ export default {
     const unit = ref(null);
     const interval = ref("");
     const errorMessage = ref(false);
+    const isNameTooLong = ref(false);
+
+    const handleInput = () => {
+      const validateInput = computed(() => {
+        return (isNameTooLong.value = name.value.length > 14);
+      });
+    };
 
     const capitalized = computed(() => {
       return name.value.charAt(0).toUpperCase() + name.value.slice(1);
@@ -137,6 +149,9 @@ export default {
       handleImage,
       selectedImage,
       errorMessage,
+      isNameTooLong,
+      validateInput,
+      handleInput,
     };
   },
 };
@@ -218,5 +233,6 @@ select {
 
 .error-message {
   margin: auto;
+  text-align: center;
 }
 </style>

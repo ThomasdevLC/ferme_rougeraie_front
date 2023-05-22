@@ -128,10 +128,9 @@ export default {
   background: white;
   display: flex;
   flex-direction: column;
-  margin: 10px;
+  // margin: 10px;
   max-width: 260px;
   height: 440px;
-  // overflow: hidden;
   position: relative;
 
   &__image {
@@ -155,19 +154,20 @@ export default {
   }
 
   &__text {
-    width: 260px;
+    width: 240px;
     padding: 0 10px;
     line-height: 0;
     display: flex;
     flex-direction: column;
     row-gap: 5px;
+    overflow: hidden;
 
     &__name {
       font-family: var(--font-family-titles);
       font-size: 30px;
       margin-bottom: 20px;
+      white-space: nowrap;
     }
-
     &__quantity {
       &__eval {
         display: flex;
