@@ -1,7 +1,10 @@
 <template>
-  <form @submit.prevent="submitPassword">
-    <!-- <label for="password">Mot de passe admin:</label> -->
-    <input type="password" id="password" v-model="inputPassword" />
+  <form class="form" @submit.prevent="submitPassword">
+    <div class="form__top">
+      <i class="material-icons">lock_outline</i>
+      <input type="password" id="password" v-model="inputPassword" />
+    </div>
+
     <button class="btn" type="submit">connexion</button>
   </form>
 </template>
@@ -38,7 +41,7 @@ export default {
 <style scoped lang="scss">
 @use "../assets/styles/mixins" as mixin;
 
-form {
+.form {
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -46,6 +49,16 @@ form {
   align-items: center;
   gap: 10px;
   margin-top: 60px;
+  &__top {
+    display: flex;
+  }
+}
+
+i {
+  background: white;
+  padding: 10px 14px;
+  border: 1px solid var(--gray-4);
+  border-right: none;
 }
 
 input {
