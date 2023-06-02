@@ -110,6 +110,7 @@ export default {
             unit: this.product.unit,
             quantity: this.quantity,
             interval: this.product.interval,
+            limited: this.product.limited,
             totalPrice: this.totalPrice,
             image: compressedImage,
             id: this.product._id,

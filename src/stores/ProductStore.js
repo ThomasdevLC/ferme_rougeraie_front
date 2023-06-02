@@ -41,6 +41,10 @@ export const useProductStore = defineStore("productStore", {
       return total;
     },
 
+    limitedProducts() {
+      return this.cart.some((product) => product.limited === true);
+    },
+
     // order getters:
 
     orderCount() {

@@ -12,7 +12,11 @@
     <p v-if="productStore.cartCount" class="cart__total">
       Total : {{ priceToEuros(productStore.totalCart) }}
     </p>
-
+    <p v-if="productStore.limitedProducts" class="cart__alert">
+      Votre panier contient des produits en quantité limité. <br />
+      Si ces prodduits ne sont plus disponibles lors du retrait le tarif sera
+      actualisé
+    </p>
     <div v-if="productStore.cartCount" class="cart__form">
       <ShopCartForm @submit-form="thanksModal = true" />
     </div>
@@ -55,6 +59,10 @@ export default {
     font-size: 20px;
     font-weight: 500;
     text-align: right;
+  }
+  &__alert {
+    font-weight: 400;
+    text-align: center;
   }
 }
 </style>
