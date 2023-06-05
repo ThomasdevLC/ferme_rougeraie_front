@@ -13,8 +13,8 @@
       Total : {{ priceToEuros(productStore.totalCart) }}
     </p>
     <p v-if="productStore.limitedProducts" class="cart__alert">
-      Votre panier contient des produits en quantité limité. <br />
-      Si ces prodduits ne sont plus disponibles lors du retrait le tarif sera
+      Votre panier contient des produits en quantité limitée. <br />
+      Si ces produits ne sont plus disponibles lors du retrait le tarif sera
       actualisé
     </p>
     <div v-if="productStore.cartCount" class="cart__form">

@@ -34,6 +34,7 @@
           type="text"
           id="phone"
           pattern="[0-9]{10,}"
+          maxlength="10"
           placeholder="Téléphone "
           v-model="phone"
           required

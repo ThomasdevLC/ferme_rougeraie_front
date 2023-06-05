@@ -8,6 +8,9 @@
         @dblclick="this.$router.push({ name: 'AdminView' })"
         v-doubletap="handleDoubleTap"
       />
+      <img class="header__logo" :src="tomatoe" />
+      <img class="header__logo" :src="butternut" />
+      <img class="header__logo" :src="pumpkin" />
       <div class="header__nav">
         <nav>
           <router-link
@@ -57,6 +60,9 @@
 import { useProductStore } from "../stores/ProductStore";
 import ShopCart from "../components/ShopCart.vue";
 import header__logo from "../assets/logo.png";
+import tomatoe from "../assets/images/tomatoe.png";
+import butternut from "../assets/images/butternut.png";
+import pumpkin from "../assets/images/pumpkin.png";
 import basket from "../assets/images/basket.png";
 import doubletap from "../utils/doubletap.js";
 
@@ -77,6 +83,9 @@ export default {
     return {
       showModal: false,
       image: header__logo,
+      tomatoe: tomatoe,
+      butternut: butternut,
+      pumpkin: pumpkin,
       basketImage: basket,
     };
   },

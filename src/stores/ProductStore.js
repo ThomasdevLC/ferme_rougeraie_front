@@ -11,6 +11,8 @@ export const useProductStore = defineStore("productStore", {
   }),
 
   getters: {
+    // products getters:
+
     displayed() {
       return this.products.filter((p) => p.isDisplayed);
     },
@@ -184,9 +186,7 @@ export const useProductStore = defineStore("productStore", {
 
     async toggleLimited(id) {
       const product = this.products.find((p) => p._id === id);
-
       product.limited = !product.limited;
-      console.log("product ):", product);
 
       const res = await fetch(
         "http://localhost:5000/product/" + id + "/limited",
@@ -200,7 +200,6 @@ export const useProductStore = defineStore("productStore", {
         console.log(res.error);
       }
       const data = await res.json();
-      console.log("Response body:", data);
     },
 
     // CART ACTIONS LOCALSTORAGE
