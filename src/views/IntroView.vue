@@ -41,11 +41,11 @@ export default {
     };
   },
 
-  // mounted() {
-  //   setTimeout(() => {
-  //     this.$router.push({ name: "AboutView" });
-  //   }, 5000);
-  // },
+  mounted() {
+    setTimeout(() => {
+      this.$router.push({ name: "AboutView" });
+    }, 5000);
+  },
 };
 </script>
 <style scoped>
@@ -101,6 +101,8 @@ export default {
 
 .veg-5 {
   grid-area: veg-5;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
 }
 
 .veg-6 {
@@ -125,8 +127,7 @@ export default {
 
 .veg-10 {
   grid-area: veg-10;
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
+
   height: 280px;
 }
 
