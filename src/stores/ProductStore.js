@@ -76,7 +76,7 @@ export const useProductStore = defineStore("productStore", {
           }
         });
 
-        console.log(productsByName);
+        // console.log(productsByName);
       });
 
       return productsByName;

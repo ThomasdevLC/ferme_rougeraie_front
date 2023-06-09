@@ -4,7 +4,7 @@
     <div class="vegie veg-2">
       <img class="header__logo" :src="butternut" />
     </div>
-    <div class="vegie veg-3"><img class="header__logo" :src="pumpkin" /></div>
+    <div class="vegie veg-3"><img class="header__logo" :src="carrot" /></div>
     <div class="vegie veg-4"><img class="header__logo" :src="turnip" /></div>
     <div class="vegie veg-5"><img class="header__logo" :src="carrot" /></div>
     <div class="vegie veg-6">
@@ -104,7 +104,7 @@ export default {
 .veg-3 {
   grid-area: veg-3;
   -webkit-transform: scaleX(-1);
-  transform: scaleX(-1) rotate(6deg);
+  transform: scaleX(-1) rotate(-18deg);
 }
 
 .veg-4 {
@@ -122,11 +122,12 @@ export default {
 .veg-6 {
   grid-area: veg-6;
   -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
+  transform: scaleX(-1) rotate(-10deg);
 }
 
 .veg-7 {
   grid-area: veg-7;
+  transform: rotate(-10deg);
 }
 
 .veg-8 {
