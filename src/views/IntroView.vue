@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div ref="container" class="container">
     <div class="vegie veg-1"><img class="header__logo" :src="tomatoe" /></div>
     <div class="vegie veg-2">
       <img class="header__logo" :src="butternut" />
@@ -45,6 +45,20 @@ export default {
     setTimeout(() => {
       this.$router.push({ name: "AboutView" });
     }, 5000);
+  },
+
+  beforeRouteEnter(to, from, next) {
+    next((vm) => {
+      vm.$nextTick(() => {
+        vm.$refs.container.classList.add("fade-transition");
+      });
+    });
+  },
+  beforeRouteLeave(to, from, next) {
+    this.$refs.container.classList.add("fade-leave-to");
+    setTimeout(() => {
+      next();
+    }, 500);
   },
 };
 </script>
@@ -141,5 +155,14 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.fade-transition {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
