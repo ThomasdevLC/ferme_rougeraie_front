@@ -1,16 +1,12 @@
 <template>
-  <div class="product">
+  <div class="product" :style="{ 'background-image': `url(${image})` }">
     <div class="loading" v-if="productStore.loading">Chargement...</div>
     <div v-else>
       <p class="product__noproduct" v-if="productStore.closedShop">
         Pas de produit cette semaine, à bientôt !
       </p>
 
-      <div
-        v-else
-        class="background-image"
-        :style="{ 'background-image': `url(${image})` }"
-      >
+      <div v-else>
         <h1 class="product__title">PRODUITS DE LA SEMAINE</h1>
 
         <div class="product__container">
