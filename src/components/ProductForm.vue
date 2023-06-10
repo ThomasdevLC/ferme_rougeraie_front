@@ -7,7 +7,6 @@
         type="text"
         placeholder="nom produit"
         maxlength="14"
-        @input="validateInput"
         v-model="name"
       />
 
@@ -62,9 +61,6 @@
     <p v-if="errorMessage" class="error-message">
       Merci de remplir tous les champs.
     </p>
-    <p v-if="isNameTooLong > 14" class="error-message">
-      Le nom ne peut pas dépasser 14 caractères.
-    </p>
   </form>
 </template>
 
@@ -84,11 +80,7 @@ export default {
     const unit = ref(null);
     const interval = ref("");
     const errorMessage = ref(false);
-    const isNameTooLong = ref(null);
 
-    const validateInput = () => {
-      isNameTooLong.value = name.value.length;
-    };
     const capitalized = computed(() => {
       return name.value.charAt(0).toUpperCase() + name.value.slice(1);
     });
@@ -147,8 +139,6 @@ export default {
       handleImage,
       selectedImage,
       errorMessage,
-      isNameTooLong,
-      validateInput,
     };
   },
 };

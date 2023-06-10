@@ -7,8 +7,12 @@
   <div class="loading" v-if="productStore.loading">Chargement...</div>
 
   <div v-else class="product__container">
-    <!-- filter -->
     <nav class="filter">
+      <i
+        class="fa-solid fa-store-slash"
+        @click="productStore.setProductsNotDisplayed"
+      ></i>
+
       <button @click="filter = 'all'" :class="{ selected: filter === 'all' }">
         Tous les produits
       </button>

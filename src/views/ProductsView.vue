@@ -7,8 +7,12 @@
       class="background-image"
       :style="{ 'background-image': `url(${image})` }"
     >
-      <h1 class="product__title">PRODUITS DE LA SEMAINE</h1>
-
+      <h1 v-if="!productStore.allProductsHidden" class="product__title">
+        PRODUITS DE LA SEMAINE
+      </h1>
+      <p class="product__noproduct" v-else>
+        Pas de produit cette semaine, à bientôt !
+      </p>
       <div class="product__container">
         <div v-for="product in productStore.displayed" :key="product">
           <ProductCard :product="product" />
@@ -52,6 +56,14 @@ export default {
       font-size: 30px;
       padding: 40px;
     }
+  }
+
+  &__noproduct {
+    height: 100vh;
+    margin: 0;
+    font-size: 40px;
+    display: grid;
+    place-items: center;
   }
 
   &__container {

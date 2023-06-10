@@ -25,6 +25,10 @@ export const useProductStore = defineStore("productStore", {
       return this.products.length;
     },
 
+    allProductsHidden() {
+      return this.products.every((product) => !product.isDisplayed);
+    },
+
     // cart getters:
 
     cartCount() {
@@ -213,6 +217,24 @@ export const useProductStore = defineStore("productStore", {
         console.log(res.error);
       }
       const data = await res.json();
+    },
+
+    async setProductsNotDisplayed() {
+      for (const product of this.products) {
+        product.isDisplayed = false;
+        try {
+          await fetch(
+            "http://localhost:5000/product/" + product._id + "/allDisplay",
+            {
+              method: "PATCH",
+              body: JSON.stringify({}),
+              headers: { "Content-Type": "application/json" },
+            }
+          );
+        } catch (error) {
+          console.error(error);
+        }
+      }
     },
 
     // CART ACTIONS LOCALSTORAGE
