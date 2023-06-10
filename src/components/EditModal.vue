@@ -17,6 +17,7 @@
         class="custom-input"
         type="text"
         placeholder="nom"
+        maxlength="14"
         v-model="editName"
       />
 

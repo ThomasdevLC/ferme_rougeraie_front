@@ -9,10 +9,16 @@
   <div v-else class="product__container">
     <nav class="filter">
       <i
-        class="fa-solid fa-store-slash"
-        @click="productStore.setProductsNotDisplayed"
+        v-if="!productStore.closedShop"
+        class="product__container__closed fa-solid fa-store"
+        style="color: var(--primary)"
+        @click="productStore.closedShop = !productStore.closedShop"
       ></i>
-
+      <i
+        v-else
+        class="product__container__closed fa-solid fa-store-slash"
+        @click="productStore.closedShop = !productStore.closedShop"
+      ></i>
       <button @click="filter = 'all'" :class="{ selected: filter === 'all' }">
         Tous les produits
       </button>
@@ -85,6 +91,11 @@ export default {
   max-width: 640px;
   margin: 20px auto;
   padding: 25px;
+
+  &__closed {
+    font-size: 22px;
+    cursor: pointer;
+  }
 }
 
 .product__list {

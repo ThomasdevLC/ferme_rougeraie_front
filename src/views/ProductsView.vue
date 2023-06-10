@@ -1,21 +1,22 @@
 <template>
   <div class="product">
     <div class="loading" v-if="productStore.loading">Chargement...</div>
-
-    <div
-      v-else
-      class="background-image"
-      :style="{ 'background-image': `url(${image})` }"
-    >
-      <h1 v-if="!productStore.allProductsHidden" class="product__title">
-        PRODUITS DE LA SEMAINE
-      </h1>
-      <p class="product__noproduct" v-else>
+    <div v-else>
+      <p class="product__noproduct" v-if="productStore.closedShop">
         Pas de produit cette semaine, à bientôt !
       </p>
-      <div class="product__container">
-        <div v-for="product in productStore.displayed" :key="product">
-          <ProductCard :product="product" />
+
+      <div
+        v-else
+        class="background-image"
+        :style="{ 'background-image': `url(${image})` }"
+      >
+        <h1 class="product__title">PRODUITS DE LA SEMAINE</h1>
+
+        <div class="product__container">
+          <div v-for="product in productStore.displayed" :key="product">
+            <ProductCard :product="product" />
+          </div>
         </div>
       </div>
     </div>
