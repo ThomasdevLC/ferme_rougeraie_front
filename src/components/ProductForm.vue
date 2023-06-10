@@ -6,6 +6,7 @@
         id="name"
         type="text"
         placeholder="nom produit"
+        maxlength="14"
         @input="validateInput"
         v-model="name"
       />

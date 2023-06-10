@@ -47,6 +47,19 @@ export const useProductStore = defineStore("productStore", {
       return this.cart.some((product) => product.limited === true);
     },
 
+    pickupDay() {
+      if (this.orders.length > 0) {
+        const lastOrder = this.orders[this.orders.length - 1];
+        return lastOrder.pickup;
+      }
+      return null;
+    },
+
+    currentDay() {
+      const today = new Date();
+      return today.getDate();
+    },
+
     // order getters:
 
     orderCount() {

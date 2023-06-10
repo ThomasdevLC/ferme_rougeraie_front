@@ -2,7 +2,11 @@
   <div class="cart">
     <h3 class="cart__thanks" v-if="thanksModal">
       Merci pour votre commande <br />
-      A {{ productStore.orders[productStore.orders.length - 1].pickup }} !
+      À
+      <span v-if="productStore.pickupDay === productStore.currentDay"
+        >tout à l'heure</span
+      >
+      <span v-else>{{ productStore.pickupDay }}</span> !
     </h3>
     <p class="cart__info" v-else>
       Votre panier <span v-if="!productStore.cartCount">est vide</span>
@@ -25,7 +29,7 @@
     </div>
   </div>
   <div v-if="thanksModal" class="vegie">
-    <img class="header__logo" :src="tomatoe" />
+    <img class="veg veg-one" :src="tomatoe" />
   </div>
 </template>
 
@@ -35,6 +39,8 @@ import ShopCartDetails from "../components/ShopCartDetails.vue";
 import ShopCartForm from "../components/ShopCartForm.vue";
 import { priceToEuros } from "../utils/priceToEuros.js";
 import tomatoe from "../assets/images/tomatoe.png";
+import butternut from "../assets/images/butternut.png";
+import carrot from "../assets/images/carrot.png";
 
 export default {
   components: { ShopCartDetails, ShopCartForm },
@@ -48,6 +54,8 @@ export default {
     return {
       thanksModal: false,
       tomatoe: tomatoe,
+      butternut: butternut,
+      carrot: carrot,
     };
   },
 
@@ -58,11 +66,7 @@ export default {
 </script>
 <style scoped lang="scss">
 .cart {
-  &__thanks {
-    font-size: 20px;
-    font-weight: 500;
-    text-align: center;
-  }
+  position: relative;
   &__info {
     font-size: 20px;
     font-weight: 500;
@@ -77,5 +81,24 @@ export default {
     font-weight: 400;
     text-align: center;
   }
+  &__thanks {
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    z-index: 99;
+  }
+}
+
+.veg {
+  position: absolute;
+  z-index: 1;
+  opacity: 70%;
+}
+
+.veg-one {
+  top: -20px;
+  left: -40px;
+  transform: rotate(20deg);
+  height: 80px;
 }
 </style>
