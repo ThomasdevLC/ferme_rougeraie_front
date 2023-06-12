@@ -269,7 +269,11 @@ export const useProductStore = defineStore("productStore", {
 
     async getOrders() {
       this.loading = true;
-      const res = await fetch("http://localhost:5000/order");
+      const res = await fetch("http://localhost:5000/order", {
+        headers: {
+          Authorization: `Bearer ${this.accessToken}`,
+        },
+      });
       const data = await res.json();
       this.orders = data;
       this.loading = false;
@@ -300,7 +304,10 @@ export const useProductStore = defineStore("productStore", {
         const res = await fetch("http://localhost:5000/order/" + id, {
           method: "PATCH",
           body: JSON.stringify(updatedOrder),
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${this.accessToken}`,
+          },
         });
 
         if (res.error) {
@@ -312,6 +319,9 @@ export const useProductStore = defineStore("productStore", {
     async clearOrders() {
       this.orders = [];
       const res = await fetch("http://localhost:5000/order", {
+        headers: {
+          Authorization: `Bearer ${this.accessToken}`,
+        },
         method: "DELETE",
       });
       if (res.error) {
