@@ -19,7 +19,7 @@ export default {
     const productStore = useProductStore();
 
     const submitPassword = async (event) => {
-      event.preventDefault(); // Empêcher la soumission du formulaire
+      event.preventDefault();
 
       try {
         const response = await fetch("http://localhost:5000/auth/login", {
@@ -35,21 +35,21 @@ export default {
         const data = await response.json();
 
         if (response.ok) {
-          const token = data.token; // Récupérer le jeton d'accès depuis la réponse
+          const token = data.token; // get token from  backend
 
-          // Stocker le jeton dans le session storage
+          // Set token in storage
           sessionStorage.setItem("token", token);
           productStore.isLoggedIn = true;
           productStore.accessToken = token;
           console.log(productStore.accessToken);
 
-          // Appeler la fonction d'initialisation
+          //call initialize
           await initialize();
         } else {
-          throw new Error(data.message); // Gérer les erreurs du backend
+          throw new Error(data.message); //  backend errors
         }
 
-        inputPassword.value = ""; // Réinitialiser le champ du mot de passe
+        inputPassword.value = "";
       } catch (error) {
         console.error(error);
       }

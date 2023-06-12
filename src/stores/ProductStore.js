@@ -125,6 +125,9 @@ export const useProductStore = defineStore("productStore", {
       }
 
       const res = await fetch("http://localhost:5000/product/", {
+        headers: {
+          Authorization: `Bearer ${this.accessToken}`,
+        },
         method: "POST",
         body: formData,
       });
@@ -158,6 +161,9 @@ export const useProductStore = defineStore("productStore", {
         }
 
         const res = await fetch("http://localhost:5000/product/" + id, {
+          headers: {
+            Authorization: `Bearer ${this.accessToken}`,
+          },
           method: "PATCH",
           body: formData,
         });
@@ -192,12 +198,12 @@ export const useProductStore = defineStore("productStore", {
       const res = await fetch(
         "http://localhost:5000/product/" + id + "/display",
         {
-          headers: {
-            Authorization: `Bearer ${this.accessToken}`,
-          },
           method: "PATCH",
           body: JSON.stringify({ isDisplayed: product.isDisplayed }),
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${this.accessToken}`,
+          },
         }
       );
       if (res.error) {
@@ -214,7 +220,10 @@ export const useProductStore = defineStore("productStore", {
         {
           method: "PATCH",
           body: JSON.stringify({ limited: product.limited }),
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${this.accessToken}`,
+          },
         }
       );
       if (res.error) {
