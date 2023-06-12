@@ -11,29 +11,63 @@
 
 <script>
 import { ref } from "vue";
-
 import { useProductStore } from "../stores/ProductStore";
-
-const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
 
 export default {
   setup() {
     const inputPassword = ref("DixFruitsEtlegumes!");
     const productStore = useProductStore();
 
-    return { inputPassword, productStore };
-  },
-  methods: {
-    submitPassword(event) {
-      event.preventDefault(); // prevent form submission
-      // Simulate server authentication
-      if (this.inputPassword.value === ADMIN_PASSWORD) {
-        const token = "mytoken"; // Generate a random token
-        sessionStorage.setItem("token", token); // Store token in session storage
-        this.productStore.isLoggedIn = true; // Set isLoggedIn to true
+    const submitPassword = async (event) => {
+      event.preventDefault(); // Empêcher la soumission du formulaire
+
+      try {
+        const response = await fetch("http://localhost:5000/auth/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            password: inputPassword.value,
+          }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          const token = data.token; // Récupérer le jeton d'accès depuis la réponse
+
+          // Stocker le jeton dans le session storage
+          sessionStorage.setItem("token", token);
+          productStore.isLoggedIn = true;
+          productStore.accessToken = token;
+          console.log(productStore.accessToken);
+
+          // Appeler la fonction d'initialisation
+          await initialize();
+        } else {
+          throw new Error(data.message); // Gérer les erreurs du backend
+        }
+
+        inputPassword.value = ""; // Réinitialiser le champ du mot de passe
+      } catch (error) {
+        console.error(error);
       }
-      this.inputPassword = "";
-    },
+    };
+
+    const initialize = () => {
+      return new Promise((resolve, reject) => {
+        const token = sessionStorage.getItem("token");
+        if (token) {
+          // Placeholder pour votre logique d'initialisation
+          resolve();
+        } else {
+          reject(new Error("Token not found"));
+        }
+      });
+    };
+
+    return { inputPassword, submitPassword };
   },
 };
 </script>

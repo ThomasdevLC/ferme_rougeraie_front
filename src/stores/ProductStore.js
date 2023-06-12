@@ -8,6 +8,7 @@ export const useProductStore = defineStore("productStore", {
     orders: [],
     closedShop: false,
     isLoggedIn: false,
+    accessToken: null,
     loading: false,
   }),
 
@@ -174,6 +175,9 @@ export const useProductStore = defineStore("productStore", {
         return p._id !== id;
       });
       const res = await fetch("http://localhost:5000/product/" + id, {
+        headers: {
+          Authorization: `Bearer ${this.accessToken}`,
+        },
         method: "DELETE",
       });
       if (res.error) {
@@ -188,6 +192,9 @@ export const useProductStore = defineStore("productStore", {
       const res = await fetch(
         "http://localhost:5000/product/" + id + "/display",
         {
+          headers: {
+            Authorization: `Bearer ${this.accessToken}`,
+          },
           method: "PATCH",
           body: JSON.stringify({ isDisplayed: product.isDisplayed }),
           headers: { "Content-Type": "application/json" },
