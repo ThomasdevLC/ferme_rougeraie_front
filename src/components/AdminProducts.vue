@@ -44,7 +44,7 @@
         <ProductDetails :product="product" />
       </div>
     </div>
-    <div class="product-list" v-if="filter === 'displayed'">
+    <div class="product__list" v-if="filter === 'displayed'">
       <p class="product__list__count">
         {{ productStore.displayedCount }} produit<span
           v-if="productStore.displayedCount > 1"

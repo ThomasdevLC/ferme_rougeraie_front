@@ -11,7 +11,7 @@
       <p class="card__text__price">
         {{ priceToEuros(product.price) }} / <span> {{ product.unit }}</span>
       </p>
-      <div class="card__text__quantity">
+      <!-- <div class="card__text__quantity">
         <div class="card__text__quantity__eval">
           <button
             @click="decrementQuantity"
@@ -37,13 +37,13 @@
             +
           </button>
         </div>
-      </div>
-      <!-- <QuantityManager
+      </div> -->
+      <QuantityManager
         :product="product"
         :quantity="quantity"
         @quantity-updated="quantity = $event"
         :key="product.id"
-      /> -->
+      />
       <p class="card__text__addcart" @click="addToCart">AJOUTER AU PANIER</p>
     </div>
     <div class="overlay" v-if="showModal" @click="closeModal"></div>
