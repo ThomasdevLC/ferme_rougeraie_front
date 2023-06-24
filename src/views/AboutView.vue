@@ -168,7 +168,7 @@ export default {
       @include mixin.lg-lt {
         flex-direction: column-reverse;
         row-gap: 40px;
-        margin-top: 80px;
+        margin: 80px 0;
       }
 
       &__sellpoint {
@@ -229,10 +229,25 @@ footer {
     justify-content: center;
     align-items: center;
     @include mixin.xxl-lt {
-      padding: 40px;
+      padding: 40px 0;
+    }
+    @include mixin.lg-lt {
+      padding: 60px 0;
+    }
+    @include mixin.sm-lt {
+      padding: 80px 0;
     }
     &__logo {
       height: 130px;
+      @include mixin.sm-lt {
+        height: 110px;
+      }
+    }
+
+    &__text {
+      @include mixin.sm-lt {
+        font-size: 14px;
+      }
     }
     &__infos {
       display: none;
@@ -242,6 +257,9 @@ footer {
     }
     &__credits {
       margin: 0;
+      @include mixin.sm-lt {
+        font-size: 14px;
+      }
     }
   }
 }

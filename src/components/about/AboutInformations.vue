@@ -89,6 +89,9 @@ export default {
       & img {
         display: block;
         width: 40px;
+        @include mixin.sm-lt {
+          width: 30px;
+        }
       }
 
       &:hover {
