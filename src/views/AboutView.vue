@@ -64,67 +64,43 @@
           </p>
         </div>
       </div>
+      <footer>
+        <div class="footer">
+          <img class="footer__logo" :src="imageLogo" alt="logo" />
+          <p class="footer__text">© Ferme de la Rougeraie - 06 58 75 69 42</p>
+          <div class="footer__infos">
+            <AboutInformations />
+          </div>
+          <p class="footer__credits">
+            Création :
+            <a href="https://www.linkedin.com/in/thomaslecam/">Thomas Le Cam</a>
+          </p>
+        </div>
+      </footer>
     </div>
-
-    <!-- <div class="footer">Thomas Le Cam</div> -->
 
     <div class="about__informations">
-      <p class="about__informations__address">Ferme de la Rougeraie</p>
-      <div class="about__informations__medias">
-        <nav class="about__informations__medias__nav">
-          <ul class="about__informations__medias__nav__links">
-            <li>
-              <a
-                href="https://www.google.com/maps/place/Ferme+de+la+Rougeraie/@47.9659359,-2.5786985,17z/data=!4m14!1m7!3m6!1s0x480fd17bd0d61589:0x327caef9255f9739!2sFerme+de+la+Rougeraie!8m2!3d47.9659323!4d-2.5761236!16s%2Fg%2F11nwwr5hmv!3m5!1s0x480fd17bd0d61589:0x327caef9255f9739!8m2!3d47.9659323!4d-2.5761236!16s%2Fg%2F11nwwr5hmv?authuser=0"
-                ><img :src="imageGmap" alt="localisation"
-              /></a>
-            </li>
-            <li><img :src="imageInsta" alt="Instagram" /></li>
-            <li>
-              <a
-                href="https://www.facebook.com/people/Ferme-de-La-Rougeraie/100077586669860/"
-              >
-                <img :src="imageFaceb" alt="Facebook"
-              /></a>
-            </li>
-
-            <li>
-              <a href="fermedelarougeraie@gmail.com">
-                <img :src="imageEmail" alt="email" />
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
+      <AboutInformations />
     </div>
   </div>
-  <footer>
-    <div class="footer">
-      <img class="footer__img" :src="imageLogo" alt="logo" />
-    </div>
-  </footer>
 </template>
 
 <script>
+import AboutInformations from "../components/about/AboutInformations.vue";
 import background from "../assets/images/background.png";
 import imageOne from "../assets/images/about-image-one.jpg";
 import imageTwo from "../assets/images/about-image-two.jpg";
-import imageInsta from "../assets/images/instagram.png";
-import imageFaceb from "../assets/images/facebook.png";
-import imageEmail from "../assets/images/email.png";
-import imageGmap from "../assets/images/loc.png";
 import imageLogo from "../assets/images/logo.png";
 
 export default {
+  components: {
+    AboutInformations,
+  },
   data() {
     return {
       image: background,
       imageOne: imageOne,
       imageTwo: imageTwo,
-      imageInsta: imageInsta,
-      imageFaceb: imageFaceb,
-      imageEmail: imageEmail,
-      imageGmap: imageGmap,
       imageLogo: imageLogo,
     };
   },
@@ -187,7 +163,7 @@ export default {
     &__bottom {
       display: flex;
       column-gap: 120px;
-      margin: 100px 0;
+      margin: 100px 0 140px 0;
 
       @include mixin.lg-lt {
         flex-direction: column-reverse;
@@ -241,52 +217,29 @@ export default {
     @include mixin.xxl-lt {
       display: none;
     }
-
-    &__address {
-      color: black;
-      font-size: 20px;
-      transform: rotate(-90deg);
-    }
-
-    &__medias__nav {
-      margin-top: 120px;
-
-      &__links {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-
-        & li {
-          margin-bottom: 20px;
-
-          & img {
-            display: block;
-            width: 40px;
-          }
-
-          &:hover {
-            cursor: pointer;
-          }
-        }
-      }
-    }
   }
 }
 
 footer {
-  // background-color: red;
-  height: 200px;
-  padding: 20px;
   .footer {
+    height: 100px;
+    padding: 20px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-
-    &__img {
+    align-items: center;
+    // background-color: white;
+    &__logo {
       height: 130px;
+    }
+    &__infos {
+      display: none;
+      @include mixin.xxl-lt {
+        display: block;
+      }
+    }
+    &__credits {
+      margin: 0;
     }
   }
 }
