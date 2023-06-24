@@ -83,6 +83,7 @@ export default {
       margin-bottom: 20px;
       @include mixin.xxl-lt {
         margin: 0px;
+        padding-bottom: 10px;
       }
 
       & img {
