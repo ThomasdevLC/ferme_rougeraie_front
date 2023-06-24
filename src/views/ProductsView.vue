@@ -67,7 +67,7 @@ export default {
     max-width: 1200px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 40px;
     justify-items: center;
     padding: 60px;
     margin: auto;

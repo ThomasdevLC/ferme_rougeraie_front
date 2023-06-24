@@ -11,7 +11,7 @@
       <p class="card__text__price">
         {{ priceToEuros(product.price) }} / <span> {{ product.unit }}</span>
       </p>
-      <!-- <div class="card__text__quantity">
+      <div class="card__text__quantity">
         <div class="card__text__quantity__eval">
           <button
             @click="decrementQuantity"
@@ -37,13 +37,13 @@
             +
           </button>
         </div>
-      </div> -->
-      <QuantityManager
+      </div>
+      <!-- <QuantityManager
         :product="product"
         :quantity="quantity"
         @quantity-updated="quantity = $event"
         :key="product.id"
-      />
+      /> -->
       <p class="card__text__addcart" @click="addToCart">AJOUTER AU PANIER</p>
     </div>
     <div class="overlay" v-if="showModal" @click="closeModal"></div>
@@ -102,6 +102,7 @@ export default {
         if (existingProduct) {
           // Show modal that the product is already selected
           this.showModal = true;
+          this.quantity = 0;
         } else {
           const compressedImage = await compressImage(this.product.image);
           productStore.addToCart({
@@ -148,6 +149,7 @@ export default {
       position: absolute;
       bottom: 155px;
       background-color: var(--primary);
+      color: white;
       padding: 5px 10px;
       font-weight: 500;
       margin-left: -5px;

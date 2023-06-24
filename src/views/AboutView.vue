@@ -98,6 +98,7 @@
       </div>
     </div>
   </div>
+  <footer></footer>
 </template>
 
 <script>
@@ -270,9 +271,9 @@ export default {
   }
 }
 
-.footer {
+footer {
   width: 100%;
-  background-color: white;
-  height: 100px;
+  background-color: red;
+  height: 200px;
 }
 </style>

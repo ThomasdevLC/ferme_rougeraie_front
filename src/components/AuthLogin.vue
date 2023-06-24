@@ -6,6 +6,7 @@
     </div>
 
     <button class="btn" type="submit">connexion</button>
+    <div class="error" v-if="errorMessage">{{ errorMessage }}</div>
   </form>
 </template>
 
@@ -15,8 +16,10 @@ import { useProductStore } from "../stores/ProductStore";
 
 export default {
   setup() {
-    const inputPassword = ref("DixFruitsEtlegumes!");
     const productStore = useProductStore();
+
+    const inputPassword = ref("");
+    const errorMessage = ref(null);
 
     const submitPassword = async (event) => {
       event.preventDefault();
@@ -52,6 +55,7 @@ export default {
         inputPassword.value = "";
       } catch (error) {
         console.error(error);
+        errorMessage.value = error.message;
       }
     };
 
@@ -60,6 +64,8 @@ export default {
         const token = sessionStorage.getItem("token");
         if (token) {
           // Placeholder pour votre logique d'initialisation
+
+          console.log("accessToken ", productStore.accessToken);
           resolve();
         } else {
           reject(new Error("Token not found"));
@@ -67,7 +73,7 @@ export default {
       });
     };
 
-    return { inputPassword, submitPassword };
+    return { inputPassword, submitPassword, errorMessage };
   },
 };
 </script>

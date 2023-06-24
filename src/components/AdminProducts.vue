@@ -7,18 +7,21 @@
   <div class="loading" v-if="productStore.loading">Chargement...</div>
 
   <div v-else class="product__container">
-    <nav class="filter">
+    <div class="product__container__closed">
       <i
         v-if="!productStore.closedShop"
-        class="product__container__closed fa-solid fa-store"
+        class="fa-solid fa-store"
         style="color: var(--primary)"
         @click="productStore.closedShop = !productStore.closedShop"
       ></i>
       <i
         v-else
-        class="product__container__closed fa-solid fa-store-slash"
+        class="fa-solid fa-store-slash"
         @click="productStore.closedShop = !productStore.closedShop"
       ></i>
+    </div>
+
+    <nav class="filter">
       <button @click="filter = 'all'" :class="{ selected: filter === 'all' }">
         Tous les produits
       </button>
@@ -93,8 +96,14 @@ export default {
   padding: 25px;
 
   &__closed {
-    font-size: 22px;
-    cursor: pointer;
+    display: flex;
+    justify-content: end;
+    padding-block: 10px;
+
+    & i {
+      font-size: 24px;
+      cursor: pointer;
+    }
   }
 }
 

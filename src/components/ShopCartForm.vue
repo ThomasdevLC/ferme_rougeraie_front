@@ -48,8 +48,6 @@
         </select>
       </div>
 
-      <!-- <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div> -->
-
       <button type="submit">Passer commande</button>
     </form>
   </div>

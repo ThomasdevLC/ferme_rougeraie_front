@@ -1,7 +1,5 @@
 <template>
   <div class="orders">
-    <p class="orders__title">COMMANDES</p>
-
     <div class="orders__pickup">
       <i
         class="fa-regular fa-calendar"
@@ -140,11 +138,6 @@ export default {
   padding: 40px;
   margin: auto;
 
-  &__title {
-    font-size: 32px;
-    text-align: center;
-    line-height: 0;
-  }
   &__header {
     display: flex;
     justify-content: center;

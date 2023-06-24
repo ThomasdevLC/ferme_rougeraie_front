@@ -59,7 +59,7 @@ export const useProductStore = defineStore("productStore", {
 
     currentDay() {
       const today = new Date();
-      return today.getDate();
+      return today.toLocaleDateString("fr-FR", { weekday: "long" });
     },
 
     // order getters:
