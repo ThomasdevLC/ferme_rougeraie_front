@@ -57,7 +57,7 @@
 <script>
 import { useProductStore } from "../stores/ProductStore";
 import ShopCart from "../components/ShopCart.vue";
-import header__logo from "../assets/logo.png";
+import header__logo from "../assets/images/logo.png";
 import basket from "../assets/images/basket.png";
 import doubletap from "../utils/doubletap.js";
 

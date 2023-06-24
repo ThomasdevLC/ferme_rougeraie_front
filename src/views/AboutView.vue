@@ -98,7 +98,11 @@
       </div>
     </div>
   </div>
-  <footer></footer>
+  <footer>
+    <div class="footer">
+      <img class="footer__img" :src="imageLogo" alt="logo" />
+    </div>
+  </footer>
 </template>
 
 <script>
@@ -109,6 +113,7 @@ import imageInsta from "../assets/images/instagram.png";
 import imageFaceb from "../assets/images/facebook.png";
 import imageEmail from "../assets/images/email.png";
 import imageGmap from "../assets/images/loc.png";
+import imageLogo from "../assets/images/logo.png";
 
 export default {
   data() {
@@ -120,6 +125,7 @@ export default {
       imageFaceb: imageFaceb,
       imageEmail: imageEmail,
       imageGmap: imageGmap,
+      imageLogo: imageLogo,
     };
   },
 };
@@ -181,7 +187,7 @@ export default {
     &__bottom {
       display: flex;
       column-gap: 120px;
-      margin-top: 120px;
+      margin: 100px 0;
 
       @include mixin.lg-lt {
         flex-direction: column-reverse;
@@ -272,8 +278,16 @@ export default {
 }
 
 footer {
-  width: 100%;
-  background-color: red;
+  // background-color: red;
   height: 200px;
+  padding: 20px;
+  .footer {
+    display: flex;
+    justify-content: center;
+
+    &__img {
+      height: 130px;
+    }
+  }
 }
 </style>
