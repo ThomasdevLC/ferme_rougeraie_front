@@ -81,6 +81,9 @@ export default {
 
     & li {
       margin-bottom: 20px;
+      @include mixin.xxl-lt {
+        margin: 0px;
+      }
 
       & img {
         display: block;

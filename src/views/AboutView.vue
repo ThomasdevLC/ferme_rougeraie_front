@@ -228,7 +228,6 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // background-color: white;
     &__logo {
       height: 130px;
     }
@@ -240,6 +239,9 @@ footer {
     }
     &__credits {
       margin: 0;
+      @include mixin.xxl-lt {
+        padding: 20px;
+      }
     }
   }
 }
