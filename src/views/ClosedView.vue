@@ -1,5 +1,7 @@
 <template>
-  <div class="closed" :style="{ 'background-image': `url(${image})` }"></div>
+  <div class="closed" :style="{ 'background-image': `url(${image})` }">
+    <h1>CLOSED / Pas de produit cette semaine, à bientôt !</h1>
+  </div>
 </template>
 
 <script>

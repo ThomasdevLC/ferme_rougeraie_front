@@ -328,5 +328,22 @@ export const useProductStore = defineStore("productStore", {
         console.log(res.error);
       }
     },
+
+    async updateClosedShop(value) {
+      const res = await fetch("http://localhost:5000/", {
+        method: "PATCH",
+        body: JSON.stringify({ closedShop: value }),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.accessToken}`,
+        },
+      });
+
+      if (res.error) {
+        console.log(res.error);
+      } else {
+        this.closedShop = value;
+      }
+    },
   },
 });
