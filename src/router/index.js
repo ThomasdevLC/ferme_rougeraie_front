@@ -3,6 +3,7 @@ import ProductsView from "../views/ProductsView.vue";
 import AboutView from "../views/AboutView.vue";
 import AdminView from "../views/AdminView.vue";
 import IntroView from "../views/IntroView.vue";
+import ClosedView from "../views/ClosedView.vue";
 
 const routerApp = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,6 +28,11 @@ const routerApp = createRouter({
       path: "/admin",
       name: "AdminView",
       component: AdminView,
+    },
+    {
+      path: "/closed",
+      name: "closed",
+      component: ClosedView,
     },
   ],
 });
