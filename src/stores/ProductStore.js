@@ -330,7 +330,8 @@ export const useProductStore = defineStore("productStore", {
     },
 
     async updateClosedShop(value) {
-      const res = await fetch("http://localhost:5000/", {
+      console.log(value);
+      const res = await fetch("http://localhost:5000/closedShop", {
         method: "PATCH",
         body: JSON.stringify({ closedShop: value }),
         headers: {

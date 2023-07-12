@@ -12,12 +12,12 @@
         v-if="!productStore.closedShop"
         class="fa-solid fa-store"
         style="color: var(--primary)"
-        @click="productStore.closedShop = !productStore.closedShop"
+        @click="productStore.updateClosedShop(true)"
       ></i>
       <i
         v-else
         class="fa-solid fa-store-slash"
-        @click="productStore.closedShop = !productStore.closedShop"
+        @click="productStore.updateClosedShop(false)"
       ></i>
     </div>
 
