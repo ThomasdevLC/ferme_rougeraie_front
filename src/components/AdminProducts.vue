@@ -82,12 +82,6 @@ export default {
 
     return { productStore, filter };
   },
-
-  // methods: {
-  //   async handleClosedShopToggle() {
-  //     await useProductStore().updateClosedShop(!useProductStore().closedShop);
-  //   },
-  // },
 };
 </script>
 
