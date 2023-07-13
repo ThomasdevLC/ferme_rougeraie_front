@@ -1,6 +1,6 @@
 <template>
   <div class="closed" :style="{ 'background-image': `url(${image})` }">
-    <h1>CLOSED / Pas de produit cette semaine, à bientôt !</h1>
+    <p class="closed__text">Pas de produit cette semaine, à bientôt !</p>
   </div>
 </template>
 
@@ -14,8 +14,16 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
 .closed {
   height: 100vh;
+
+  &__text {
+    margin: 0;
+    font-size: 40px;
+    font-weight: 500;
+    text-align: center;
+    padding-top: 200px;
+  }
 }
 </style>

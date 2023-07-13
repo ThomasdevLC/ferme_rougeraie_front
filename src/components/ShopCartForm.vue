@@ -91,7 +91,7 @@ export default {
       ) {
         this.errorMessage =
           "Les commandes doivent être passées avant 21h la veille du jour de vente.";
-        return; // Bloquer le handleSubmit
+        return;
       }
 
       const order = {
