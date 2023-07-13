@@ -90,7 +90,7 @@ export default {
           productStore.currentHour > "12:00")
       ) {
         this.errorMessage =
-          "Les commandes doivent être passées avant 21h la veille du jour de vente.";
+          "Les commandes doivent être passées avant 21h00 la veille du jour de vente.";
         return;
       }
 
