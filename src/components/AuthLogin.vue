@@ -18,7 +18,7 @@ export default {
   setup() {
     const productStore = useProductStore();
 
-    const inputPassword = ref("");
+    const inputPassword = ref("DixFruitsEtlegumes!");
     const errorMessage = ref(null);
 
     const submitPassword = async (event) => {

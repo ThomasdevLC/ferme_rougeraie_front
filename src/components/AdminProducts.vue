@@ -12,12 +12,12 @@
         v-if="!productStore.closedShop"
         class="fa-solid fa-store"
         style="color: var(--primary)"
-        @click="productStore.updateClosedShop(true)"
+        @click="productStore.updateClosedShop(!productStore.closedShop)"
       ></i>
       <i
         v-else
         class="fa-solid fa-store-slash"
-        @click="productStore.updateClosedShop(false)"
+        @click="productStore.updateClosedShop(!productStore.closedShop)"
       ></i>
     </div>
 
@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useProductStore } from "../stores/ProductStore";
 import ProductDetails from "../components/ProductDetails.vue";
 import ProductForm from "../components/ProductForm.vue";
@@ -79,8 +79,15 @@ export default {
   setup() {
     const productStore = useProductStore();
     const filter = ref("all");
+
     return { productStore, filter };
   },
+
+  // methods: {
+  //   async handleClosedShopToggle() {
+  //     await useProductStore().updateClosedShop(!useProductStore().closedShop);
+  //   },
+  // },
 };
 </script>
 

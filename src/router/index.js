@@ -37,13 +37,20 @@ const routerApp = createRouter({
     },
   ],
 });
-routerApp.beforeEach((to, from, next) => {
-  const productStore = useProductStore();
-  console.log(productStore.closedShop);
-  if (to.name === "ProductsView" && productStore.closedShop) {
-    next({ name: "closed" });
+routerApp.beforeEach(async (to, from, next) => {
+  if (to.name === "ProductsView") {
+    // Vérifie si la route actuelle est "/products"
+    const productStore = useProductStore();
+    await productStore.getClosedShop();
+    console.log(productStore.closedShop);
+    if (productStore.closedShop) {
+      next({ name: "closed" });
+    } else {
+      next();
+    }
   } else {
-    next();
+    next(); // Passe à la route suivante sans appliquer la logique de beforeEach
   }
 });
+
 export default routerApp;

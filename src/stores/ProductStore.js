@@ -330,20 +330,46 @@ export const useProductStore = defineStore("productStore", {
     },
 
     async updateClosedShop(value) {
-      console.log(value);
-      const res = await fetch("http://localhost:5000/closedShop", {
-        method: "PATCH",
-        body: JSON.stringify({ closedShop: value }),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${this.accessToken}`,
-        },
-      });
+      try {
+        console.log(value, "update shop");
+        const res = await fetch("http://localhost:5000/closedShop", {
+          method: "PATCH",
+          body: JSON.stringify({ closedShop: value }),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${this.accessToken}`,
+          },
+        });
 
-      if (res.error) {
-        console.log(res.error);
-      } else {
-        this.closedShop = value;
+        if (res.error) {
+          console.log(res.error);
+        } else {
+          await this.getClosedShop(); // Récupérer la valeur mise à jour après la mise à jour réussie
+        }
+      } catch (error) {
+        console.log("Error while updating closedShop:", error);
+      }
+    },
+
+    async getClosedShop() {
+      try {
+        const response = await fetch("http://localhost:5000/closedShop", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+          this.closedShop = data.closedShop;
+
+          console.log(this.closedShop, "state shop");
+        } else {
+          console.log("Failed to get closedShop:", data.error);
+        }
+      } catch (error) {
+        console.log("Error while fetching closedShop:", error);
       }
     },
   },
