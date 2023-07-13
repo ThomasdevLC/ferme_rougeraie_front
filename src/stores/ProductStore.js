@@ -363,7 +363,6 @@ export const useProductStore = defineStore("productStore", {
         const data = await response.json();
         if (response.ok) {
           this.closedShop = data.closedShop;
-
           console.log(this.closedShop, "state shop");
         } else {
           console.log("Failed to get closedShop:", data.error);

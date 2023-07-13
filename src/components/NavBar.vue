@@ -21,6 +21,9 @@
             class="header__nav__link"
             v-if="$route.path !== '/admin'"
             :to="{ name: 'ProductsView' }"
+            :class="{
+              'router-link-active': $route.path === '/closed',
+            }"
             >Produits</router-link
           >
           <router-link
