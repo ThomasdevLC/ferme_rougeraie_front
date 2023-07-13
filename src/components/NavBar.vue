@@ -140,6 +140,7 @@ export default {
 
     &__link {
       font-size: 26px;
+      font-weight: 500;
       color: var(--text-color);
       text-decoration: none;
       margin-left: 80px;

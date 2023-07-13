@@ -43,6 +43,7 @@ export default {
     padding-top: 60px;
     text-align: center;
     font-size: 40px;
+    font-weight: 600;
 
     @include mixin.sm-lt {
       grid-template-columns: repeat(1, 1fr);
