@@ -49,6 +49,7 @@
       </div>
 
       <button type="submit">Passer commande</button>
+      <div v-if="errorMessage" class="">{{ errorMessage }}</div>
     </form>
   </div>
 </template>
@@ -69,24 +70,35 @@ export default {
       pickup: "",
       phone: "",
       validatedCart: false,
-      // errorMessage: "",
+      errorMessage: "", // Ajouter une variable d'erreur
     };
   },
 
   methods: {
     handleValidate() {
-      return (this.validatedCart = true);
+      this.validatedCart = true;
     },
-
     handleSubmit() {
       const productStore = useProductStore();
+
+      if (
+        (this.pickup === "mardi" &&
+          productStore.currentDay === "lundi" &&
+          productStore.currentHour > "21:00") ||
+        (this.pickup === "vendredi" &&
+          productStore.currentDay === "jeudi" &&
+          productStore.currentHour > "12:00")
+      ) {
+        this.errorMessage =
+          "Les commandes doivent être passées avant 21h la veille du jour de vente.";
+        return; // Bloquer le handleSubmit
+      }
 
       const order = {
         name: this.name,
         surname: this.surname,
         pickup: this.pickup,
         phone: this.phone,
-
         products: this.productStore.cart.map((product) => ({
           name: product.name,
           quantity: product.quantity.toFixed(2),
@@ -97,9 +109,9 @@ export default {
         date: formatDate(new Date()),
         status: "pending",
       };
+
       productStore.addOrder(order);
       this.productStore.clearCart();
-      // emit event to trigger thanksModal in the parent component
       this.$emit("submit-form");
     },
   },

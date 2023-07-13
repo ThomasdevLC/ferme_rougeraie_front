@@ -62,6 +62,14 @@ export const useProductStore = defineStore("productStore", {
       return today.toLocaleDateString("fr-FR", { weekday: "long" });
     },
 
+    currentHour() {
+      const today = new Date();
+      return today.toLocaleTimeString("fr-FR", {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+    },
+
     // order getters:
 
     orderCount() {
