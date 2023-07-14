@@ -1,6 +1,6 @@
 <template>
   <header>
-    <div class="header">
+    <div class="header" :style="{ 'background-image': `url(${header})` }">
       <img
         class="header__logo"
         :src="image"
@@ -62,6 +62,8 @@ import { useProductStore } from "../stores/ProductStore";
 import ShopCart from "../components/ShopCart.vue";
 import header__logo from "../assets/images/logo.png";
 import basket from "../assets/images/basket.png";
+import header from "../assets/images/header.png";
+
 import doubletap from "../utils/doubletap.js";
 
 export default {
@@ -81,6 +83,7 @@ export default {
     return {
       showModal: false,
       image: header__logo,
+      header: header,
       basketImage: basket,
     };
   },
@@ -141,9 +144,12 @@ export default {
     &__link {
       font-size: 26px;
       font-weight: 500;
-      color: var(--text-color);
+      color: black;
       text-decoration: none;
       margin-left: 80px;
+      &:hover {
+        color: var(--text-color);
+      }
 
       @include mixin.sm-lt {
         flex-direction: column;
