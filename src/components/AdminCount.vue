@@ -49,9 +49,9 @@ export default {
     justify-content: flex-end;
     font-size: 24px;
     padding-bottom: 20px;
-    cursor: pointer;
-    &:hover {
+    & i:hover {
       color: var(--primary);
+      cursor: pointer;
     }
   }
 
