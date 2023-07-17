@@ -120,11 +120,20 @@ export default {
       font-size: 18px;
       font-weight: 600;
       margin-left: 15px;
+
+      @include mixin.sm {
+        font-size: 16px;
+        margin-left: 10px;
+      }
     }
 
     &__price,
     &__inter {
       margin-left: 15px;
+      @include mixin.sm {
+        font-size: 16px;
+      }
+
       @include mixin.xs {
         margin-left: 0px;
       }
@@ -140,7 +149,7 @@ export default {
 
     & i {
       font-size: 22px;
-      margin-left: 6px;
+      margin-left: 14px;
       color: var(--gray-3);
       cursor: pointer;
       @include mixin.xs {
