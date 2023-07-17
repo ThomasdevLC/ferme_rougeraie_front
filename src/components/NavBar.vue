@@ -9,6 +9,19 @@
         v-doubletap="handleDoubleTap"
       />
 
+      <div class="header__closed" v-if="productStore.isLoggedIn">
+        <i
+          v-if="!productStore.closedShop"
+          class="fa-solid fa-store"
+          style="color: var(--primary)"
+          @click="productStore.updateClosedShop(!productStore.closedShop)"
+        ></i>
+        <i
+          v-else
+          class="fa-solid fa-store-slash"
+          @click="productStore.updateClosedShop(!productStore.closedShop)"
+        ></i>
+      </div>
       <div class="header__nav">
         <nav>
           <router-link
@@ -63,7 +76,6 @@ import ShopCart from "../components/ShopCart.vue";
 import header__logo from "../assets/images/logo.png";
 import basket from "../assets/images/basket.png";
 import header from "../assets/images/header.png";
-
 import doubletap from "../utils/doubletap.js";
 
 export default {
@@ -129,6 +141,19 @@ export default {
     height: 160px;
     @include mixin.sm-lt {
       margin-bottom: 20px;
+    }
+  }
+
+  &__closed {
+    margin-left: auto;
+    & i {
+      font-size: 28px;
+      vertical-align: center;
+      cursor: pointer;
+    }
+
+    & i:hover {
+      color: var(--light-primary);
     }
   }
 
