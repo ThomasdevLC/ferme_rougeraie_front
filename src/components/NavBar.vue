@@ -151,10 +151,6 @@ export default {
       vertical-align: center;
       cursor: pointer;
     }
-
-    & i:hover {
-      color: var(--light-primary);
-    }
   }
 
   &__nav {
