@@ -2,6 +2,7 @@
   <div class="product">
     <div class="product__image">
       <img :src="product.image" alt="photo produit" />
+      <div class="product__image__limited" v-if="product.limited"></div>
     </div>
     <div class="product__infos">
       <p class="product__infos__name">{{ product.name }}</p>
@@ -129,12 +130,22 @@ export default {
   &__image {
     display: flex;
     align-items: center;
+    position: relative;
 
     & img {
       width: 55px;
       height: 55px;
       border-radius: 50%;
       object-fit: cover;
+    }
+    &__limited {
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      position: absolute;
+      top: 0;
+      left: 3px;
     }
   }
 

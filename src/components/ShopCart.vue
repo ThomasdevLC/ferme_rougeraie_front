@@ -20,6 +20,7 @@
       Total : {{ priceToEuros(productStore.totalCart) }}
     </p>
     <p v-if="productStore.limitedProducts" class="cart__alert">
+      <span class="cart__alert__limited"></span>
       Votre panier contient des produits en quantité limitée. <br />
       Si ces produits ne sont plus disponibles lors du retrait le tarif sera
       actualisé
@@ -68,8 +69,8 @@ export default {
 .cart {
   position: relative;
   &__info {
-    font-size: 20px;
-    font-weight: 500;
+    font-size: 24px;
+    font-weight: 600;
     text-align: center;
   }
   &__total {
@@ -80,6 +81,13 @@ export default {
   &__alert {
     font-weight: 400;
     text-align: center;
+    &__limited {
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      display: inline-block;
+    }
   }
   &__thanks {
     font-size: 20px;

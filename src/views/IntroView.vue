@@ -1,21 +1,9 @@
 <template>
-  <div ref="container" class="container">
-    <div class="vegie veg-1"><img class="header__logo" :src="tomatoe" /></div>
-    <div class="vegie veg-2">
-      <img class="header__logo" :src="butternut" />
-    </div>
-    <div class="vegie veg-3"><img class="header__logo" :src="carrot" /></div>
-    <div class="vegie veg-4"><img class="header__logo" :src="turnip" /></div>
-    <div class="vegie veg-5"><img class="header__logo" :src="carrot" /></div>
-    <div class="vegie veg-6">
-      <img class="header__logo" :src="butternut" />
-    </div>
-    <div class="vegie veg-7"><img class="header__logo" :src="pumpkin" /></div>
-    <div class="vegie veg-8"><img class="header__logo" :src="tomatoe" /></div>
-    <div class="vegie veg-9"><img class="header__logo" :src="turnip" /></div>
-    <div class="vegie veg-10">
-      <img class="header__logo" :src="carrot" />
-    </div>
+  <div
+    ref="container"
+    class="container"
+    :style="{ 'background-image': `url(${intro})` }"
+  >
     <div class="text"><img class="text" :src="text" /></div>
   </div>
 </template>
@@ -28,6 +16,8 @@ import turnip from "../assets/images/turnip.png";
 import carrot from "../assets/images/carrot.png";
 import radish from "../assets/images/radish.png";
 import text from "../assets/images/text.svg";
+import intro from "../assets/images/intro.png";
+
 export default {
   data() {
     return {
@@ -38,6 +28,7 @@ export default {
       carrot: carrot,
       radish: radish,
       text: text,
+      intro: intro,
     };
   },
 

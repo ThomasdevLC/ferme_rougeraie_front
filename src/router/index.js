@@ -2,20 +2,20 @@ import { createRouter, createWebHistory } from "vue-router";
 import ProductsView from "../views/ProductsView.vue";
 import AboutView from "../views/AboutView.vue";
 import AdminView from "../views/AdminView.vue";
-import IntroView from "../views/IntroView.vue";
+// import IntroView from "../views/IntroView.vue";
 import ClosedView from "../views/ClosedView.vue";
 import { useProductStore } from "../stores/ProductStore";
 
 const routerApp = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    // {
+    //   path: "/",
+    //   name: "IntroView",
+    //   component: IntroView,
+    // },
     {
       path: "/",
-      name: "IntroView",
-      component: IntroView,
-    },
-    {
-      path: "/about",
       name: "AboutView",
       component: AboutView,
     },

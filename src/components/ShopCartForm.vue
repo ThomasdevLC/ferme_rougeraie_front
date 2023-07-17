@@ -87,7 +87,7 @@ export default {
           productStore.currentHour > "21:00") ||
         (this.pickup === "vendredi" &&
           productStore.currentDay === "jeudi" &&
-          productStore.currentHour > "12:00")
+          productStore.currentHour > "21:00")
       ) {
         this.errorMessage =
           "Les commandes doivent être passées avant 21h00 la veille du jour de vente.";
