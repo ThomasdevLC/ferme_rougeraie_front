@@ -66,18 +66,7 @@ export default {
   justify-content: center;
   column-gap: 20px;
   padding: 30px;
-}
-
-button {
-  padding: 10px;
-  border: 0;
-  border-radius: 6px;
-  font-size: 16px;
-  width: 140px;
-  cursor: pointer;
-  color: #333;
-  background: #bbbbbb;
-  transition: all 0.6s;
+  background: var(--gray-3);
 }
 
 i {
@@ -87,10 +76,9 @@ i {
 }
 
 i.selected {
-  color: var(--primary);
+  color: var(--gray-1);
 }
 i:hover {
-  color: var(--light-primary);
-  opacity: 0.7;
+  color: var(--gray-2);
 }
 </style>

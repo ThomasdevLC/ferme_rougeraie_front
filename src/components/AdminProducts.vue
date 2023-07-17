@@ -88,7 +88,10 @@ export default {
 <style scoped lang="scss">
 .product__form {
   background: var(--gray-2);
+  max-width: 640px;
+  margin: auto;
   padding: 40px 0;
+  margin-top: 40px;
 }
 
 .product__container {

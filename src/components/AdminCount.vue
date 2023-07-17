@@ -5,7 +5,7 @@
     </div>
 
     <div class="count__head">
-      <p>quantités</p>
+      <p>QUANTITÉS</p>
     </div>
     <div
       class="count__product"
@@ -48,7 +48,7 @@ export default {
     display: flex;
     justify-content: flex-end;
     font-size: 24px;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
     cursor: pointer;
     &:hover {
       color: var(--primary);

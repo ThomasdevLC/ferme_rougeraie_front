@@ -57,7 +57,7 @@
       />
     </div>
 
-    <button class="btn">Ajouter</button>
+    <button class="btn">AJOUTER</button>
     <p v-if="errorMessage" class="error-message">
       Merci de remplir tous les champs.
     </p>
@@ -216,6 +216,11 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
+
+.btn {
+  font-weight: 600;
+  color: var(--text-color);
 }
 
 .error-message {
