@@ -84,7 +84,7 @@ export default {
   padding: 10px;
   background: #fff;
   margin-top: 20px;
-  border-radius: 2px;
+  border: 1px solid var(--gray-2);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -104,7 +104,7 @@ export default {
 
     &__image {
       overflow: hidden;
-      border-radius: 6px;
+      border-radius: 50%;
       width: 60px;
       height: 60px;
       @include mixin.xs {
@@ -116,7 +116,12 @@ export default {
         object-fit: cover;
       }
     }
-    &__name,
+    &__name {
+      font-size: 18px;
+      font-weight: 600;
+      margin-left: 15px;
+    }
+
     &__price,
     &__inter {
       margin-left: 15px;

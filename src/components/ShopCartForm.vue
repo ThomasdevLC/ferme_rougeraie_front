@@ -49,7 +49,9 @@
       </div>
 
       <button type="submit">Passer commande</button>
-      <div v-if="errorMessage" class="">{{ errorMessage }}</div>
+      <div class="cartform__error" v-if="errorMessage">
+        {{ errorMessage }}
+      </div>
     </form>
   </div>
 </template>
@@ -84,7 +86,7 @@ export default {
       if (
         (this.pickup === "mardi" &&
           productStore.currentDay === "lundi" &&
-          productStore.currentHour > "21:00") ||
+          productStore.currentHour > "12:00") ||
         (this.pickup === "vendredi" &&
           productStore.currentDay === "jeudi" &&
           productStore.currentHour > "21:00")
@@ -120,9 +122,15 @@ export default {
 <style scoped lang="scss">
 @use "../assets/styles/mixins" as mixin;
 
-.cartform__validate {
-  display: flex;
-  margin: 40px auto 0;
+.cartform {
+  &__validate {
+    display: flex;
+    margin: 40px auto 0;
+  }
+  &__error {
+    text-align: center;
+    margin-top: 10px;
+  }
 }
 
 form {
