@@ -151,14 +151,13 @@ form {
   position: absolute;
   left: 0;
   top: 0;
-  // width: 50px;
   opacity: 0;
 }
 
 .file img {
-  width: 70px;
-  height: 70px;
-  border-radius: 6px;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
 }
