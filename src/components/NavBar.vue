@@ -152,7 +152,7 @@ export default {
     border-radius: 50%;
     margin-left: auto;
     &__box {
-      padding: 14px;
+      padding: 13px;
       height: 30px;
       width: 30px;
       display: flex;
