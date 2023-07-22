@@ -10,17 +10,19 @@
       />
 
       <div class="header__closed" v-if="productStore.isLoggedIn">
-        <i
-          v-if="!productStore.closedShop"
-          class="fa-solid fa-store"
-          style="color: var(--primary)"
-          @click="productStore.updateClosedShop(!productStore.closedShop)"
-        ></i>
-        <i
-          v-else
-          class="fa-solid fa-store-slash"
-          @click="productStore.updateClosedShop(!productStore.closedShop)"
-        ></i>
+        <div class="header__closed__box">
+          <i
+            v-if="!productStore.closedShop"
+            class="fa-solid fa-store"
+            style="color: var(--primary)"
+            @click="productStore.updateClosedShop(!productStore.closedShop)"
+          ></i>
+          <i
+            v-else
+            class="fa-solid fa-store-slash"
+            @click="productStore.updateClosedShop(!productStore.closedShop)"
+          ></i>
+        </div>
       </div>
       <div class="header__nav">
         <nav>
@@ -40,7 +42,7 @@
             >Produits</router-link
           >
           <router-link
-            class="header__nav__link"
+            class="header__nav__link admin-link"
             v-if="$route.path === '/admin'"
             :to="{ name: 'AdminView' }"
             >Admin</router-link
@@ -145,11 +147,22 @@ export default {
   }
 
   &__closed {
+    border: 1px solid var(--gray-2);
+    background-color: white;
+    border-radius: 50%;
     margin-left: auto;
-    & i {
-      font-size: 28px;
-      vertical-align: center;
-      cursor: pointer;
+    &__box {
+      padding: 14px;
+      height: 30px;
+      width: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      & i {
+        font-size: 27px;
+        cursor: pointer;
+      }
     }
   }
 
@@ -203,6 +216,10 @@ export default {
     color: var(--primary);
     border: none;
   }
+}
+
+.admin-link {
+  margin-left: 40px;
 }
 
 .header__nav__cart {
