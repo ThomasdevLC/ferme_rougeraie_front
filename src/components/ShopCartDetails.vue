@@ -143,9 +143,10 @@ export default {
       height: 13px;
       border-radius: 50%;
       background-color: var(--primary);
+      border: 2px solid white;
       position: absolute;
       top: 0;
-      left: 3px;
+      left: 1px;
     }
   }
 
