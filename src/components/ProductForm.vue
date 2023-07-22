@@ -11,7 +11,7 @@
       />
 
       <div class="file">
-        <label for="input-file" :class="{ 'no-padding': selectedImage }">
+        <label for="input" :class="{ 'no-padding': selectedImage }">
           <img
             v-if="selectedImage"
             :src="selectedImage"
@@ -20,12 +20,7 @@
           />
           <i v-else class="material-icons">photo_camera</i>
         </label>
-        <input
-          id="input-file"
-          type="file"
-          ref="fileInput"
-          @change="handleImage"
-        />
+        <input id="input" type="file" ref="fileInput" @change="handleImage" />
       </div>
     </div>
     <input
