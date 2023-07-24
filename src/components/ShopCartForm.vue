@@ -92,7 +92,7 @@ export default {
           productStore.currentHour > "21:00")
       ) {
         this.errorMessage =
-          "Les commandes doivent être passées avant 21h00 la veille du jour de vente.";
+          "Désolé, les commandes doivent être passées avant 21h00 la veille du jour de vente. Veulliez choisir un autre jour de retrait";
         return;
       }
 
@@ -129,7 +129,8 @@ export default {
   }
   &__error {
     text-align: center;
-    margin-top: 10px;
+    margin: 10px auto 0;
+    width: 500px;
   }
 }
 
