@@ -276,7 +276,6 @@ export const useProductStore = defineStore("productStore", {
     checkCart() {
       const cartData = localStorage.getItem("cart");
       if (cartData) {
-        console.log("cartData", cartData);
         try {
           this.cart = JSON.parse(cartData);
         } catch (error) {
