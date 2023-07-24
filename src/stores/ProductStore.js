@@ -273,6 +273,18 @@ export const useProductStore = defineStore("productStore", {
       localStorage.removeItem("cart");
     },
 
+    checkCart() {
+      const cartData = localStorage.getItem("cart");
+      if (cartData) {
+        console.log("cartData", cartData);
+        try {
+          this.cart = JSON.parse(cartData);
+        } catch (error) {
+          console.error("Error parsing cart data:", error);
+        }
+      }
+    },
+
     // ORDERS ACTIONS
 
     async getOrders() {

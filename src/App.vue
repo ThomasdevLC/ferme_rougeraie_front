@@ -15,6 +15,7 @@ export default {
 
     productStore.getProducts();
     productStore.getClosedShop();
+    productStore.checkCart();
 
     return { productStore };
   },
