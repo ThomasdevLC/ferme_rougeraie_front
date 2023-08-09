@@ -50,7 +50,7 @@
       </p>
       <div class="orders__infos__function">
         <i class="fa-solid fa-print" @click="handlePrint"></i>
-        <i class="fa-solid fa-trash-can" @click="handleDeleteAll"></i>
+        <i class="fa-solid fa-trash-can" @click="handleDeleteAllDone"></i>
       </div>
     </div>
     <div>
@@ -97,12 +97,15 @@ export default {
   },
 
   methods: {
-    handleDeleteAll() {
+    handleDeleteAllDone() {
       const productStore = useProductStore();
-      if (confirm("Voulez-vous vraiment supprimer toutes les commandes ?")) {
+      if (
+        confirm("Voulez-vous vraiment supprimer toutes les commandes traitées?")
+      ) {
         productStore.clearOrders();
-        alert("commandes supprimées");
+        alert("commandes traitées supprimées");
       }
+      console.log(productStore.orders);
     },
     handlePrint,
   },

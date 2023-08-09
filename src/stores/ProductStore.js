@@ -336,15 +336,18 @@ export const useProductStore = defineStore("productStore", {
     },
 
     async clearOrders() {
-      this.orders = [];
       const res = await fetch("http://localhost:5000/order", {
         headers: {
           Authorization: `Bearer ${this.accessToken}`,
+          "Content-Type": "application/json",
         },
         method: "DELETE",
       });
+
       if (res.error) {
         console.log(res.error);
+      } else {
+        this.orders = this.pendingOrders;
       }
     },
 
