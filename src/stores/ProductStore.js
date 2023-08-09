@@ -7,6 +7,7 @@ export const useProductStore = defineStore("productStore", {
     cart: [],
     orders: [],
     closedShop: false,
+    closedShopMessage: "",
     isLoggedIn: false,
     accessToken: null,
     loading: false,
@@ -394,6 +395,43 @@ export const useProductStore = defineStore("productStore", {
       } catch (error) {
         console.log("Error while fetching closedShop:", error);
       }
+    },
+
+    async editShopMessage(message) {
+      console.log(message, "message");
+
+      const requestData = {
+        message: message.message,
+      };
+
+      console.log(requestData, "requestData");
+
+      try {
+        const res = await fetch("http://localhost:5000/closedShop/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${this.accessToken}`,
+          },
+          body: JSON.stringify(requestData),
+        });
+
+        if (!res.ok) {
+          const errorData = await res.json();
+          console.log(errorData.error);
+        } else {
+          const data = await res.json();
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    async getShopMessage() {
+      const res = await fetch("http://localhost:5000/closedShop/message");
+      const data = await res.json();
+      this.closedShopMessage = data.message;
+      console.log("store message", this.closedShopMessage);
     },
   },
 });

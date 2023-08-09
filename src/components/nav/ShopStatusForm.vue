@@ -22,7 +22,7 @@ export default {
 
     const handleShopStatus = () => {
       if (message.value.length > 0) {
-        productStore.addProduct({
+        productStore.editShopMessage({
           message: message.value,
         });
 
