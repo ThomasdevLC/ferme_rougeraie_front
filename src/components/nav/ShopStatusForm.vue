@@ -18,7 +18,7 @@ import { useProductStore } from "../../stores/ProductStore";
 export default {
   setup() {
     const productStore = useProductStore();
-    const message = ref("");
+    const message = ref(productStore.closedShopMessage);
 
     const handleShopStatus = () => {
       if (message.value.length > 0) {

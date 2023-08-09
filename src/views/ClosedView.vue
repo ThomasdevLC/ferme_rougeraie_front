@@ -1,15 +1,26 @@
 <template>
   <div class="closed" :style="{ 'background-image': `url(${image})` }">
-    <p class="closed__text">Pas de produit cette semaine, à bientôt !</p>
+    <p class="closed__text" v-if="closedShopMessage">
+      {{ closedShopMessage }}
+    </p>
   </div>
 </template>
 
 <script>
 import background from "../assets/images/background.png";
+import { useProductStore } from "../stores/ProductStore";
 
 export default {
   data() {
-    return { image: background };
+    return {
+      image: background,
+      closedShopMessage: null,
+    };
+  },
+  async mounted() {
+    const productStore = useProductStore();
+    await productStore.getClosedShop(); // Fetch closed shop data
+    this.closedShopMessage = productStore.closedShopMessage;
   },
 };
 </script>

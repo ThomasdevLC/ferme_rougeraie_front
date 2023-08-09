@@ -17,7 +17,6 @@ export default {
     productStore.getClosedShop();
     productStore.checkCart();
     productStore.getShopMessage();
-    console.log("message", productStore.closedShopMessage);
     return { productStore };
   },
 };
