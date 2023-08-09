@@ -10,12 +10,17 @@
       />
 
       <div class="header__closed" v-if="productStore.isLoggedIn">
+        <div class="overlay" v-if="showShopModal" @click="closeShopModal"></div>
+        <div class="modal" v-if="showShopModal"><ShopStatusForm /></div>
         <div class="header__closed__box">
           <i
             v-if="!productStore.closedShop"
             class="fa-solid fa-store"
             style="color: var(--primary)"
-            @click="productStore.updateClosedShop(!productStore.closedShop)"
+            @click="
+              productStore.updateClosedShop(!productStore.closedShop);
+              openShopModal();
+            "
           ></i>
           <i
             v-else
@@ -75,13 +80,14 @@
 <script>
 import { useProductStore } from "../stores/ProductStore";
 import ShopCart from "../components/ShopCart.vue";
+import ShopStatusForm from "../components/nav/ShopStatusForm.vue";
 import header__logo from "../assets/images/logo.png";
 import basket from "../assets/images/basket.png";
 import header from "../assets/images/header.png";
 import doubletap from "../utils/doubletap.js";
 
 export default {
-  components: { ShopCart },
+  components: { ShopCart, ShopStatusForm },
 
   directives: {
     doubletap,
@@ -96,6 +102,7 @@ export default {
   data() {
     return {
       showModal: false,
+      showShopModal: false,
       image: header__logo,
       header: header,
       basketImage: basket,
@@ -104,9 +111,17 @@ export default {
   methods: {
     openModal() {
       this.showModal = true;
+      console.log(this.showModal);
     },
     closeModal() {
       this.showModal = false;
+    },
+    openShopModal() {
+      this.showShopModal = true;
+      console.log(this.showShopModal);
+    },
+    closeShopModal() {
+      this.showShopModal = false;
     },
 
     handleDoubleTap() {

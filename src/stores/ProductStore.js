@@ -351,6 +351,8 @@ export const useProductStore = defineStore("productStore", {
       }
     },
 
+    // SHOP STATUS ACTIONS
+
     async updateClosedShop(value) {
       try {
         console.log(value, "update shop");
