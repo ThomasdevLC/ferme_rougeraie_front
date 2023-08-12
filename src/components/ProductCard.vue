@@ -166,7 +166,7 @@ export default {
       line-height: 1.3;
       margin: -1px 0;
       font-family: var(--font-family-titles);
-      font-size: 30px;
+      font-size: 31px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
