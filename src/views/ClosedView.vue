@@ -17,9 +17,9 @@ export default {
       closedShopMessage: null,
     };
   },
-  async mounted() {
+  mounted() {
     const productStore = useProductStore();
-    await productStore.getClosedShop(); // Fetch closed shop data
+    productStore.getClosedShop();
     this.closedShopMessage = productStore.closedShopMessage;
   },
 };
