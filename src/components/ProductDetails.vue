@@ -91,7 +91,6 @@ export default {
 
   @include mixin.xs {
     padding: 20px;
-
     flex-direction: column;
   }
 
@@ -117,9 +116,13 @@ export default {
       }
     }
     &__name {
+      max-width: 140px;
       font-size: 18px;
       font-weight: 600;
       margin-left: 15px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
 
       @include mixin.sm {
         font-size: 16px;
