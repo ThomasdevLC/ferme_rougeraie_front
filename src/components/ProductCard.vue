@@ -7,7 +7,9 @@
       <img :src="product.image" alt="photo produit" />
     </div>
     <div class="card__text">
-      <p class="card__text__name">{{ product.name }}</p>
+      <p class="card__text__name" v-bind:title="product.name">
+        {{ product.name }}
+      </p>
       <p class="card__text__price">
         {{ priceToEuros(product.price) }} / <span> {{ product.unit }}</span>
       </p>
@@ -170,6 +172,7 @@ export default {
       font-size: 30px;
       margin-bottom: 20px;
       white-space: nowrap;
+      text-overflow: ellipsis;
     }
     &__quantity {
       &__eval {

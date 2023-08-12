@@ -6,7 +6,6 @@
         id="name"
         type="text"
         placeholder="nom produit"
-        maxlength="14"
         v-model="name"
       />
 
