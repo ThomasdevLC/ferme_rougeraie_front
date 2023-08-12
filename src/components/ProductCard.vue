@@ -7,7 +7,7 @@
       <img :src="product.image" alt="photo produit" />
     </div>
     <div class="card__text">
-      <p class="card__text__name" v-bind:title="product.name">
+      <p class="card__text__name" :title="product.name">
         {{ product.name }}
       </p>
       <p class="card__text__price">
@@ -149,7 +149,7 @@ export default {
 
     &__limited {
       position: absolute;
-      bottom: 155px;
+      bottom: 185px;
       background-color: var(--primary);
       color: white;
       padding: 5px 10px;
@@ -160,17 +160,14 @@ export default {
 
   &__text {
     width: 240px;
-    padding: 0 10px;
-    line-height: 0;
-    display: flex;
-    flex-direction: column;
-    row-gap: 5px;
-    overflow: hidden;
+    padding: 10px 10px 0 10px;
 
     &__name {
+      line-height: 1.3;
+      margin: -1px 0;
       font-family: var(--font-family-titles);
       font-size: 30px;
-      margin-bottom: 20px;
+      overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
     }
