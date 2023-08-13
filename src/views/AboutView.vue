@@ -111,13 +111,17 @@ export default {
 @use "../assets/styles/mixins" as mixin;
 
 .about {
+  @include mixin.sm-lt {
+    padding-top: 360px;
+  }
+
   &__container {
     max-width: 1200px;
     margin: auto;
     padding: 260px 40px 60px 40px;
 
     @include mixin.lg-lt {
-      padding: 40px 100px;
+      padding: 240px 100px 40px 100px;
     }
     @include mixin.sm {
       padding: 20px 60px;

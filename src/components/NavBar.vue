@@ -172,14 +172,15 @@ header {
   left: 0;
   z-index: 999;
   width: 100%;
+  margin-bottom: 60px;
 }
 
 .header {
   display: flex;
   align-items: center;
   margin: 0 auto;
-  margin-bottom: 60px;
   padding: 20px 40px;
+
   background-color: white;
   border-bottom: 1px solid #444;
 

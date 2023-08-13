@@ -25,8 +25,6 @@ export default {
         productStore.editShopMessage({
           message: message.value,
         });
-
-        console.log(message.value);
       }
     };
 

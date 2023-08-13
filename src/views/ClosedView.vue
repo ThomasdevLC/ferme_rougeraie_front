@@ -28,13 +28,14 @@ export default {
 <style scoped lang="scss">
 .closed {
   height: 100vh;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
   &__text {
     margin: 0;
     font-size: 40px;
     font-weight: 500;
     text-align: center;
-    padding-top: 200px;
   }
 }
 </style>

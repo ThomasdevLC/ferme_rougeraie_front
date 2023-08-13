@@ -39,25 +39,20 @@ export default {
 @use "../assets/styles/mixins" as mixin;
 
 .product {
+  padding-top: 240px;
+  @include mixin.sm-lt {
+    padding-top: 360px;
+  }
   &__title {
-    padding-top: 240px;
     text-align: center;
-    font-size: 40px;
+    font-size: 46px;
     font-weight: 600;
+    padding-top: 20px;
 
     @include mixin.sm-lt {
-      grid-template-columns: repeat(1, 1fr);
-      font-size: 30px;
-      padding: 40px;
+      font-size: 32px;
+      padding: 40px 0;
     }
-  }
-
-  &__noproduct {
-    height: 100vh;
-    margin: 0;
-    font-size: 40px;
-    display: grid;
-    place-items: center;
   }
 
   &__container {
