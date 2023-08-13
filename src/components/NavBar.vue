@@ -308,6 +308,13 @@ header {
 .admin-link {
   margin-left: 40px;
 }
+.admin-nav {
+  @include mixin.sm-lt {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+}
 
 .active {
   height: 40px;

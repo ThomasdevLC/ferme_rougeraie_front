@@ -1,5 +1,5 @@
 <template>
-  <div class="admin">
+  <div class="admin br">
     <div v-if="!productStore.isLoggedIn">
       <AuthLogin />
     </div>
@@ -62,7 +62,7 @@ export default {
 
 <style lang="scss" scoped>
 .admin {
-  padding-top: 200px;
+  padding-top: 199px;
 }
 
 .admin-btn {
