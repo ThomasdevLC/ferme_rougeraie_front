@@ -40,7 +40,7 @@ export default {
 
 .product {
   &__title {
-    padding-top: 60px;
+    padding-top: 240px;
     text-align: center;
     font-size: 40px;
     font-weight: 600;

@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" :title="product.name">
     <div class="card__image">
       <p v-if="product.limited" class="card__image__limited">
         Quantité limitée
@@ -7,7 +7,7 @@
       <img :src="product.image" alt="photo produit" />
     </div>
     <div class="card__text">
-      <p class="card__text__name" :title="product.name">
+      <p class="card__text__name">
         {{ product.name }}
       </p>
       <p class="card__text__price">
@@ -149,7 +149,7 @@ export default {
 
     &__limited {
       position: absolute;
-      bottom: 185px;
+      bottom: 165px;
       background-color: var(--primary);
       color: white;
       padding: 5px 10px;
@@ -170,6 +170,9 @@ export default {
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+    }
+    &__price {
+      line-height: 1;
     }
     &__quantity {
       &__eval {
@@ -205,7 +208,7 @@ export default {
 
     &__addcart {
       font-weight: 500;
-      margin-top: 20px;
+      margin-top: 12px;
       cursor: pointer;
 
       &:hover {

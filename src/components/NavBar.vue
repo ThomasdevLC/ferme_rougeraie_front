@@ -1,8 +1,15 @@
 <template>
-  <header>
-    <div class="header" :style="{ 'background-image': `url(${header})` }">
+  <header ref="headerRef">
+    <div
+      :class="
+        navSize && $route.path == '/products' ? 'header active' : 'header'
+      "
+      :style="{ 'background-image': `url(${header})` }"
+    >
       <img
-        class="header__logo"
+        :class="
+          navSize && $route.path == '/products' ? 'active-logo' : 'header__logo'
+        "
         :src="image"
         alt=" logo"
         @dblclick="this.$router.push({ name: 'AdminView' })"
@@ -86,6 +93,7 @@ import basket from "../assets/images/basket.png";
 import header from "../assets/images/header.png";
 import doubletap from "../utils/doubletap.js";
 
+import { ref, onMounted } from "vue";
 export default {
   components: { ShopCart, ShopStatusForm },
 
@@ -95,8 +103,20 @@ export default {
 
   setup() {
     const productStore = useProductStore();
+    const navSize = ref(false);
 
-    return { productStore };
+    const changeNav = () => {
+      if (window.scrollY >= 200) {
+        navSize.value = true;
+      } else {
+        navSize.value = false;
+      }
+    };
+
+    onMounted(() => {
+      window.addEventListener("scroll", changeNav);
+    });
+    return { productStore, changeNav, navSize };
   },
 
   data() {
@@ -141,10 +161,16 @@ export default {
 @use "../assets/styles/mixins" as mixin;
 
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 999;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
+  margin-bottom: 60px;
   padding: 20px 40px;
   background-color: white;
   border-bottom: 1px solid #444;
@@ -182,6 +208,7 @@ export default {
   }
 
   &__nav {
+    width: 700px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -238,13 +265,10 @@ export default {
 }
 
 .header__nav__cart {
-  position: relative;
-  z-index: 1;
-
   &__image {
     height: 45px;
-    cursor: pointer;
     margin-left: 80px;
+    cursor: pointer;
 
     @include mixin.sm-lt {
       margin: 0px;
@@ -273,5 +297,15 @@ export default {
       right: -10px;
     }
   }
+}
+
+.active {
+  height: 40px;
+  padding: 30px;
+  transition: all 0.4s ease;
+}
+
+.active-logo {
+  height: 80px;
 }
 </style>
