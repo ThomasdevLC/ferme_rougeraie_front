@@ -68,12 +68,16 @@ export default {
     justify-content: center;
     column-gap: 100px;
     font-size: 18px;
-    line-height: 14px;
     border-bottom: 1px solid var(--gray-2);
 
     & p {
+      height: 20px;
       text-align: left;
-      width: 150px;
+      line-height: 1;
+      width: 180px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
   }
 }
