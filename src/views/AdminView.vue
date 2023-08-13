@@ -61,6 +61,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.admin {
+  padding-top: 200px;
+}
+
 .admin-btn {
   display: flex;
   justify-content: center;

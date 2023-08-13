@@ -114,7 +114,7 @@ export default {
   &__container {
     max-width: 1200px;
     margin: auto;
-    padding: 60px 40px;
+    padding: 260px 40px 60px 40px;
 
     @include mixin.lg-lt {
       padding: 40px 100px;

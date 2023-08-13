@@ -88,7 +88,7 @@ export default {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin-top: 60px;
+  margin-top: 100px;
   &__top {
     display: flex;
   }
