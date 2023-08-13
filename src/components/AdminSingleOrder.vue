@@ -12,7 +12,9 @@
       <td>
         <ul>
           <li v-for="product in order.products" :key="product.name">
-            - {{ product.name }} x
+            -
+            <span class="product-order">{{ product.name }}</span>
+            x
             <span style="font-weight: 500">{{ product.quantity }}</span>
             <span v-if="product.unit === 'kg'" style="font-weight: 500">
               kg</span
@@ -123,6 +125,14 @@ i {
       font-weight: 600;
     }
   }
+}
+
+.product-order {
+  display: inline-block;
+  width: 140px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .total {
