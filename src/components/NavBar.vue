@@ -1,5 +1,5 @@
 <template>
-  <header ref="headerRef">
+  <header>
     <div
       :class="
         navSize && $route.path == '/products' ? 'header active' : 'header'
@@ -16,27 +16,31 @@
         v-doubletap="handleDoubleTap"
       />
 
-      <div class="header__closed" v-if="productStore.isLoggedIn">
-        <div class="overlay" v-if="showShopModal" @click="closeShopModal"></div>
-        <div class="modal" v-if="showShopModal"><ShopStatusForm /></div>
-        <div class="header__closed__box">
-          <i
-            v-if="!productStore.closedShop"
-            class="fa-solid fa-store"
-            style="color: var(--primary)"
-            @click="
-              productStore.updateClosedShop(!productStore.closedShop);
-              openShopModal();
-            "
-          ></i>
-          <i
-            v-else
-            class="fa-solid fa-store-slash"
-            @click="productStore.updateClosedShop(!productStore.closedShop)"
-          ></i>
-        </div>
-      </div>
       <div class="header__nav">
+        <div class="header__nav__closed" v-if="productStore.isLoggedIn">
+          <div
+            class="overlay"
+            v-if="showShopModal"
+            @click="closeShopModal"
+          ></div>
+          <div class="modal" v-if="showShopModal"><ShopStatusForm /></div>
+          <div class="header__nav__closed__box">
+            <i
+              v-if="!productStore.closedShop"
+              class="fa-solid fa-store"
+              style="color: var(--primary)"
+              @click="
+                productStore.updateClosedShop(!productStore.closedShop);
+                openShopModal();
+              "
+            ></i>
+            <i
+              v-else
+              class="fa-solid fa-store-slash"
+              @click="productStore.updateClosedShop(!productStore.closedShop)"
+            ></i>
+          </div>
+        </div>
         <nav>
           <router-link
             class="header__nav__link"
@@ -162,14 +166,16 @@ export default {
 <style scoped lang="scss">
 @use "../assets/styles/mixins" as mixin;
 
-.header {
+header {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
   z-index: 999;
+  width: 100%;
+}
+
+.header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   margin: 0 auto;
   margin-bottom: 60px;
@@ -189,34 +195,34 @@ export default {
     }
   }
 
-  &__closed {
-    border: 1px solid var(--gray-2);
-    background-color: white;
-    border-radius: 50%;
-    margin-left: auto;
-    &__box {
-      padding: 13px;
-      height: 30px;
-      width: 30px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      & i {
-        font-size: 27px;
-        cursor: pointer;
-      }
-    }
-  }
-
   &__nav {
-    width: 700px;
+    width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
 
     @include mixin.sm-lt {
       flex-direction: column;
+    }
+
+    &__closed {
+      border: 1px solid var(--gray-2);
+      background-color: white;
+      border-radius: 50%;
+
+      &__box {
+        padding: 13px;
+        height: 30px;
+        width: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & i {
+          font-size: 27px;
+          cursor: pointer;
+        }
+      }
     }
 
     &__link {
@@ -238,6 +244,7 @@ export default {
     }
     &__logout {
       font-size: 26px;
+      display: flex;
       margin-left: 40px;
       cursor: pointer;
       &:hover {
@@ -260,10 +267,6 @@ export default {
     color: var(--primary);
     border: none;
   }
-}
-
-.admin-link {
-  margin-left: 40px;
 }
 
 .header__nav__cart {
@@ -299,6 +302,10 @@ export default {
       right: -10px;
     }
   }
+}
+
+.admin-link {
+  margin-left: 40px;
 }
 
 .active {
