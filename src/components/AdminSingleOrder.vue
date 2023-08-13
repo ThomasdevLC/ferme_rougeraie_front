@@ -128,7 +128,8 @@ i {
 }
 
 .product-order {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   width: 140px;
   overflow: hidden;
   white-space: nowrap;
