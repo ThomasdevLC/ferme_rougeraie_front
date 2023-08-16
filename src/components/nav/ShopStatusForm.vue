@@ -4,10 +4,10 @@
       class="shopform__input"
       id="message"
       type="text"
-      placeholder="message"
-      v-model="message"
+      :placeholder="message"
+      v-model="messageInput"
     />
-    <button class="btn" @click="emitShopStatus">VALIDER</button>
+    <button class="btn">VALIDER</button>
   </form>
 </template>
 
@@ -16,31 +16,27 @@ import { ref } from "vue";
 import { useProductStore } from "../../stores/ProductStore";
 
 export default {
-  setup() {
-    const productStore = useProductStore();
-    const message = ref(productStore.closedShopMessage);
-
-    const handleShopStatus = async () => {
-      if (message.value.length > 0) {
-        await productStore.editShopMessage({
-          message: message.value,
-        });
-
-        this.emitShopStatus();
-      }
-    };
-
+  data() {
     return {
-      message,
-      handleShopStatus,
+      message: "",
+      messageInput: "",
     };
   },
-
   methods: {
-    emitShopStatus() {
-      this.$emit("submit-shopStatus");
-      console.log("emit");
+    handleShopStatus() {
+      if (this.messageInput.length > 0) {
+        const productStore = useProductStore();
+        productStore.editShopMessage({
+          message: this.messageInput,
+        });
+        this.$emit("submit-shopstatus");
+      }
     },
+  },
+  created() {
+    const productStore = useProductStore();
+    this.message = productStore.closedShopMessage;
+    this.messageInput = productStore.closedShopMessage;
   },
 };
 </script>

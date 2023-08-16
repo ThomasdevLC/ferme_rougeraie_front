@@ -1,5 +1,5 @@
 <template>
-  <div class="admin br">
+  <div class="admin">
     <div v-if="!productStore.isLoggedIn">
       <AuthLogin />
     </div>
