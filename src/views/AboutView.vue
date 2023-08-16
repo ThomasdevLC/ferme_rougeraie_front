@@ -67,14 +67,19 @@
       <footer>
         <div class="footer">
           <img class="footer__logo" :src="imageLogo" alt="logo" />
-          <p class="footer__text">© Ferme de la Rougeraie - 06 58 75 69 42</p>
+          <p class="footer__text">© Ferme de la Rougeraie - 06 83 34 13 70</p>
           <div class="footer__infos">
             <AboutInformations />
           </div>
-          <p class="footer__credits">
-            Création :
-            <a href="https://www.linkedin.com/in/thomaslecam/">Thomas Le Cam</a>
-          </p>
+          <div class="footer__credits">
+            <p>
+              Réalisation :
+              <a href="https://www.linkedin.com/in/thomaslecam/"
+                >Thomas Le Cam</a
+              >
+            </p>
+            <p>Illustrations : Matthieu Le Meur</p>
+          </div>
         </div>
       </footer>
     </div>
@@ -232,6 +237,8 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    line-height: 1;
+
     @include mixin.xxl-lt {
       padding: 40px 0;
     }
@@ -249,20 +256,28 @@ footer {
     }
 
     &__text {
+      margin-top: 15px;
+
       @include mixin.sm-lt {
         font-size: 14px;
       }
     }
     &__infos {
       display: none;
+
       @include mixin.xxl-lt {
         display: block;
       }
     }
     &__credits {
+      display: flex;
+      gap: 20px;
       margin: 0;
       @include mixin.sm-lt {
+        flex-direction: column;
+        gap: 0px;
         font-size: 14px;
+        line-height: 0;
       }
     }
   }
