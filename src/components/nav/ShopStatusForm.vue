@@ -7,7 +7,7 @@
       placeholder="message"
       v-model="message"
     />
-    <button class="btn">VALIDER</button>
+    <button class="btn" @click="emitShopStatus">VALIDER</button>
   </form>
 </template>
 
@@ -20,11 +20,13 @@ export default {
     const productStore = useProductStore();
     const message = ref(productStore.closedShopMessage);
 
-    const handleShopStatus = () => {
+    const handleShopStatus = async () => {
       if (message.value.length > 0) {
-        productStore.editShopMessage({
+        await productStore.editShopMessage({
           message: message.value,
         });
+
+        this.emitShopStatus();
       }
     };
 
@@ -32,6 +34,13 @@ export default {
       message,
       handleShopStatus,
     };
+  },
+
+  methods: {
+    emitShopStatus() {
+      this.$emit("submit-shopStatus");
+      console.log("emit");
+    },
   },
 };
 </script>

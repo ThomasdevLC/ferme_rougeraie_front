@@ -23,7 +23,9 @@
             v-if="showShopModal"
             @click="closeShopModal"
           ></div>
-          <div class="modal" v-if="showShopModal"><ShopStatusForm /></div>
+          <div class="modal" v-if="showShopModal">
+            <ShopStatusForm @submit-shopStatus="closeShopModal" />
+          </div>
           <div class="header__nav__closed__box">
             <i
               v-if="!productStore.closedShop"
