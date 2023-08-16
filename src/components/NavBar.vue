@@ -297,8 +297,8 @@ header {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    top: -10px;
-    right: -10px;
+    top: -6px;
+    right: -14px;
     background-color: var(--primary);
     color: white;
     font-size: 12px;
