@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header :class="$route.path == '/products' ? '' : 'header-absolute'">
     <div
       :class="
         navSize && $route.path == '/products' ? 'header active' : 'header'
@@ -175,6 +175,15 @@ header {
   margin-bottom: 60px;
 }
 
+.header-absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  margin-bottom: 60px;
+}
+
 .header {
   display: flex;
   align-items: center;
@@ -271,6 +280,7 @@ header {
 }
 
 .header__nav__cart {
+  position: relative;
   &__image {
     height: 45px;
     margin-left: 80px;
