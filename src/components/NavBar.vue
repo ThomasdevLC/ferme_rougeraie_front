@@ -266,7 +266,7 @@ header {
       @include mixin.sm-lt {
         flex-direction: column;
         margin: 0px;
-        padding: 10px;
+        padding-top: 40px;
       }
     }
   }
@@ -319,6 +319,9 @@ header {
 
 .admin-link {
   margin-left: 40px;
+  @include mixin.sm-lt {
+    display: none;
+  }
 }
 .admin-nav {
   @include mixin.sm-lt {

@@ -61,8 +61,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use "../assets/styles/mixins" as mixin;
+
 .admin {
   padding-top: 199px;
+
+  @include mixin.sm-lt {
+    margin-top: 140px;
+  }
 }
 
 .admin-btn {
