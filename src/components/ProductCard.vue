@@ -4,7 +4,7 @@
       <p v-if="product.limited" class="card__image__limited">
         Quantité limitée
       </p>
-      <img :src="product.image" alt="photo produit" />
+      <img :src="product.image" alt="photo produit" loading="lazy" />
     </div>
     <div class="card__text">
       <p class="card__text__name">
