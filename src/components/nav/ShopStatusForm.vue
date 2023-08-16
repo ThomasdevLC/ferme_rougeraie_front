@@ -1,6 +1,6 @@
 <template>
   <form class="shopform" @submit.prevent="handleShopStatus">
-    <input
+    <textarea
       class="shopform__input"
       id="message"
       type="text"
@@ -42,6 +42,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@use "../../assets/styles/mixins" as mixin;
+
 .shopform {
   display: flex;
   flex-direction: column;
@@ -55,6 +57,11 @@ export default {
     color: var(--gray-4);
     border-radius: 2px;
     outline: none;
+    resize: none;
+
+    @include mixin.sm-lt {
+      width: 200px;
+    }
   }
 }
 </style>

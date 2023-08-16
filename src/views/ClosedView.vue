@@ -26,6 +26,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@use "../assets/styles/mixins" as mixin;
+
 .closed {
   height: 100vh;
   display: flex;
@@ -36,6 +38,10 @@ export default {
     font-size: 40px;
     font-weight: 500;
     text-align: center;
+    @include mixin.sm-lt {
+      font-size: 20px;
+      padding: 40px;
+    }
   }
 }
 </style>
