@@ -304,7 +304,7 @@ header {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    top: -6px;
+    top: -8px;
     right: -14px;
     background-color: var(--primary);
     color: white;
