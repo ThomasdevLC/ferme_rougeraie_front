@@ -72,6 +72,7 @@ export default {
     font-size: 24px;
     font-weight: 600;
     text-align: center;
+    margin-top: 40px;
   }
   &__total {
     font-size: 20px;
