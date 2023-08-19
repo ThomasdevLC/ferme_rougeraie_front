@@ -333,7 +333,7 @@ header {
 
 .active {
   height: 40px;
-  padding: 30px;
+  padding: 30px 40px;
   transition: all 0.4s ease;
 }
 
