@@ -103,10 +103,6 @@ ul {
   list-style: none;
   padding-left: 40px;
   text-align: left;
-
-  @include mixin.sm-lt {
-    margin-left: 40px;
-  }
 }
 
 i {
@@ -130,10 +126,14 @@ i {
 .product-order {
   display: inline-flex;
   align-items: center;
-  width: 140px;
+  width: 190px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+
+  @include mixin.md-lt {
+    width: 120px;
+  }
 }
 
 .total {

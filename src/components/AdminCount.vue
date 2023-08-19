@@ -12,8 +12,8 @@
       v-for="(product, name) in productStore.totalProductsByName"
       :key="name"
     >
-      <p>{{ name }}</p>
-      <p>
+      <p class="count__product__name">{{ name }}</p>
+      <p class="count__product__qty">
         <span v-if="product.unit === 'kg'">{{
           product.quantity.toFixed(2)
         }}</span>
@@ -39,6 +39,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@use "../assets/styles/mixins" as mixin;
+
 .count {
   max-width: 640px;
   padding: 40px;
@@ -57,27 +59,32 @@ export default {
 
   &__head {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     background-color: var(--light-primary);
     font-size: 20px;
     font-weight: 500;
     line-height: 0;
   }
   &__product {
-    display: flex;
-    justify-content: center;
-    column-gap: 100px;
     font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 120px;
     border-bottom: 1px solid var(--gray-2);
+    padding: 0 15px;
 
-    & p {
+    &__name {
       height: 20px;
       text-align: left;
       line-height: 1;
-      width: 180px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+    }
+    &__qty {
+      height: 20px;
+      line-height: 1;
+      white-space: nowrap;
     }
   }
 }
