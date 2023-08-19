@@ -69,7 +69,9 @@
         <div class="overlay" v-if="showModal" @click="closeModal"></div>
         <div class="modal" v-if="showModal">
           <ShopCart />
-          <div class="cross-modal" @click="closeModal">x</div>
+          <div class="cross-modal" @click="closeModal">
+            <i class="fa-solid fa-x"></i>
+          </div>
         </div>
         <div v-if="$route.path !== '/admin'" class="header__nav__cart">
           <img

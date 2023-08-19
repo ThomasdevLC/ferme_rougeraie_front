@@ -66,6 +66,8 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+@use "../assets/styles/mixins" as mixin;
+
 .cart {
   position: relative;
   &__info {
@@ -82,6 +84,10 @@ export default {
   &__alert {
     font-weight: 400;
     text-align: center;
+
+    @include mixin.sm-lt {
+      font-size: 14px;
+    }
     &__limited {
       width: 13px;
       height: 13px;
