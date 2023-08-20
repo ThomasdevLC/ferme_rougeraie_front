@@ -70,6 +70,11 @@ export default {
 
 .cart {
   position: relative;
+
+  &__thanks {
+    margin-top: 20px;
+  }
+
   &__info {
     font-size: 24px;
     font-weight: 600;
