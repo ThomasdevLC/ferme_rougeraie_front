@@ -1,5 +1,5 @@
 <template>
-  <div class="product">
+  <div class="product" :title="product.name">
     <div class="product__infos">
       <div class="product__infos__image">
         <img :src="product.image" alt="photo produit" />
