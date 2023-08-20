@@ -49,7 +49,12 @@
       <p class="card__text__addcart" @click="addToCart">AJOUTER AU PANIER</p>
     </div>
     <div class="overlay" v-if="showModal" @click="closeModal"></div>
-    <div class="modal" v-if="showModal"><p>produit déja ajouté !</p></div>
+    <div class="modal" v-if="showModal">
+      <p class="alert-add">produit déjà ajouté !</p>
+      <div class="cross-modal" @click="closeModal">
+        <i class="fa-solid fa-x"></i>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -216,5 +221,12 @@ export default {
       }
     }
   }
+}
+
+.alert-add {
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 30px;
 }
 </style>
