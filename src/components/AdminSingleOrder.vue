@@ -13,12 +13,12 @@
         <ul>
           <li v-for="product in order.products" :key="product.name">
             -
-            <span class="product-order">{{ product.name }}</span>
-            x
             <span style="font-weight: 500">{{ product.quantity }}</span>
             <span v-if="product.unit === 'kg'" style="font-weight: 500">
               kg</span
             >
+            x
+            <span class="product-order">{{ product.name }}</span>
             =
             {{ priceToEuros(product.totalPrice) }}
           </li>
