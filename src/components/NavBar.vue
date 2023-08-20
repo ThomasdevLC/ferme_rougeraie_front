@@ -117,12 +117,10 @@ export default {
     const navSize = ref(false);
 
     const changeNav = () => {
-      if (window.innerWidth > 1210) {
-        if (window.scrollY >= 200) {
-          navSize.value = true;
-        } else {
-          navSize.value = false;
-        }
+      if (window.innerWidth > 1210 && window.scrollY >= 200) {
+        navSize.value = true;
+      } else {
+        navSize.value = false;
       }
     };
 
