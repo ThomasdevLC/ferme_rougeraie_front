@@ -18,14 +18,14 @@ export default {
   setup() {
     const productStore = useProductStore();
 
-    const inputPassword = ref("DixFruitsEtlegumes!");
+    const inputPassword = ref(import.meta.env.VITE_ADMIN_PASSWORD);
     const errorMessage = ref(null);
 
     const submitPassword = async (event) => {
       event.preventDefault();
 
       try {
-        const response = await fetch("http://localhost:5000/auth/login", {
+        const response = await fetch(`http://${import.meta.env.VITE_BACK_API}/auth/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

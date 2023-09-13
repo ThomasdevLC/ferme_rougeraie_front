@@ -36,9 +36,7 @@ export const useProductStore = defineStore("productStore", {
 
     totalCart() {
       const total = this.cart.reduce((total, product) => {
-        const productTotalInCents = Math.round(
-          product.price * product.quantity
-        );
+        const productTotalInCents = Math.round(product.price * product.quantity);
 
         return total + productTotalInCents;
       }, 0);
@@ -112,7 +110,7 @@ export const useProductStore = defineStore("productStore", {
 
     async getProducts() {
       this.loading = true;
-      const res = await fetch("http://localhost:5000/product/");
+      const res = await fetch(`http://${import.meta.env.VITE_BACK_API}/product/`);
       const data = await res.json();
       this.products = data;
       this.loading = false;
@@ -133,7 +131,7 @@ export const useProductStore = defineStore("productStore", {
         formData.append("image", file);
       }
 
-      const res = await fetch("http://localhost:5000/product/", {
+      const res = await fetch(`http://${import.meta.env.VITE_BACK_API}/product/`, {
         headers: {
           Authorization: `Bearer ${this.accessToken}`,
         },
@@ -161,15 +159,12 @@ export const useProductStore = defineStore("productStore", {
         }
         formData.append("isDisplayed", updatedProduct.isDisplayed);
         if (updatedProduct.image) {
-          const file = dataURItoFile(
-            updatedProduct.image,
-            updatedProduct.image.name
-          );
+          const file = dataURItoFile(updatedProduct.image, updatedProduct.image.name);
           formData.append("image", file);
           console.log("file", file);
         }
 
-        const res = await fetch("http://localhost:5000/product/" + id, {
+        const res = await fetch(`http://${import.meta.env.VITE_BACK_API}/product/` + id, {
           headers: {
             Authorization: `Bearer ${this.accessToken}`,
           },
@@ -189,7 +184,7 @@ export const useProductStore = defineStore("productStore", {
       this.products = this.products.filter((p) => {
         return p._id !== id;
       });
-      const res = await fetch("http://localhost:5000/product/" + id, {
+      const res = await fetch(`http://${import.meta.env.VITE_BACK_API}/product/` + id, {
         headers: {
           Authorization: `Bearer ${this.accessToken}`,
         },
@@ -204,17 +199,14 @@ export const useProductStore = defineStore("productStore", {
       const product = this.products.find((p) => p._id === id);
       product.isDisplayed = !product.isDisplayed;
 
-      const res = await fetch(
-        "http://localhost:5000/product/" + id + "/display",
-        {
-          method: "PATCH",
-          body: JSON.stringify({ isDisplayed: product.isDisplayed }),
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${this.accessToken}`,
-          },
-        }
-      );
+      const res = await fetch(`http://${import.meta.env.VITE_BACK_API}/product/` + id + "/display", {
+        method: "PATCH",
+        body: JSON.stringify({ isDisplayed: product.isDisplayed }),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.accessToken}`,
+        },
+      });
       if (res.error) {
         console.log(res.error);
       }
@@ -224,17 +216,14 @@ export const useProductStore = defineStore("productStore", {
       const product = this.products.find((p) => p._id === id);
       product.limited = !product.limited;
 
-      const res = await fetch(
-        "http://localhost:5000/product/" + id + "/limited",
-        {
-          method: "PATCH",
-          body: JSON.stringify({ limited: product.limited }),
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${this.accessToken}`,
-          },
-        }
-      );
+      const res = await fetch(`http://${import.meta.env.VITE_BACK_API}/product/` + id + "/limited", {
+        method: "PATCH",
+        body: JSON.stringify({ limited: product.limited }),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.accessToken}`,
+        },
+      });
       if (res.error) {
         console.log(res.error);
       }
@@ -289,7 +278,7 @@ export const useProductStore = defineStore("productStore", {
 
     async getOrders() {
       this.loading = true;
-      const res = await fetch("http://localhost:5000/order", {
+      const res = await fetch(`http://${import.meta.env.VITE_BACK_API}/order`, {
         headers: {
           Authorization: `Bearer ${this.accessToken}`,
         },
@@ -301,7 +290,7 @@ export const useProductStore = defineStore("productStore", {
 
     async addOrder(order) {
       this.orders.push(order);
-      const res = await fetch("http://localhost:5000/order", {
+      const res = await fetch(`http://${import.meta.env.VITE_BACK_API}/order`, {
         method: "POST",
         body: JSON.stringify(order),
         headers: { "Content-Type": "application/json" },
@@ -321,7 +310,7 @@ export const useProductStore = defineStore("productStore", {
           ...updatedOrder,
         };
 
-        const res = await fetch("http://localhost:5000/order/" + id, {
+        const res = await fetch(`http://${import.meta.env.VITE_BACK_API}/order/` + id, {
           method: "PATCH",
           body: JSON.stringify(updatedOrder),
           headers: {
@@ -337,7 +326,7 @@ export const useProductStore = defineStore("productStore", {
     },
 
     async clearOrders() {
-      const res = await fetch("http://localhost:5000/order", {
+      const res = await fetch(`http://${import.meta.env.VITE_BACK_API}/order`, {
         headers: {
           Authorization: `Bearer ${this.accessToken}`,
           "Content-Type": "application/json",
@@ -357,7 +346,7 @@ export const useProductStore = defineStore("productStore", {
     async updateClosedShop(value) {
       try {
         console.log(value, "update shop");
-        const res = await fetch("http://localhost:5000/closedShop", {
+        const res = await fetch(`http://${import.meta.env.VITE_BACK_API}/closedShop`, {
           method: "PATCH",
           body: JSON.stringify({ closedShop: value }),
           headers: {
@@ -378,7 +367,7 @@ export const useProductStore = defineStore("productStore", {
 
     async getClosedShop() {
       try {
-        const response = await fetch("http://localhost:5000/closedShop", {
+        const response = await fetch(`http://${import.meta.env.VITE_BACK_API}/closedShop`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -406,7 +395,7 @@ export const useProductStore = defineStore("productStore", {
       console.log(requestData, "requestData");
 
       try {
-        const res = await fetch("http://localhost:5000/closedShop/", {
+        const res = await fetch(`http://${import.meta.env.VITE_BACK_API}/closedShop/`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -428,7 +417,7 @@ export const useProductStore = defineStore("productStore", {
     },
 
     async getShopMessage() {
-      const res = await fetch("http://localhost:5000/closedShop/message");
+      const res = await fetch(`http://${import.meta.env.VITE_BACK_API}/closedShop/message`);
       const data = await res.json();
       this.closedShopMessage = data.message;
       console.log("store message", this.closedShopMessage);
