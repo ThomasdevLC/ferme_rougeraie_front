@@ -1,7 +1,7 @@
 <template>
   <form class="form" @submit.prevent="handleSubmit">
     <div class="file-name-form">
-      <input class="custom-input" id="name" type="text" placeholder="nom produit" v-model="name" />
+      <input class="custom-input" :class="{ 'error-input': name === '' && errorMessage }" id="name" type="text" placeholder="nom produit" v-model="name" />
 
       <div class="file">
         <label for="input" :class="{ 'no-padding': selectedImage }">
@@ -11,10 +11,10 @@
         <input id="input" type="file" ref="fileInput" @change="handleImage" />
       </div>
     </div>
-    <input class="custom-input" type="number" placeholder="prix" step="0.01" v-model="price" />
+    <input class="custom-input" :class="{ 'error-input': errorMessage && price === null }" type="number" placeholder="prix" step="0.01" v-model="price" />
 
     <div>
-      <select v-model="unit" required class="custom-input">
+      <select class="custom-input" :class="{ 'error-input': errorMessage && unit === null }" v-model="unit" required>
         <option value="null" disabled selected hidden>unité</option>
         <option value="piece">Pièce</option>
         <option value="kg">kg</option>
@@ -25,7 +25,14 @@
     </div>
 
     <div v-if="unit === 'kg'">
-      <input class="custom-input" type="number" placeholder="interval " step="0.1" v-model="interval" />
+      <input
+        class="custom-input"
+        :class="{ 'error-input': errorMessage && interval === '' }"
+        type="number"
+        placeholder="interval "
+        step="0.1"
+        v-model="interval"
+      />
     </div>
 
     <button class="btn">AJOUTER</button>
@@ -196,5 +203,9 @@ select {
 .error-message {
   margin: auto;
   text-align: center;
+}
+
+.error-input {
+  border: 2px solid var(--primary);
 }
 </style>
