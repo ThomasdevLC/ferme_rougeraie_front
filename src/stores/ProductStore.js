@@ -235,6 +235,8 @@ export const useProductStore = defineStore("productStore", {
     addToCart(product) {
       this.cart.push(product);
       localStorage.setItem("cart", JSON.stringify(this.cart));
+      localStorage.setItem("cartTimestamp", new Date().getTime().toString());
+
       console.log("cart", this.cart);
     },
 
@@ -268,8 +270,20 @@ export const useProductStore = defineStore("productStore", {
       if (cartData) {
         try {
           this.cart = JSON.parse(cartData);
+
+          const currentTime = new Date().getTime();
+          const cartTimestamp = localStorage.getItem("cartTimestamp");
+
+          if (cartTimestamp) {
+            const storedTimestamp = parseInt(cartTimestamp, 10);
+            const timeDifference = currentTime - storedTimestamp;
+
+            if (timeDifference >= 48 * 60 * 60 * 1000) {
+              this.clearCart();
+            }
+          }
         } catch (error) {
-          console.error("Error parsing cart data:", error);
+          console.error("No cart data:", error);
         }
       }
     },
