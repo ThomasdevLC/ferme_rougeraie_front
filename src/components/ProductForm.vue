@@ -1,34 +1,17 @@
 <template>
   <form class="form" @submit.prevent="handleSubmit">
     <div class="file-name-form">
-      <input
-        class="custom-input"
-        id="name"
-        type="text"
-        placeholder="nom produit"
-        v-model="name"
-      />
+      <input class="custom-input" id="name" type="text" placeholder="nom produit" v-model="name" />
 
       <div class="file">
         <label for="input" :class="{ 'no-padding': selectedImage }">
-          <img
-            v-if="selectedImage"
-            :src="selectedImage"
-            alt="selected image"
-            class="selected-product"
-          />
+          <img v-if="selectedImage" :src="selectedImage" alt="selected image" class="selected-product" />
           <i v-else class="material-icons">photo_camera</i>
         </label>
         <input id="input" type="file" ref="fileInput" @change="handleImage" />
       </div>
     </div>
-    <input
-      class="custom-input"
-      type="number"
-      placeholder="prix"
-      step="0.01"
-      v-model="price"
-    />
+    <input class="custom-input" type="number" placeholder="prix" step="0.01" v-model="price" />
 
     <div>
       <select v-model="unit" required class="custom-input">
@@ -42,19 +25,11 @@
     </div>
 
     <div v-if="unit === 'kg'">
-      <input
-        class="custom-input"
-        type="number"
-        placeholder="interval "
-        step="0.1"
-        v-model="interval"
-      />
+      <input class="custom-input" type="number" placeholder="interval " step="0.1" v-model="interval" />
     </div>
 
     <button class="btn">AJOUTER</button>
-    <p v-if="errorMessage" class="error-message">
-      Merci de remplir tous les champs.
-    </p>
+    <p v-if="errorMessage" class="error-message">Merci de remplir tous les champs.</p>
   </form>
 </template>
 
@@ -174,6 +149,7 @@ export default {
   padding: 10px;
   display: flex;
   place-items: center;
+  cursor: pointer;
 }
 
 .file > label:hover {

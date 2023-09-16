@@ -5,28 +5,11 @@
         <label for="input-file">
           <img :src="editImage" alt="produit" />
         </label>
-        <input
-          class="edit-file"
-          id="input-file"
-          type="file"
-          ref="fileInput"
-          @change="handleImage"
-        />
+        <input class="edit-file" id="input-file" type="file" ref="fileInput" @change="handleImage" />
       </div>
-      <input
-        class="custom-input"
-        type="text"
-        placeholder="nom"
-        v-model="editName"
-      />
+      <input class="custom-input" type="text" placeholder="nom" v-model="editName" />
 
-      <input
-        class="custom-input"
-        type="number"
-        placeholder="prix"
-        step="0.01"
-        v-model="editPrice"
-      />
+      <input class="custom-input" type="number" placeholder="prix" step="0.01" v-model="editPrice" />
       <div>
         <select v-model="editUnit" class="custom-input">
           <option value="piece">Pièce</option>
@@ -38,13 +21,7 @@
       </div>
 
       <div v-if="editUnit === 'kg'" class="input-field">
-        <input
-          class="custom-input"
-          type="number"
-          placeholder="interval "
-          step="0.1"
-          v-model="editInterval"
-        />
+        <input class="custom-input" type="number" placeholder="interval " step="0.1" v-model="editInterval" />
       </div>
       <button class="btn">Valider</button>
     </form>
@@ -144,6 +121,7 @@ form {
 .file {
   position: relative;
   margin: auto;
+  cursor: pointer;
 }
 
 .edit-file {
