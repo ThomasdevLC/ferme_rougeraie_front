@@ -1,10 +1,8 @@
 <template>
   <div class="card" :title="product.name">
     <div class="card__image">
-      <p v-if="product.limited" class="card__image__limited">
-        Quantité limitée
-      </p>
-      <img :src="product.image" alt="photo produit" loading="lazy" />
+      <p v-if="product.limited" class="card__image__limited">Quantité limitée</p>
+      <img :src="product.imagePath" alt="photo produit" loading="lazy" />
     </div>
     <div class="card__text">
       <p class="card__text__name">
@@ -15,29 +13,15 @@
       </p>
       <div class="card__text__quantity">
         <div class="card__text__quantity__eval">
-          <button
-            @click="decrementQuantity"
-            class="card__text__quantity__eval__button"
-          >
-            -
-          </button>
-          <div
-            v-if="product.interval"
-            class="card__text__quantity__eval__unit"
-            style="width: 23px"
-          >
+          <button @click="decrementQuantity" class="card__text__quantity__eval__button">-</button>
+          <div v-if="product.interval" class="card__text__quantity__eval__unit" style="width: 23px">
             {{ quantity.toFixed(1) }}
             <span class="card__text__quantity__eval__weight"> kg</span>
           </div>
           <div v-else class="card__text__quantity__eval__unit">
             {{ quantity }}
           </div>
-          <button
-            @click="incrementQuantity"
-            class="card__text__quantity__eval__button"
-          >
-            +
-          </button>
+          <button @click="incrementQuantity" class="card__text__quantity__eval__button">+</button>
         </div>
       </div>
       <!-- <QuantityManager
@@ -103,9 +87,7 @@ export default {
     async addToCart() {
       const productStore = useProductStore();
       if (this.quantity > 0) {
-        const existingProduct = productStore.cart.find(
-          (p) => p.id === this.product._id
-        );
+        const existingProduct = productStore.cart.find((p) => p.id === this.product._id);
         if (existingProduct) {
           // Show modal that the product is already selected
           this.showModal = true;

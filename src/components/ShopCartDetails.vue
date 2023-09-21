@@ -1,7 +1,7 @@
 <template>
   <div class="product">
     <div class="product__image">
-      <img :src="product.image" alt="photo produit" />
+      <img :src="product.imagePath" alt="photo produit" />
       <div class="product__image__limited" v-if="product.limited"></div>
     </div>
     <div class="product__infos">
@@ -22,11 +22,7 @@
         >
           -
         </button>
-        <div
-          v-if="product.interval"
-          class="product__quantity__eval__unit"
-          style="width: 23px"
-        >
+        <div v-if="product.interval" class="product__quantity__eval__unit" style="width: 23px">
           {{ quantity.toFixed(1) }}
           <span class="product__quantity__eval__weight"> kg</span>
         </div>
@@ -45,12 +41,7 @@
     <div class="product__total">
       {{ priceToEuros(totalPrice) }}
     </div>
-    <div
-      class="material-icons product__delete"
-      @click="productStore.deleteCartProduct(product.id)"
-    >
-      clear
-    </div>
+    <div class="material-icons product__delete" @click="productStore.deleteCartProduct(product.id)">clear</div>
   </div>
 </template>
 
@@ -98,11 +89,9 @@ export default {
         if (this.quantity < 0.1) {
           productStore.deleteCartProduct(this.product.id);
         } else {
-          productStore
-            .editCart(this.product.id, editedProduct)
-            .catch((error) => {
-              console.log(error);
-            });
+          productStore.editCart(this.product.id, editedProduct).catch((error) => {
+            console.log(error);
+          });
         }
       }
     },

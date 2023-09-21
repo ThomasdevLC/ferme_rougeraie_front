@@ -45,7 +45,7 @@ export default {
     const editPrice = ref((props.product.price / 100).toFixed(2));
     const editUnit = ref(props.product.unit);
     const editInterval = ref(props.product.interval);
-    const editImage = ref(props.product.image);
+    const editImage = ref(props.product.imagePath);
 
     const capitalized = computed(() => {
       return editName.value.charAt(0).toUpperCase() + editName.value.slice(1);

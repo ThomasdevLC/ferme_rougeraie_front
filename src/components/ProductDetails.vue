@@ -2,14 +2,12 @@
   <div class="product" :title="product.name">
     <div class="product__infos">
       <div class="product__infos__image">
-        <img :src="product.image" alt="photo produit" />
+        <img :src="product.imagePath" alt="photo produit" />
       </div>
       <h4 class="product__infos__name">{{ product.name }}</h4>
       <p class="product__infos__price">
         {{ priceToEuros(product.price) }} / <span> {{ product.unit }}</span>
-        <span class="product__infos__inter" v-if="product.interval">
-          - inter {{ product.interval }}
-        </span>
+        <span class="product__infos__inter" v-if="product.interval"> - inter {{ product.interval }} </span>
       </p>
     </div>
 
@@ -17,31 +15,13 @@
       <div class="overlay" v-if="showModal" @click="closeModal"></div>
       <div class="modal" v-if="showModal"><EditModal :product="product" /></div>
 
-      <i
-        v-if="product.isDisplayed"
-        class="material-icons"
-        @click="productStore.toggleDisplay(product._id)"
-        >visibility</i
-      >
-      <i
-        v-else
-        class="material-icons"
-        :class="{ active: !product.isDisplayed }"
-        @click="productStore.toggleDisplay(product._id)"
-        >visibility_off</i
-      >
+      <i v-if="product.isDisplayed" class="material-icons" @click="productStore.toggleDisplay(product._id)">visibility</i>
+      <i v-else class="material-icons" :class="{ active: !product.isDisplayed }" @click="productStore.toggleDisplay(product._id)">visibility_off</i>
 
-      <i
-        class="material-icons"
-        @click="productStore.toggleLimited(product._id)"
-        :style="{ color: product.limited ? 'var(--primary)' : '' }"
-        >error</i
-      >
+      <i class="material-icons" @click="productStore.toggleLimited(product._id)" :style="{ color: product.limited ? 'var(--primary)' : '' }">error</i>
       <i class="material-icons" @click="openModal">edit</i>
 
-      <i class="material-icons" @click="productStore.deleteProduct(product._id)"
-        >delete</i
-      >
+      <i class="material-icons" @click="productStore.deleteProduct(product._id)">delete</i>
     </div>
   </div>
 </template>
