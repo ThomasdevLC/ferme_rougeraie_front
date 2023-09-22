@@ -93,7 +93,7 @@ export default {
           this.showModal = true;
           this.quantity = 0;
         } else {
-          const compressedImage = await compressImage(this.product.image);
+          const compressedImage = await compressImage(this.product.imagePath);
           productStore.addToCart({
             name: this.product.name,
             price: this.product.price,
