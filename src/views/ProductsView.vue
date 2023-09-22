@@ -57,6 +57,7 @@ export default {
 
   &__container {
     max-width: 1200px;
+    height: 100vh;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 40px;
