@@ -129,6 +129,7 @@ export const useProductStore = defineStore("productStore", {
       if (product.image) {
         const file = dataURItoFile(product.image, product.image.name);
         formData.append("image", file);
+        console.log(" product.image.name", product.image.name);
       }
 
       const res = await fetch(`http://${import.meta.env.VITE_BACK_API}/product/`, {
@@ -159,9 +160,10 @@ export const useProductStore = defineStore("productStore", {
         }
         formData.append("isDisplayed", updatedProduct.isDisplayed);
         if (updatedProduct.image) {
-          const file = dataURItoFile(updatedProduct.image, updatedProduct.image.name);
+          const file = dataURItoFile(updatedProduct.image, updatedProduct.name);
           formData.append("image", file);
           console.log("file", file);
+          console.log("updatedProduct.image.name", updatedProduct.image.name);
         }
 
         const res = await fetch(`http://${import.meta.env.VITE_BACK_API}/product/` + id, {
