@@ -1,7 +1,7 @@
 <template>
   <div class="product">
     <div class="product__image">
-      <img :src="product.imagePath" alt="photo produit" />
+      <img :src="product.image" alt="photo produit" />
       <div class="product__image__limited" v-if="product.limited"></div>
     </div>
     <div class="product__infos">
