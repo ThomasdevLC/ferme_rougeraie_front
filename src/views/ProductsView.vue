@@ -18,7 +18,7 @@
 <script>
 import { useProductStore } from "../stores/ProductStore";
 import background from "../assets/images/background.png";
-import ProductCard from "../components/ProductCard.vue";
+import ProductCard from "../components/products/ProductCard.vue";
 
 export default {
   components: { ProductCard },

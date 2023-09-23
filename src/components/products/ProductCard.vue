@@ -38,10 +38,10 @@
 </template>
 
 <script>
-import { useProductStore } from "../stores/ProductStore";
-import QuantityManager from "../components/QuantityManager.vue";
-import { compressImage } from "../utils/imageUtils";
-import { priceToEuros } from "../utils/priceToEuros";
+import { useProductStore } from "../../stores/ProductStore";
+import QuantityManager from "./QuantityManager.vue";
+import { compressImage } from "../../utils/imageUtils";
+import { priceToEuros } from "../../utils/priceToEuros";
 
 export default {
   components: { QuantityManager },
@@ -114,7 +114,6 @@ export default {
   background: white;
   display: flex;
   flex-direction: column;
-  // margin: 10px;
   max-width: 260px;
   height: 440px;
   position: relative;
