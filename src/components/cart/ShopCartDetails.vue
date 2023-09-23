@@ -46,8 +46,8 @@
 </template>
 
 <script>
-import { useProductStore } from "../stores/ProductStore";
-import { priceToEuros } from "../utils/priceToEuros";
+import { useProductStore } from "../../stores/ProductStore";
+import { priceToEuros } from "../../utils/priceToEuros";
 
 export default {
   props: ["product"],
@@ -100,7 +100,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@use "../assets/styles/mixins" as mixin;
+@use "../../assets/styles/mixins" as mixin;
 
 .product {
   display: flex;

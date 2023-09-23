@@ -1,5 +1,4 @@
 <template>
-  <!-- form -->
   <div class="product__form">
     <ProductForm />
   </div>
@@ -8,25 +7,14 @@
 
   <div v-else class="product__container">
     <nav class="filter">
-      <button @click="filter = 'all'" :class="{ selected: filter === 'all' }">
-        Tous les produits
-      </button>
-      <button
-        @click="filter = 'displayed'"
-        :class="{ selected: filter === 'displayed' }"
-      >
-        Produits affichés
-      </button>
+      <button @click="filter = 'all'" :class="{ selected: filter === 'all' }">Tous les produits</button>
+      <button @click="filter = 'displayed'" :class="{ selected: filter === 'displayed' }">Produits affichés</button>
     </nav>
 
     <!-- LIST -->
     <div class="product__list" v-if="filter === 'all'">
       <p class="product__list__count">
-        {{ productStore.totalCount }} produit<span
-          v-if="productStore.totalCount > 1"
-          >s</span
-        >
-        enregistré<span v-if="productStore.totalCount > 1">s</span>
+        {{ productStore.totalCount }} produit<span v-if="productStore.totalCount > 1">s</span> enregistré<span v-if="productStore.totalCount > 1">s</span>
       </p>
 
       <div v-for="product in productStore.products" :key="product">
@@ -35,11 +23,9 @@
     </div>
     <div class="product__list" v-if="filter === 'displayed'">
       <p class="product__list__count">
-        {{ productStore.displayedCount }} produit<span
-          v-if="productStore.displayedCount > 1"
+        {{ productStore.displayedCount }} produit<span v-if="productStore.displayedCount > 1">s</span> affiché<span v-if="productStore.displayedCount > 1"
           >s</span
         >
-        affiché<span v-if="productStore.displayedCount > 1">s</span>
       </p>
       <div v-for="product in productStore.displayed" :key="product">
         <ProductDetails :product="product" />
@@ -49,11 +35,11 @@
 </template>
 
 <script>
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import { useProductStore } from "../stores/ProductStore";
 import ProductDetails from "../components/ProductDetails.vue";
 import ProductForm from "../components/ProductForm.vue";
-import NavBar from "../components/NavBar.vue";
+import NavBar from "./nav/NavBar.vue";
 
 export default {
   components: {

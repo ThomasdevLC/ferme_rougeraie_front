@@ -3,27 +3,20 @@
     <h3 class="cart__thanks" v-if="thanksModal">
       Merci pour votre commande <br />
       À
-      <span v-if="productStore.pickupDay === productStore.currentDay"
-        >tout à l'heure</span
-      >
+      <span v-if="productStore.pickupDay === productStore.currentDay">tout à l'heure</span>
       <span v-else>{{ productStore.pickupDay }}</span> !
     </h3>
-    <p class="cart__info" v-else>
-      Votre panier <span v-if="!productStore.cartCount">est vide</span>
-    </p>
+    <p class="cart__info" v-else>Votre panier <span v-if="!productStore.cartCount">est vide</span></p>
     <div class="cart__list">
       <div v-for="product in productStore.cart" :key="product">
         <ShopCartDetails :product="product" />
       </div>
     </div>
-    <p v-if="productStore.cartCount" class="cart__total">
-      Total : {{ priceToEuros(productStore.totalCart) }}
-    </p>
+    <p v-if="productStore.cartCount" class="cart__total">Total : {{ priceToEuros(productStore.totalCart) }}</p>
     <p v-if="productStore.limitedProducts" class="cart__alert">
       <span class="cart__alert__limited"></span>
       Votre panier contient des produits en quantité limitée. <br />
-      Si ces produits ne sont plus disponibles lors du retrait le tarif sera
-      actualisé
+      Si ces produits ne sont plus disponibles lors du retrait le tarif sera actualisé
     </p>
     <div v-if="productStore.cartCount" class="cart__form">
       <ShopCartForm @submit-form="thanksModal = true" />
@@ -35,13 +28,11 @@
 </template>
 
 <script>
-import { useProductStore } from "../stores/ProductStore";
-import ShopCartDetails from "../components/ShopCartDetails.vue";
-import ShopCartForm from "../components/ShopCartForm.vue";
-import { priceToEuros } from "../utils/priceToEuros.js";
-import tomatoe from "../assets/images/tomatoe.png";
-import butternut from "../assets/images/butternut.png";
-import carrot from "../assets/images/carrot.png";
+import { useProductStore } from "../../stores/ProductStore";
+import ShopCartDetails from "./ShopCartDetails.vue";
+import ShopCartForm from "./ShopCartForm.vue";
+import { priceToEuros } from "../../utils/priceToEuros.js";
+import tomatoe from "../../assets/images/tomatoe.png";
 
 export default {
   components: { ShopCartDetails, ShopCartForm },
@@ -55,8 +46,6 @@ export default {
     return {
       thanksModal: false,
       tomatoe: tomatoe,
-      butternut: butternut,
-      carrot: carrot,
     };
   },
 
@@ -66,7 +55,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@use "../assets/styles/mixins" as mixin;
+@use "../../assets/styles/mixins" as mixin;
 
 .cart {
   position: relative;

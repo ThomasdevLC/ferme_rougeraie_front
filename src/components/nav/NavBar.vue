@@ -1,15 +1,8 @@
 <template>
   <header :class="$route.path == '/products' ? '' : 'header-absolute'">
-    <div
-      :class="
-        navSize && $route.path == '/products' ? 'header active' : 'header'
-      "
-      :style="{ 'background-image': `url(${header})` }"
-    >
+    <div :class="navSize && $route.path == '/products' ? 'header active' : 'header'" :style="{ 'background-image': `url(${header})` }">
       <img
-        :class="
-          navSize && $route.path == '/products' ? 'active-logo' : 'header__logo'
-        "
+        :class="navSize && $route.path == '/products' ? 'active-logo' : 'header__logo'"
         :src="image"
         alt=" logo"
         @dblclick="this.$router.push({ name: 'AdminView' })"
@@ -18,11 +11,7 @@
 
       <div class="header__nav">
         <div class="header__nav__closed" v-if="productStore.isLoggedIn">
-          <div
-            class="overlay"
-            v-if="showShopModal"
-            @click="closeShopModal"
-          ></div>
+          <div class="overlay" v-if="showShopModal" @click="closeShopModal"></div>
           <div class="modal" v-if="showShopModal">
             <ShopStatusForm @submit-shopstatus="closeShopModal" />
           </div>
@@ -36,20 +25,11 @@
                 openShopModal();
               "
             ></i>
-            <i
-              v-else
-              class="fa-solid fa-store-slash"
-              @click="productStore.updateClosedShop(!productStore.closedShop)"
-            ></i>
+            <i v-else class="fa-solid fa-store-slash" @click="productStore.updateClosedShop(!productStore.closedShop)"></i>
           </div>
         </div>
         <nav>
-          <router-link
-            class="header__nav__link"
-            v-if="$route.path !== '/admin'"
-            :to="{ name: 'AboutView' }"
-            >À propos</router-link
-          >
+          <router-link class="header__nav__link" v-if="$route.path !== '/admin'" :to="{ name: 'AboutView' }">À propos</router-link>
           <router-link
             class="header__nav__link"
             v-if="$route.path !== '/admin'"
@@ -59,12 +39,7 @@
             }"
             >Produits</router-link
           >
-          <router-link
-            class="header__nav__link admin-link"
-            v-if="$route.path === '/admin'"
-            :to="{ name: 'AdminView' }"
-            >Admin</router-link
-          >
+          <router-link class="header__nav__link admin-link" v-if="$route.path === '/admin'" :to="{ name: 'AdminView' }">Admin</router-link>
         </nav>
         <div class="overlay" v-if="showModal" @click="closeModal"></div>
         <div class="modal" v-if="showModal">
@@ -74,35 +49,26 @@
           </div>
         </div>
         <div v-if="$route.path !== '/admin'" class="header__nav__cart">
-          <img
-            class="header__nav__cart__image"
-            @click="openModal"
-            :src="basketImage"
-            alt=" panier"
-          />
+          <img class="header__nav__cart__image" @click="openModal" :src="basketImage" alt=" panier" />
           <div class="header__nav__cart__total" v-if="productStore.cartCount">
             {{ productStore.cartCount }}
           </div>
         </div>
 
-        <i
-          v-else
-          class="fa-solid fa-arrow-right-from-bracket header__nav__logout"
-          @click="logout"
-        ></i>
+        <i v-else class="fa-solid fa-arrow-right-from-bracket header__nav__logout" @click="logout"></i>
       </div>
     </div>
   </header>
 </template>
 
 <script>
-import { useProductStore } from "../stores/ProductStore";
-import ShopCart from "../components/ShopCart.vue";
-import ShopStatusForm from "../components/nav/ShopStatusForm.vue";
-import header__logo from "../assets/images/logo.png";
-import basket from "../assets/images/basket.png";
-import header from "../assets/images/header.png";
-import doubletap from "../utils/doubletap.js";
+import { useProductStore } from "../../stores/ProductStore";
+import ShopCart from "../cart/ShopCart.vue";
+import ShopStatusForm from "./ShopStatusForm.vue";
+import header__logo from "../../assets/images/logo.png";
+import basket from "../../assets/images/basket.png";
+import header from "../../assets/images/header.png";
+import doubletap from "../../utils/doubletap.js";
 
 import { ref, onMounted } from "vue";
 export default {
@@ -169,7 +135,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@use "../assets/styles/mixins" as mixin;
+@use "../../assets/styles/mixins" as mixin;
 
 header {
   position: fixed;

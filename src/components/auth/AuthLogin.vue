@@ -12,7 +12,7 @@
 
 <script>
 import { ref } from "vue";
-import { useProductStore } from "../stores/ProductStore";
+import { useProductStore } from "../../stores/ProductStore";
 
 export default {
   setup() {
@@ -38,18 +38,15 @@ export default {
         const data = await response.json();
 
         if (response.ok) {
-          const token = data.token; // get token from  backend
-
-          // Set token in storage
+          const token = data.token;
           sessionStorage.setItem("token", token);
           productStore.isLoggedIn = true;
           productStore.accessToken = token;
           console.log(productStore.accessToken);
 
-          //call initialize
           await initialize();
         } else {
-          throw new Error(data.message); //  backend errors
+          throw new Error(data.message);
         }
 
         inputPassword.value = "";
@@ -63,9 +60,6 @@ export default {
       return new Promise((resolve, reject) => {
         const token = sessionStorage.getItem("token");
         if (token) {
-          // Placeholder pour votre logique d'initialisation
-
-          console.log("accessToken ", productStore.accessToken);
           resolve();
         } else {
           reject(new Error("Token not found"));
@@ -79,7 +73,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@use "../assets/styles/mixins" as mixin;
+@use "../../assets/styles/mixins" as mixin;
 
 .form {
   margin: auto;

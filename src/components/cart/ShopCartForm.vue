@@ -6,39 +6,16 @@
     <form v-else @submit.prevent="handleSubmit">
       <div>
         <label for="name"></label>
-        <input
-          class="custom-input"
-          type="text"
-          id="name"
-          placeholder="Prénom "
-          v-model="name"
-          required
-        />
+        <input class="custom-input" type="text" id="name" placeholder="Prénom " v-model="name" required />
       </div>
       <div>
         <label for="surname"></label>
-        <input
-          class="custom-input"
-          type="text"
-          id="surname"
-          placeholder="Nom "
-          v-model="surname"
-          required
-        />
+        <input class="custom-input" type="text" id="surname" placeholder="Nom " v-model="surname" required />
       </div>
 
       <div>
         <label for="phone"></label>
-        <input
-          class="custom-input"
-          type="text"
-          id="phone"
-          pattern="[0-9]{10,}"
-          maxlength="10"
-          placeholder="Téléphone "
-          v-model="phone"
-          required
-        />
+        <input class="custom-input" type="text" id="phone" pattern="[0-9]{10,}" maxlength="10" placeholder="Téléphone " v-model="phone" required />
       </div>
       <div>
         <select v-model="pickup" required class="custom-input">
@@ -56,8 +33,8 @@
   </div>
 </template>
 <script>
-import { useProductStore } from "../stores/ProductStore";
-import { formatDate } from "../utils/dateFormat.js";
+import { useProductStore } from "../../stores/ProductStore";
+import { formatDate } from "../../utils/dateFormat.js";
 
 export default {
   setup() {
@@ -72,7 +49,7 @@ export default {
       pickup: "",
       phone: "",
       validatedCart: false,
-      errorMessage: "", // Ajouter une variable d'erreur
+      errorMessage: "",
     };
   },
 
@@ -84,15 +61,10 @@ export default {
       const productStore = useProductStore();
 
       if (
-        (this.pickup === "mardi" &&
-          productStore.currentDay === "lundi" &&
-          productStore.currentHour > "12:00") ||
-        (this.pickup === "vendredi" &&
-          productStore.currentDay === "jeudi" &&
-          productStore.currentHour > "21:00")
+        (this.pickup === "mardi" && productStore.currentDay === "lundi" && productStore.currentHour > "12:00") ||
+        (this.pickup === "vendredi" && productStore.currentDay === "jeudi" && productStore.currentHour > "21:00")
       ) {
-        this.errorMessage =
-          "Désolé, les commandes doivent être passées avant 21h00 la veille du jour de vente. Veulliez choisir un autre jour de retrait";
+        this.errorMessage = "Désolé, les commandes doivent être passées avant 21h00 la veille du jour de vente. Veulliez choisir un autre jour de retrait";
         return;
       }
 
@@ -120,7 +92,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@use "../assets/styles/mixins" as mixin;
+@use "../../assets/styles/mixins" as mixin;
 
 .cartform {
   &__validate {

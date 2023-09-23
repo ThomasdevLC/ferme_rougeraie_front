@@ -24,12 +24,7 @@
           <button @click="incrementQuantity" class="card__text__quantity__eval__button">+</button>
         </div>
       </div>
-      <!-- <QuantityManager
-        :product="product"
-        :quantity="quantity"
-        @quantity-updated="quantity = $event"
-        :key="product.id"
-      /> -->
+
       <p class="card__text__addcart" @click="addToCart">AJOUTER AU PANIER</p>
     </div>
     <div class="overlay" v-if="showModal" @click="closeModal"></div>

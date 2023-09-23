@@ -5,22 +5,9 @@
     </div>
     <div v-else>
       <div class="admin-btn">
-        <i
-          class="fa-solid fa-carrot"
-          :class="{ selected: selected === 'products' }"
-          @click="selected = 'products'"
-        ></i>
-        <i
-          class="fa-solid fa-receipt"
-          :class="{ selected: selected === 'orders' }"
-          @click="selected = 'orders'"
-        ></i>
-        <i
-          class="fa-solid fa-list-ol"
-          :class="{ selected: selected === 'count' }"
-          @click="selected = 'count'"
-        >
-        </i>
+        <i class="fa-solid fa-carrot" :class="{ selected: selected === 'products' }" @click="selected = 'products'"></i>
+        <i class="fa-solid fa-receipt" :class="{ selected: selected === 'orders' }" @click="selected = 'orders'"></i>
+        <i class="fa-solid fa-list-ol" :class="{ selected: selected === 'count' }" @click="selected = 'count'"> </i>
       </div>
       <div v-if="selected === 'products'">
         <AdminProducts />
@@ -41,7 +28,7 @@ import { useProductStore } from "../stores/ProductStore";
 import AdminOrders from "../components/AdminOrders.vue";
 import AdminProducts from "../components/AdminProducts.vue";
 import AdminCount from "../components/AdminCount.vue";
-import AuthLogin from "../components/AuthLogin.vue";
+import AuthLogin from "../components/auth/AuthLogin.vue";
 
 export default {
   components: {
