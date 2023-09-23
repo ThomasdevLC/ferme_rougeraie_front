@@ -24,10 +24,9 @@
 <script>
 import { ref } from "vue";
 import { useProductStore } from "../stores/ProductStore";
-
-import AdminOrders from "../components/AdminOrders.vue";
-import AdminProducts from "../components/AdminProducts.vue";
-import AdminCount from "../components/AdminCount.vue";
+import AdminOrders from "../components/admin/AdminOrders.vue";
+import AdminProducts from "../components/admin/AdminProducts.vue";
+import AdminCount from "../components/admin/AdminCount.vue";
 import AuthLogin from "../components/auth/AuthLogin.vue";
 
 export default {

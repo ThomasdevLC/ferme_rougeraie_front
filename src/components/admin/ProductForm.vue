@@ -42,8 +42,8 @@
 
 <script>
 import { computed, ref } from "vue";
-import { useProductStore } from "../stores/ProductStore";
-import { convertPriceToCents } from "../utils/priceInCents";
+import { useProductStore } from "../../stores/ProductStore";
+import { convertPriceToCents } from "../../utils/priceInCents";
 
 export default {
   setup() {
@@ -121,7 +121,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@use "../assets/styles/mixins" as mixin;
+@use "../../assets/styles/mixins" as mixin;
 
 .form {
   max-width: 400px;

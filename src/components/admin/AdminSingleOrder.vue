@@ -14,9 +14,7 @@
           <li v-for="product in order.products" :key="product.name">
             -
             <span style="font-weight: 500">{{ product.quantity }}</span>
-            <span v-if="product.unit === 'kg'" style="font-weight: 500">
-              kg</span
-            >
+            <span v-if="product.unit === 'kg'" style="font-weight: 500"> kg</span>
             x
             <span class="product-order">{{ product.name }}</span>
             =
@@ -26,28 +24,17 @@
       </td>
       <td class="total">{{ priceToEuros(order.total) }}</td>
       <td class="status">
-        <i
-          class="fa-regular fa-circle"
-          v-if="order.status === 'pending'"
-          @click="toggleStatus"
-        >
-        </i>
+        <i class="fa-regular fa-circle" v-if="order.status === 'pending'" @click="toggleStatus"> </i>
 
-        <i
-          class="fa-solid fa-circle-check"
-          v-else
-          @click="toggleStatus"
-          :class="{ selected: order.status === 'done' }"
-        >
-        </i>
+        <i class="fa-solid fa-circle-check" v-else @click="toggleStatus" :class="{ selected: order.status === 'done' }"> </i>
       </td>
     </tr>
   </tbody>
 </template>
 
 <script>
-import { useProductStore } from "../stores/ProductStore";
-import { priceToEuros } from "../utils/priceToEuros";
+import { useProductStore } from "../../stores/ProductStore";
+import { priceToEuros } from "../../utils/priceToEuros";
 
 export default {
   props: ["order"],
@@ -74,7 +61,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@use "../assets/styles/mixins" as mixin;
+@use "../../assets/styles/mixins" as mixin;
 
 tbody {
   border-bottom: 1px solid var(--gray-3);

@@ -27,9 +27,8 @@
 </template>
 
 <script>
-import { useProductStore } from "../stores/ProductStore";
-import { priceToEuros } from "../utils/priceToEuros";
-
+import { useProductStore } from "../../stores/ProductStore";
+import { priceToEuros } from "../../utils/priceToEuros";
 import EditModal from "./EditModal.vue";
 
 export default {
@@ -58,7 +57,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@use "../assets/styles/mixins" as mixin;
+@use "../../assets/styles/mixins" as mixin;
 
 .product {
   padding: 10px;

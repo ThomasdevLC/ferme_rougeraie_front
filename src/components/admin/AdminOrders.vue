@@ -5,48 +5,24 @@
         class="fa-regular fa-calendar"
         @click="dayFilter = ['mardi', 'vendredi']"
         :class="{
-          'orders__pickup__day--selected':
-            dayFilter.includes('mardi') && dayFilter.includes('vendredi'),
+          'orders__pickup__day--selected': dayFilter.includes('mardi') && dayFilter.includes('vendredi'),
         }"
       ></i>
-      <p
-        class="orders__pickup__day"
-        @click="dayFilter = 'mardi'"
-        :class="{ 'orders__pickup__day--selected': dayFilter === 'mardi' }"
-      >
-        Mardi
-      </p>
+      <p class="orders__pickup__day" @click="dayFilter = 'mardi'" :class="{ 'orders__pickup__day--selected': dayFilter === 'mardi' }">Mardi</p>
 
-      <p
-        class="orders__pickup__day"
-        @click="dayFilter = 'vendredi'"
-        :class="{ 'orders__pickup__day--selected': dayFilter === 'vendredi' }"
-      >
-        Vendredi
-      </p>
+      <p class="orders__pickup__day" @click="dayFilter = 'vendredi'" :class="{ 'orders__pickup__day--selected': dayFilter === 'vendredi' }">Vendredi</p>
     </div>
 
     <nav class="orders__status filter">
-      <button @click="filter = 'all'" :class="{ selected: filter === 'all' }">
-        reçues
-      </button>
-      <button
-        @click="filter = 'pending'"
-        :class="{ selected: filter === 'pending' }"
-      >
-        en cours
-      </button>
-      <button @click="filter = 'done'" :class="{ selected: filter === 'done' }">
-        traitées
-      </button>
+      <button @click="filter = 'all'" :class="{ selected: filter === 'all' }">reçues</button>
+      <button @click="filter = 'pending'" :class="{ selected: filter === 'pending' }">en cours</button>
+      <button @click="filter = 'done'" :class="{ selected: filter === 'done' }">traitées</button>
     </nav>
     <div class="orders__infos">
       <p class="orders__infos__length">
         {{ orders.length }} commande<span v-if="orders.length > 1">s</span>
         <span v-if="filter === 'pending'"> en cours</span>
-        <span v-if="filter === 'done'">
-          traitée<span v-if="orders.length > 1">s</span></span
-        >
+        <span v-if="filter === 'done'"> traitée<span v-if="orders.length > 1">s</span></span>
       </p>
       <div class="orders__infos__function">
         <i class="fa-solid fa-print" @click="handlePrint"></i>
@@ -67,11 +43,7 @@
           </tr>
         </thead>
 
-        <AdminSingleOrder
-          v-for="order in orders"
-          :key="order.id"
-          :order="order"
-        />
+        <AdminSingleOrder v-for="order in orders" :key="order.id" :order="order" />
       </table>
     </div>
   </div>
@@ -80,8 +52,8 @@
 <script>
 import { ref } from "vue";
 
-import { useProductStore } from "../stores/ProductStore";
-import { handlePrint } from "../utils/printModule";
+import { useProductStore } from "../../stores/ProductStore";
+import { handlePrint } from "../../utils/printModule";
 import AdminSingleOrder from "./AdminSingleOrder.vue";
 
 export default {
@@ -99,9 +71,7 @@ export default {
   methods: {
     handleDeleteAllDone() {
       const productStore = useProductStore();
-      if (
-        confirm("Voulez-vous vraiment supprimer toutes les commandes traitées?")
-      ) {
+      if (confirm("Voulez-vous vraiment supprimer toutes les commandes traitées?")) {
         productStore.clearOrders();
         alert("commandes traitées supprimées");
       }
@@ -114,17 +84,11 @@ export default {
     orders() {
       switch (this.filter) {
         case "all":
-          return this.productStore.orders.filter((o) =>
-            this.dayFilter.includes(o.pickup)
-          );
+          return this.productStore.orders.filter((o) => this.dayFilter.includes(o.pickup));
         case "pending":
-          return this.productStore.pendingOrders.filter((o) =>
-            this.dayFilter.includes(o.pickup)
-          );
+          return this.productStore.pendingOrders.filter((o) => this.dayFilter.includes(o.pickup));
         case "done":
-          return this.productStore.doneOrders.filter((o) =>
-            this.dayFilter.includes(o.pickup)
-          );
+          return this.productStore.doneOrders.filter((o) => this.dayFilter.includes(o.pickup));
         default:
           return [];
       }
@@ -134,7 +98,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@use "../assets/styles/mixins" as mixin;
+@use "../../assets/styles/mixins" as mixin;
 
 .orders {
   max-width: 1200px;

@@ -7,16 +7,10 @@
     <div class="count__head">
       <p>QUANTITÉS</p>
     </div>
-    <div
-      class="count__product"
-      v-for="(product, name) in productStore.totalProductsByName"
-      :key="name"
-    >
+    <div class="count__product" v-for="(product, name) in productStore.totalProductsByName" :key="name">
       <p class="count__product__name">{{ name }}</p>
       <p class="count__product__qty">
-        <span v-if="product.unit === 'kg'">{{
-          product.quantity.toFixed(2)
-        }}</span>
+        <span v-if="product.unit === 'kg'">{{ product.quantity.toFixed(2) }}</span>
         <span v-else>{{ product.quantity }}</span>
         {{ product.unit }}<span v-if="product.quantity > 1">s</span>
       </p>
@@ -25,7 +19,7 @@
 </template>
 
 <script>
-import { useProductStore } from "../stores/ProductStore";
+import { useProductStore } from "../../stores/ProductStore";
 
 export default {
   setup() {
@@ -39,7 +33,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@use "../assets/styles/mixins" as mixin;
+@use "../../assets/styles/mixins" as mixin;
 
 .count {
   max-width: 640px;

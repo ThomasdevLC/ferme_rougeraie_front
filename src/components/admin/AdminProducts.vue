@@ -36,10 +36,10 @@
 
 <script>
 import { ref } from "vue";
-import { useProductStore } from "../stores/ProductStore";
-import ProductDetails from "../components/ProductDetails.vue";
-import ProductForm from "../components/ProductForm.vue";
-import NavBar from "./nav/NavBar.vue";
+import { useProductStore } from "../../stores/ProductStore";
+import ProductDetails from "./ProductDetails.vue";
+import ProductForm from "./ProductForm.vue";
+import NavBar from "../nav/NavBar.vue";
 
 export default {
   components: {
