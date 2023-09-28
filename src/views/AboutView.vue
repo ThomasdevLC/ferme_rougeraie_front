@@ -7,26 +7,17 @@
         <div class="about__container__top__text">
           <p class="about__container__top__text__title">Léa Mauguin</p>
           <p class="about__container__top__text__subtitle">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Repudiandae vero nemo saepe eligendi distinctio fugiat minus
-            doloremque obcaecati eos earum dolor, sit reiciendis ea eum odio
-            porro unde a numquam.
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae vero nemo saepe eligendi distinctio fugiat minus doloremque obcaecati eos
+            earum dolor, sit reiciendis ea eum odio porro unde a numquam.
           </p>
           <p class="about__container__top__text__introducing">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate
-            illo soluta corrupti ducimus, veniam modi debitis nostrum,
-            architecto quod maxime labore aut recusandae, ea consectetur iste
-            odio libero pariatur vel quo distinctio quis. Ullam quidem minima
-            pariatur cupiditate cumque autem totam nemo! Similique ea
-            consequuntur fuga ipsam praesentium ad alias adipisci autem, neque
-            suscipit harum velit facere qui, sequi quae nisi quia quod!
-            Molestias, aperiam beatae, a vero voluptatem natus sed assumenda
-            omnis cum odio voluptas culpa aut dolor nesciunt nisi dolorum
-            repellat voluptatibus? Amet unde ullam perspiciatis architecto,
-            labore voluptate autem atque repudiandae reprehenderit dolorum
-            mollitia impedit pariatur, dignissimos veniam minima dolores rerum.
-            Nobis assumenda magni obcaecati, non, sequi ratione quasi, vero
-            similique culpa modi suscipit tempore at et.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate illo soluta corrupti ducimus, veniam modi debitis nostrum, architecto quod
+            maxime labore aut recusandae, ea consectetur iste odio libero pariatur vel quo distinctio quis. Ullam quidem minima pariatur cupiditate cumque autem
+            totam nemo! Similique ea consequuntur fuga ipsam praesentium ad alias adipisci autem, neque suscipit harum velit facere qui, sequi quae nisi quia
+            quod! Molestias, aperiam beatae, a vero voluptatem natus sed assumenda omnis cum odio voluptas culpa aut dolor nesciunt nisi dolorum repellat
+            voluptatibus? Amet unde ullam perspiciatis architecto, labore voluptate autem atque repudiandae reprehenderit dolorum mollitia impedit pariatur,
+            dignissimos veniam minima dolores rerum. Nobis assumenda magni obcaecati, non, sequi ratione quasi, vero similique culpa modi suscipit tempore at
+            et.
           </p>
         </div>
         <div class="about__container__top__image">
@@ -40,27 +31,18 @@
         </div>
 
         <div class="about__container__bottom__sellpoint">
-          <h2 class="about__container__bottom__sellpoint__title">
-            POINTS DE VENTE
-          </h2>
+          <h2 class="about__container__bottom__sellpoint__title">POINTS DE VENTE</h2>
           <p class="about__container__bottom__sellpoint__infos">
             LANOUEE - place de l'église
-            <span class="about__container__bottom__sellpoint__time">
-              - mercredi de 14h00 à 18h00</span
-            >
+            <span class="about__container__bottom__sellpoint__time"> - mardi de 16h00 à 19h00</span>
           </p>
           <p class="about__container__bottom__sellpoint__infos">
             LANOUEE - ferme de la Rougeraie
-            <span class="about__container__bottom__sellpoint__time">
-              - mercredi de 14h00 à 18h00</span
-            >
+            <span class="about__container__bottom__sellpoint__time"> - vendredi de 16h00 à 19h00</span>
           </p>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate
-            illo soluta corrupti ducimus, veniam modi debitis nostrum,
-            architecto quod maxime labore aut recusandae, ea consectetur iste
-            odio libero pariatur vel quo distinctio quis. Ullam quidem minima
-            pariatur
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate illo soluta corrupti ducimus, veniam modi debitis nostrum, architecto quod
+            maxime labore aut recusandae, ea consectetur iste odio libero pariatur vel quo distinctio quis. Ullam quidem minima pariatur
           </p>
         </div>
       </div>
@@ -74,9 +56,7 @@
           <div class="footer__credits">
             <p>
               Réalisation :
-              <a href="https://www.linkedin.com/in/thomaslecam/"
-                >Thomas Le Cam</a
-              >
+              <a href="https://www.linkedin.com/in/thomaslecam/">Thomas Le Cam</a>
             </p>
             <p>Illustrations : Matthieu Le Meur</p>
           </div>
