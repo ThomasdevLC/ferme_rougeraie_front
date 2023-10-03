@@ -24,6 +24,7 @@
         <input class="custom-input" type="number" placeholder="interval " step="0.1" v-model="editInterval" />
       </div>
       <button class="btn">Valider</button>
+      <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
     </form>
   </div>
 </template>
@@ -46,6 +47,7 @@ export default {
     const editUnit = ref(props.product.unit);
     const editInterval = ref(props.product.interval);
     const editImage = ref(props.product.imagePath);
+    const errorMessage = ref("");
 
     const capitalized = computed(() => {
       return editName.value.charAt(0).toUpperCase() + editName.value.slice(1);
@@ -81,6 +83,10 @@ export default {
 
     const handleImage = (event) => {
       selectedFile = event.target.files[0];
+      if (selectedFile.size > 1000000) {
+        errorMessage.value = "Votre image doit faire moins de 1 méga-octet.";
+        return;
+      }
       const reader = new FileReader();
       reader.onload = (e) => {
         editImage.value = e.target.result;
@@ -97,6 +103,7 @@ export default {
       handleSubmit,
       fileInput,
       handleImage,
+      errorMessage,
     };
   },
   watch: {
