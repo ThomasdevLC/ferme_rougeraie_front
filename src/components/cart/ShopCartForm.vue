@@ -61,7 +61,7 @@ export default {
       const productStore = useProductStore();
 
       if (
-        (this.pickup === "mardi" && productStore.currentDay === "lundi" && productStore.currentHour > "12:00") ||
+        (this.pickup === "mardi" && productStore.currentDay === "lundi" && productStore.currentHour > "21:00") ||
         (this.pickup === "vendredi" && productStore.currentDay === "jeudi" && productStore.currentHour > "21:00")
       ) {
         this.errorMessage = "Désolé, les commandes doivent être passées avant 21h00 la veille du jour de vente. Veulliez choisir un autre jour de retrait";

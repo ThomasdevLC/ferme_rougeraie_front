@@ -36,7 +36,7 @@
     </div>
 
     <button class="btn">AJOUTER</button>
-    <p v-if="errorMessage" class="error-message">Merci de remplir tous les champs.</p>
+    <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
   </form>
 </template>
 
@@ -49,13 +49,13 @@ export default {
   setup() {
     const productStore = useProductStore();
     const fileInput = ref(null);
-    const selectedImage = ref(null); //ajout de la propriété selectedImage
+    const selectedImage = ref(null);
     let selectedFile = null;
     const name = ref("");
     const price = ref(null);
     const unit = ref(null);
     const interval = ref("");
-    const errorMessage = ref(false);
+    const errorMessage = ref("");
 
     const capitalized = computed(() => {
       return name.value.charAt(0).toUpperCase() + name.value.slice(1);
@@ -73,6 +73,11 @@ export default {
         unit.value !== null &&
         (unit.value !== "kg" || (unit.value === "kg" && interval.value !== ""))
       ) {
+        if (selectedFile.size > 1000000) {
+          errorMessage.value = "Votre image doit faire moins de 1 méga-octet.";
+          return;
+        }
+
         const reader = new FileReader();
         reader.onload = (event) => {
           const imageData = event.target.result;
@@ -91,18 +96,18 @@ export default {
           interval.value = "";
           selectedFile = null;
           fileInput.value.value = "";
-          selectedImage.value = null; //réinitialisation de selectedImage
-          errorMessage.value = false;
+          selectedImage.value = null;
+          errorMessage.value = "";
         };
         reader.readAsDataURL(selectedFile);
       } else {
-        errorMessage.value = true;
+        errorMessage.value = "Merci de remplir tous les champs";
       }
     };
 
     const handleImage = (event) => {
       selectedFile = event.target.files[0];
-      selectedImage.value = URL.createObjectURL(selectedFile); //met à jour la valeur de selectedImage
+      selectedImage.value = URL.createObjectURL(selectedFile);
     };
 
     return {

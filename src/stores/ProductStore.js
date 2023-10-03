@@ -97,8 +97,6 @@ export const useProductStore = defineStore("productStore", {
             productsByName[name] = { quantity, unit }; // Include the "unit" property in the object
           }
         });
-
-        // console.log(productsByName);
       });
 
       return productsByName;
