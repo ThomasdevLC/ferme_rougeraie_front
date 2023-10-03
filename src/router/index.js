@@ -35,9 +35,7 @@ routerApp.beforeEach(async (to, from, next) => {
   const productStore = useProductStore();
   await productStore.getClosedShop();
 
-  to.name === "ProductsView" && productStore.closedShop
-    ? next({ name: "closed" })
-    : next();
+  to.name === "ProductsView" && productStore.closedShop ? next({ name: "closed" }) : next();
 });
 
 export default routerApp;

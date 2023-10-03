@@ -160,8 +160,6 @@ header {
   align-items: center;
   margin: 0 auto;
   padding: 20px 40px;
-
-  background-color: white;
   border-bottom: 1px solid #444;
 
   @include mixin.sm-lt {
@@ -213,9 +211,6 @@ header {
       color: black;
       text-decoration: none;
       margin-left: 80px;
-      &:hover {
-        color: var(--text-color);
-      }
 
       @include mixin.sm-lt {
         flex-direction: column;
