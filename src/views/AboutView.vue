@@ -97,7 +97,7 @@ export default {
 
 .about {
   @include mixin.sm-lt {
-    padding-top: 360px;
+    padding-top: 300px;
   }
 
   &__container {

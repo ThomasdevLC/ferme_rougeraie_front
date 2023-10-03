@@ -41,7 +41,7 @@ export default {
 .product {
   padding-top: 240px;
   @include mixin.sm-lt {
-    padding-top: 360px;
+    padding-top: 300px;
   }
   &__title {
     text-align: center;
