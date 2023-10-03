@@ -160,7 +160,7 @@ export default {
 
       @include mixin.sm-lt {
         text-overflow: clip;
-        white-space: wrap;
+        white-space: normal;
       }
     }
     &__price {
