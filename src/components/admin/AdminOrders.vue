@@ -75,7 +75,6 @@ export default {
         productStore.clearOrders();
         alert("commandes traitées supprimées");
       }
-      console.log(productStore.orders);
     },
     handlePrint,
   },

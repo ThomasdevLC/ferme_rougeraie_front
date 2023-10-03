@@ -91,10 +91,12 @@ export const useProductStore = defineStore("productStore", {
       this.orders.forEach((order) => {
         order.products.forEach((product) => {
           const { name, quantity, unit } = product; // Destructure the "name", "quantity" and "unit" properties from the product object
+          const pickup = order.pickup; // Récupérez la valeur de "pickup" depuis l'objet order
+
           if (productsByName[name]) {
             productsByName[name].quantity += quantity;
           } else {
-            productsByName[name] = { quantity, unit }; // Include the "unit" property in the object
+            productsByName[name] = { quantity, unit, pickup }; // Inclure également la propriété "pickup" dans l'objet
           }
         });
       });

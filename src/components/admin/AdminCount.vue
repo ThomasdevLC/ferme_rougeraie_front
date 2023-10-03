@@ -16,6 +16,7 @@
       </p>
     </div>
   </div>
+  <pre>{{ productStore.totalProductsByName }}</pre>
 </template>
 
 <script>
