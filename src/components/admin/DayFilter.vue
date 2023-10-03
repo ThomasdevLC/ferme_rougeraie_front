@@ -3,13 +3,25 @@
     <i
       class="fa-regular fa-calendar"
       :class="{
-        'orders__pickup__day--selected': dayFilter.includes('mardi') && dayFilter.includes('vendredi'),
+        'orders__pickup__day--selected': dayFilter.length === 2 && dayFilter.includes('mardi') && dayFilter.includes('vendredi'),
       }"
       @click="setDayFilter(['mardi', 'vendredi'])"
     ></i>
-    <p class="orders__pickup__day" :class="{ 'orders__pickup__day--selected': dayFilter.includes('mardi') }" @click="setDayFilter(['mardi'])">Mardi</p>
+    <p
+      class="orders__pickup__day"
+      :class="{ 'orders__pickup__day--selected': dayFilter.length === 1 && dayFilter[0] === 'mardi' }"
+      @click="setDayFilter(['mardi'])"
+    >
+      Mardi
+    </p>
 
-    <p class="orders__pickup__day" :class="{ 'orders__pickup__day--selected': dayFilter.includes('vendredi') }" @click="setDayFilter(['vendredi'])">Vendredi</p>
+    <p
+      class="orders__pickup__day"
+      :class="{ 'orders__pickup__day--selected': dayFilter.length === 1 && dayFilter[0] === 'vendredi' }"
+      @click="setDayFilter(['vendredi'])"
+    >
+      Vendredi
+    </p>
   </div>
 </template>
 
