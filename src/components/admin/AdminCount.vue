@@ -1,6 +1,6 @@
 <template>
   <div class="count">
-    <DayFilter />
+    <DayFilter @update:dayFilter="dayFilter = $event" />
     <div class="count__print">
       <i class="fa-solid fa-print" @click="handlePrint"></i>
     </div>
@@ -8,7 +8,7 @@
     <div class="count__head">
       <p>QUANTITÉS</p>
     </div>
-    <div class="count__product" v-for="(product, name) in productStore.totalProductsByName" :key="name">
+    <div class="count__product" v-for="(product, name) in filteredProducts" :key="name">
       <p class="count__product__name">{{ name }}</p>
       <p class="count__product__qty">
         <span v-if="product.unit === 'kg'">{{ product.quantity.toFixed(2) }}</span>
@@ -17,10 +17,10 @@
       </p>
     </div>
   </div>
-  <pre>{{ productStore.totalProductsByName }}</pre>
 </template>
 
 <script>
+import { ref, computed } from "vue";
 import { useProductStore } from "../../stores/ProductStore";
 import DayFilter from "./DayFilter.vue";
 
@@ -29,10 +29,26 @@ export default {
 
   setup() {
     const productStore = useProductStore();
+    const dayFilter = ref(["mardi", "vendredi"]);
+
     const handlePrint = () => {
       window.print();
     };
-    return { productStore, handlePrint };
+
+    const filteredProducts = computed(() => {
+      const selectedDays = dayFilter.value;
+      const result = {};
+
+      for (const name in productStore.totalProductsByName) {
+        if (selectedDays.includes(productStore.totalProductsByName[name].pickup)) {
+          result[name] = productStore.totalProductsByName[name];
+        }
+      }
+
+      return result;
+    });
+
+    return { productStore, dayFilter, handlePrint, filteredProducts };
   },
 };
 </script>
