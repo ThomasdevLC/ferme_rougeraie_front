@@ -173,6 +173,7 @@ header {
     height: 160px;
     @include mixin.sm-lt {
       margin-bottom: 20px;
+      height: 100px;
     }
   }
 
@@ -259,7 +260,7 @@ header {
 
     @include mixin.sm-lt {
       margin: 0px;
-      padding-top: 40px;
+      padding-top: 20px;
     }
   }
 

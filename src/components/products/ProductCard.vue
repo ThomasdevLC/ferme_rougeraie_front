@@ -109,6 +109,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@use "../../assets/styles/mixins" as mixin;
+
 .card {
   border: 1px solid gray;
   background: white;
@@ -136,6 +138,10 @@ export default {
       padding: 5px 10px;
       font-weight: 500;
       margin-left: -5px;
+
+      @include mixin.sm-lt {
+        bottom: 210px;
+      }
     }
   }
 
@@ -151,6 +157,11 @@ export default {
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+
+      @include mixin.sm-lt {
+        text-overflow: clip;
+        white-space: wrap;
+      }
     }
     &__price {
       line-height: 1;
