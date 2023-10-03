@@ -1,18 +1,6 @@
 <template>
   <div class="orders">
-    <div class="orders__pickup">
-      <i
-        class="fa-regular fa-calendar"
-        @click="dayFilter = ['mardi', 'vendredi']"
-        :class="{
-          'orders__pickup__day--selected': dayFilter.includes('mardi') && dayFilter.includes('vendredi'),
-        }"
-      ></i>
-      <p class="orders__pickup__day" @click="dayFilter = 'mardi'" :class="{ 'orders__pickup__day--selected': dayFilter === 'mardi' }">Mardi</p>
-
-      <p class="orders__pickup__day" @click="dayFilter = 'vendredi'" :class="{ 'orders__pickup__day--selected': dayFilter === 'vendredi' }">Vendredi</p>
-    </div>
-
+    <DayFilter @update:dayFilter="dayFilter = $event" />
     <nav class="orders__status filter">
       <button @click="filter = 'all'" :class="{ selected: filter === 'all' }">reçues</button>
       <button @click="filter = 'pending'" :class="{ selected: filter === 'pending' }">en cours</button>
@@ -55,16 +43,17 @@ import { ref } from "vue";
 import { useProductStore } from "../../stores/ProductStore";
 import { handlePrint } from "../../utils/printModule";
 import AdminSingleOrder from "./AdminSingleOrder.vue";
+import DayFilter from "./DayFilter.vue";
 
 export default {
-  components: { AdminSingleOrder },
+  components: { AdminSingleOrder, DayFilter },
 
   setup() {
     const productStore = useProductStore();
 
-    const dayFilter = ref(["mardi", "vendredi"]);
+    const dayFilter = ref([]);
     const filter = ref("all");
-
+    console.log(dayFilter.value);
     return { productStore, filter, dayFilter };
   },
 
@@ -110,34 +99,6 @@ export default {
     align-items: center;
     & p {
       font-size: 28px;
-    }
-  }
-
-  &__pickup {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    column-gap: 35px;
-
-    @include mixin.xs {
-      justify-content: space-around;
-    }
-
-    &__day {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--gray-5);
-      &:hover {
-        cursor: pointer;
-        color: var(--light-primary);
-      }
-    }
-
-    &__day--selected {
-      color: var(--primary);
-    }
-    & i {
-      padding: 0;
     }
   }
 

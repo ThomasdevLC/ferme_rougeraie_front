@@ -1,5 +1,6 @@
 <template>
   <div class="count">
+    <DayFilter />
     <div class="count__print">
       <i class="fa-solid fa-print" @click="handlePrint"></i>
     </div>
@@ -21,8 +22,11 @@
 
 <script>
 import { useProductStore } from "../../stores/ProductStore";
+import DayFilter from "./DayFilter.vue";
 
 export default {
+  components: { DayFilter },
+
   setup() {
     const productStore = useProductStore();
     const handlePrint = () => {
