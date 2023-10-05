@@ -76,8 +76,6 @@ export default {
         } else {
           productStore.editProduct(props.product._id, updatedProduct);
         }
-
-        console.log("Product", updatedProduct);
       }
     };
 

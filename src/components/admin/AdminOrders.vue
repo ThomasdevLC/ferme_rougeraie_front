@@ -53,7 +53,6 @@ export default {
 
     const dayFilter = ref(["mardi", "vendredi"]);
     const filter = ref("all");
-    console.log(dayFilter.value);
     return { productStore, filter, dayFilter };
   },
 

@@ -108,14 +108,12 @@ export default {
   methods: {
     openModal() {
       this.showModal = true;
-      console.log(this.showModal);
     },
     closeModal() {
       this.showModal = false;
     },
     openShopModal() {
       this.showShopModal = true;
-      console.log(this.showShopModal);
     },
     closeShopModal() {
       this.showShopModal = false;

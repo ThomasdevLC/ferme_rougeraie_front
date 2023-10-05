@@ -117,7 +117,6 @@ export const useProductStore = defineStore("productStore", {
     },
 
     async addProduct(product) {
-      console.log(product);
       const formData = new FormData();
       formData.append("name", product.name);
       formData.append("price", product.price);
@@ -162,8 +161,6 @@ export const useProductStore = defineStore("productStore", {
         if (updatedProduct.image) {
           const file = dataURItoFile(updatedProduct.image, updatedProduct.name);
           formData.append("image", file);
-          console.log("file", file);
-          console.log("updatedProduct.image.name", updatedProduct.image.name);
         }
 
         const res = await fetch(`http://${import.meta.env.VITE_BACK_API}/product/` + id, {
@@ -238,8 +235,6 @@ export const useProductStore = defineStore("productStore", {
       this.cart.push(product);
       localStorage.setItem("cart", JSON.stringify(this.cart));
       localStorage.setItem("cartTimestamp", new Date().getTime().toString());
-
-      console.log("cart", this.cart);
     },
 
     async editCart(id, updatedProduct) {
@@ -248,7 +243,6 @@ export const useProductStore = defineStore("productStore", {
         const product = { ...this.cart[index], ...updatedProduct };
         this.cart.splice(index, 1, product);
         localStorage.setItem("cart", JSON.stringify(this.cart)); // Update localStorage cart
-        console.log("cart", this.cart);
         return;
       } else {
         throw new Error("Product not found");
@@ -361,7 +355,6 @@ export const useProductStore = defineStore("productStore", {
 
     async updateClosedShop(value) {
       try {
-        console.log(value, "update shop");
         const res = await fetch(`http://${import.meta.env.VITE_BACK_API}/closedShop`, {
           method: "PATCH",
           body: JSON.stringify({ closedShop: value }),
@@ -402,13 +395,9 @@ export const useProductStore = defineStore("productStore", {
     },
 
     async editShopMessage(message) {
-      console.log(message, "message");
-
       const requestData = {
         message: message.message,
       };
-
-      console.log(requestData, "requestData");
 
       try {
         const res = await fetch(`http://${import.meta.env.VITE_BACK_API}/closedShop/`, {
@@ -436,7 +425,6 @@ export const useProductStore = defineStore("productStore", {
       const res = await fetch(`http://${import.meta.env.VITE_BACK_API}/closedShop/message`);
       const data = await res.json();
       this.closedShopMessage = data.message;
-      console.log("store message", this.closedShopMessage);
     },
   },
 });

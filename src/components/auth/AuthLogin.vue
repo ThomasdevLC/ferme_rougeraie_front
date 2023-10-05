@@ -42,7 +42,6 @@ export default {
           sessionStorage.setItem("token", token);
           productStore.isLoggedIn = true;
           productStore.accessToken = token;
-          console.log(productStore.accessToken);
 
           await initialize();
         } else {
