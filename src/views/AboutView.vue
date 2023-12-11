@@ -5,19 +5,23 @@
     <div class="about__container">
       <div class="about__container__top">
         <div class="about__container__top__text">
-          <p class="about__container__top__text__title">Léa Mauguin</p>
-          <p class="about__container__top__text__subtitle">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae vero nemo saepe eligendi distinctio fugiat minus doloremque obcaecati eos
-            earum dolor, sit reiciendis ea eum odio porro unde a numquam.
-          </p>
+          <p class="about__container__top__text__title">Ferme de La rougeraie</p>
           <p class="about__container__top__text__introducing">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate illo soluta corrupti ducimus, veniam modi debitis nostrum, architecto quod
-            maxime labore aut recusandae, ea consectetur iste odio libero pariatur vel quo distinctio quis. Ullam quidem minima pariatur cupiditate cumque autem
-            totam nemo! Similique ea consequuntur fuga ipsam praesentium ad alias adipisci autem, neque suscipit harum velit facere qui, sequi quae nisi quia
-            quod! Molestias, aperiam beatae, a vero voluptatem natus sed assumenda omnis cum odio voluptas culpa aut dolor nesciunt nisi dolorum repellat
-            voluptatibus? Amet unde ullam perspiciatis architecto, labore voluptate autem atque repudiandae reprehenderit dolorum mollitia impedit pariatur,
-            dignissimos veniam minima dolores rerum. Nobis assumenda magni obcaecati, non, sequi ratione quasi, vero similique culpa modi suscipit tempore at
-            et.
+            Notre ferme familiale possède deux activités de production : un atelier d'une trentaine de vaches laitières en circuit long (lait livré à Biolait)
+            et un atelier de maraîchage diversifié en circuit court avec vente à la ferme. La surface est d'environ 45 Ha, toute en prairies permanentes et
+            entourées de haies anciennes ou plantées par nos soins. En effet, la préservation et l'amélioration de la biodiversité font partie de nos
+            préoccupations. L'ensemble de la surface est certifiée en agriculture biologique depuis 2008.
+          </p>
+
+          <p class="about__container__top__text__introducing">
+            Nous cultivons des légumes diversifiés et de saison, la majorité étant en plein champ mais une partie est cultivée sous serre, principalement pour
+            les légumes fruits d'été et les légumes feuilles d'hiver et de printemps. Tous les légumes sont cultivés en pleine terre, ce qui permet une
+            meilleure qualité gustative.
+          </p>
+
+          <p class="about__container__top__text__introducing">
+            Nous vous proposons ces légumes toute l'année, sauf entre mi-février et mi-avril où nous arrêtons les ventes pour préparer la nouvelle saison. Les
+            congés occasionnels sont annoncés à l'avance. Le magasin se trouve dans le bâtiment de la ferme.
           </p>
         </div>
         <div class="about__container__top__image">
@@ -41,8 +45,14 @@
             <span class="about__container__bottom__sellpoint__time"> - vendredi de 16h00 à 19h00</span>
           </p>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate illo soluta corrupti ducimus, veniam modi debitis nostrum, architecto quod
-            maxime labore aut recusandae, ea consectetur iste odio libero pariatur vel quo distinctio quis. Ullam quidem minima pariatur
+            Les ventes ont lieu les mardis et vendredis de 16H à 19H. <br />
+            La liste des légumes disponibles avec leur prix est mise à jour chaque début de semaine. Vous avez jusqu'à 21h la veille du jour de vente pour
+            passer une pré-commande. Le montant est indicatif et peut légèrement être ajusté à la réalité du poids des légumes. Le règlement se fait à la
+            réception, les jours de vente où il est possible de modifier ou de compléter sa commande. Venir avec son panier.
+          </p>
+          <p>
+            Nos légumes sont également servis à la cantine scolaire de Lanouée, dans les plats du restaurant « Chez Simon » à Josselin ainsi que sur les pizzas
+            de Mowgli Pizz' à Lanouée, chaque vendredi.
           </p>
         </div>
       </div>
@@ -126,7 +136,7 @@ export default {
 
       &__text {
         &__title {
-          font-size: 60px;
+          font-size: 44px;
           font-family: var(--font-family-titles);
           margin: 0;
 
@@ -135,13 +145,13 @@ export default {
           }
         }
 
-        &__subtitle {
-          font-size: 24px;
-          font-family: var(--font-family-titles);
-          @include mixin.xs {
-            font-size: 20px;
-          }
-        }
+        // &__subtitle {
+        //   font-family: var(--font-family-titles);
+        //   font-size: 24px;
+        //   @include mixin.xs {
+        //     font-size: 20px;
+        //   }
+        // }
 
         &__introducing {
           font-size: 16px;
