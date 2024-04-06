@@ -5,7 +5,7 @@
     <div class="about__container">
       <div class="about__container__top">
         <div class="about__container__top__text">
-          <p class="about__container__top__text__title">Ferme de La rougeraie</p>
+          <p class="about__container__top__text__title">Ferme de la Rougeraie</p>
           <p class="about__container__top__text__introducing">
             Notre ferme familiale possède deux activités de production : un atelier d'une trentaine de vaches laitières en circuit long (lait livré à Biolait)
             et un atelier de maraîchage diversifié en circuit court avec vente à la ferme. La surface est d'environ 45 Ha, toute en prairies permanentes et
@@ -38,12 +38,9 @@
           <h2 class="about__container__bottom__sellpoint__title">POINTS DE VENTE</h2>
           <p class="about__container__bottom__sellpoint__infos">
             LANOUEE - place de l'église
-            <span class="about__container__bottom__sellpoint__time"> - mardi de 16h00 à 19h00</span>
+            <span class="about__container__bottom__sellpoint__time"> - mardi et vendredi de 16h00 à 19h00</span>
           </p>
-          <p class="about__container__bottom__sellpoint__infos">
-            LANOUEE - ferme de la Rougeraie
-            <span class="about__container__bottom__sellpoint__time"> - vendredi de 16h00 à 19h00</span>
-          </p>
+
           <p>
             Les ventes ont lieu les mardis et vendredis de 16H à 19H. <br />
             La liste des légumes disponibles avec leur prix est mise à jour chaque début de semaine. Vous avez jusqu'à 21h la veille du jour de vente pour
